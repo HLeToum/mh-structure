@@ -1,6 +1,6 @@
 /**
  * MH-Structure — Three.js Background Scene
- * Animated structural wireframe building (BIM-style)
+ * Béton Armé : colonnes, poutres, dalles avec armatures visibles
  */
 (function () {
 
@@ -11,148 +11,237 @@
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x070C14, 1);
+  renderer.setClearColor(0x06090F, 1);
 
   // ── Scene & Camera ────────────────────────────────────
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x070C14, 0.028);
+  scene.fog = new THREE.FogExp2(0x06090F, 0.022);
 
-  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 120);
-  camera.position.set(0, 2, 18);
+  const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 150);
+  camera.position.set(0, 1.5, 20);
   camera.lookAt(0, 0, 0);
 
-  // ── Materials ─────────────────────────────────────────
-  const matColumn = new THREE.LineBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.65 });
-  const matBeam   = new THREE.LineBasicMaterial({ color: 0x1E4A8A, transparent: true, opacity: 0.55 });
-  const matSlab   = new THREE.LineBasicMaterial({ color: 0x234E80, transparent: true, opacity: 0.40 });
-  const matBrace  = new THREE.LineBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.15 });
-  const matGrid   = new THREE.LineBasicMaterial({ color: 0x1A3A6A, transparent: true, opacity: 0.18 });
+  // ── Segment collectors ────────────────────────────────
+  // Instead of individual Line objects → batch everything into LineSegments for performance
+  const segs = {
+    concrete: [],  // blue — béton outlines
+    rebar:    [],  // gold — armatures longitudinales
+    stirrup:  [],  // gold dim — cadres / étriers
+    mesh:     [],  // blue dim — nappe de treillis dalle
+  };
 
-  // ── Building Structure ────────────────────────────────
-  const building = new THREE.Group();
+  function seg(arr, x1, y1, z1, x2, y2, z2) {
+    arr.push(x1, y1, z1, x2, y2, z2);
+  }
 
-  const W  = 6;    // width
-  const D  = 3.8;  // depth
-  const fH = 1.7;  // floor height
-  const nF = 6;    // number of floors
+  function box(arr, cx, cy, cz, w, h, d) {
+    const [x1, x2] = [cx - w/2, cx + w/2];
+    const [y1, y2] = [cy - h/2, cy + h/2];
+    const [z1, z2] = [cz - d/2, cz + d/2];
+    // bottom ring
+    seg(arr, x1,y1,z1, x2,y1,z1); seg(arr, x2,y1,z1, x2,y1,z2);
+    seg(arr, x2,y1,z2, x1,y1,z2); seg(arr, x1,y1,z2, x1,y1,z1);
+    // top ring
+    seg(arr, x1,y2,z1, x2,y2,z1); seg(arr, x2,y2,z1, x2,y2,z2);
+    seg(arr, x2,y2,z2, x1,y2,z2); seg(arr, x1,y2,z2, x1,y2,z1);
+    // verticals
+    seg(arr, x1,y1,z1, x1,y2,z1); seg(arr, x2,y1,z1, x2,y2,z1);
+    seg(arr, x2,y1,z2, x2,y2,z2); seg(arr, x1,y1,z2, x1,y2,z2);
+  }
+
+  function makeLS(arr, color, opacity) {
+    if (!arr.length) return null;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(arr), 3));
+    const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
+    return new THREE.LineSegments(geo, mat);
+  }
+
+  // ── Building parameters ───────────────────────────────
+  const W  = 7.0;   // plan width
+  const D  = 4.5;   // plan depth
+  const fH = 2.2;   // floor height
+  const nF = 5;     // number of floors
+
+  const cW = 0.45, cD = 0.45;   // column cross-section (45×45 cm)
+  const bH = 0.50, bW = 0.35;   // beam height/width (50×35 cm)
+  const sH = 0.18;               // slab thickness
 
   // Column plan positions [x, z]
-  const colGrid = [
+  const cols = [
     [-W/2, -D/2], [0, -D/2], [W/2, -D/2],
     [-W/2,  D/2], [0,  D/2], [W/2,  D/2],
   ];
 
-  // Helper: create a line from p1 to p2
-  function makeLine(p1, p2, mat) {
-    const geo = new THREE.BufferGeometry().setFromPoints([
-      new THREE.Vector3(...p1),
-      new THREE.Vector3(...p2),
-    ]);
-    return new THREE.Line(geo, mat);
-  }
+  const building = new THREE.Group();
 
-  // Vertical columns
-  colGrid.forEach(([x, z], i) => {
-    const isCorner = (i === 0 || i === 2 || i === 3 || i === 5);
-    const mat = isCorner ? matColumn : new THREE.LineBasicMaterial({ color: 0xC9A84C, transparent: true, opacity: 0.35 });
-    building.add(makeLine([x, 0, z], [x, nF * fH, z], mat));
+  // ── Columns ───────────────────────────────────────────
+  const totalH = nF * fH;
+  const barOff = 0.14;  // distance armature longitudinale / face
+
+  cols.forEach(([cx, cz]) => {
+
+    // Béton outline (full height)
+    box(segs.concrete, cx, totalH/2, cz, cW, totalH, cD);
+
+    // Armatures longitudinales (4 barres)
+    const barPos = [
+      [cx - barOff, cz - barOff],
+      [cx + barOff, cz - barOff],
+      [cx - barOff, cz + barOff],
+      [cx + barOff, cz + barOff],
+    ];
+    barPos.forEach(([bx, bz]) => {
+      seg(segs.rebar, bx, 0, bz, bx, totalH, bz);
+    });
+
+    // Cadres / étriers (carrés à intervalle régulier)
+    const stirrupStep = 0.28;
+    const s = barOff + 0.03;
+    for (let y = stirrupStep / 2; y < totalH; y += stirrupStep) {
+      seg(segs.stirrup, cx-s, y, cz-s, cx+s, y, cz-s);
+      seg(segs.stirrup, cx+s, y, cz-s, cx+s, y, cz+s);
+      seg(segs.stirrup, cx+s, y, cz+s, cx-s, y, cz+s);
+      seg(segs.stirrup, cx-s, y, cz+s, cx-s, y, cz-s);
+    }
   });
 
-  // Horizontal floor framing
-  for (let f = 0; f <= nF; f++) {
-    const y = f * fH;
-    const isTop = f === nF;
-    const mat  = isTop ? matColumn : matSlab;
+  // ── Poutres & dalles par niveau ───────────────────────
+  for (let f = 1; f <= nF; f++) {
+    const floorY = f * fH;
+    const bCY    = floorY - bH / 2;  // centre Y de la poutre
 
-    // Perimeter rectangle
-    const corners = [
-      [-W/2, y, -D/2], [W/2, y, -D/2],
-      [W/2,  y,  D/2], [-W/2, y,  D/2],
-      [-W/2, y, -D/2],
-    ];
-    const periGeo = new THREE.BufferGeometry().setFromPoints(
-      corners.map(p => new THREE.Vector3(...p))
-    );
-    building.add(new THREE.Line(periGeo, mat));
+    // — Poutres longitudinales (parallèles à X) front & back —
+    [-D/2, D/2].forEach(pz => {
+      const pLen = W - cW;
 
-    // Interior beam (longitudinal)
-    building.add(makeLine([0, y, -D/2], [0, y, D/2], matBeam));
+      // Béton outline
+      box(segs.concrete, 0, bCY, pz, pLen, bH, bW);
 
-    // Interior beam (transverse)
-    building.add(makeLine([-W/2, y, 0], [W/2, y, 0], matBeam));
+      // Armatures longitudinales : 2 barres filantes hautes + 2 basses
+      const pX1 = -pLen/2, pX2 = pLen/2;
+      const yTop = bCY + bH/2 - 0.07;
+      const yBot = bCY - bH/2 + 0.07;
+      const zOff = 0.06;
+      seg(segs.rebar, pX1, yTop,  pz - zOff, pX2, yTop,  pz - zOff);
+      seg(segs.rebar, pX1, yTop,  pz + zOff, pX2, yTop,  pz + zOff);
+      seg(segs.rebar, pX1, yBot,  pz,         pX2, yBot,  pz);
 
-    // Slab subdivision grid (every 2 floors to keep it clean)
-    if (!isTop && f % 2 === 0) {
-      for (let gx = -W/2 + W/4; gx < W/2; gx += W/4) {
-        building.add(makeLine([gx, y, -D/2], [gx, y, D/2], matGrid));
+      // Étriers de poutre (section en U transversale)
+      const eStep = 0.32;
+      const ew = bW/2 - 0.05, eh = bH/2 - 0.05;
+      for (let ex = pX1 + eStep/2; ex < pX2; ex += eStep) {
+        seg(segs.stirrup, ex, bCY-eh, pz-ew, ex, bCY+eh, pz-ew);
+        seg(segs.stirrup, ex, bCY+eh, pz-ew, ex, bCY+eh, pz+ew);
+        seg(segs.stirrup, ex, bCY+eh, pz+ew, ex, bCY-eh, pz+ew);
+        seg(segs.stirrup, ex, bCY-eh, pz+ew, ex, bCY-eh, pz-ew);
       }
-      for (let gz = -D/2 + D/3; gz < D/2; gz += D/3) {
-        building.add(makeLine([-W/2, y, gz], [W/2, y, gz], matGrid));
+    });
+
+    // — Poutres transversales (parallèles à Z) gauche & droite —
+    [-W/2, W/2].forEach(px => {
+      const pLen = D - cD;
+
+      box(segs.concrete, px, bCY, 0, bW, bH, pLen);
+
+      const pZ1 = -pLen/2, pZ2 = pLen/2;
+      const yTop = bCY + bH/2 - 0.07;
+      const yBot = bCY - bH/2 + 0.07;
+      seg(segs.rebar, px, yTop, pZ1, px, yTop, pZ2);
+      seg(segs.rebar, px, yBot, pZ1, px, yBot, pZ2);
+
+      const eStep = 0.32;
+      const ew = bW/2 - 0.05, eh = bH/2 - 0.05;
+      for (let ez = pZ1 + eStep/2; ez < pZ2; ez += eStep) {
+        seg(segs.stirrup, px-ew, bCY-eh, ez, px-ew, bCY+eh, ez);
+        seg(segs.stirrup, px-ew, bCY+eh, ez, px+ew, bCY+eh, ez);
+        seg(segs.stirrup, px+ew, bCY+eh, ez, px+ew, bCY-eh, ez);
+        seg(segs.stirrup, px+ew, bCY-eh, ez, px-ew, bCY-eh, ez);
       }
+    });
+
+    // — Dalle BA avec nappe de treillis —
+    const dY = floorY - sH/2;
+    box(segs.concrete, 0, dY, 0, W, sH, D);
+
+    // Nappe inférieure (parallèle X)
+    const meshStep = 0.40;
+    const my = dY - sH/2 + 0.06;
+    for (let mz = -D/2 + meshStep; mz < D/2; mz += meshStep) {
+      seg(segs.mesh, -W/2, my, mz, W/2, my, mz);
     }
+    // Nappe inférieure (parallèle Z)
+    for (let mx = -W/2 + meshStep; mx < W/2; mx += meshStep) {
+      seg(segs.mesh, mx, my, -D/2, mx, my, D/2);
+    }
+    // Nappe supérieure (aux appuis — sur les poutres)
+    const my2 = dY + sH/2 - 0.06;
+    const supW = 1.6; // zone d'armature supérieure aux appuis
+    cols.forEach(([cx, cz]) => {
+      seg(segs.mesh, cx - supW/2, my2, cz - supW/2, cx + supW/2, my2, cz - supW/2);
+      seg(segs.mesh, cx + supW/2, my2, cz - supW/2, cx + supW/2, my2, cz + supW/2);
+      seg(segs.mesh, cx + supW/2, my2, cz + supW/2, cx - supW/2, my2, cz + supW/2);
+      seg(segs.mesh, cx - supW/2, my2, cz + supW/2, cx - supW/2, my2, cz - supW/2);
+    });
   }
 
-  // X-bracing on front & back faces (structural bracing)
-  const braceData = [
-    // Front face (z = -D/2)
-    [[-W/2, 0,     -D/2], [0,    fH,    -D/2]],
-    [[0,    0,     -D/2], [-W/2, fH,    -D/2]],
-    [[0,    fH*2,  -D/2], [W/2,  fH*3,  -D/2]],
-    [[W/2,  fH*2,  -D/2], [0,    fH*3,  -D/2]],
-    // Back face (z = D/2)
-    [[-W/2, fH*3,   D/2], [0,    fH*4,   D/2]],
-    [[0,    fH*3,   D/2], [-W/2, fH*4,   D/2]],
-  ];
-  braceData.forEach(([p1, p2]) => building.add(makeLine(p1, p2, matBrace)));
+  // ── Assemble LineSegments ─────────────────────────────
+  const lsConcrete = makeLS(segs.concrete, 0x1E5A9A, 0.45);
+  const lsRebar    = makeLS(segs.rebar,    0xC9A84C, 0.85);
+  const lsStirrup  = makeLS(segs.stirrup,  0xC9A84C, 0.32);
+  const lsMesh     = makeLS(segs.mesh,     0x1A4070, 0.28);
 
-  // Center the building vertically
-  building.position.y = -(nF * fH) / 2;
+  [lsConcrete, lsRebar, lsStirrup, lsMesh].forEach(ls => { if (ls) building.add(ls); });
+
+  // Center building vertically
+  building.position.y = -totalH / 2;
   scene.add(building);
 
   // ── Ground grid ───────────────────────────────────────
-  const groundGrid = new THREE.GridHelper(40, 24, 0x102040, 0x0D1B30);
-  groundGrid.position.y = -(nF * fH) / 2 - 0.1;
+  const groundGrid = new THREE.GridHelper(50, 28, 0x102040, 0x0D1B30);
+  groundGrid.position.y = -totalH / 2 - 0.15;
   groundGrid.material.transparent = true;
-  groundGrid.material.opacity = 0.25;
+  groundGrid.material.opacity = 0.2;
   scene.add(groundGrid);
 
-  // ── Floating particles ────────────────────────────────
-  const PTS = 280;
-  const posArr = new Float32Array(PTS * 3);
-  for (let i = 0; i < PTS; i++) {
-    posArr[i*3]   = (Math.random() - 0.5) * 36;
-    posArr[i*3+1] = (Math.random() - 0.5) * 22;
-    posArr[i*3+2] = (Math.random() - 0.5) * 22;
-  }
-  const ptGeo = new THREE.BufferGeometry();
-  ptGeo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
-  const ptMat = new THREE.PointsMaterial({ color: 0x2A5A9A, size: 0.06, transparent: true, opacity: 0.5 });
-  scene.add(new THREE.Points(ptGeo, ptMat));
-
-  // Accent gold nodes at column tops/bottoms
-  const nodePts = [];
-  colGrid.forEach(([x, z]) => {
-    for (let f = 0; f <= nF; f++) {
-      nodePts.push(x, f * fH + building.position.y, z);
-    }
+  // ── Nœuds dorés aux jonctions poteaux/poutres ─────────
+  const nodeArr = [];
+  cols.forEach(([cx, cz]) => {
+    const bOff = barOff;
+    [[cx-bOff,cz-bOff],[cx+bOff,cz-bOff],[cx-bOff,cz+bOff],[cx+bOff,cz+bOff]].forEach(([bx,bz]) => {
+      for (let f = 0; f <= nF; f++) {
+        nodeArr.push(bx, f * fH + building.position.y, bz);
+      }
+    });
   });
   const nodeGeo = new THREE.BufferGeometry();
-  nodeGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(nodePts), 3));
-  const nodeMat = new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.12, transparent: true, opacity: 0.8 });
+  nodeGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(nodeArr), 3));
+  const nodeMat = new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.09, transparent: true, opacity: 0.9, sizeAttenuation: true });
   scene.add(new THREE.Points(nodeGeo, nodeMat));
+
+  // ── Particules flottantes ─────────────────────────────
+  const PTS = 260;
+  const ptPos = new Float32Array(PTS * 3);
+  for (let i = 0; i < PTS; i++) {
+    ptPos[i*3]   = (Math.random() - 0.5) * 42;
+    ptPos[i*3+1] = (Math.random() - 0.5) * 26;
+    ptPos[i*3+2] = (Math.random() - 0.5) * 26;
+  }
+  const ptGeo = new THREE.BufferGeometry();
+  ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPos, 3));
+  const ptMat = new THREE.PointsMaterial({ color: 0x2A5A9A, size: 0.06, transparent: true, opacity: 0.45 });
+  scene.add(new THREE.Points(ptGeo, ptMat));
 
   // ── Mouse parallax ─────────────────────────────────────
   let mX = 0, mY = 0, tX = 0, tY = 0;
-  document.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', e => {
     mX = (e.clientX / window.innerWidth  - 0.5) * 2;
     mY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
-  // ── Scroll tracking ────────────────────────────────────
   let scrollY = 0;
-  window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
-  // ── Resize ─────────────────────────────────────────────
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -166,23 +255,22 @@
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // Slow auto-rotation
-    building.rotation.y = t * 0.07;
+    // 360° rotation continue
+    building.rotation.y = t * 0.065;
 
     // Mouse parallax (smooth damp)
     tX += (mX - tX) * 0.025;
     tY += (mY - tY) * 0.025;
-
     camera.position.x = tX * 2.5;
-    camera.position.y = 2 + tY * 1.5 - scrollY * 0.003;
+    camera.position.y = 1.5 + tY * 1.5 - scrollY * 0.003;
     camera.lookAt(0, 0, 0);
 
-    // Pulsing opacity on gold columns
-    matColumn.opacity = 0.5 + Math.sin(t * 0.6) * 0.18;
-    nodeMat.opacity   = 0.6 + Math.sin(t * 1.2) * 0.25;
-
-    // Slow particle drift
-    ptMat.opacity = 0.35 + Math.sin(t * 0.4) * 0.12;
+    // Pulsing animations
+    if (lsConcrete) lsConcrete.material.opacity = 0.35 + Math.sin(t * 0.45) * 0.12;
+    if (lsRebar)    lsRebar.material.opacity    = 0.72 + Math.sin(t * 0.80) * 0.18;
+    if (lsStirrup)  lsStirrup.material.opacity  = 0.22 + Math.sin(t * 0.60) * 0.10;
+    nodeMat.opacity = 0.70 + Math.sin(t * 1.20) * 0.22;
+    ptMat.opacity   = 0.35 + Math.sin(t * 0.40) * 0.10;
 
     renderer.render(scene, camera);
   }
