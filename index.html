@@ -15,121 +15,116 @@
 <body>
 
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-
   <canvas id="bg-canvas"></canvas>
 
   <!-- ========== NAVBAR ========== -->
-  <nav id="navbar">
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
     <div class="nav-inner">
-      <a href="#accueil" class="logo">
+      <a href="#accueil" class="logo" aria-label="MH Structure — retour accueil">
         <span class="logo-mh">MH</span>
-        <div class="logo-sep"></div>
+        <div class="logo-sep" aria-hidden="true"></div>
         <span class="logo-struct">STRUCTURE</span>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#accueil" class="nav-link">Accueil</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#portfolio" class="nav-link">Portfolio</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#about"     class="nav-link">À propos</a>
+        <a href="#services"  class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Réalisations</a>
+        <a href="#contact"   class="nav-link">Contact</a>
       </div>
-      <a href="#contact" class="btn-primary nav-cta">Devis gratuit</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
+      <a href="#contact" class="btn-cta nav-cta">Devis gratuit</a>
+      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
   </nav>
 
   <!-- ========== HERO ========== -->
   <section id="accueil" class="hero" aria-label="Accueil">
-    <div class="hero-bg-text" aria-hidden="true">STRUCTURE</div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
-      <div class="hero-left">
+      <div class="hero-content">
         <div class="hero-tag">
-          <span class="tag-dot"></span>
+          <span class="tag-dot" aria-hidden="true"></span>
           Bureau d'Études Techniques — Structure
         </div>
         <h1 class="hero-h1">
-          <span class="hero-line">Ingénierie</span>
-          <span class="hero-line hero-stroke">Structurelle</span>
-          <span class="hero-line">de Précision</span>
+          Ingénierie<br>
+          <em>Structurelle</em><br>
+          de Précision
         </h1>
         <p class="hero-desc">
           Calcul de structures · Diagnostic sismique · Modélisation BIM<br>
-          Des solutions techniques rigoureuses pour vos projets.
+          Des solutions techniques rigoureuses pour chaque projet.
         </p>
-        <div class="hero-btns">
-          <a href="#contact" class="btn-primary">Demander un devis <span class="btn-arr">→</span></a>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Demander un devis <span aria-hidden="true">→</span></a>
           <a href="#portfolio" class="btn-ghost">Nos réalisations</a>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="hero-metrics">
-          <div class="hero-metric">
-            <div class="hm-val"><span class="counter" data-target="150">0</span>+</div>
-            <div class="hm-lbl">Projets réalisés</div>
-          </div>
-          <div class="hm-line"></div>
-          <div class="hero-metric">
-            <div class="hm-val"><span class="counter" data-target="10">0</span>+</div>
-            <div class="hm-lbl">Années d'expérience</div>
-          </div>
-          <div class="hm-line"></div>
-          <div class="hero-metric">
-            <div class="hm-val"><span class="counter" data-target="8">0</span></div>
-            <div class="hm-lbl">Régions couvertes</div>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="scroll-ind">
-      <span class="scroll-txt">Défiler</span>
-      <div class="scroll-bar"></div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="scroll-label">Défiler</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
+  <!-- ========== METRICS STRIP ========== -->
+  <div class="metrics-strip" id="main-content">
+    <div class="metric-item">
+      <div class="metric-val"><span class="counter" data-target="150">0</span><span>+</span></div>
+      <div class="metric-lbl">Projets réalisés</div>
+    </div>
+    <div class="metric-sep" aria-hidden="true"></div>
+    <div class="metric-item">
+      <div class="metric-val"><span class="counter" data-target="10">0</span><span>+</span></div>
+      <div class="metric-lbl">Années d'expérience</div>
+    </div>
+    <div class="metric-sep" aria-hidden="true"></div>
+    <div class="metric-item">
+      <div class="metric-val"><span class="counter" data-target="8">0</span></div>
+      <div class="metric-lbl">Régions couvertes</div>
+    </div>
+  </div>
+
   <!-- ========== MARQUEE ========== -->
-  <div class="marquee-wrap">
+  <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
-      <span>Béton Armé</span><span class="mx">·</span>
-      <span>Diagnostic Sismique</span><span class="mx">·</span>
-      <span>Modélisation BIM</span><span class="mx">·</span>
-      <span>Notes de Calcul</span><span class="mx">·</span>
-      <span>Eurocode 8</span><span class="mx">·</span>
-      <span>Plans de Coffrage</span><span class="mx">·</span>
-      <span>Structure Acier</span><span class="mx">·</span>
-      <span>REVIT / AutoCAD</span><span class="mx">·</span>
-      <span>Fondations</span><span class="mx">·</span>
-      <span>Expertise Judiciaire</span><span class="mx">·</span>
-      <!-- duplicate for seamless loop -->
-      <span>Béton Armé</span><span class="mx">·</span>
-      <span>Diagnostic Sismique</span><span class="mx">·</span>
-      <span>Modélisation BIM</span><span class="mx">·</span>
-      <span>Notes de Calcul</span><span class="mx">·</span>
-      <span>Eurocode 8</span><span class="mx">·</span>
-      <span>Plans de Coffrage</span><span class="mx">·</span>
-      <span>Structure Acier</span><span class="mx">·</span>
-      <span>REVIT / AutoCAD</span><span class="mx">·</span>
-      <span>Fondations</span><span class="mx">·</span>
-      <span>Expertise Judiciaire</span><span class="mx">·</span>
+      <span>Béton Armé</span><span class="dot">·</span>
+      <span>Diagnostic Sismique</span><span class="dot">·</span>
+      <span>Modélisation BIM</span><span class="dot">·</span>
+      <span>Notes de Calcul</span><span class="dot">·</span>
+      <span>Eurocode 8</span><span class="dot">·</span>
+      <span>Plans de Coffrage</span><span class="dot">·</span>
+      <span>Structure Acier</span><span class="dot">·</span>
+      <span>REVIT / AutoCAD</span><span class="dot">·</span>
+      <span>Fondations</span><span class="dot">·</span>
+      <span>Expertise Judiciaire</span><span class="dot">·</span>
+      <span>Béton Armé</span><span class="dot">·</span>
+      <span>Diagnostic Sismique</span><span class="dot">·</span>
+      <span>Modélisation BIM</span><span class="dot">·</span>
+      <span>Notes de Calcul</span><span class="dot">·</span>
+      <span>Eurocode 8</span><span class="dot">·</span>
+      <span>Plans de Coffrage</span><span class="dot">·</span>
+      <span>Structure Acier</span><span class="dot">·</span>
+      <span>REVIT / AutoCAD</span><span class="dot">·</span>
+      <span>Fondations</span><span class="dot">·</span>
+      <span>Expertise Judiciaire</span><span class="dot">·</span>
     </div>
   </div>
 
   <!-- ========== ABOUT ========== -->
-  <section id="about" class="about-section" id="main-content">
+  <section id="about" class="section about-section">
     <div class="container">
       <div class="about-grid">
-        <div class="about-left">
-          <div class="section-label">
-            <span class="label-num">00</span>
-            <span class="label-txt">À propos</span>
-          </div>
-          <div class="about-img-wrap">
-            <div class="about-img-frame">
-              <div class="about-grid-lines"></div>
-              <div class="about-monogram">MH</div>
-            </div>
+
+        <div class="about-visual">
+          <div class="about-frame">
+            <div class="about-grid-bg" aria-hidden="true"></div>
+            <div class="about-monogram" aria-hidden="true">MH</div>
             <div class="about-badge">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" fill="#C9A84C"/>
               </svg>
               <div>
@@ -138,41 +133,48 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="about-right">
-          <h2 class="section-h2">Une expertise reconnue au service de vos structures</h2>
-          <p class="about-p">
-            Ingénieur structure spécialisé en ingénierie sismique, je mets une expertise pluridisciplinaire
-            au service de vos projets de construction et de réhabilitation. Fort d'une approche rigoureuse
-            et d'une maîtrise des outils numériques de pointe, MH-Structure vous offre des prestations
-            techniques fiables et précises.
-          </p>
-          <p class="about-p">
-            Ma spécialisation en diagnostic parasismique me permet d'évaluer la vulnérabilité de vos
-            ouvrages et de proposer des solutions de renforcement adaptées, conformes aux Eurocodes 8
-            et aux réglementations françaises en vigueur.
-          </p>
-          <div class="about-divider"></div>
-          <div class="tools-row">
-            <div class="tool-chip">REVIT</div>
-            <div class="tool-chip">AutoCAD</div>
-            <div class="tool-chip">Advanced Design</div>
-            <div class="tool-chip">Eurocode 8</div>
-            <div class="tool-chip">BIM 360</div>
-            <div class="tool-chip">ROBOT Structural</div>
+          <div class="tools-grid">
+            <span class="tool-tag">REVIT</span>
+            <span class="tool-tag">AutoCAD</span>
+            <span class="tool-tag">Advanced Design</span>
+            <span class="tool-tag">Eurocode 8</span>
+            <span class="tool-tag">BIM 360</span>
+            <span class="tool-tag">ROBOT Structural</span>
           </div>
         </div>
+
+        <div class="about-text">
+          <div class="section-eyebrow">
+            <span class="eyebrow-num">00</span>
+            <span class="eyebrow-label">À propos</span>
+          </div>
+          <h2 class="section-h2">Une expertise reconnue au service de vos structures</h2>
+          <p class="body-text">
+            Ingénieur structure spécialisé en ingénierie sismique, je mets une expertise
+            pluridisciplinaire au service de vos projets de construction et de réhabilitation.
+            Fort d'une approche rigoureuse et d'une maîtrise des outils numériques de pointe,
+            MH-Structure vous offre des prestations techniques fiables et précises.
+          </p>
+          <p class="body-text">
+            Ma spécialisation en diagnostic parasismique me permet d'évaluer la vulnérabilité
+            de vos ouvrages et de proposer des solutions de renforcement adaptées, conformes
+            aux Eurocodes 8 et aux réglementations françaises en vigueur.
+          </p>
+          <div class="about-divider" aria-hidden="true"></div>
+          <a href="#contact" class="btn-primary">Discutons de votre projet <span aria-hidden="true">→</span></a>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ========== SERVICES ========== -->
-  <section id="services" class="services-section">
+  <section id="services" class="section services-section">
     <div class="container">
-      <div class="section-header-row">
-        <div class="section-label">
-          <span class="label-num">01</span>
-          <span class="label-txt">Services</span>
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="eyebrow-num">01</span>
+          <span class="eyebrow-label">Services</span>
         </div>
         <div class="section-header-right">
           <h2 class="section-h2">Prestations techniques<br>complètes</h2>
@@ -180,154 +182,118 @@
         </div>
       </div>
 
-      <div class="svc-list">
+      <div class="services-grid">
 
-        <div class="svc-row">
-          <div class="svc-row-num">01</div>
-          <div class="svc-row-body">
-            <div class="svc-row-head">
-              <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                  <rect x="3" y="3" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="8" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="8" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="8" y1="20" x2="17" y2="20" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <h3 class="svc-row-title">Notes de Calcul Structurel</h3>
-            </div>
-            <p class="svc-row-desc">Dimensionnement et vérification des éléments structurels selon les Eurocodes — fondations, planchers, voiles, poteaux, poutres.</p>
-            <div class="svc-row-tags">
-              <span>Eurocode 2</span><span>Béton armé</span><span>Fondations</span><span>Charpente</span>
-            </div>
+        <article class="svc-card">
+          <div class="svc-num" aria-hidden="true">01</div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="20" x2="17" y2="20" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
           </div>
-          <div class="svc-row-arr">→</div>
-          <div class="svc-row-line"></div>
-        </div>
+          <h3 class="svc-title">Notes de Calcul Structurel</h3>
+          <p class="svc-desc">Dimensionnement et vérification des éléments structurels selon les Eurocodes — fondations, planchers, voiles, poteaux, poutres.</p>
+          <div class="svc-tags">
+            <span>Eurocode 2</span><span>Béton armé</span><span>Fondations</span>
+          </div>
+        </article>
 
-        <div class="svc-row">
-          <div class="svc-row-num">02</div>
-          <div class="svc-row-body">
-            <div class="svc-row-head">
-              <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                  <circle cx="15" cy="15" r="10" stroke="currentColor" stroke-width="1.5"/>
-                  <circle cx="15" cy="15" r="3" fill="currentColor"/>
-                  <line x1="15" y1="5" x2="15" y2="25" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                  <line x1="5" y1="15" x2="25" y2="15" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                </svg>
-              </div>
-              <h3 class="svc-row-title">Diagnostics Structurels</h3>
-            </div>
-            <p class="svc-row-desc">Évaluation de l'état des ouvrages existants, identification des pathologies et préconisations de renforcement adaptées.</p>
-            <div class="svc-row-tags">
-              <span>Expertise</span><span>Pathologies</span><span>Renforcement</span>
-            </div>
+        <article class="svc-card">
+          <div class="svc-num" aria-hidden="true">02</div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <circle cx="15" cy="15" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="15" cy="15" r="3" fill="currentColor"/>
+              <line x1="15" y1="5" x2="15" y2="25" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              <line x1="5" y1="15" x2="25" y2="15" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            </svg>
           </div>
-          <div class="svc-row-arr">→</div>
-          <div class="svc-row-line"></div>
-        </div>
+          <h3 class="svc-title">Diagnostics Structurels</h3>
+          <p class="svc-desc">Évaluation de l'état des ouvrages existants, identification des pathologies et préconisations de renforcement adaptées.</p>
+          <div class="svc-tags">
+            <span>Expertise</span><span>Pathologies</span><span>Renforcement</span>
+          </div>
+        </article>
 
-        <div class="svc-row">
-          <div class="svc-row-num">03</div>
-          <div class="svc-row-body">
-            <div class="svc-row-head">
-              <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                  <rect x="4" y="22" width="22" height="4" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="8" y1="22" x2="8" y2="7" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="15" y1="22" x2="15" y2="7" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="22" y1="22" x2="22" y2="7" stroke="currentColor" stroke-width="1.5"/>
-                  <line x1="4" y1="7" x2="26" y2="7" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <h3 class="svc-row-title">Plans de Coffrage &amp; Armature</h3>
-            </div>
-            <p class="svc-row-desc">Élaboration des plans d'exécution détaillés : coffrage et armature conformes aux normes NF EN, prêts pour le chantier.</p>
-            <div class="svc-row-tags">
-              <span>Plans d'exécution</span><span>NF EN</span><span>Chantier</span>
-            </div>
+        <article class="svc-card">
+          <div class="svc-num" aria-hidden="true">03</div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <rect x="4" y="22" width="22" height="4" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="8" y1="22" x2="8" y2="7" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="15" y1="22" x2="15" y2="7" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="22" y1="22" x2="22" y2="7" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="4" y1="7" x2="26" y2="7" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
           </div>
-          <div class="svc-row-arr">→</div>
-          <div class="svc-row-line"></div>
-        </div>
+          <h3 class="svc-title">Plans de Coffrage &amp; Armature</h3>
+          <p class="svc-desc">Élaboration des plans d'exécution détaillés : coffrage et armature conformes aux normes NF EN, prêts pour le chantier.</p>
+          <div class="svc-tags">
+            <span>Plans d'exécution</span><span>NF EN</span><span>Chantier</span>
+          </div>
+        </article>
 
-        <div class="svc-row">
-          <div class="svc-row-num">04</div>
-          <div class="svc-row-body">
-            <div class="svc-row-head">
-              <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                  <path d="M15 3L27 9V21L15 27L3 21V9L15 3Z" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M15 3V27" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-                  <path d="M3 9L27 21" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-                  <path d="M27 9L3 21" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-                </svg>
-              </div>
-              <h3 class="svc-row-title">Modélisation BIM 3D</h3>
-            </div>
-            <p class="svc-row-desc">Création de maquettes numériques sous REVIT pour une coordination multidisciplinaire optimale et une visualisation précise.</p>
-            <div class="svc-row-tags">
-              <span>REVIT</span><span>BIM 360</span><span>Coordination</span>
-            </div>
+        <article class="svc-card">
+          <div class="svc-num" aria-hidden="true">04</div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <path d="M15 3L27 9V21L15 27L3 21V9L15 3Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M15 3V27" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <path d="M3 9L27 21" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+              <path d="M27 9L3 21" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            </svg>
           </div>
-          <div class="svc-row-arr">→</div>
-          <div class="svc-row-line"></div>
-        </div>
+          <h3 class="svc-title">Modélisation BIM 3D</h3>
+          <p class="svc-desc">Création de maquettes numériques sous REVIT pour une coordination multidisciplinaire optimale et une visualisation précise.</p>
+          <div class="svc-tags">
+            <span>REVIT</span><span>BIM 360</span><span>Coordination</span>
+          </div>
+        </article>
 
-        <div class="svc-row featured">
-          <div class="svc-row-num">05</div>
-          <div class="svc-row-body">
-            <div class="svc-row-head">
-              <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                  <path d="M15 27L3 20V10L15 3L27 10V20L15 27Z" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M9 15L13 19L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <h3 class="svc-row-title">Diagnostic Sismique</h3>
-              <span class="svc-badge">Expertise</span>
-            </div>
-            <p class="svc-row-desc">Évaluation de la vulnérabilité sismique, calcul de l'indice IS, étude de confortement parasismique selon l'Eurocode 8 et la réglementation française.</p>
-            <div class="svc-row-tags">
-              <span>Eurocode 8</span><span>Indice IS</span><span>Confortement</span><span>Zone sismique</span>
-            </div>
+        <article class="svc-card svc-featured">
+          <div class="svc-num" aria-hidden="true">05</div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <path d="M15 27L3 20V10L15 3L27 10V20L15 27Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M9 15L13 19L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <div class="svc-row-arr">→</div>
-          <div class="svc-row-line"></div>
-        </div>
+          <div class="svc-badge-pill">Expertise</div>
+          <h3 class="svc-title">Diagnostic Sismique</h3>
+          <p class="svc-desc">Évaluation de la vulnérabilité sismique, calcul de l'indice IS, étude de confortement parasismique selon l'Eurocode 8.</p>
+          <div class="svc-tags">
+            <span>Eurocode 8</span><span>Indice IS</span><span>Zone sismique</span>
+          </div>
+        </article>
 
-        <div class="svc-row">
-          <div class="svc-row-num">06</div>
-          <div class="svc-row-body">
-            <div class="svc-row-head">
-              <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-                  <path d="M7 24V12L15 5L23 12V24H17V17H13V24H7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <h3 class="svc-row-title">Expertise &amp; Conseil</h3>
-            </div>
-            <p class="svc-row-desc">Assistance à maîtrise d'ouvrage (AMO), expertise judiciaire, accompagnement technique pour architectes, promoteurs et particuliers.</p>
-            <div class="svc-row-tags">
-              <span>AMO</span><span>Judiciaire</span><span>Conseil</span>
-            </div>
+        <article class="svc-card">
+          <div class="svc-num" aria-hidden="true">06</div>
+          <div class="svc-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <path d="M7 24V12L15 5L23 12V24H17V17H13V24H7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <div class="svc-row-arr">→</div>
-          <div class="svc-row-line"></div>
-        </div>
+          <h3 class="svc-title">Expertise &amp; Conseil</h3>
+          <p class="svc-desc">Assistance à maîtrise d'ouvrage (AMO), expertise judiciaire, accompagnement technique pour architectes, promoteurs et particuliers.</p>
+          <div class="svc-tags">
+            <span>AMO</span><span>Judiciaire</span><span>Conseil</span>
+          </div>
+        </article>
 
       </div>
     </div>
   </section>
 
   <!-- ========== PORTFOLIO ========== -->
-  <section id="portfolio" class="portfolio-section">
+  <section id="portfolio" class="section portfolio-section">
     <div class="container">
-      <div class="section-header-row">
-        <div class="section-label">
-          <span class="label-num">02</span>
-          <span class="label-txt">Réalisations</span>
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="eyebrow-num">02</span>
+          <span class="eyebrow-label">Réalisations</span>
         </div>
         <div class="section-header-right">
           <h2 class="section-h2">Projets sélectionnés</h2>
@@ -337,130 +303,135 @@
 
       <div class="portfolio-grid">
 
-        <div class="project-card featured-proj">
-          <div class="proj-img proj-1">
-            <div class="proj-cat-wrap"><span class="proj-cat">Diagnostic Sismique</span></div>
-            <div class="proj-hover-info">
-              <p>Diagnostic IS et plan de renforcement d'un immeuble résidentiel de 5 étages en zone sismique 4.</p>
-              <div class="proj-tags"><span>Eurocode 8</span><span>IS=0.6</span></div>
+        <article class="proj-card proj-large">
+          <div class="proj-img proj-1" role="img" aria-label="Réhabilitation parasismique R+5, Lyon">
+            <div class="proj-overlay">
+              <span class="proj-cat">Diagnostic Sismique</span>
+              <p class="proj-hover-text">Diagnostic IS et plan de renforcement d'un immeuble résidentiel de 5 étages en zone sismique 4.</p>
+              <div class="proj-tags-sm"><span>Eurocode 8</span><span>IS=0.6</span></div>
             </div>
           </div>
           <div class="proj-info">
             <div class="proj-meta">
               <span class="proj-year">2023</span>
+              <span class="proj-sep" aria-hidden="true">—</span>
               <span class="proj-loc">Lyon · AURA</span>
             </div>
-            <h3 class="proj-h3">Réhabilitation Parasismique R+5</h3>
+            <h3 class="proj-title">Réhabilitation Parasismique R+5</h3>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card">
-          <div class="proj-img proj-2">
-            <div class="proj-cat-wrap"><span class="proj-cat">Structure Acier</span></div>
-            <div class="proj-hover-info">
-              <p>Conception d'une halle industrielle à ossature acier de 2 400 m², note de calcul complète.</p>
-              <div class="proj-tags"><span>Eurocode 3</span><span>2400 m²</span></div>
+        <article class="proj-card">
+          <div class="proj-img proj-2" role="img" aria-label="Halle industrielle métallique, Bordeaux">
+            <div class="proj-overlay">
+              <span class="proj-cat">Structure Acier</span>
+              <p class="proj-hover-text">Conception d'une halle industrielle à ossature acier de 2 400 m², note de calcul complète.</p>
+              <div class="proj-tags-sm"><span>Eurocode 3</span><span>2400 m²</span></div>
             </div>
           </div>
           <div class="proj-info">
             <div class="proj-meta">
               <span class="proj-year">2023</span>
+              <span class="proj-sep" aria-hidden="true">—</span>
               <span class="proj-loc">Bordeaux · Nouvelle-Aquitaine</span>
             </div>
-            <h3 class="proj-h3">Halle Industrielle Métallique</h3>
+            <h3 class="proj-title">Halle Industrielle Métallique</h3>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card">
-          <div class="proj-img proj-3">
-            <div class="proj-cat-wrap"><span class="proj-cat">Expertise</span></div>
-            <div class="proj-hover-info">
-              <p>Expertise structurelle d'un pont routier des années 70, rapport de pathologies et programme de renforcement.</p>
-              <div class="proj-tags"><span>Pont</span><span>Renforcement</span></div>
+        <article class="proj-card">
+          <div class="proj-img proj-3" role="img" aria-label="Diagnostic pont routier, Marseille">
+            <div class="proj-overlay">
+              <span class="proj-cat">Expertise</span>
+              <p class="proj-hover-text">Expertise structurelle d'un pont routier des années 70, rapport de pathologies et programme de renforcement.</p>
+              <div class="proj-tags-sm"><span>Pont</span><span>Renforcement</span></div>
             </div>
           </div>
           <div class="proj-info">
             <div class="proj-meta">
               <span class="proj-year">2022</span>
+              <span class="proj-sep" aria-hidden="true">—</span>
               <span class="proj-loc">Marseille · PACA</span>
             </div>
-            <h3 class="proj-h3">Diagnostic Pont Routier</h3>
+            <h3 class="proj-title">Diagnostic Pont Routier</h3>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card">
-          <div class="proj-img proj-4">
-            <div class="proj-cat-wrap"><span class="proj-cat">BIM / REVIT</span></div>
-            <div class="proj-hover-info">
-              <p>Modélisation BIM complète d'un immeuble R+8 de 45 logements sous REVIT, coordination architecte et fluides.</p>
-              <div class="proj-tags"><span>REVIT</span><span>R+8</span></div>
+        <article class="proj-card">
+          <div class="proj-img proj-4" role="img" aria-label="Complexe résidentiel R+8 BIM, Paris">
+            <div class="proj-overlay">
+              <span class="proj-cat">BIM / REVIT</span>
+              <p class="proj-hover-text">Modélisation BIM complète d'un immeuble R+8 de 45 logements sous REVIT, coordination architecte et fluides.</p>
+              <div class="proj-tags-sm"><span>REVIT</span><span>R+8</span></div>
             </div>
           </div>
           <div class="proj-info">
             <div class="proj-meta">
               <span class="proj-year">2022</span>
+              <span class="proj-sep" aria-hidden="true">—</span>
               <span class="proj-loc">Paris · Île-de-France</span>
             </div>
-            <h3 class="proj-h3">Complexe Résidentiel R+8 BIM</h3>
+            <h3 class="proj-title">Complexe Résidentiel R+8 BIM</h3>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card">
-          <div class="proj-img proj-5">
-            <div class="proj-cat-wrap"><span class="proj-cat">Béton Armé</span></div>
-            <div class="proj-hover-info">
-              <p>Note de calcul béton armé et charpente bois lamellé-collé pour une salle omnisports de 1 800 m².</p>
-              <div class="proj-tags"><span>BA</span><span>Bois LCC</span></div>
+        <article class="proj-card">
+          <div class="proj-img proj-5" role="img" aria-label="Salle omnisports R+1, Toulouse">
+            <div class="proj-overlay">
+              <span class="proj-cat">Béton Armé</span>
+              <p class="proj-hover-text">Note de calcul béton armé et charpente bois lamellé-collé pour une salle omnisports de 1 800 m².</p>
+              <div class="proj-tags-sm"><span>BA</span><span>Bois LCC</span></div>
             </div>
           </div>
           <div class="proj-info">
             <div class="proj-meta">
               <span class="proj-year">2021</span>
+              <span class="proj-sep" aria-hidden="true">—</span>
               <span class="proj-loc">Toulouse · Occitanie</span>
             </div>
-            <h3 class="proj-h3">Salle Omnisports R+1</h3>
+            <h3 class="proj-title">Salle Omnisports R+1</h3>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card">
-          <div class="proj-img proj-6">
-            <div class="proj-cat-wrap"><span class="proj-cat">Sismique</span></div>
-            <div class="proj-hover-info">
-              <p>Diagnostic de vulnérabilité sismique d'un établissement hospitalier, calcul IS=0.4, plan de confortement.</p>
-              <div class="proj-tags"><span>ERP</span><span>IS=0.4</span></div>
+        <article class="proj-card">
+          <div class="proj-img proj-6" role="img" aria-label="Hôpital vulnérabilité sismique, Nice">
+            <div class="proj-overlay">
+              <span class="proj-cat">Sismique</span>
+              <p class="proj-hover-text">Diagnostic de vulnérabilité sismique d'un établissement hospitalier, calcul IS=0.4, plan de confortement.</p>
+              <div class="proj-tags-sm"><span>ERP</span><span>IS=0.4</span></div>
             </div>
           </div>
           <div class="proj-info">
             <div class="proj-meta">
               <span class="proj-year">2021</span>
+              <span class="proj-sep" aria-hidden="true">—</span>
               <span class="proj-loc">Nice · PACA</span>
             </div>
-            <h3 class="proj-h3">Hôpital — Vulnérabilité Sismique</h3>
+            <h3 class="proj-title">Hôpital — Vulnérabilité Sismique</h3>
           </div>
-        </div>
+        </article>
 
       </div>
     </div>
   </section>
 
   <!-- ========== CONTACT ========== -->
-  <section id="contact" class="contact-section">
+  <section id="contact" class="section contact-section">
     <div class="container">
-      <div class="section-label">
-        <span class="label-num">03</span>
-        <span class="label-txt">Contact</span>
-      </div>
       <div class="contact-grid">
+
         <div class="contact-left">
+          <div class="section-eyebrow">
+            <span class="eyebrow-num">03</span>
+            <span class="eyebrow-label">Contact</span>
+          </div>
           <h2 class="section-h2 contact-h2">Parlons de<br>votre projet.</h2>
-          <p class="contact-desc">
-            Un ouvrage à dimensionner, diagnostiquer ou modéliser ?<br>
-            Réponse garantie sous 48h.
-          </p>
+          <p class="body-text contact-desc">Un ouvrage à dimensionner, diagnostiquer ou modéliser ? Réponse garantie sous 48h.</p>
+
           <div class="contact-items">
             <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
                 <div class="ci-label">Email</div>
@@ -468,8 +439,8 @@
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
                 <div class="ci-label">Téléphone</div>
@@ -477,8 +448,8 @@
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>
                 <div class="ci-label">Zone d'intervention</div>
@@ -512,7 +483,7 @@
               <div class="form-group">
                 <label for="type">Type de prestation *</label>
                 <select id="type" name="type" required>
-                  <option value="">Sélectionner...</option>
+                  <option value="">Sélectionner…</option>
                   <option value="calcul">Note de calcul</option>
                   <option value="diagnostic">Diagnostic structurel</option>
                   <option value="coffrage">Plans de coffrage/armature</option>
@@ -528,41 +499,44 @@
               <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" required></textarea>
             </div>
             <div class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
-            <button type="submit" class="btn-primary submit-btn">
-              Envoyer ma demande <span class="btn-arr">→</span>
+            <button type="submit" class="btn-primary submit-btn" touch-action="manipulation">
+              Envoyer ma demande <span aria-hidden="true">→</span>
             </button>
           </form>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- ========== FOOTER ========== -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-top">
-        <a href="#accueil" class="footer-logo">MH<span>STRUCTURE</span></a>
-        <div class="footer-links">
+        <a href="#accueil" class="footer-logo" aria-label="MH Structure — retour accueil">
+          <span class="fl-mh">MH</span>
+          <span class="fl-struct">STRUCTURE</span>
+        </a>
+        <nav class="footer-nav" aria-label="Navigation footer">
           <div class="footer-col">
-            <div class="fc-title">Navigation</div>
-            <a href="#accueil">Accueil</a>
+            <div class="footer-col-title">Navigation</div>
+            <a href="#about">À propos</a>
             <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">Réalisations</a>
             <a href="#contact">Contact</a>
           </div>
           <div class="footer-col">
-            <div class="fc-title">Services</div>
-            <a href="#services">Notes de calcul</a>
-            <a href="#services">Diagnostics</a>
-            <a href="#services">Plans de coffrage</a>
-            <a href="#services">BIM / REVIT</a>
-            <a href="#services">Diagnostic sismique</a>
+            <div class="footer-col-title">Services</div>
+            <a href="#services">Notes de Calcul</a>
+            <a href="#services">Diagnostic Sismique</a>
+            <a href="#services">Modélisation BIM</a>
+            <a href="#services">Plans de Coffrage</a>
           </div>
-        </div>
+        </nav>
       </div>
       <div class="footer-bottom">
-        <p>© 2024 MH-Structure. Tous droits réservés.</p>
-        <p>Mentions légales · Politique de confidentialité</p>
+        <span>© 2024 MH-Structure. Tous droits réservés.</span>
+        <span>Bureau d'Études Techniques Structure</span>
       </div>
     </div>
   </footer>
