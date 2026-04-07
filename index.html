@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06090F">
   <title>MH-Structure | Bureau d'Études Structure</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
   <canvas id="bg-canvas"></canvas>
 
@@ -34,7 +40,7 @@
   </nav>
 
   <!-- ========== HERO ========== -->
-  <section id="accueil" class="hero">
+  <section id="accueil" class="hero" aria-label="Accueil">
     <div class="hero-bg-text" aria-hidden="true">STRUCTURE</div>
     <div class="hero-inner">
       <div class="hero-left">
@@ -109,7 +115,7 @@
   </div>
 
   <!-- ========== ABOUT ========== -->
-  <section id="about" class="about-section">
+  <section id="about" class="about-section" id="main-content">
     <div class="container">
       <div class="about-grid">
         <div class="about-left">
@@ -123,7 +129,7 @@
               <div class="about-monogram">MH</div>
             </div>
             <div class="about-badge">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" fill="#C9A84C"/>
               </svg>
               <div>
@@ -181,7 +187,7 @@
           <div class="svc-row-body">
             <div class="svc-row-head">
               <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
                   <rect x="3" y="3" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
                   <line x1="8" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="1.5"/>
                   <line x1="8" y1="15" x2="22" y2="15" stroke="currentColor" stroke-width="1.5"/>
@@ -204,7 +210,7 @@
           <div class="svc-row-body">
             <div class="svc-row-head">
               <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
                   <circle cx="15" cy="15" r="10" stroke="currentColor" stroke-width="1.5"/>
                   <circle cx="15" cy="15" r="3" fill="currentColor"/>
                   <line x1="15" y1="5" x2="15" y2="25" stroke="currentColor" stroke-width="1" opacity="0.5"/>
@@ -227,7 +233,7 @@
           <div class="svc-row-body">
             <div class="svc-row-head">
               <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
                   <rect x="4" y="22" width="22" height="4" stroke="currentColor" stroke-width="1.5"/>
                   <line x1="8" y1="22" x2="8" y2="7" stroke="currentColor" stroke-width="1.5"/>
                   <line x1="15" y1="22" x2="15" y2="7" stroke="currentColor" stroke-width="1.5"/>
@@ -251,7 +257,7 @@
           <div class="svc-row-body">
             <div class="svc-row-head">
               <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
                   <path d="M15 3L27 9V21L15 27L3 21V9L15 3Z" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M15 3V27" stroke="currentColor" stroke-width="1" opacity="0.4"/>
                   <path d="M3 9L27 21" stroke="currentColor" stroke-width="1" opacity="0.4"/>
@@ -274,7 +280,7 @@
           <div class="svc-row-body">
             <div class="svc-row-head">
               <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
                   <path d="M15 27L3 20V10L15 3L27 10V20L15 27Z" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M9 15L13 19L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -296,7 +302,7 @@
           <div class="svc-row-body">
             <div class="svc-row-head">
               <div class="svc-row-icon">
-                <svg width="22" height="22" viewBox="0 0 30 30" fill="none">
+                <svg width="22" height="22" viewBox="0 0 30 30" fill="none" aria-hidden="true">
                   <path d="M7 24V12L15 5L23 12V24H17V17H13V24H7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                 </svg>
               </div>
@@ -454,7 +460,7 @@
           <div class="contact-items">
             <div class="contact-item">
               <div class="contact-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
                 <div class="ci-label">Email</div>
@@ -463,7 +469,7 @@
             </div>
             <div class="contact-item">
               <div class="contact-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
                 <div class="ci-label">Téléphone</div>
@@ -472,7 +478,7 @@
             </div>
             <div class="contact-item">
               <div class="contact-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>
                 <div class="ci-label">Zone d'intervention</div>
@@ -491,17 +497,17 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="nom">Nom complet *</label>
-                <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required>
+                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" required>
               </div>
               <div class="form-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" required>
+                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" autocomplete="email" spellcheck="false" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="telephone">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX">
+                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX" autocomplete="tel" inputmode="tel">
               </div>
               <div class="form-group">
                 <label for="type">Type de prestation *</label>
@@ -519,8 +525,9 @@
             </div>
             <div class="form-group">
               <label for="message">Description du projet *</label>
-              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités..." required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" required></textarea>
             </div>
+            <div class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
             <button type="submit" class="btn-primary submit-btn">
               Envoyer ma demande <span class="btn-arr">→</span>
             </button>
