@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  // ── Contact form — FormSubmit AJAX ────────────────────
+  // ── Contact form — Web3Forms ──────────────────────────
   document.getElementById('contactForm').addEventListener('submit', async e => {
     e.preventDefault();
     const form = e.target;
@@ -128,17 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const data = new FormData(form);
-      data.append('_subject', 'Nouvelle demande de devis — MH-Structure');
-      data.append('_template', 'table');
-      data.append('_captcha', 'false');
 
-      const res = await fetch('https://formsubmit.co/ajax/gaddarkhanhadrien@hotmail.fr', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: data,
       });
 
-      if (res.ok) {
+      const json = await res.json();
+      if (json.success) {
         btn.innerHTML = '✓ Demande envoyée !';
         btn.style.background = '#22c55e';
         btn.style.color = '#fff';
