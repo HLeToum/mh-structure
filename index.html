@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MH-Structure | Bureau d'Études Structure</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Canvas 3D background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#accueil" class="logo">
+        <span class="logo-mh">MH</span>
+        <div class="logo-sep"></div>
+        <span class="logo-struct">STRUCTURE</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#accueil" class="nav-link">Accueil</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="#contact" class="btn-primary nav-cta">Devis gratuit</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="accueil" class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Bureau d'Études Techniques — Structure</div>
+      <h1 class="hero-h1">
+        <span class="hero-line">Ingénierie</span>
+        <span class="hero-line hero-stroke">Structurelle</span>
+        <span class="hero-line">de Précision</span>
+      </h1>
+      <p class="hero-desc">
+        Calcul de structures · Diagnostic sismique · Modélisation BIM<br>
+        Des solutions techniques rigoureuses pour vos projets de construction.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Demander un devis</a>
+        <a href="#portfolio" class="btn-outline">Voir nos réalisations</a>
+      </div>
+    </div>
+    <div class="scroll-ind">
+      <span class="scroll-txt">Découvrir</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-val"><span class="counter" data-target="150">0</span>+</div>
+          <div class="stat-lbl">Projets réalisés</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <div class="stat-val"><span class="counter" data-target="10">0</span>+</div>
+          <div class="stat-lbl">Ans d'expérience</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <div class="stat-val"><span class="counter" data-target="8">0</span></div>
+          <div class="stat-lbl">Régions couvertes</div>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <div class="stat-val"><span class="counter" data-target="100">0</span>%</div>
+          <div class="stat-lbl">Clients satisfaits</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-col">
+          <div class="about-img-wrap">
+            <div class="about-img-frame">
+              <div class="about-monogram">MH</div>
+              <div class="about-grid-lines"></div>
+            </div>
+            <div class="about-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" fill="#C9A84C"/>
+              </svg>
+              <div>
+                <div class="badge-title">Ingénieur Expert</div>
+                <div class="badge-sub">Spécialiste Sismique</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text-col">
+          <div class="section-tag">À propos</div>
+          <h2 class="section-h2">Une expertise reconnue au service de vos structures</h2>
+          <p class="about-p">
+            Ingénieur structure spécialisé en ingénierie sismique, je mets une expertise pluridisciplinaire
+            au service de vos projets de construction et de réhabilitation. Fort d'une approche rigoureuse
+            et d'une maîtrise des outils numériques de pointe, MH-Structure vous offre des prestations
+            techniques fiables et précises.
+          </p>
+          <p class="about-p">
+            Ma spécialisation en diagnostic parasismique me permet d'évaluer la vulnérabilité de vos
+            ouvrages et de proposer des solutions de renforcement adaptées, conformes aux Eurocodes 8
+            et aux réglementations françaises en vigueur.
+          </p>
+          <div class="tools-row">
+            <div class="tool-chip">REVIT</div>
+            <div class="tool-chip">AutoCAD</div>
+            <div class="tool-chip">Advanced Design</div>
+            <div class="tool-chip">Eurocode 8</div>
+            <div class="tool-chip">BIM 360</div>
+            <div class="tool-chip">ROBOT Structural</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Nos services</div>
+        <h2 class="section-h2">Prestations techniques complètes</h2>
+        <p class="section-sub">De la conception au diagnostic, MH-Structure vous accompagne à chaque étape de votre projet.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="svc-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <rect x="3" y="3" width="24" height="24" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="8" y1="10" x2="22" y2="10" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="8" y1="15" x2="22" y2="15" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="8" y1="20" x2="17" y2="20" stroke="#C9A84C" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="svc-num">01</div>
+          <h3 class="svc-h3">Notes de Calcul</h3>
+          <p class="svc-p">Dimensionnement et vérification des éléments structurels (fondations, planchers, voiles, poteaux, poutres) selon les Eurocodes en vigueur.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+
+        <div class="service-card">
+          <div class="svc-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <circle cx="15" cy="15" r="10" stroke="#C9A84C" stroke-width="1.5"/>
+              <circle cx="15" cy="15" r="3" fill="#C9A84C"/>
+              <line x1="15" y1="5" x2="15" y2="25" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+              <line x1="5" y1="15" x2="25" y2="15" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="svc-num">02</div>
+          <h3 class="svc-h3">Diagnostics Structurels</h3>
+          <p class="svc-p">Évaluation de l'état des ouvrages existants, identification des pathologies et préconisations de renforcement adaptées.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+
+        <div class="service-card">
+          <div class="svc-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <rect x="4" y="22" width="22" height="4" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="8" y1="22" x2="8" y2="7" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="15" y1="22" x2="15" y2="7" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="22" y1="22" x2="22" y2="7" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="4" y1="7" x2="26" y2="7" stroke="#C9A84C" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="svc-num">03</div>
+          <h3 class="svc-h3">Plans de Coffrage &amp; Armature</h3>
+          <p class="svc-p">Élaboration des plans d'exécution détaillés : coffrage et armature conformes aux normes NF EN, prêts pour le chantier.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+
+        <div class="service-card">
+          <div class="svc-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M15 3L27 9V21L15 27L3 21V9L15 3Z" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M15 3V27" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+              <path d="M3 9L27 21" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+              <path d="M27 9L3 21" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="svc-num">04</div>
+          <h3 class="svc-h3">Modélisation BIM 3D</h3>
+          <p class="svc-p">Création de maquettes numériques sous REVIT pour une coordination multidisciplinaire optimale et une visualisation précise de votre projet.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+
+        <div class="service-card featured">
+          <div class="svc-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M15 27L3 20V10L15 3L27 10V20L15 27Z" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M9 15L13 19L21 11" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="svc-num">05</div>
+          <div class="svc-badge">Expertise</div>
+          <h3 class="svc-h3">Diagnostic Sismique</h3>
+          <p class="svc-p">Évaluation de la vulnérabilité sismique, calcul de l'indice IS, étude de confortement parasismique selon l'Eurocode 8 et la réglementation française.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+
+        <div class="service-card">
+          <div class="svc-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M7 24V12L15 5L23 12V24H17V17H13V24H7Z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="svc-num">06</div>
+          <h3 class="svc-h3">Expertise &amp; Conseil</h3>
+          <p class="svc-p">Assistance à maîtrise d'ouvrage (AMO), expertise judiciaire, accompagnement technique pour architectes, promoteurs et particuliers.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PORTFOLIO ========== -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Réalisations</div>
+        <h2 class="section-h2">Nos projets</h2>
+        <p class="section-sub">Un aperçu de nos interventions à travers la France.</p>
+      </div>
+      <div class="portfolio-grid">
+
+        <div class="project-card">
+          <div class="proj-img proj-1">
+            <div class="proj-overlay">
+              <span class="proj-cat">Diagnostic Sismique</span>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="proj-year">2023</div>
+            <h3 class="proj-h3">Réhabilitation Parasismique R+5</h3>
+            <p class="proj-loc">Lyon · Auvergne-Rhône-Alpes</p>
+            <p class="proj-desc">Diagnostic IS et plan de renforcement d'un immeuble résidentiel de 5 étages en zone sismique 4.</p>
+            <div class="proj-tags">
+              <span>Eurocode 8</span><span>Béton armé</span><span>IS=0.6</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-img proj-2">
+            <div class="proj-overlay">
+              <span class="proj-cat">Structure Acier</span>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="proj-year">2023</div>
+            <h3 class="proj-h3">Halle Industrielle Métallique</h3>
+            <p class="proj-loc">Bordeaux · Nouvelle-Aquitaine</p>
+            <p class="proj-desc">Conception et dimensionnement d'une halle industrielle à ossature acier de 2 400 m², note de calcul complète.</p>
+            <div class="proj-tags">
+              <span>Eurocode 3</span><span>Acier</span><span>2400 m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-img proj-3">
+            <div class="proj-overlay">
+              <span class="proj-cat">Expertise</span>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="proj-year">2022</div>
+            <h3 class="proj-h3">Diagnostic Pont Routier</h3>
+            <p class="proj-loc">Marseille · PACA</p>
+            <p class="proj-desc">Expertise structurelle d'un pont routier des années 70, rapport de pathologies et programme de renforcement.</p>
+            <div class="proj-tags">
+              <span>Pont</span><span>Expertise</span><span>Renforcement</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-img proj-4">
+            <div class="proj-overlay">
+              <span class="proj-cat">BIM / REVIT</span>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="proj-year">2022</div>
+            <h3 class="proj-h3">Complexe Résidentiel R+8 BIM</h3>
+            <p class="proj-loc">Paris · Île-de-France</p>
+            <p class="proj-desc">Modélisation BIM complète d'un immeuble R+8 de 45 logements sous REVIT, coordination architecte et fluides.</p>
+            <div class="proj-tags">
+              <span>REVIT</span><span>BIM 360</span><span>R+8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-img proj-5">
+            <div class="proj-overlay">
+              <span class="proj-cat">Béton Armé</span>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="proj-year">2021</div>
+            <h3 class="proj-h3">Salle Omnisports R+1</h3>
+            <p class="proj-loc">Toulouse · Occitanie</p>
+            <p class="proj-desc">Note de calcul béton armé et charpente bois lamellé-collé pour une salle omnisports de 1 800 m².</p>
+            <div class="proj-tags">
+              <span>BA</span><span>Bois LCC</span><span>1800 m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-img proj-6">
+            <div class="proj-overlay">
+              <span class="proj-cat">Sismique</span>
+            </div>
+          </div>
+          <div class="proj-info">
+            <div class="proj-year">2021</div>
+            <h3 class="proj-h3">Hôpital — Vulnérabilité Sismique</h3>
+            <p class="proj-loc">Nice · PACA</p>
+            <p class="proj-desc">Diagnostic de vulnérabilité sismique d'un établissement hospitalier, calcul IS=0.4, plan de confortement prioritaire.</p>
+            <div class="proj-tags">
+              <span>ERP</span><span>IS=0.4</span><span>Confortement</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-tag">Contact</div>
+          <h2 class="section-h2">Demandez votre devis gratuit</h2>
+          <p class="contact-desc">
+            Vous avez un projet ? Un ouvrage à diagnostiquer ?<br>
+            Décrivez-nous votre besoin et nous vous répondons sous 48h.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div>
+                <div class="ci-label">Email</div>
+                <div class="ci-val">contact@mh-structure.fr</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="ci-label">Téléphone</div>
+                <div class="ci-val">+33 (0)X XX XX XX XX</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <div class="ci-label">Zone d'intervention</div>
+                <div class="ci-val">France entière</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nom">Nom complet *</label>
+                <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX">
+              </div>
+              <div class="form-group">
+                <label for="type">Type de prestation *</label>
+                <select id="type" name="type" required>
+                  <option value="">Sélectionner...</option>
+                  <option value="calcul">Note de calcul</option>
+                  <option value="diagnostic">Diagnostic structurel</option>
+                  <option value="coffrage">Plans de coffrage/armature</option>
+                  <option value="bim">Modélisation BIM</option>
+                  <option value="sismique">Diagnostic sismique</option>
+                  <option value="expertise">Expertise &amp; Conseil</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group full">
+              <label for="message">Description du projet *</label>
+              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary submit-btn">
+              Envoyer ma demande <span class="btn-arr">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#accueil" class="logo">
+            <span class="logo-mh">MH</span>
+            <div class="logo-sep"></div>
+            <span class="logo-struct">STRUCTURE</span>
+          </a>
+          <p class="footer-tagline">Bureau d'Études Techniques Structure</p>
+          <p class="footer-desc">Ingénierie structurelle de précision · Diagnostic sismique · Modélisation BIM</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="fc-title">Navigation</div>
+            <a href="#accueil">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <div class="fc-title">Services</div>
+            <a href="#services">Notes de calcul</a>
+            <a href="#services">Diagnostics</a>
+            <a href="#services">Plans de coffrage</a>
+            <a href="#services">BIM / REVIT</a>
+            <a href="#services">Diagnostic sismique</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 MH-Structure. Tous droits réservés.</p>
+        <p>Mentions légales · Politique de confidentialité</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
