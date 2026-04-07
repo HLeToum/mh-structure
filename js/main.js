@@ -116,25 +116,53 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
 
-  // ── Contact form ──────────────────────────────────────
-  document.getElementById('contactForm').addEventListener('submit', e => {
+  // ── Contact form — FormSubmit AJAX ────────────────────
+  document.getElementById('contactForm').addEventListener('submit', async e => {
     e.preventDefault();
-    const btn = e.target.querySelector('.submit-btn');
+    const form = e.target;
+    const btn  = form.querySelector('.submit-btn');
     const orig = btn.innerHTML;
+
     btn.disabled = true;
     btn.innerHTML = 'Envoi en cours...';
-    setTimeout(() => {
-      btn.innerHTML = '✓ Demande envoyée !';
-      btn.style.background = '#22c55e';
+
+    try {
+      const data = new FormData(form);
+      data.append('_subject', 'Nouvelle demande de devis — MH-Structure');
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+
+      const res = await fetch('https://formsubmit.co/ajax/gaddarkhanhadrien@hotmail.fr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data,
+      });
+
+      if (res.ok) {
+        btn.innerHTML = '✓ Demande envoyée !';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#fff';
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.disabled = false;
+          form.reset();
+        }, 3500);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.innerHTML = '✗ Erreur — réessayez';
+      btn.style.background = '#ef4444';
       btn.style.color = '#fff';
       setTimeout(() => {
         btn.innerHTML = orig;
         btn.style.background = '';
         btn.style.color = '';
         btn.disabled = false;
-        e.target.reset();
-      }, 3200);
-    }, 1400);
+      }, 3000);
+    }
   });
 
   // ── Marquee pause on hover ────────────────────────────
