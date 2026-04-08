@@ -98,6 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
       opacity: 0, y: 32, duration: 0.65, stagger: 0.08, ease: 'power3.out',
     });
 
+    // Prevention
+    gsap.from('.prevention-disclaimer', {
+      scrollTrigger: { trigger: '.prevention-section', start: 'top 78%' },
+      opacity: 0, y: 16, duration: 0.6, ease: 'power3.out',
+    });
+    gsap.from('.patho-card', {
+      scrollTrigger: { trigger: '.pathology-grid', start: 'top 80%' },
+      opacity: 0, y: 28, duration: 0.6, stagger: 0.07, ease: 'power3.out',
+    });
+
     // Contact
     gsap.from('.contact-left > *', {
       scrollTrigger: { trigger: '.contact-section', start: 'top 74%' },
