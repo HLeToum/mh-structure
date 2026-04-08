@@ -11,11 +11,11 @@
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x06090F, 1);
+  renderer.setClearColor(0x0F1929, 1);
 
   // ── Scene & Camera ────────────────────────────────────
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x06090F, 0.022);
+  scene.fog = new THREE.FogExp2(0x0F1929, 0.022);
 
   const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 150);
   camera.position.set(0, 1.5, 20);
