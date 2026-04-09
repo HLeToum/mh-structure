@@ -1,6 +1,6 @@
 /**
- * MH-Structure — Three.js Background Scene
- * Béton Armé : colonnes, poutres, dalles avec armatures visibles
+ * MH-Structure — Three.js Scene v3
+ * Béton brut en rotation 360° · Armatures révélées au survol de la souris (effet radio)
  */
 (function () {
 
@@ -14,230 +14,231 @@
   renderer.setClearColor(0x0F1929, 1);
 
   // ── Scene & Camera ────────────────────────────────────
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0F1929, 0.022);
+  const scene  = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x0F1929, 0.016);
 
-  const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 150);
-  camera.position.set(0, 1.5, 20);
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 200);
+  camera.position.set(0, 2, 24);
   camera.lookAt(0, 0, 0);
 
-  // ── Segment collectors ────────────────────────────────
-  // Instead of individual Line objects → batch everything into LineSegments for performance
-  const segs = {
-    concrete: [],  // blue — béton outlines
-    rebar:    [],  // gold — armatures longitudinales
-    stirrup:  [],  // gold dim — cadres / étriers
-    mesh:     [],  // blue dim — nappe de treillis dalle
-  };
+  // ── Éclairage ─────────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0xCCDDFF, 0.32));
 
-  function seg(arr, x1, y1, z1, x2, y2, z2) {
-    arr.push(x1, y1, z1, x2, y2, z2);
-  }
+  const sun = new THREE.DirectionalLight(0x99BBDD, 1.1);
+  sun.position.set(8, 14, 6);
+  scene.add(sun);
 
-  function box(arr, cx, cy, cz, w, h, d) {
-    const [x1, x2] = [cx - w/2, cx + w/2];
-    const [y1, y2] = [cy - h/2, cy + h/2];
-    const [z1, z2] = [cz - d/2, cz + d/2];
-    // bottom ring
-    seg(arr, x1,y1,z1, x2,y1,z1); seg(arr, x2,y1,z1, x2,y1,z2);
-    seg(arr, x2,y1,z2, x1,y1,z2); seg(arr, x1,y1,z2, x1,y1,z1);
-    // top ring
-    seg(arr, x1,y2,z1, x2,y2,z1); seg(arr, x2,y2,z1, x2,y2,z2);
-    seg(arr, x2,y2,z2, x1,y2,z2); seg(arr, x1,y2,z2, x1,y2,z1);
-    // verticals
-    seg(arr, x1,y1,z1, x1,y2,z1); seg(arr, x2,y1,z1, x2,y2,z1);
-    seg(arr, x2,y1,z2, x2,y2,z2); seg(arr, x1,y1,z2, x1,y2,z2);
-  }
+  const rim = new THREE.DirectionalLight(0x223355, 0.55);
+  rim.position.set(-6, 2, -8);
+  scene.add(rim);
 
-  function makeLS(arr, color, opacity) {
-    if (!arr.length) return null;
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(arr), 3));
-    const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
-    return new THREE.LineSegments(geo, mat);
-  }
+  // ── Paramètres bâtiment ───────────────────────────────
+  const W = 7.0, D = 4.5, fH = 2.2, nF = 5;
+  const cW = 0.45, cD = 0.45;
+  const bH = 0.50, bW = 0.35;
+  const sH = 0.18;
+  const totalH = nF * fH;
 
-  // ── Building parameters ───────────────────────────────
-  const W  = 7.0;   // plan width
-  const D  = 4.5;   // plan depth
-  const fH = 2.2;   // floor height
-  const nF = 5;     // number of floors
-
-  const cW = 0.45, cD = 0.45;   // column cross-section (45×45 cm)
-  const bH = 0.50, bW = 0.35;   // beam height/width (50×35 cm)
-  const sH = 0.18;               // slab thickness
-
-  // Column plan positions [x, z]
-  const cols = [
+  const colPositions = [
     [-W/2, -D/2], [0, -D/2], [W/2, -D/2],
     [-W/2,  D/2], [0,  D/2], [W/2,  D/2],
   ];
 
+  // ── Matériau béton brut ───────────────────────────────
+  const concreteMat = new THREE.MeshLambertMaterial({
+    color: 0x5A6475,   // gris béton brut
+    transparent: true,
+    opacity: 0.90,
+    depthWrite: true,
+  });
+
+  // ── Shaders armatures — effet radio X ─────────────────
+  const vsRebar = /* glsl */`
+    varying float vNDCx;
+    void main() {
+      vec4 clip = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      vNDCx = clip.x / clip.w;   // position écran NDC (-1 → +1)
+      gl_Position = clip;
+    }
+  `;
+
+  const fsRebar = /* glsl */`
+    uniform float uMouseX;    // position souris NDC
+    uniform float uReveal;    // 0→1 : intensité révélation
+    uniform vec3  uColor;
+    uniform float uBand;      // demi-largeur de la bande de révélation
+    varying float vNDCx;
+    void main() {
+      float d    = abs(vNDCx - uMouseX);
+      float band = 1.0 - smoothstep(0.0, uBand, d);
+      // Liseré lumineux au bord du scan
+      float glow = (1.0 - smoothstep(0.0, uBand * 0.25, d)) * 0.35;
+      float alpha = (band + glow) * uReveal;
+      if (alpha < 0.015) discard;
+      gl_FragColor = vec4(uColor + vec3(glow), alpha);
+    }
+  `;
+
+  function makeRebarMat(hexColor, band) {
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        uMouseX: { value: 0.0 },
+        uReveal: { value: 0.0 },
+        uColor:  { value: new THREE.Color(hexColor) },
+        uBand:   { value: band },
+      },
+      vertexShader:   vsRebar,
+      fragmentShader: fsRebar,
+      transparent: true,
+      depthWrite:  false,
+      depthTest:   false,   // toujours visible à travers le béton
+    });
+  }
+
+  const matRebar   = makeRebarMat(0xC9A84C, 0.40);   // barres longit. — or
+  const matStirrup = makeRebarMat(0xA07A30, 0.32);   // cadres / étriers
+  const matMesh    = makeRebarMat(0x8A6520, 0.28);   // treillis dalle
+
+  // ── Groupes ───────────────────────────────────────────
   const building = new THREE.Group();
 
-  // ── Columns ───────────────────────────────────────────
-  const totalH = nF * fH;
-  const barOff = 0.14;  // distance armature longitudinale / face
+  function addConcrete(cx, cy, cz, w, h, d) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), concreteMat);
+    m.position.set(cx, cy, cz);
+    building.add(m);
+  }
 
-  cols.forEach(([cx, cz]) => {
+  // Collecteurs de segments pour les armatures
+  const rb = [], st = [], ms = [];
+  function rseg(arr, x1,y1,z1, x2,y2,z2) { arr.push(x1,y1,z1, x2,y2,z2); }
 
-    // Béton outline (full height)
-    box(segs.concrete, cx, totalH/2, cz, cW, totalH, cD);
+  function buildLS(arr, mat) {
+    if (!arr.length) return null;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(arr), 3));
+    const ls = new THREE.LineSegments(geo, mat);
+    ls.renderOrder = 2;   // rendu après le béton
+    return ls;
+  }
 
-    // Armatures longitudinales (4 barres)
-    const barPos = [
-      [cx - barOff, cz - barOff],
-      [cx + barOff, cz - barOff],
-      [cx - barOff, cz + barOff],
-      [cx + barOff, cz + barOff],
-    ];
-    barPos.forEach(([bx, bz]) => {
-      seg(segs.rebar, bx, 0, bz, bx, totalH, bz);
+  // ── Poteaux ───────────────────────────────────────────
+  const bOff = 0.14;   // offset armature / axe
+
+  colPositions.forEach(([cx, cz]) => {
+    // Volume béton (toute hauteur)
+    addConcrete(cx, totalH / 2, cz, cW, totalH, cD);
+
+    // 4 barres longitudinales
+    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx, sz]) => {
+      const bx = cx + sx * bOff, bz = cz + sz * bOff;
+      rseg(rb, bx, 0, bz, bx, totalH, bz);
     });
 
-    // Cadres / étriers (carrés à intervalle régulier)
-    const stirrupStep = 0.28;
-    const s = barOff + 0.03;
-    for (let y = stirrupStep / 2; y < totalH; y += stirrupStep) {
-      seg(segs.stirrup, cx-s, y, cz-s, cx+s, y, cz-s);
-      seg(segs.stirrup, cx+s, y, cz-s, cx+s, y, cz+s);
-      seg(segs.stirrup, cx+s, y, cz+s, cx-s, y, cz+s);
-      seg(segs.stirrup, cx-s, y, cz+s, cx-s, y, cz-s);
+    // Cadres carrés (étriers)
+    const s = bOff + 0.03;
+    for (let y = 0.14; y < totalH; y += 0.28) {
+      rseg(st, cx-s,y,cz-s, cx+s,y,cz-s);
+      rseg(st, cx+s,y,cz-s, cx+s,y,cz+s);
+      rseg(st, cx+s,y,cz+s, cx-s,y,cz+s);
+      rseg(st, cx-s,y,cz+s, cx-s,y,cz-s);
     }
   });
 
   // ── Poutres & dalles par niveau ───────────────────────
   for (let f = 1; f <= nF; f++) {
-    const floorY = f * fH;
-    const bCY    = floorY - bH / 2;  // centre Y de la poutre
+    const flY = f * fH;
+    const bCY = flY - bH / 2;
 
-    // — Poutres longitudinales (parallèles à X) front & back —
+    // Poutres longitudinales (parallèles X)
     [-D/2, D/2].forEach(pz => {
       const pLen = W - cW;
+      addConcrete(0, bCY, pz, pLen, bH, bW);
 
-      // Béton outline
-      box(segs.concrete, 0, bCY, pz, pLen, bH, bW);
+      const x1 = -pLen/2, x2 = pLen/2;
+      const yT = bCY + bH/2 - 0.07, yB = bCY - bH/2 + 0.07;
+      rseg(rb, x1,yT,pz-0.06, x2,yT,pz-0.06);
+      rseg(rb, x1,yT,pz+0.06, x2,yT,pz+0.06);
+      rseg(rb, x1,yB,pz,      x2,yB,pz);
 
-      // Armatures longitudinales : 2 barres filantes hautes + 2 basses
-      const pX1 = -pLen/2, pX2 = pLen/2;
-      const yTop = bCY + bH/2 - 0.07;
-      const yBot = bCY - bH/2 + 0.07;
-      const zOff = 0.06;
-      seg(segs.rebar, pX1, yTop,  pz - zOff, pX2, yTop,  pz - zOff);
-      seg(segs.rebar, pX1, yTop,  pz + zOff, pX2, yTop,  pz + zOff);
-      seg(segs.rebar, pX1, yBot,  pz,         pX2, yBot,  pz);
-
-      // Étriers de poutre (section en U transversale)
-      const eStep = 0.32;
       const ew = bW/2 - 0.05, eh = bH/2 - 0.05;
-      for (let ex = pX1 + eStep/2; ex < pX2; ex += eStep) {
-        seg(segs.stirrup, ex, bCY-eh, pz-ew, ex, bCY+eh, pz-ew);
-        seg(segs.stirrup, ex, bCY+eh, pz-ew, ex, bCY+eh, pz+ew);
-        seg(segs.stirrup, ex, bCY+eh, pz+ew, ex, bCY-eh, pz+ew);
-        seg(segs.stirrup, ex, bCY-eh, pz+ew, ex, bCY-eh, pz-ew);
+      for (let ex = x1+0.16; ex < x2; ex += 0.32) {
+        rseg(st, ex,bCY-eh,pz-ew, ex,bCY+eh,pz-ew);
+        rseg(st, ex,bCY+eh,pz-ew, ex,bCY+eh,pz+ew);
+        rseg(st, ex,bCY+eh,pz+ew, ex,bCY-eh,pz+ew);
+        rseg(st, ex,bCY-eh,pz+ew, ex,bCY-eh,pz-ew);
       }
     });
 
-    // — Poutres transversales (parallèles à Z) gauche & droite —
+    // Poutres transversales (parallèles Z)
     [-W/2, W/2].forEach(px => {
       const pLen = D - cD;
+      addConcrete(px, bCY, 0, bW, bH, pLen);
 
-      box(segs.concrete, px, bCY, 0, bW, bH, pLen);
+      const z1 = -pLen/2, z2 = pLen/2;
+      const yT = bCY + bH/2 - 0.07, yB = bCY - bH/2 + 0.07;
+      rseg(rb, px,yT,z1, px,yT,z2);
+      rseg(rb, px,yB,z1, px,yB,z2);
 
-      const pZ1 = -pLen/2, pZ2 = pLen/2;
-      const yTop = bCY + bH/2 - 0.07;
-      const yBot = bCY - bH/2 + 0.07;
-      seg(segs.rebar, px, yTop, pZ1, px, yTop, pZ2);
-      seg(segs.rebar, px, yBot, pZ1, px, yBot, pZ2);
-
-      const eStep = 0.32;
       const ew = bW/2 - 0.05, eh = bH/2 - 0.05;
-      for (let ez = pZ1 + eStep/2; ez < pZ2; ez += eStep) {
-        seg(segs.stirrup, px-ew, bCY-eh, ez, px-ew, bCY+eh, ez);
-        seg(segs.stirrup, px-ew, bCY+eh, ez, px+ew, bCY+eh, ez);
-        seg(segs.stirrup, px+ew, bCY+eh, ez, px+ew, bCY-eh, ez);
-        seg(segs.stirrup, px+ew, bCY-eh, ez, px-ew, bCY-eh, ez);
+      for (let ez = z1+0.16; ez < z2; ez += 0.32) {
+        rseg(st, px-ew,bCY-eh,ez, px-ew,bCY+eh,ez);
+        rseg(st, px-ew,bCY+eh,ez, px+ew,bCY+eh,ez);
+        rseg(st, px+ew,bCY+eh,ez, px+ew,bCY-eh,ez);
+        rseg(st, px+ew,bCY-eh,ez, px-ew,bCY-eh,ez);
       }
     });
 
-    // — Dalle BA avec nappe de treillis —
-    const dY = floorY - sH/2;
-    box(segs.concrete, 0, dY, 0, W, sH, D);
+    // Dalle
+    addConcrete(0, flY - sH/2, 0, W, sH, D);
 
-    // Nappe inférieure (parallèle X)
-    const meshStep = 0.40;
-    const my = dY - sH/2 + 0.06;
-    for (let mz = -D/2 + meshStep; mz < D/2; mz += meshStep) {
-      seg(segs.mesh, -W/2, my, mz, W/2, my, mz);
-    }
-    // Nappe inférieure (parallèle Z)
-    for (let mx = -W/2 + meshStep; mx < W/2; mx += meshStep) {
-      seg(segs.mesh, mx, my, -D/2, mx, my, D/2);
-    }
-    // Nappe supérieure (aux appuis — sur les poutres)
-    const my2 = dY + sH/2 - 0.06;
-    const supW = 1.6; // zone d'armature supérieure aux appuis
-    cols.forEach(([cx, cz]) => {
-      seg(segs.mesh, cx - supW/2, my2, cz - supW/2, cx + supW/2, my2, cz - supW/2);
-      seg(segs.mesh, cx + supW/2, my2, cz - supW/2, cx + supW/2, my2, cz + supW/2);
-      seg(segs.mesh, cx + supW/2, my2, cz + supW/2, cx - supW/2, my2, cz + supW/2);
-      seg(segs.mesh, cx - supW/2, my2, cz + supW/2, cx - supW/2, my2, cz - supW/2);
-    });
+    // Nappe de treillis (inférieure)
+    const my = flY - sH + 0.06;
+    for (let mz = -D/2+0.4; mz < D/2; mz += 0.40) rseg(ms, -W/2,my,mz, W/2,my,mz);
+    for (let mx = -W/2+0.4; mx < W/2; mx += 0.40) rseg(ms, mx,my,-D/2, mx,my,D/2);
   }
 
-  // ── Assemble LineSegments ─────────────────────────────
-  const lsConcrete = makeLS(segs.concrete, 0x1E5A9A, 0.45);
-  const lsRebar    = makeLS(segs.rebar,    0xC9A84C, 0.85);
-  const lsStirrup  = makeLS(segs.stirrup,  0xC9A84C, 0.32);
-  const lsMesh     = makeLS(segs.mesh,     0x1A4070, 0.28);
+  // ── Assemblage ────────────────────────────────────────
+  [
+    buildLS(rb, matRebar),
+    buildLS(st, matStirrup),
+    buildLS(ms, matMesh),
+  ].forEach(ls => { if (ls) building.add(ls); });
 
-  [lsConcrete, lsRebar, lsStirrup, lsMesh].forEach(ls => { if (ls) building.add(ls); });
-
-  // Center building vertically
   building.position.y = -totalH / 2;
   scene.add(building);
 
-  // ── Ground grid ───────────────────────────────────────
-  const groundGrid = new THREE.GridHelper(50, 28, 0x102040, 0x0D1B30);
-  groundGrid.position.y = -totalH / 2 - 0.15;
-  groundGrid.material.transparent = true;
-  groundGrid.material.opacity = 0.2;
-  scene.add(groundGrid);
-
-  // ── Nœuds dorés aux jonctions poteaux/poutres ─────────
-  const nodeArr = [];
-  cols.forEach(([cx, cz]) => {
-    const bOff = barOff;
-    [[cx-bOff,cz-bOff],[cx+bOff,cz-bOff],[cx-bOff,cz+bOff],[cx+bOff,cz+bOff]].forEach(([bx,bz]) => {
-      for (let f = 0; f <= nF; f++) {
-        nodeArr.push(bx, f * fH + building.position.y, bz);
-      }
-    });
-  });
-  const nodeGeo = new THREE.BufferGeometry();
-  nodeGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(nodeArr), 3));
-  const nodeMat = new THREE.PointsMaterial({ color: 0xC9A84C, size: 0.09, transparent: true, opacity: 0.9, sizeAttenuation: true });
-  scene.add(new THREE.Points(nodeGeo, nodeMat));
+  // ── Grille au sol ─────────────────────────────────────
+  const grid = new THREE.GridHelper(60, 32, 0x1A3060, 0x0F1E3A);
+  grid.position.y = -totalH / 2 - 0.12;
+  grid.material.transparent = true;
+  grid.material.opacity = 0.16;
+  scene.add(grid);
 
   // ── Particules flottantes ─────────────────────────────
-  const PTS = 260;
-  const ptPos = new Float32Array(PTS * 3);
-  for (let i = 0; i < PTS; i++) {
-    ptPos[i*3]   = (Math.random() - 0.5) * 42;
-    ptPos[i*3+1] = (Math.random() - 0.5) * 26;
-    ptPos[i*3+2] = (Math.random() - 0.5) * 26;
+  const ptPos = new Float32Array(180 * 3);
+  for (let i = 0; i < 180; i++) {
+    ptPos[i*3]   = (Math.random() - 0.5) * 44;
+    ptPos[i*3+1] = (Math.random() - 0.5) * 28;
+    ptPos[i*3+2] = (Math.random() - 0.5) * 28;
   }
   const ptGeo = new THREE.BufferGeometry();
   ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPos, 3));
-  const ptMat = new THREE.PointsMaterial({ color: 0x2A5A9A, size: 0.06, transparent: true, opacity: 0.45 });
+  const ptMat = new THREE.PointsMaterial({ color: 0x2A5A9A, size: 0.055, transparent: true, opacity: 0.25 });
   scene.add(new THREE.Points(ptGeo, ptMat));
 
-  // ── Mouse parallax ─────────────────────────────────────
+  // ── Suivi souris / touch ──────────────────────────────
   let mX = 0, mY = 0, tX = 0, tY = 0;
-  document.addEventListener('mousemove', e => {
-    mX = (e.clientX / window.innerWidth  - 0.5) * 2;
-    mY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
+  let smoothMX = 0, revealAmt = 0, lastMove = 0;
+
+  function onMove(clientX, clientY) {
+    mX = (clientX / window.innerWidth  - 0.5) * 2;
+    mY = (clientY / window.innerHeight - 0.5) * 2;
+    lastMove = Date.now();
+  }
+  document.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
+  document.addEventListener('touchmove', e => {
+    onMove(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
 
   let scrollY = 0;
   window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
@@ -248,33 +249,41 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // ── Animation loop ─────────────────────────────────────
+  // ── Boucle d'animation ────────────────────────────────
   const clock = new THREE.Clock();
 
-  function animate() {
+  (function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // 360° rotation continue
+    // Rotation 360° continue
     building.rotation.y = t * 0.065;
 
-    // Mouse parallax (smooth damp)
+    // Parallaxe caméra (souris)
     tX += (mX - tX) * 0.025;
     tY += (mY - tY) * 0.025;
     camera.position.x = tX * 2.5;
-    camera.position.y = 1.5 + tY * 1.5 - scrollY * 0.003;
+    camera.position.y = 2 + tY * 1.5 - scrollY * 0.003;
     camera.lookAt(0, 0, 0);
 
-    // Pulsing animations
-    if (lsConcrete) lsConcrete.material.opacity = 0.35 + Math.sin(t * 0.45) * 0.12;
-    if (lsRebar)    lsRebar.material.opacity    = 0.72 + Math.sin(t * 0.80) * 0.18;
-    if (lsStirrup)  lsStirrup.material.opacity  = 0.22 + Math.sin(t * 0.60) * 0.10;
-    nodeMat.opacity = 0.70 + Math.sin(t * 1.20) * 0.22;
-    ptMat.opacity   = 0.35 + Math.sin(t * 0.40) * 0.10;
+    // Position souris en NDC (lissée) → uniforme du shader
+    smoothMX += (mX * 0.78 - smoothMX) * 0.08;
+
+    // Fondu révélation : actif au mouvement, s'estompe après 2,5 s d'inactivité
+    const idle = (Date.now() - lastMove) / 1000;
+    const target = idle < 0.08 ? 1.0 : Math.max(0, 1.0 - Math.max(0, idle - 0.08) / 2.5);
+    revealAmt += (target - revealAmt) * 0.045;
+
+    // Mise à jour uniforms de tous les matériaux armatures
+    [matRebar, matStirrup, matMesh].forEach(m => {
+      m.uniforms.uMouseX.value = smoothMX;
+      m.uniforms.uReveal.value = revealAmt;
+    });
+
+    // Légère pulsation du béton
+    concreteMat.opacity = 0.86 + Math.sin(t * 0.28) * 0.05;
 
     renderer.render(scene, camera);
-  }
-
-  animate();
+  })();
 
 })();

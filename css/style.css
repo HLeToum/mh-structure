@@ -708,7 +708,7 @@ img { display: block; max-width: 100%; }
 
 .pathology-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -717,13 +717,21 @@ img { display: block; max-width: 100%; }
 }
 .patho-card {
   background: var(--surface);
-  padding: clamp(22px, 3vw, 32px);
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
   transition: background 0.25s;
+  overflow: hidden;
 }
 .patho-card:hover { background: var(--card); }
+.patho-body {
+  padding: clamp(20px, 2.5vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
 
 .patho-header {
   display: flex;
@@ -755,53 +763,119 @@ img { display: block; max-width: 100%; }
   line-height: 1.3;
 }
 
-/* SVG illustration panels */
+/* Illustration pathologie */
 .patho-visual {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   background: var(--surface2);
-  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
 }
 .patho-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
-.patho-card:hover .patho-visual img { transform: scale(1.04); }
+.patho-card:hover .patho-visual img { transform: scale(1.06); }
 
-/* Problem/Solution pills */
+/* Numéro fantôme sur l'image */
+.pathology-grid { counter-reset: patho-n; }
+.patho-card { counter-increment: patho-n; }
+.patho-visual::after {
+  content: "0" counter(patho-n);
+  position: absolute;
+  bottom: 6px;
+  right: 14px;
+  font-family: var(--ff-head);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(255,255,255,0.13);
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+/* Bande de couleur haut de carte */
+.patho-card::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-d), var(--gold));
+  opacity: 0;
+  transition: opacity 0.25s;
+  flex-shrink: 0;
+}
+.patho-card:hover::before { opacity: 1; }
+
+/* Problem/Solution */
 .patho-ps {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
+  margin-top: auto;
 }
 .patho-block {
   background: var(--bg);
-  border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 10px 12px;
+  padding: 12px 14px;
+  border-top: 2px solid transparent;
 }
+.patho-block:first-child { border-top-color: rgba(239,107,107,0.5); }
+.patho-block:last-child  { border-top-color: rgba(94,196,122,0.5); }
 .patho-block-label {
   font-family: var(--ff-mono);
-  font-size: 0.55rem;
+  font-size: 0.56rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .patho-block-label.prob { color: #EF6B6B; }
 .patho-block-label.sol  { color: #5EC47A; }
 .patho-block p {
-  font-size: 0.78rem;
+  font-size: 0.79rem;
   color: var(--text2);
-  line-height: 1.5;
+  line-height: 1.55;
 }
+
+/* CTA bas de section Prévention */
+.prevention-cta {
+  margin-top: 56px;
+}
+.prevention-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.03) 100%);
+  border: 1px solid var(--border-g);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 40px) clamp(28px, 5vw, 56px);
+}
+.prevention-cta-text { flex: 1; }
+.prevention-cta-q {
+  font-family: var(--ff-head);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.prevention-cta-sub {
+  font-size: 0.84rem;
+  color: var(--text2);
+  line-height: 1.65;
+  max-width: 480px;
+}
+.prevention-cta-btn { flex-shrink: 0; white-space: nowrap; }
 
 /* ================================================================
    PORTFOLIO
@@ -1135,8 +1209,10 @@ img { display: block; max-width: 100%; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid .svc-card:nth-child(-n+3) { grid-column: span 1; }
   .svc-card.svc-wide { grid-column: span 2; }
-  .pathology-grid { grid-template-columns: repeat(2, 1fr); }
+  .pathology-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .prevention-cta-inner { flex-direction: column; text-align: center; }
+  .prevention-cta-sub { max-width: 100%; }
   .proj-large { grid-column: span 2; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .metrics-strip { justify-content: space-around; }
@@ -1164,6 +1240,7 @@ img { display: block; max-width: 100%; }
   .services-grid .svc-card:nth-child(-n+3) { grid-column: span 1; }
   .svc-card.svc-wide { grid-column: span 1; }
   .pathology-grid { grid-template-columns: 1fr; }
+  .prevention-cta-inner { padding: 24px; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .proj-large { grid-column: span 1; }
   .form-row { grid-template-columns: 1fr; }
