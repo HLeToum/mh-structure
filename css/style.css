@@ -463,6 +463,20 @@ img { display: block; max-width: 100%; }
   margin: 20px 0;
   flex-shrink: 0;
 }
+.metric-val--loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-family: var(--ff-head);
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.metric-val--loc svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
 
 /* ================================================================
    MARQUEE
