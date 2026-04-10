@@ -580,6 +580,31 @@ img { display: block; max-width: 100%; }
   transition: border-color 0.2s, color 0.2s;
 }
 .tool-tag:hover { border-color: var(--border-g); color: var(--gold); }
+.about-clients {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.about-clients-label {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  color: var(--text3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.about-clients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.about-clients-list span {
+  font-size: 0.78rem;
+  color: var(--text2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 10px;
+}
 .about-divider {
   width: 48px;
   height: 1px;
