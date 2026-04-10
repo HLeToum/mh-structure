@@ -768,12 +768,19 @@ img { display: block; max-width: 100%; }
 /* Illustration pathologie */
 .patho-visual {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   background: var(--surface2);
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
 }
+
+/* Cadrage précis sur le désordre pour chaque cas */
+.pathology-grid .patho-card:nth-child(1) .patho-visual img { object-position: center 55%; }   /* poteau : fissure diagonale centre-bas */
+.pathology-grid .patho-card:nth-child(2) .patho-visual img { object-position: 65% 88%; }      /* mur intérieur : fissure au ras du sol */
+.pathology-grid .patho-card:nth-child(3) .patho-visual img { object-position: 55% 35%; }      /* voile multi-fissures : zone centrale */
+.pathology-grid .patho-card:nth-child(4) .patho-visual img { object-position: 20% 50%; }      /* façade : fissure verticale côté gauche */
+.pathology-grid .patho-card:nth-child(5) .patho-visual img { object-position: center 42%; }   /* façade : infiltrations angles fenêtres */
 .patho-visual img {
   width: 100%;
   height: 100%;
