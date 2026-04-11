@@ -747,15 +747,13 @@ img { display: block; max-width: 100%; }
 
 .pathology-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background: var(--border);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
 }
-/* 5 cartes : les 4 premières en 2×2, la 5e pleine largeur */
-.pathology-grid .patho-card:last-child { grid-column: span 2; }
 .patho-card {
   background: var(--surface);
   padding: 0;
@@ -807,7 +805,7 @@ img { display: block; max-width: 100%; }
 /* Illustration pathologie */
 .patho-visual {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   background: var(--surface2);
   overflow: hidden;
   position: relative;
@@ -1270,7 +1268,7 @@ img { display: block; max-width: 100%; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid .svc-card:nth-child(-n+3) { grid-column: span 1; }
   .svc-card.svc-wide { grid-column: span 2; }
-  .pathology-grid { grid-template-columns: 1fr; }
+  .pathology-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .prevention-cta-inner { flex-direction: column; text-align: center; }
   .prevention-cta-sub { max-width: 100%; }
