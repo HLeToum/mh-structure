@@ -319,6 +319,7 @@
   // Le bâtiment est centré verticalement ; on le remonte
   // légèrement pour que les semelles soient visibles
   building.position.y = -totalH / 2 + sndH * 0.4;
+  building.position.x = 3.8;   // décalage droite — laisse la zone texte libre
   scene.add(building);
 
   // ── Plan de sol (terre) ───────────────────────────────
@@ -328,13 +329,12 @@
   });
   const groundPlane = new THREE.Mesh(groundGeo, groundMat);
   groundPlane.rotation.x = -Math.PI / 2;
-  // Au niveau de la base des poteaux dans l'espace monde
-  groundPlane.position.y = building.position.y - 0.04;
+  groundPlane.position.set(building.position.x, building.position.y - 0.04, 0);
   scene.add(groundPlane);
 
   // ── Grille légère ─────────────────────────────────────
   const grid = new THREE.GridHelper(60, 32, 0x1A3060, 0x0F1E3A);
-  grid.position.y = building.position.y - 0.14;
+  grid.position.set(building.position.x, building.position.y - 0.14, 0);
   grid.material.transparent = true;
   grid.material.opacity = 0.10;
   scene.add(grid);
