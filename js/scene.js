@@ -376,13 +376,14 @@
 
   // ── Boucle d'animation ────────────────────────────────
   const clock = new THREE.Clock();
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   (function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // Rotation 360° continue
-    building.rotation.y = t * 0.060;
+    // Rotation 360° continue — arrêtée si prefers-reduced-motion
+    building.rotation.y = reducedMotion ? 0.4 : t * 0.060;
 
     // Parallaxe caméra (souris)
     tX += (mX - tX) * 0.025;

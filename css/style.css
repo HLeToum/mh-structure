@@ -1289,6 +1289,7 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
   transition: color 0.2s;
 }
 .footer-col a:hover { color: var(--gold); }
+.footer-col a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; color: var(--gold); }
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1355,6 +1356,9 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
     gap: 24px;
     border-bottom: 1px solid var(--border);
     z-index: 999;
+    overscroll-behavior: contain;
+    overflow-y: auto;
+    max-height: calc(100svh - var(--nav-h));
   }
   .nav-links.open .nav-link { font-size: 1.1rem; }
   .section-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 36px; }
