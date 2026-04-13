@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F1929"/>
+      <stop offset="100%" style="stop-color:#182440"/>
+    </linearGradient>
+    <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C9A84C;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#C9A84C;stop-opacity:1"/>
+      <stop offset="70%" style="stop-color:#DFB95E;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#DFB95E;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glow3"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#bg3)" rx="8"/>
+  <rect width="400" height="240" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.2" rx="8"/>
+
+  <!-- Ground line -->
+  <line x1="30" y1="170" x2="370" y2="170" stroke="#3D5068" stroke-width="1.5"/>
+  <!-- Ground hatch -->
+  <g stroke="#3D5068" stroke-width="0.8" opacity="0.5">
+    <line x1="30" y1="170" x2="20" y2="180"/><line x1="50" y1="170" x2="40" y2="180"/>
+    <line x1="70" y1="170" x2="60" y2="180"/><line x1="90" y1="170" x2="80" y2="180"/>
+    <line x1="110" y1="170" x2="100" y2="180"/><line x1="130" y1="170" x2="120" y2="180"/>
+    <line x1="150" y1="170" x2="140" y2="180"/><line x1="170" y1="170" x2="160" y2="180"/>
+    <line x1="190" y1="170" x2="180" y2="180"/><line x1="210" y1="170" x2="200" y2="180"/>
+    <line x1="230" y1="170" x2="220" y2="180"/><line x1="250" y1="170" x2="240" y2="180"/>
+    <line x1="270" y1="170" x2="260" y2="180"/><line x1="290" y1="170" x2="280" y2="180"/>
+    <line x1="310" y1="170" x2="300" y2="180"/><line x1="330" y1="170" x2="320" y2="180"/>
+    <line x1="350" y1="170" x2="340" y2="180"/><line x1="370" y1="170" x2="360" y2="180"/>
+  </g>
+
+  <!-- Building structure -->
+  <g stroke="#8899B4" stroke-width="2" fill="none">
+    <rect x="140" y="70" width="120" height="100" stroke="#8899B4" stroke-width="1.5"/>
+    <line x1="140" y1="110" x2="260" y2="110"/>
+    <line x1="140" y1="140" x2="260" y2="140"/>
+    <line x1="200" y1="70" x2="200" y2="170"/>
+    <!-- Windows -->
+    <rect x="150" y="80" width="20" height="20" stroke="#3D5068" stroke-width="1"/>
+    <rect x="180" y="80" width="20" height="20" stroke="#3D5068" stroke-width="1"/>
+    <rect x="210" y="80" width="20" height="20" stroke="#3D5068" stroke-width="1"/>
+    <rect x="240" y="80" width="10" height="20" stroke="#3D5068" stroke-width="1"/>
+  </g>
+
+  <!-- Seismic waves emanating from epicentre -->
+  <g filter="url(#glow3)" opacity="0.9">
+    <!-- P-waves horizontal -->
+    <path d="M 30 170 Q 60 150 90 170 Q 120 190 150 170 Q 180 150 210 170 Q 240 190 270 170 Q 300 150 330 170 Q 360 190 390 170" stroke="url(#wave-grad)" stroke-width="2.5" fill="none"/>
+    <path d="M 30 185 Q 60 165 90 185 Q 120 205 150 185 Q 180 165 210 185 Q 240 205 270 185 Q 300 165 330 185 Q 360 205 390 185" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- Epicentre marker -->
+  <g transform="translate(90, 170)" filter="url(#glow3)">
+    <circle cx="0" cy="0" r="5" fill="#DFB95E"/>
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#C9A84C" stroke-width="0.7" stroke-opacity="0.3"/>
+    <line x1="0" y1="-5" x2="0" y2="-30" stroke="#DFB95E" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="8" y="-18" font-family="monospace" font-size="8" fill="#C9A84C">M5.2</text>
+  </g>
+
+  <!-- Building displacement arrow -->
+  <g filter="url(#glow3)">
+    <path d="M 260 120 L 290 100" stroke="#DFB95E" stroke-width="2" marker-end="url(#arrow)" stroke-linecap="round"/>
+    <polygon points="290,100 282,106 286,113" fill="#DFB95E"/>
+    <text x="293" y="104" font-family="monospace" font-size="8" fill="#DFB95E">δ</text>
+  </g>
+
+  <!-- Right panel - EC8 data -->
+  <rect x="308" y="35" width="82" height="110" fill="#141E35" rx="4" stroke="#C9A84C" stroke-width="0.7" stroke-opacity="0.5"/>
+  <text x="349" y="52" font-family="monospace" font-size="7.5" fill="#C9A84C" text-anchor="middle">EUROCODE 8</text>
+  <line x1="314" y1="56" x2="384" y2="56" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="315" y="68" font-family="monospace" font-size="6.5" fill="#8899B4">Zone : 3</text>
+  <text x="315" y="80" font-family="monospace" font-size="6.5" fill="#8899B4">ag = 1.6 m/s²</text>
+  <text x="315" y="92" font-family="monospace" font-size="6.5" fill="#8899B4">Sol : C</text>
+  <text x="315" y="104" font-family="monospace" font-size="6.5" fill="#8899B4">S = 1.15</text>
+  <line x1="314" y1="108" x2="384" y2="108" stroke="#3D5068" stroke-width="0.5"/>
+  <text x="315" y="120" font-family="monospace" font-size="6" fill="#3D5068">Catégorie : II</text>
+  <text x="315" y="131" font-family="monospace" font-size="6" fill="#DFB95E">γI = 1.0</text>
+  <text x="315" y="140" font-family="monospace" font-size="6.5" fill="#C9A84C">q = 1.5</text>
+
+  <!-- Left: spectrum -->
+  <rect x="10" y="35" width="75" height="80" fill="#141E35" rx="4" stroke="#C9A84C" stroke-width="0.7" stroke-opacity="0.4"/>
+  <text x="47" y="50" font-family="monospace" font-size="7" fill="#C9A84C" text-anchor="middle">SPECTRE</text>
+  <polyline points="20,100 30,55 45,55 70,75 82,90" stroke="#DFB95E" stroke-width="1.5" fill="none"/>
+  <line x1="20" y1="60" x2="20" y2="105" stroke="#3D5068" stroke-width="1"/>
+  <line x1="20" y1="105" x2="80" y2="105" stroke="#3D5068" stroke-width="1"/>
+  <text x="50" y="113" font-family="monospace" font-size="6" fill="#3D5068" text-anchor="middle">T (s)</text>
+
+  <text x="200" y="18" font-family="'Space Grotesk', sans-serif" font-size="11" fill="#C9A84C" text-anchor="middle" font-weight="600" letter-spacing="2">DIAGNOSTIC SISMIQUE</text>
+  <line x1="60" y1="23" x2="340" y2="23" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+</svg>

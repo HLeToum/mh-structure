@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F1929"/>
+      <stop offset="100%" style="stop-color:#182440"/>
+    </linearGradient>
+    <linearGradient id="gold1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C9A84C"/>
+      <stop offset="100%" style="stop-color:#DFB95E"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="240" fill="url(#bg1)" rx="8"/>
+  <rect width="400" height="240" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.2" rx="8"/>
+
+  <!-- Grid background -->
+  <g opacity="0.06" stroke="#8899B4" stroke-width="0.5">
+    <line x1="0" y1="40" x2="400" y2="40"/><line x1="0" y1="80" x2="400" y2="80"/>
+    <line x1="0" y1="120" x2="400" y2="120"/><line x1="0" y1="160" x2="400" y2="160"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="40" y1="0" x2="40" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/>
+    <line x1="120" y1="0" x2="120" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/>
+    <line x1="200" y1="0" x2="200" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/>
+    <line x1="280" y1="0" x2="280" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/>
+    <line x1="360" y1="0" x2="360" y2="240"/>
+  </g>
+
+  <!-- Structural frame - main beam -->
+  <g filter="url(#glow)">
+    <line x1="60" y1="190" x2="340" y2="190" stroke="#C9A84C" stroke-width="4"/>
+    <!-- Columns -->
+    <line x1="80" y1="190" x2="80" y2="60" stroke="#8899B4" stroke-width="3"/>
+    <line x1="200" y1="190" x2="200" y2="60" stroke="#8899B4" stroke-width="3"/>
+    <line x1="320" y1="190" x2="320" y2="60" stroke="#8899B4" stroke-width="3"/>
+    <!-- Cross beams -->
+    <line x1="80" y1="60" x2="320" y2="60" stroke="#C9A84C" stroke-width="2.5"/>
+    <line x1="80" y1="125" x2="320" y2="125" stroke="#8899B4" stroke-width="1.5" stroke-dasharray="6,4"/>
+  </g>
+
+  <!-- Load arrows -->
+  <g fill="#DFB95E" opacity="0.9">
+    <polygon points="120,40 115,55 125,55"/>
+    <line x1="120" y1="55" x2="120" y2="60" stroke="#DFB95E" stroke-width="1.5"/>
+    <polygon points="200,30 195,45 205,45"/>
+    <line x1="200" y1="45" x2="200" y2="60" stroke="#DFB95E" stroke-width="1.5"/>
+    <polygon points="280,40 275,55 285,55"/>
+    <line x1="280" y1="55" x2="280" y2="60" stroke="#DFB95E" stroke-width="1.5"/>
+  </g>
+
+  <!-- Dimension lines -->
+  <g stroke="#3D5068" stroke-width="1">
+    <line x1="80" y1="210" x2="200" y2="210"/>
+    <line x1="80" y1="205" x2="80" y2="215"/>
+    <line x1="200" y1="205" x2="200" y2="215"/>
+    <line x1="200" y1="210" x2="320" y2="210"/>
+    <line x1="320" y1="205" x2="320" y2="215"/>
+  </g>
+  <text x="140" y="225" font-family="monospace" font-size="9" fill="#8899B4" text-anchor="middle">L/2 = 3.0m</text>
+  <text x="260" y="225" font-family="monospace" font-size="9" fill="#8899B4" text-anchor="middle">L/2 = 3.0m</text>
+
+  <!-- Formula panel -->
+  <rect x="20" y="70" width="50" height="80" fill="#141E35" rx="4" stroke="#C9A84C" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="45" y="90" font-family="monospace" font-size="8" fill="#C9A84C" text-anchor="middle">M</text>
+  <line x1="28" y1="94" x2="62" y2="94" stroke="#C9A84C" stroke-width="0.8"/>
+  <text x="45" y="106" font-family="monospace" font-size="7" fill="#8899B4" text-anchor="middle">W·fyk</text>
+  <text x="45" y="120" font-family="monospace" font-size="7" fill="#DFB95E" text-anchor="middle">≤ 1.0</text>
+  <text x="45" y="136" font-family="monospace" font-size="7" fill="#3D5068" text-anchor="middle">EC2 §6.1</text>
+
+  <!-- Right panel - section details -->
+  <rect x="330" y="65" width="55" height="70" fill="#141E35" rx="4" stroke="#C9A84C" stroke-width="0.8" stroke-opacity="0.5"/>
+  <!-- Section hachurée -->
+  <rect x="340" y="75" width="35" height="50" fill="none" stroke="#8899B4" stroke-width="1.2"/>
+  <g stroke="#3D5068" stroke-width="0.5">
+    <line x1="340" y1="80" x2="375" y2="85"/>
+    <line x1="340" y1="88" x2="375" y2="93"/>
+    <line x1="340" y1="96" x2="375" y2="101"/>
+    <line x1="340" y1="104" x2="375" y2="109"/>
+    <line x1="340" y1="112" x2="375" y2="117"/>
+    <line x1="340" y1="120" x2="375" y2="125"/>
+  </g>
+  <!-- Armatures -->
+  <circle cx="346" cy="118" r="3" fill="#C9A84C"/>
+  <circle cx="357" cy="118" r="3" fill="#C9A84C"/>
+  <circle cx="368" cy="118" r="3" fill="#C9A84C"/>
+  <circle cx="346" cy="78" r="2" fill="#8899B4"/>
+  <circle cx="368" cy="78" r="2" fill="#8899B4"/>
+
+  <!-- Title -->
+  <text x="200" y="18" font-family="'Space Grotesk', sans-serif" font-size="11" fill="#C9A84C" text-anchor="middle" font-weight="600" letter-spacing="2">NOTES DE CALCUL STRUCTUREL</text>
+  <line x1="60" y1="23" x2="340" y2="23" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+</svg>

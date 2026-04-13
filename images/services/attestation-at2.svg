@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F1929"/>
+      <stop offset="100%" style="stop-color:#182440"/>
+    </linearGradient>
+    <filter id="glow5"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#bg5)" rx="8"/>
+  <rect width="400" height="240" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.2" rx="8"/>
+
+  <!-- Main document -->
+  <rect x="90" y="32" width="195" height="185" fill="#141E35" rx="5" stroke="#3D5068" stroke-width="1.5"/>
+
+  <!-- Document header -->
+  <rect x="90" y="32" width="195" height="32" fill="#182440" rx="5"/>
+  <rect x="90" y="52" width="195" height="12" fill="#182440"/>
+  <text x="187" y="52" font-family="monospace" font-size="8" fill="#C9A84C" text-anchor="middle" letter-spacing="1">ATTESTATION</text>
+  <text x="187" y="62" font-family="monospace" font-size="6.5" fill="#8899B4" text-anchor="middle" letter-spacing="1">D'ACHÈVEMENT</text>
+
+  <!-- Golden ribbon / banner across document -->
+  <rect x="90" y="72" width="195" height="14" fill="#C9A84C" fill-opacity="0.12" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="187" y="82" font-family="monospace" font-size="6.5" fill="#DFB95E" text-anchor="middle">Réf : AT2-2024-1103</text>
+
+  <!-- Document body lines -->
+  <g fill="#3D5068">
+    <rect x="106" y="93" width="140" height="3" rx="1"/>
+    <rect x="106" y="100" width="160" height="3" rx="1"/>
+    <rect x="106" y="107" width="120" height="3" rx="1"/>
+  </g>
+
+  <!-- Key data table -->
+  <rect x="106" y="115" width="163" height="58" fill="#0F1929" rx="3" stroke="#3D5068" stroke-width="0.8"/>
+  <!-- Table rows -->
+  <line x1="106" y1="127" x2="269" y2="127" stroke="#3D5068" stroke-width="0.5"/>
+  <line x1="106" y1="139" x2="269" y2="139" stroke="#3D5068" stroke-width="0.5"/>
+  <line x1="106" y1="151" x2="269" y2="151" stroke="#3D5068" stroke-width="0.5"/>
+  <line x1="106" y1="163" x2="269" y2="163" stroke="#3D5068" stroke-width="0.5"/>
+  <!-- Table col separator -->
+  <line x1="175" y1="115" x2="175" y2="173" stroke="#3D5068" stroke-width="0.5"/>
+  <!-- Table content -->
+  <text x="112" y="124" font-family="monospace" font-size="5.5" fill="#8899B4">Maître d'ouvrage</text>
+  <text x="178" y="124" font-family="monospace" font-size="5.5" fill="#C9A84C">M. Dupont</text>
+  <text x="112" y="136" font-family="monospace" font-size="5.5" fill="#8899B4">Adresse chantier</text>
+  <text x="178" y="136" font-family="monospace" font-size="5.5" fill="#8899B4">Lyon, 69001</text>
+  <text x="112" y="148" font-family="monospace" font-size="5.5" fill="#8899B4">Nature travaux</text>
+  <text x="178" y="148" font-family="monospace" font-size="5.5" fill="#8899B4">Extension R+1</text>
+  <text x="112" y="160" font-family="monospace" font-size="5.5" fill="#8899B4">Date fin chantier</text>
+  <text x="178" y="160" font-family="monospace" font-size="5.5" fill="#DFB95E">15/11/2024</text>
+  <text x="112" y="171" font-family="monospace" font-size="5.5" fill="#8899B4">Bureau d'études</text>
+  <text x="178" y="171" font-family="monospace" font-size="5.5" fill="#C9A84C">MH Structure</text>
+
+  <!-- Certified stamp -->
+  <g filter="url(#glow5)" transform="translate(230, 198)">
+    <circle cx="0" cy="0" r="18" fill="#0F1929" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="0" y="-5" font-family="monospace" font-size="5" fill="#C9A84C" text-anchor="middle">CERTIFIÉ</text>
+    <text x="0" y="4" font-family="monospace" font-size="5" fill="#C9A84C" text-anchor="middle">CONFORME</text>
+    <polyline points="-6,8 -2,14 8,2" stroke="#DFB95E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Signature block -->
+  <line x1="110" y1="197" x2="170" y2="197" stroke="#3D5068" stroke-width="0.8"/>
+  <text x="140" y="206" font-family="monospace" font-size="5" fill="#3D5068" text-anchor="middle">Signature / Cachet</text>
+
+  <!-- Left panel -->
+  <rect x="8" y="55" width="72" height="105" fill="#141E35" rx="4" stroke="#C9A84C" stroke-width="0.7" stroke-opacity="0.4"/>
+  <text x="44" y="72" font-family="monospace" font-size="7" fill="#C9A84C" text-anchor="middle">AT2</text>
+  <line x1="14" y1="76" x2="74" y2="76" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="44" y="88" font-family="monospace" font-size="5.5" fill="#8899B4" text-anchor="middle">Art. L462-1</text>
+  <text x="44" y="98" font-family="monospace" font-size="5.5" fill="#8899B4" text-anchor="middle">Code Constr.</text>
+  <line x1="14" y1="103" x2="74" y2="103" stroke="#3D5068" stroke-width="0.5"/>
+  <!-- Progress bar / completion -->
+  <text x="20" y="115" font-family="monospace" font-size="5.5" fill="#3D5068">Avancée</text>
+  <rect x="20" y="119" width="44" height="5" rx="2" fill="#0F1929" stroke="#3D5068" stroke-width="0.5"/>
+  <rect x="20" y="119" width="44" height="5" rx="2" fill="#C9A84C"/>
+  <text x="44" y="133" font-family="monospace" font-size="6.5" fill="#DFB95E" text-anchor="middle">100%</text>
+  <text x="44" y="148" font-family="monospace" font-size="8" fill="#C9A84C" text-anchor="middle">✓</text>
+
+  <!-- Right panel - legal info -->
+  <rect x="295" y="55" width="97" height="105" fill="#141E35" rx="4" stroke="#C9A84C" stroke-width="0.7" stroke-opacity="0.4"/>
+  <text x="343" y="71" font-family="monospace" font-size="7" fill="#C9A84C" text-anchor="middle">GARANTIES</text>
+  <line x1="301" y1="75" x2="386" y2="75" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+  <text x="303" y="87" font-family="monospace" font-size="5.5" fill="#8899B4">Parfait achèvement</text>
+  <text x="303" y="97" font-family="monospace" font-size="5.5" fill="#DFB95E">1 an</text>
+  <text x="303" y="109" font-family="monospace" font-size="5.5" fill="#8899B4">Bon fonctionnement</text>
+  <text x="303" y="119" font-family="monospace" font-size="5.5" fill="#DFB95E">2 ans</text>
+  <line x1="301" y1="124" x2="386" y2="124" stroke="#3D5068" stroke-width="0.5"/>
+  <text x="303" y="136" font-family="monospace" font-size="5.5" fill="#8899B4">Décennale</text>
+  <text x="303" y="146" font-family="monospace" font-size="6.5" fill="#C9A84C">10 ans</text>
+  <text x="303" y="155" font-family="monospace" font-size="5" fill="#3D5068">SMABTP</text>
+
+  <!-- Title -->
+  <text x="200" y="18" font-family="'Space Grotesk', sans-serif" font-size="10.5" fill="#C9A84C" text-anchor="middle" font-weight="600" letter-spacing="2">ATTESTATION D'ACHÈVEMENT — AT2</text>
+  <line x1="60" y1="23" x2="340" y2="23" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.4"/>
+</svg>
