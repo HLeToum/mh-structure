@@ -1167,6 +1167,12 @@ img { display: block; max-width: 100%; }
   color: var(--text);
   font-weight: 500;
 }
+a.ci-link {
+  display: inline-block;
+  transition: color 0.2s;
+}
+a.ci-link:hover { color: var(--gold); }
+a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 .contact-right {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1196,17 +1202,19 @@ img { display: block; max-width: 100%; }
   font-family: var(--ff-body);
   font-size: 0.875rem;
   padding: 12px 14px;
-  outline: none;
+  outline: 0;
   transition: border-color 0.25s, background 0.25s;
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
 }
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
   border-color: var(--gold);
   background: rgba(201,168,76,0.03);
+  outline: 2px solid rgba(201,168,76,0.35);
+  outline-offset: 0;
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: var(--text3); }
@@ -1218,7 +1226,7 @@ img { display: block; max-width: 100%; }
   gap: 16px;
 }
 .form-status { font-size: 0.82rem; min-height: 0; margin-bottom: 4px; }
-.submit-btn { width: 100%; justify-content: center; padding: 16px; font-size: 0.9rem; margin-top: 4px; }
+.submit-btn { width: 100%; justify-content: center; padding: 16px; font-size: 0.9rem; margin-top: 4px; touch-action: manipulation; }
 
 /* ================================================================
    FOOTER
