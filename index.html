@@ -167,10 +167,13 @@
         <!-- CAS 01 — Fissure diagonale sur poteau -->
         <article class="patho-card">
           <div class="patho-visual">
-            <img src="images/prevention/cas-01.jpg"
-                 alt="Fissure diagonale sur un poteau béton armé de façade"
-                 width="800" height="600"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/prevention/cas-01.webp" type="image/webp">
+              <img src="images/prevention/cas-01.jpg"
+                   alt="Fissure diagonale sur un poteau béton armé de façade"
+                   width="900" height="600"
+                   loading="lazy" decoding="async">
+            </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 01</span>
               <span class="patho-cat">Poteau · Structure</span>
@@ -194,10 +197,13 @@
         <!-- CAS 02 — Fissure oblique en pied de mur -->
         <article class="patho-card">
           <div class="patho-visual">
-            <img src="images/prevention/cas-02.jpg"
-                 alt="Fissure oblique à la base d'un mur intérieur près d'un encadrement de porte"
-                 width="800" height="600"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/prevention/cas-02.webp" type="image/webp">
+              <img src="images/prevention/cas-02.jpg"
+                   alt="Fissure oblique à la base d'un mur intérieur près d'un encadrement de porte"
+                   width="900" height="600"
+                   loading="lazy" decoding="async">
+            </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 02</span>
               <span class="patho-cat">Mur · Ouverture</span>
@@ -221,10 +227,13 @@
         <!-- CAS 03 — Fissuration multiple en zone de travaux -->
         <article class="patho-card">
           <div class="patho-visual">
-            <img src="images/prevention/cas-03.jpg"
-                 alt="Réseau de fissures verticales et obliques sur un voile en contexte de rénovation"
-                 width="800" height="600"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/prevention/cas-03.webp" type="image/webp">
+              <img src="images/prevention/cas-03.jpg"
+                   alt="Réseau de fissures verticales et obliques sur un voile en contexte de rénovation"
+                   width="900" height="600"
+                   loading="lazy" decoding="async">
+            </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 03</span>
               <span class="patho-cat">Voile · Réhabilitation</span>
@@ -248,10 +257,13 @@
         <!-- CAS 04 — Exfiltration d'eau en façade -->
         <article class="patho-card">
           <div class="patho-visual">
-            <img src="images/prevention/cas-04.jpg"
-                 alt="Traces d'exfiltration d'eau sur une façade béton armé — ruissellement et auréoles"
-                 width="800" height="600"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/prevention/cas-04.webp" type="image/webp">
+              <img src="images/prevention/cas-04.jpg"
+                   alt="Traces d'exfiltration d'eau sur une façade béton armé — ruissellement et auréoles"
+                   width="900" height="600"
+                   loading="lazy" decoding="async">
+            </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 04</span>
               <span class="patho-cat">Façade · Étanchéité</span>
@@ -275,10 +287,13 @@
         <!-- CAS 05 — Infiltrations en façade multi-niveaux -->
         <article class="patho-card">
           <div class="patho-visual">
-            <img src="images/prevention/cas-05.jpg"
-                 alt="Infiltrations d'eau répétées sur plusieurs niveaux d'une façade béton armé"
-                 width="800" height="600"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/prevention/cas-05.webp" type="image/webp">
+              <img src="images/prevention/cas-05.jpg"
+                   alt="Infiltrations d'eau répétées sur plusieurs niveaux d'une façade béton armé"
+                   width="900" height="600"
+                   loading="lazy" decoding="async">
+            </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 05</span>
               <span class="patho-cat">Façade · Infiltration</span>
@@ -631,6 +646,46 @@
       </div>
     </div>
   </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MH Structure",
+    "description": "Bureau d'études structure — calcul structurel, diagnostic visuel et sismique, attestations parasismiques et AT2. Assuré SMABTP.",
+    "url": "https://hletoum.github.io/mh-structure/",
+    "logo": "https://hletoum.github.io/mh-structure/images/favicon.svg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Carmaux",
+      "addressRegion": "Occitanie",
+      "postalCode": "81400",
+      "addressCountry": "FR"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "France"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@mh-structure.fr",
+      "contactType": "customer service",
+      "availableLanguage": "French"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Prestations",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Notes de Calcul Structurel" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic Visuel Structurel" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic Sismique" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Attestation Parasismique — Dépôt PC" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Attestation de Fin de Chantier AT2" } }
+      ]
+    },
+    "sameAs": ["https://github.com/HLeToum/mh-structure"]
+  }
+  </script>
 
   <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
