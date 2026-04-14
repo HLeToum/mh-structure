@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
+  <script>(function(){var t=localStorage.getItem('mh-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mentions légales — MH Structure</title>
@@ -24,9 +25,21 @@
       --text3:   #3D5068;
       --border:  rgba(255,255,255,0.07);
       --border-g:rgba(201,168,76,0.22);
+      --nav-bg:  rgba(15,25,41,0.94);
     }
-
-    html { color-scheme: dark; }
+    [data-theme="light"] {
+      --bg:      #EFF3FA;
+      --surface: #FFFFFF;
+      --gold:    #B8922A;
+      --gold-l:  #C9A84C;
+      --text:    #0D1726;
+      --text2:   #3A5070;
+      --text3:   #7A90AA;
+      --border:  rgba(13,23,38,0.09);
+      --border-g:rgba(201,168,76,0.38);
+      --nav-bg:  rgba(239,243,250,0.94);
+    }
+    html { color-scheme: dark light; }
     body {
       font-family: 'Space Grotesk', sans-serif;
       background: var(--bg);
@@ -39,7 +52,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(15,25,41,0.94);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -48,6 +61,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: background 0.35s;
     }
     .nav-logo {
       display: flex;
@@ -155,6 +169,22 @@
       border-top: 1px solid var(--border);
     }
 
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .theme-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; padding: 0;
+      background: none; border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text2);
+      cursor: pointer; transition: color 0.2s, border-color 0.2s;
+      touch-action: manipulation;
+    }
+    .theme-btn:hover { color: var(--gold); border-color: var(--border-g); }
+    [data-theme="dark"]  .ti-sun  { display: block; }
+    [data-theme="dark"]  .ti-moon { display: none;  }
+    [data-theme="light"] .ti-sun  { display: none;  }
+    [data-theme="light"] .ti-moon { display: block; }
+    body, nav, main { transition: background-color 0.35s, color 0.35s; }
+
     @media (max-width: 600px) {
       main { padding: 5.5rem 1rem 3rem; }
       h1 { font-size: 1.5rem; }
@@ -169,8 +199,35 @@
     <div class="nav-logo-sep" aria-hidden="true"></div>
     <span class="nav-logo-struct" translate="no">STRUCTURE</span>
   </a>
-  <a href="index.html" class="nav-back">← Retour au site</a>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggle" aria-label="Activer le mode clair">
+      <svg class="ti-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg class="ti-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <a href="index.html" class="nav-back">← Retour au site</a>
+  </div>
 </nav>
+<script>
+  (function(){
+    var btn = document.getElementById('themeToggle');
+    var root = document.documentElement;
+    function apply(t){
+      root.setAttribute('data-theme',t);
+      localStorage.setItem('mh-theme',t);
+      btn.setAttribute('aria-label', t==='dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
+    }
+    btn.addEventListener('click',function(){
+      apply(root.getAttribute('data-theme')==='dark'?'light':'dark');
+    });
+  })();
+</script>
 
 <main>
   <h1>Mentions légales</h1>

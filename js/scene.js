@@ -18,6 +18,19 @@
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x0F1929, 0.014);
 
+  // ── API thème (appelée par main.js) ──────────────────
+  const THEME_DARK  = { bg: 0x0F1929, fog: 0x0F1929, fogDensity: 0.014 };
+  const THEME_LIGHT = { bg: 0xEFF3FA, fog: 0xEFF3FA, fogDensity: 0.010 };
+  window.mhSceneSetTheme = function (theme) {
+    const t = theme === 'light' ? THEME_LIGHT : THEME_DARK;
+    renderer.setClearColor(t.bg, 1);
+    scene.fog.color.setHex(t.fog);
+    scene.fog.density = t.fogDensity;
+  };
+  // Applique le thème déjà actif au chargement
+  const initTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  window.mhSceneSetTheme(initTheme);
+
   const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 200);
   camera.position.set(0, 3, 26);
   camera.lookAt(0, 0, 0);

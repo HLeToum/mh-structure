@@ -1,6 +1,32 @@
 /**
  * MH-Structure — Main JS
  */
+
+// ── Thème clair / sombre ──────────────────────────────
+(function () {
+  const root     = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  if (!themeBtn) return;
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('mh-theme', theme);
+    themeBtn.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'
+    );
+    if (window.mhSceneSetTheme) window.mhSceneSetTheme(theme);
+  }
+
+  // Synchronise avec l'attribut déjà posé par l'anti-FOUC
+  applyTheme(root.getAttribute('data-theme') || 'dark');
+
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   gsap.registerPlugin(ScrollTrigger);
