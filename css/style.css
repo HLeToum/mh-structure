@@ -397,15 +397,16 @@ a.ci-link:focus,
 }
 .hamburger span {
   display: block;
-  width: 22px;
-  height: 1.5px;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
   background: var(--text);
   transition: transform 0.28s, opacity 0.28s, background 0.28s;
 }
 .hamburger:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
-.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── Bouton langue FR / EN ──────────────────────────── */
 .lang-toggle {
@@ -1537,6 +1538,12 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
 }
 
 @media (max-width: 768px) {
+  /* Fond minimal sur mobile pour que le hamburger reste toujours visible */
+  #navbar:not(.scrolled) {
+    background: var(--nav-bg-scrolled);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .nav-links.open {
