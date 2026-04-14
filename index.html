@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="dark">
 <head>
-  <!-- Anti-FOUC : applique le thème sauvegardé avant le premier rendu -->
-  <script>(function(){var t=localStorage.getItem('mh-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <!-- Anti-FOUC : thème toujours sombre par défaut, langue sauvegardée -->
+  <script>(function(){document.documentElement.setAttribute('data-theme','dark');var l=localStorage.getItem('mh-lang')||'fr';document.documentElement.setAttribute('lang',l);})()</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
@@ -50,13 +50,19 @@
         <span class="logo-struct" translate="no">STRUCTURE</span>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#accueil"     class="nav-link">Accueil</a>
-        <a href="#prevention"  class="nav-link">Prévention</a>
-        <a href="#about"       class="nav-link">À propos</a>
-        <a href="#services"    class="nav-link">Services</a>
-        <a href="#contact"     class="nav-link">Devis</a>
+        <a href="#accueil"     class="nav-link" data-i18n="nav.home">Accueil</a>
+        <a href="#prevention"  class="nav-link" data-i18n="nav.prevention">Prévention</a>
+        <a href="#about"       class="nav-link" data-i18n="nav.about">À propos</a>
+        <a href="#services"    class="nav-link" data-i18n="nav.services">Services</a>
+        <a href="#contact"     class="nav-link" data-i18n="nav.contact">Devis</a>
       </div>
-      <a href="#contact" class="btn-cta nav-cta">Devis gratuit</a>
+      <a href="#contact" class="btn-cta nav-cta" data-i18n="nav.cta">Devis gratuit</a>
+      <!-- Sélecteur de langue FR / EN -->
+      <button class="lang-toggle" id="langToggle" aria-label="Switch to English">
+        <span class="lt-fr">FR</span>
+        <span class="lt-sep" aria-hidden="true">|</span>
+        <span class="lt-en">EN</span>
+      </button>
       <!-- Bouton thème clair / sombre -->
       <button class="theme-toggle" id="themeToggle" aria-label="Activer le mode clair" title="Changer de thème">
         <!-- Soleil (mode sombre → cliquer pour passer en clair) -->
@@ -87,25 +93,25 @@
       <div class="hero-content">
         <div class="hero-tag">
           <span class="tag-dot" aria-hidden="true"></span>
-          Bureau d'Études Techniques — Structure
+          <span data-i18n="hero.tag">Bureau d'Études Techniques — Structure</span>
         </div>
-        <h1 class="hero-h1">
+        <h1 class="hero-h1" data-i18n-html="hero.h1">
           Ingénierie<br>
           <em>Structurelle</em><br>
           de Précision
         </h1>
-        <p class="hero-desc">
+        <p class="hero-desc" data-i18n-html="hero.desc">
           Étude de structures · Diagnostic d'ouvrages · Contrôle réglementaire<br>
           Des solutions techniques adaptées à chaque situation.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Demander un devis <span aria-hidden="true">→</span></a>
-          <a href="#prevention" class="btn-ghost">Voir nos cas prévention</a>
+          <a href="#contact" class="btn-primary"><span data-i18n="hero.btn-primary">Demander un devis</span> <span aria-hidden="true">→</span></a>
+          <a href="#prevention" class="btn-ghost" data-i18n="hero.btn-ghost">Voir nos cas prévention</a>
         </div>
       </div>
     </div>
     <div class="hero-scroll" aria-hidden="true">
-      <span class="scroll-label">Défiler</span>
+      <span class="scroll-label" data-i18n="hero.scroll">Défiler</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -113,8 +119,8 @@
   <!-- ========== METRICS STRIP ========== -->
   <div class="metrics-strip" id="main-content">
     <div class="metric-item">
-      <div class="metric-val"><span class="counter" data-target="8">0</span><span> ans</span></div>
-      <div class="metric-lbl">Expérience en ingénierie structure</div>
+      <div class="metric-val"><span class="counter" data-target="8">0</span><span data-i18n="metric.years.unit"> ans</span></div>
+      <div class="metric-lbl" data-i18n="metric.years.label">Expérience en ingénierie structure</div>
     </div>
     <div class="metric-sep" aria-hidden="true"></div>
     <div class="metric-item metric-item--loc">
@@ -122,12 +128,12 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Carmaux · Tarn (81)
       </div>
-      <div class="metric-lbl">Interventions en France entière</div>
+      <div class="metric-lbl" data-i18n="metric.location.label">Interventions en France entière</div>
     </div>
     <div class="metric-sep" aria-hidden="true"></div>
     <div class="metric-item">
-      <div class="metric-val">48<span>h</span></div>
-      <div class="metric-lbl">Délai de réponse garanti</div>
+      <div class="metric-val">48<span data-i18n="metric.delay.unit">h</span></div>
+      <div class="metric-lbl" data-i18n="metric.delay.label">Délai de réponse garanti</div>
     </div>
     <div class="metric-sep" aria-hidden="true"></div>
     <div class="metric-item metric-item--smabtp">
@@ -138,7 +144,7 @@
         </svg>
         <span translate="no">SMABTP</span>
       </div>
-      <div class="metric-lbl">RC Pro &amp; Décennale — Assuré</div>
+      <div class="metric-lbl" data-i18n="metric.smabtp.label">RC Pro &amp; Décennale — Assuré</div>
     </div>
   </div>
 
@@ -176,11 +182,11 @@
       <div class="section-header">
         <div class="section-eyebrow">
           <span class="eyebrow-num">02</span>
-          <span class="eyebrow-label">Prévention</span>
+          <span class="eyebrow-label" data-i18n="prev.eyebrow">Prévention</span>
         </div>
         <div class="section-header-right">
-          <h2 class="section-h2">Reconnaître les pathologies<br>structurelles</h2>
-          <p class="section-sub">Des cas types illustrés pour vous aider à identifier les désordres courants sur votre ouvrage.</p>
+          <h2 class="section-h2" data-i18n-html="prev.h2">Reconnaître les pathologies<br>structurelles</h2>
+          <p class="section-sub" data-i18n="prev.sub">Des cas types illustrés pour vous aider à identifier les désordres courants sur votre ouvrage.</p>
         </div>
       </div>
 
@@ -189,7 +195,7 @@
         <div class="prevention-disclaimer-icon" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
         </div>
-        <p><strong>Chaque projet est unique.</strong> Ces cas types sont présentés à titre informatif et éducatif. L'identification d'un désordre similaire ne constitue pas un diagnostic. Seule une inspection technique par un ingénieur structure permet d'évaluer la sévérité réelle et de préconiser les mesures adaptées à votre ouvrage.</p>
+        <p data-i18n-html="prev.disclaimer"><strong>Chaque projet est unique.</strong> Ces cas types sont présentés à titre informatif et éducatif. L'identification d'un désordre similaire ne constitue pas un diagnostic. Seule une inspection technique par un ingénieur structure permet d'évaluer la sévérité réelle et de préconiser les mesures adaptées à votre ouvrage.</p>
       </div>
 
       <div class="pathology-grid">
@@ -206,19 +212,19 @@
             </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 01</span>
-              <span class="patho-cat">Poteau · Structure</span>
+              <span class="patho-cat" data-i18n="prev.c01.cat">Poteau · Structure</span>
             </div>
           </div>
           <div class="patho-body">
-            <h3 class="patho-title">Fissure diagonale sur poteau de façade</h3>
+            <h3 class="patho-title" data-i18n="prev.c01.title">Fissure diagonale sur poteau de façade</h3>
             <div class="patho-ps">
               <div class="patho-block obs-block">
-                <div class="patho-block-label obs">Observation</div>
-                <p>Fissure inclinée traversant un poteau béton armé au droit d'un nœud poutre-poteau. L'angle caractéristique et la continuité de la fissure sur la hauteur de l'élément sont des indicateurs à ne pas ignorer.</p>
+                <div class="patho-block-label obs" data-i18n="prev.label.obs">Observation</div>
+                <p data-i18n="prev.c01.obs">Fissure inclinée traversant un poteau béton armé au droit d'un nœud poutre-poteau. L'angle caractéristique et la continuité de la fissure sur la hauteur de l'élément sont des indicateurs à ne pas ignorer.</p>
               </div>
               <div class="patho-block inv-block">
-                <div class="patho-block-label inv">À investiguer</div>
-                <p>L'ouverture de fissure, la présence d'armatures apparentes et l'historique de l'ouvrage (séisme, surcharge, tassement) permettent d'orienter l'analyse et de statuer sur l'urgence d'une intervention.</p>
+                <div class="patho-block-label inv" data-i18n="prev.label.inv">À investiguer</div>
+                <p data-i18n="prev.c01.inv">L'ouverture de fissure, la présence d'armatures apparentes et l'historique de l'ouvrage (séisme, surcharge, tassement) permettent d'orienter l'analyse et de statuer sur l'urgence d'une intervention.</p>
               </div>
             </div>
           </div>
@@ -236,19 +242,19 @@
             </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 02</span>
-              <span class="patho-cat">Mur · Ouverture</span>
+              <span class="patho-cat" data-i18n="prev.c02.cat">Mur · Ouverture</span>
             </div>
           </div>
           <div class="patho-body">
-            <h3 class="patho-title">Fissure oblique en pied de mur</h3>
+            <h3 class="patho-title" data-i18n="prev.c02.title">Fissure oblique en pied de mur</h3>
             <div class="patho-ps">
               <div class="patho-block obs-block">
-                <div class="patho-block-label obs">Observation</div>
-                <p>Fissure se propageant en diagonale depuis la base d'un mur jusqu'à l'encadrement d'une porte. La trajectoire et la localisation au droit d'une discontinuité géométrique sont caractéristiques.</p>
+                <div class="patho-block-label obs" data-i18n="prev.label.obs">Observation</div>
+                <p data-i18n="prev.c02.obs">Fissure se propageant en diagonale depuis la base d'un mur jusqu'à l'encadrement d'une porte. La trajectoire et la localisation au droit d'une discontinuité géométrique sont caractéristiques.</p>
               </div>
               <div class="patho-block inv-block">
-                <div class="patho-block-label inv">À investiguer</div>
-                <p>Il convient d'établir si la fissure affecte l'enduit uniquement ou s'étend à la maçonnerie porteuse. Son évolution dans le temps et l'éventuelle présence d'humidité associée sont des éléments déterminants.</p>
+                <div class="patho-block-label inv" data-i18n="prev.label.inv">À investiguer</div>
+                <p data-i18n="prev.c02.inv">Il convient d'établir si la fissure affecte l'enduit uniquement ou s'étend à la maçonnerie porteuse. Son évolution dans le temps et l'éventuelle présence d'humidité associée sont des éléments déterminants.</p>
               </div>
             </div>
           </div>
@@ -266,19 +272,19 @@
             </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 03</span>
-              <span class="patho-cat">Voile · Réhabilitation</span>
+              <span class="patho-cat" data-i18n="prev.c03.cat">Voile · Réhabilitation</span>
             </div>
           </div>
           <div class="patho-body">
-            <h3 class="patho-title">Fissuration multiple en zone de travaux</h3>
+            <h3 class="patho-title" data-i18n="prev.c03.title">Fissuration multiple en zone de travaux</h3>
             <div class="patho-ps">
               <div class="patho-block obs-block">
-                <div class="patho-block-label obs">Observation</div>
-                <p>Réseau de fissures d'orientations variées (verticales, obliques) sur un voile en contexte de réhabilitation. La coexistence de plusieurs directions peut suggérer des mécanismes simultanés.</p>
+                <div class="patho-block-label obs" data-i18n="prev.label.obs">Observation</div>
+                <p data-i18n="prev.c03.obs">Réseau de fissures d'orientations variées (verticales, obliques) sur un voile en contexte de réhabilitation. La coexistence de plusieurs directions peut suggérer des mécanismes simultanés.</p>
               </div>
               <div class="patho-block inv-block">
-                <div class="patho-block-label inv">À investiguer</div>
-                <p>En phase de rénovation, les modifications de distribution des charges et les interfaces anciens/nouveaux matériaux sont des zones de fragilité. Un état des lieux structurel s'impose avant toute reprise.</p>
+                <div class="patho-block-label inv" data-i18n="prev.label.inv">À investiguer</div>
+                <p data-i18n="prev.c03.inv">En phase de rénovation, les modifications de distribution des charges et les interfaces anciens/nouveaux matériaux sont des zones de fragilité. Un état des lieux structurel s'impose avant toute reprise.</p>
               </div>
             </div>
           </div>
@@ -296,19 +302,19 @@
             </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 04</span>
-              <span class="patho-cat">Façade · Étanchéité</span>
+              <span class="patho-cat" data-i18n="prev.c04.cat">Façade · Étanchéité</span>
             </div>
           </div>
           <div class="patho-body">
-            <h3 class="patho-title">Exfiltration d'eau en façade béton</h3>
+            <h3 class="patho-title" data-i18n="prev.c04.title">Exfiltration d'eau en façade béton</h3>
             <div class="patho-ps">
               <div class="patho-block obs-block">
-                <div class="patho-block-label obs">Observation</div>
-                <p>Traces de ruissellement et auréoles d'humidité sur une façade en béton armé, indiquant une migration d'eau à travers ou le long de la paroi. Les dépôts blanchâtres (efflorescences) peuvent accompagner ce désordre.</p>
+                <div class="patho-block-label obs" data-i18n="prev.label.obs">Observation</div>
+                <p data-i18n="prev.c04.obs">Traces de ruissellement et auréoles d'humidité sur une façade en béton armé, indiquant une migration d'eau à travers ou le long de la paroi. Les dépôts blanchâtres (efflorescences) peuvent accompagner ce désordre.</p>
               </div>
               <div class="patho-block inv-block">
-                <div class="patho-block-label inv">À investiguer</div>
-                <p>L'origine de l'eau (toiture, acrotère, fissure traversante, défaut de joint) et la présence de carbonatation ou de chlorures associés conditionnent le risque de dégradation des armatures sur le long terme.</p>
+                <div class="patho-block-label inv" data-i18n="prev.label.inv">À investiguer</div>
+                <p data-i18n="prev.c04.inv">L'origine de l'eau (toiture, acrotère, fissure traversante, défaut de joint) et la présence de carbonatation ou de chlorures associés conditionnent le risque de dégradation des armatures sur le long terme.</p>
               </div>
             </div>
           </div>
@@ -326,19 +332,19 @@
             </picture>
             <div class="patho-overlay">
               <span class="patho-num">CAS 05</span>
-              <span class="patho-cat">Façade · Infiltration</span>
+              <span class="patho-cat" data-i18n="prev.c05.cat">Façade · Infiltration</span>
             </div>
           </div>
           <div class="patho-body">
-            <h3 class="patho-title">Infiltrations répétées sur façade</h3>
+            <h3 class="patho-title" data-i18n="prev.c05.title">Infiltrations répétées sur façade</h3>
             <div class="patho-ps">
               <div class="patho-block obs-block">
-                <div class="patho-block-label obs">Observation</div>
-                <p>Infiltrations d'eau visibles sur plusieurs niveaux d'une façade béton, concentrées aux angles des ouvertures et aux zones de jonction structure/menuiserie. Le caractère répété et généralisé est significatif.</p>
+                <div class="patho-block-label obs" data-i18n="prev.label.obs">Observation</div>
+                <p data-i18n="prev.c05.obs">Infiltrations d'eau visibles sur plusieurs niveaux d'une façade béton, concentrées aux angles des ouvertures et aux zones de jonction structure/menuiserie. Le caractère répété et généralisé est significatif.</p>
               </div>
               <div class="patho-block inv-block">
-                <div class="patho-block-label inv">À investiguer</div>
-                <p>Un défaut d'étanchéité généralisé peut accélérer la corrosion des armatures de façade. L'évaluation de la profondeur d'humidité, l'état des joints de menuiserie et la présence de fissures traversantes sont des points clés.</p>
+                <div class="patho-block-label inv" data-i18n="prev.label.inv">À investiguer</div>
+                <p data-i18n="prev.c05.inv">Un défaut d'étanchéité généralisé peut accélérer la corrosion des armatures de façade. L'évaluation de la profondeur d'humidité, l'état des joints de menuiserie et la présence de fissures traversantes sont des points clés.</p>
               </div>
             </div>
           </div>
@@ -349,10 +355,10 @@
       <div class="prevention-cta">
         <div class="prevention-cta-inner">
           <div class="prevention-cta-text">
-            <p class="prevention-cta-q">Vous reconnaissez un de ces signes sur votre bâtiment ?</p>
-            <p class="prevention-cta-sub">Chaque situation est unique. Un examen par un ingénieur structure est indispensable pour évaluer le niveau de risque réel.</p>
+            <p class="prevention-cta-q" data-i18n="prev.cta.q">Vous reconnaissez un de ces signes sur votre bâtiment ?</p>
+            <p class="prevention-cta-sub" data-i18n="prev.cta.sub">Chaque situation est unique. Un examen par un ingénieur structure est indispensable pour évaluer le niveau de risque réel.</p>
           </div>
-          <a href="#contact" class="btn-primary prevention-cta-btn">Demander un diagnostic <span aria-hidden="true">→</span></a>
+          <a href="#contact" class="btn-primary prevention-cta-btn"><span data-i18n="prev.cta.btn">Demander un diagnostic</span> <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
@@ -374,8 +380,8 @@
                 <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" fill="#C9A84C"/>
               </svg>
               <div>
-                <div class="badge-title">Bureau d'Études</div>
-                <div class="badge-sub">Ingénierie Structure</div>
+                <div class="badge-title" data-i18n="about.badge.title">Bureau d'Études</div>
+                <div class="badge-sub" data-i18n="about.badge.sub">Ingénierie Structure</div>
               </div>
             </div>
           </div>
@@ -398,33 +404,33 @@
         <div class="about-text">
           <div class="section-eyebrow">
             <span class="eyebrow-num">03</span>
-            <span class="eyebrow-label">À propos</span>
+            <span class="eyebrow-label" data-i18n="about.eyebrow">À propos</span>
           </div>
-          <h2 class="section-h2">Un bureau d'études structure à votre service</h2>
-          <p class="body-text">
+          <h2 class="section-h2" data-i18n="about.h2">Un bureau d'études structure à votre service</h2>
+          <p class="body-text" data-i18n="about.p1">
             MH-Structure est un bureau d'études structure qui accompagne maîtres d'ouvrage,
             architectes et particuliers dans leurs projets de construction neuve et de réhabilitation.
             Nous intervenons à chaque étape d'un ouvrage, du dimensionnement initial
             au diagnostic des désordres, avec rigueur et méthode.
           </p>
-          <p class="body-text">
+          <p class="body-text" data-i18n="about.p2">
             Nos compétences couvrent le calcul de structures, le diagnostic technique
             et le contrôle réglementaire, notamment sur les aspects liés à la sismicité
             pour les bâtiments soumis à ces exigences.
           </p>
           <div class="about-divider" aria-hidden="true"></div>
           <div class="about-clients">
-            <div class="about-clients-label">Nous intervenons pour</div>
+            <div class="about-clients-label" data-i18n="about.clients.label">Nous intervenons pour</div>
             <div class="about-clients-list">
-              <span>Architectes</span>
-              <span>Maîtres d'ouvrage</span>
-              <span>Promoteurs</span>
-              <span>Particuliers</span>
-              <span>Collectivités</span>
-              <span>Entreprises de construction</span>
+              <span data-i18n="about.client.1">Architectes</span>
+              <span data-i18n="about.client.2">Maîtres d'ouvrage</span>
+              <span data-i18n="about.client.3">Promoteurs</span>
+              <span data-i18n="about.client.4">Particuliers</span>
+              <span data-i18n="about.client.5">Collectivités</span>
+              <span data-i18n="about.client.6">Entreprises de construction</span>
             </div>
           </div>
-          <a href="#contact" class="btn-primary">Discutons de votre projet <span aria-hidden="true">→</span></a>
+          <a href="#contact" class="btn-primary"><span data-i18n="about.btn">Discutons de votre projet</span> <span aria-hidden="true">→</span></a>
         </div>
 
       </div>
@@ -437,11 +443,11 @@
       <div class="section-header">
         <div class="section-eyebrow">
           <span class="eyebrow-num">04</span>
-          <span class="eyebrow-label">Services</span>
+          <span class="eyebrow-label" data-i18n="svc.eyebrow">Services</span>
         </div>
         <div class="section-header-right">
-          <h2 class="section-h2">Nos prestations</h2>
-          <p class="section-sub">Du dimensionnement à la certification réglementaire, nous intervenons sur toutes les étapes techniques de votre projet.</p>
+          <h2 class="section-h2" data-i18n="svc.h2">Nos prestations</h2>
+          <p class="section-sub" data-i18n="svc.sub">Du dimensionnement à la certification réglementaire, nous intervenons sur toutes les étapes techniques de votre projet.</p>
         </div>
       </div>
 
@@ -461,10 +467,10 @@
               <line x1="8" y1="20" x2="17" y2="20" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </div>
-          <h3 class="svc-title">Notes de Calcul Structurel</h3>
-          <p class="svc-desc">Dimensionnement et vérification des éléments porteurs selon les Eurocodes — fondations, voiles, planchers, poteaux, poutres, escaliers. Justification de stabilité générale.</p>
+          <h3 class="svc-title" data-i18n="svc.01.title">Notes de Calcul Structurel</h3>
+          <p class="svc-desc" data-i18n="svc.01.desc">Dimensionnement et vérification des éléments porteurs selon les Eurocodes — fondations, voiles, planchers, poteaux, poutres, escaliers. Justification de stabilité générale.</p>
           <div class="svc-tags">
-            <span>Eurocode 2</span><span>Béton armé</span><span>Fondations</span><span>Stabilité</span>
+            <span data-i18n="svc.01.t1">Eurocode 2</span><span data-i18n="svc.01.t2">Béton armé</span><span data-i18n="svc.01.t3">Fondations</span><span data-i18n="svc.01.t4">Stabilité</span>
           </div>
         </article>
 
@@ -482,10 +488,10 @@
               <circle cx="10" cy="10" r="2" fill="currentColor" opacity="0.6"/>
             </svg>
           </div>
-          <h3 class="svc-title">Diagnostic Visuel Structurel</h3>
-          <p class="svc-desc">Inspection visuelle approfondie de l'ouvrage : identification et classification des désordres (fissures, éclatements, déformations), évaluation de la sévérité et recommandations.</p>
+          <h3 class="svc-title" data-i18n="svc.02.title">Diagnostic Visuel Structurel</h3>
+          <p class="svc-desc" data-i18n="svc.02.desc">Inspection visuelle approfondie de l'ouvrage : identification et classification des désordres (fissures, éclatements, déformations), évaluation de la sévérité et recommandations.</p>
           <div class="svc-tags">
-            <span>Pathologies</span><span>Fissures</span><span>Rapport technique</span>
+            <span data-i18n="svc.02.t1">Pathologies</span><span data-i18n="svc.02.t2">Fissures</span><span data-i18n="svc.02.t3">Rapport technique</span>
           </div>
         </article>
 
@@ -500,10 +506,10 @@
               <path d="M9 15L13 19L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3 class="svc-title">Diagnostic Sismique</h3>
-          <p class="svc-desc">Évaluation de la vulnérabilité des ouvrages existants vis-à-vis du risque sismique : analyse de la structure, vérification réglementaire et recommandations techniques adaptées.</p>
+          <h3 class="svc-title" data-i18n="svc.03.title">Diagnostic Sismique</h3>
+          <p class="svc-desc" data-i18n="svc.03.desc">Évaluation de la vulnérabilité des ouvrages existants vis-à-vis du risque sismique : analyse de la structure, vérification réglementaire et recommandations techniques adaptées.</p>
           <div class="svc-tags">
-            <span>Eurocode 8</span><span>Vulnérabilité</span><span>Réglementation</span>
+            <span data-i18n="svc.03.t1">Eurocode 8</span><span data-i18n="svc.03.t2">Vulnérabilité</span><span data-i18n="svc.03.t3">Réglementation</span>
           </div>
         </article>
 
@@ -521,10 +527,10 @@
               <line x1="4" y1="10" x2="26" y2="10" stroke="currentColor" stroke-width="1" opacity="0.4"/>
             </svg>
           </div>
-          <h3 class="svc-title">Attestation Parasismique — Dépôt de PC</h3>
-          <p class="svc-desc">Établissement de l'attestation réglementaire à joindre au dépôt de permis de construire, certifiant la prise en compte des règles parasismiques (PS-MI / Eurocode 8) dans la conception du projet.</p>
+          <h3 class="svc-title" data-i18n="svc.04.title">Attestation Parasismique — Dépôt de PC</h3>
+          <p class="svc-desc" data-i18n="svc.04.desc">Établissement de l'attestation réglementaire à joindre au dépôt de permis de construire, certifiant la prise en compte des règles parasismiques (PS-MI / Eurocode 8) dans la conception du projet.</p>
           <div class="svc-tags">
-            <span>PS-MI</span><span>Permis de construire</span><span>Réglementation</span>
+            <span data-i18n="svc.04.t1">PS-MI</span><span data-i18n="svc.04.t2">Permis de construire</span><span data-i18n="svc.04.t3">Réglementation</span>
           </div>
         </article>
 
@@ -539,10 +545,10 @@
               <path d="M11 18L14 21L20 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3 class="svc-title">Attestation de Fin de Chantier — AT2</h3>
-          <p class="svc-desc">Établissement de l'attestation AT2 à l'achèvement des travaux, après visite de fin de chantier et vérification de la conformité des dispositions constructives aux exigences réglementaires.</p>
+          <h3 class="svc-title" data-i18n="svc.05.title">Attestation de Fin de Chantier — AT2</h3>
+          <p class="svc-desc" data-i18n="svc.05.desc">Établissement de l'attestation AT2 à l'achèvement des travaux, après visite de fin de chantier et vérification de la conformité des dispositions constructives aux exigences réglementaires.</p>
           <div class="svc-tags">
-            <span>AT2</span><span>Fin de chantier</span><span>Conformité</span>
+            <span data-i18n="svc.05.t1">AT2</span><span data-i18n="svc.05.t2">Fin de chantier</span><span data-i18n="svc.05.t3">Conformité</span>
           </div>
         </article>
 
@@ -558,10 +564,10 @@
         <div class="contact-left">
           <div class="section-eyebrow">
             <span class="eyebrow-num">05</span>
-            <span class="eyebrow-label">Devis</span>
+            <span class="eyebrow-label" data-i18n="contact.eyebrow">Devis</span>
           </div>
-          <h2 class="section-h2 contact-h2">Parlons de<br>votre projet.</h2>
-          <p class="body-text contact-desc">Un ouvrage à dimensionner, diagnostiquer ou modéliser ? Réponse garantie sous 48h.</p>
+          <h2 class="section-h2 contact-h2" data-i18n-html="contact.h2">Parlons de<br>votre projet.</h2>
+          <p class="body-text contact-desc" data-i18n="contact.desc">Un ouvrage à dimensionner, diagnostiquer ou modéliser ? Réponse garantie sous 48h.</p>
 
           <div class="contact-items">
             <div class="contact-item">
@@ -569,7 +575,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
-                <div class="ci-label">Email</div>
+                <div class="ci-label" data-i18n="contact.email.label">Email</div>
                 <a href="mailto:contact@mh-structure.fr" class="ci-val ci-link">contact@mh-structure.fr</a>
               </div>
             </div>
@@ -578,7 +584,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
-                <div class="ci-label">Téléphone</div>
+                <div class="ci-label" data-i18n="contact.phone.label">Téléphone</div>
                 <a href="tel:+33XXXXXXXXX" class="ci-val ci-link">+33 (0)X XX XX XX XX</a>
               </div>
             </div>
@@ -587,8 +593,8 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>
-                <div class="ci-label">Localisation</div>
-                <div class="ci-val">Carmaux · Tarn (81) — Interventions en France</div>
+                <div class="ci-label" data-i18n="contact.loc.label">Localisation</div>
+                <div class="ci-val" data-i18n="contact.loc.val">Carmaux · Tarn (81) — Interventions en France</div>
               </div>
             </div>
           </div>
@@ -602,39 +608,39 @@
             <input type="hidden" name="botcheck" value="">
             <div class="form-row">
               <div class="form-group">
-                <label for="nom">Nom complet *</label>
-                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" required>
+                <label for="nom" data-i18n="form.nom.label">Nom complet *</label>
+                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" required data-i18n-ph="form.nom.ph">
               </div>
               <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" autocomplete="email" spellcheck="false" required>
+                <label for="email" data-i18n="form.email.label">Email *</label>
+                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" autocomplete="email" spellcheck="false" required data-i18n-ph="form.email.ph">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="telephone">Téléphone</label>
+                <label for="telephone" data-i18n="form.tel.label">Téléphone</label>
                 <input type="tel" id="telephone" name="telephone" placeholder="+33 6 XX XX XX XX" autocomplete="tel" inputmode="tel">
               </div>
               <div class="form-group">
-                <label for="type">Type de prestation *</label>
+                <label for="type" data-i18n="form.type.label">Type de prestation *</label>
                 <select id="type" name="type" required>
-                  <option value="">Sélectionner…</option>
-                  <option value="calcul">Notes de calcul structurel</option>
-                  <option value="diagnostic-visuel">Diagnostic visuel structurel</option>
-                  <option value="diagnostic-sismique">Diagnostic sismique</option>
-                  <option value="attestation-pc">Attestation parasismique — Dépôt PC</option>
-                  <option value="attestation-at2">Attestation fin de chantier AT2</option>
-                  <option value="autre">Autre / Question</option>
+                  <option value="" data-i18n="form.type.default">Sélectionner…</option>
+                  <option value="calcul" data-i18n="form.type.calcul">Notes de calcul structurel</option>
+                  <option value="diagnostic-visuel" data-i18n="form.type.diag-vis">Diagnostic visuel structurel</option>
+                  <option value="diagnostic-sismique" data-i18n="form.type.diag-sis">Diagnostic sismique</option>
+                  <option value="attestation-pc" data-i18n="form.type.att-pc">Attestation parasismique — Dépôt PC</option>
+                  <option value="attestation-at2" data-i18n="form.type.att-at2">Attestation fin de chantier AT2</option>
+                  <option value="autre" data-i18n="form.type.autre">Autre / Question</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
-              <label for="message">Description du projet *</label>
-              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" required></textarea>
+              <label for="message" data-i18n="form.msg.label">Description du projet *</label>
+              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" required data-i18n-ph="form.msg.ph"></textarea>
             </div>
             <div class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
             <button type="submit" class="btn-primary submit-btn">
-              Envoyer ma demande <span aria-hidden="true">→</span>
+              <span data-i18n="form.submit">Envoyer ma demande</span> <span aria-hidden="true">→</span>
             </button>
           </form>
         </div>
@@ -653,29 +659,29 @@
         </a>
         <nav class="footer-nav" aria-label="Navigation footer">
           <div class="footer-col">
-            <div class="footer-col-title">Navigation</div>
-            <a href="#accueil">Accueil</a>
-            <a href="#prevention">Prévention</a>
-            <a href="#about">À propos</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Devis</a>
+            <div class="footer-col-title" data-i18n="footer.nav.title">Navigation</div>
+            <a href="#accueil" data-i18n="footer.nav.home">Accueil</a>
+            <a href="#prevention" data-i18n="footer.nav.prev">Prévention</a>
+            <a href="#about" data-i18n="footer.nav.about">À propos</a>
+            <a href="#services" data-i18n="footer.nav.svc">Services</a>
+            <a href="#contact" data-i18n="footer.nav.contact">Devis</a>
           </div>
           <div class="footer-col">
-            <div class="footer-col-title">Prestations</div>
-            <a href="#services">Notes de Calcul</a>
-            <a href="#services">Diagnostic Visuel</a>
-            <a href="#services">Diagnostic Sismique</a>
-            <a href="#services">Attestation PC</a>
-            <a href="#services">Attestation AT2</a>
+            <div class="footer-col-title" data-i18n="footer.svc.title">Prestations</div>
+            <a href="#services" data-i18n="footer.svc.1">Notes de Calcul</a>
+            <a href="#services" data-i18n="footer.svc.2">Diagnostic Visuel</a>
+            <a href="#services" data-i18n="footer.svc.3">Diagnostic Sismique</a>
+            <a href="#services" data-i18n="footer.svc.4">Attestation PC</a>
+            <a href="#services" data-i18n="footer.svc.5">Attestation AT2</a>
           </div>
         </nav>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 MH Structure. Tous droits réservés.</span>
+        <span data-i18n="footer.copy">© 2025 MH Structure. Tous droits réservés.</span>
         <div class="footer-legal">
-          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a>
           <span aria-hidden="true">·</span>
-          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="politique-confidentialite.html" data-i18n="footer.privacy">Politique de confidentialité</a>
         </div>
       </div>
     </div>
@@ -747,6 +753,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
           integrity="sha384-V0oE5KjuA5fwJoB7Ve6EjvvRB2skf+fPQ1IncPdJ4HurEaHbSKYUoW3Y13UzFcpD"
           crossorigin="anonymous"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/scene.js"></script>
   <script src="js/main.js"></script>
 </body>
