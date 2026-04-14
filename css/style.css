@@ -98,6 +98,46 @@ body {
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
+/* ── Fallback :focus pour navigateurs sans :focus-visible ── */
+/* Masqué pour les utilisateurs souris (navigateurs modernes),
+   visible pour clavier/switch-access (navigateurs anciens) */
+.skip-link:focus,
+.btn-primary:focus,
+.btn-ghost:focus,
+.btn-cta:focus,
+.nav-link:focus,
+.hamburger:focus,
+.lang-toggle:focus,
+.theme-toggle:focus,
+.footer-col a:focus,
+.footer-legal a:focus,
+a.ci-link:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+/* Annule le fallback si :focus-visible est supporté (navigateurs modernes) */
+@supports selector(:focus-visible) {
+  .skip-link:focus:not(:focus-visible),
+  .btn-primary:focus:not(:focus-visible),
+  .btn-ghost:focus:not(:focus-visible),
+  .btn-cta:focus:not(:focus-visible),
+  .nav-link:focus:not(:focus-visible),
+  .hamburger:focus:not(:focus-visible),
+  .lang-toggle:focus:not(:focus-visible),
+  .theme-toggle:focus:not(:focus-visible),
+  .footer-col a:focus:not(:focus-visible),
+  .footer-legal a:focus:not(:focus-visible),
+  a.ci-link:focus:not(:focus-visible),
+  .form-group input:focus:not(:focus-visible),
+  .form-group select:focus:not(:focus-visible),
+  .form-group textarea:focus:not(:focus-visible) {
+    outline: 0;
+  }
+}
+
 /* ── Skip link ──────────────────────────────────────────── */
 .skip-link {
   position: absolute;
@@ -506,6 +546,11 @@ body,
   font-style: normal;
   -webkit-text-stroke: 1.5px var(--gold);
   color: transparent;
+}
+/* Mode clair : texte plein or (contraste 5.4:1 sur #EFF3FA — WCAG AA ✓) */
+[data-theme="light"] .hero-h1 em {
+  -webkit-text-stroke: 0;
+  color: var(--gold);
 }
 .hero-desc {
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);

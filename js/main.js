@@ -179,6 +179,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const status = form.querySelector('.form-status');
     const orig   = btn.innerHTML;
 
+    // ── Validation HTML5 + aria-invalid ──────────────────
+    const requiredFields = form.querySelectorAll('[required]');
+    let hasError = false;
+    requiredFields.forEach(field => {
+      if (!field.validity.valid) {
+        field.setAttribute('aria-invalid', 'true');
+        hasError = true;
+      } else {
+        field.removeAttribute('aria-invalid');
+      }
+    });
+    if (hasError) {
+      // Focus sur le premier champ invalide
+      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
     btn.disabled  = true;
     btn.innerHTML = 'Envoi en cours\u2026';
     if (status) status.textContent = '';
@@ -194,6 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.innerHTML = '✓ Demande envoyée !';
         btn.classList.add('submit-btn--success');
         if (status) status.textContent = 'Votre demande a bien été envoyée. Réponse sous 48h.';
+        // Retire tous les aria-invalid au succès
+        requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
         setTimeout(() => {
           btn.innerHTML = orig;
           btn.classList.remove('submit-btn--success');
@@ -211,6 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = false;
       }, 3000);
     }
+  });
+
+  // ── Retire aria-invalid en temps réel quand le champ est corrigé ─
+  document.getElementById('contactForm').querySelectorAll('[required]').forEach(field => {
+    field.addEventListener('input', () => {
+      if (field.validity.valid) field.removeAttribute('aria-invalid');
+    });
   });
 
   // ── Marquee pause on hover ────────────────────────────
