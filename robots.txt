@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://hletoum.github.io/mh-structure/sitemap.xml
+Sitemap: https://bet-mh.fr/sitemap.xml

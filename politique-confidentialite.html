@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité — MH Structure</title>
+  <meta name="description" content="Politique de confidentialité du site MH Structure. Protection de vos données personnelles conformément au RGPD.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://bet-mh.fr/politique-confidentialite">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #0F1929;
+      --surface: #141E35;
+      --gold:    #C9A84C;
+      --gold-l:  #DFB95E;
+      --text:    #EEF2F8;
+      --text2:   #8899B4;
+      --text3:   #3D5068;
+      --border:  rgba(255,255,255,0.07);
+      --border-g:rgba(201,168,76,0.22);
+    }
+
+    html { color-scheme: dark; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text2);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(15,25,41,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(24px,5vw,64px);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-mh {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo-sep { width: 1px; height: 18px; background: var(--border-g); }
+    .nav-logo-struct {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text2);
+      letter-spacing: 0.18em;
+    }
+    .nav-back {
+      font-size: 0.82rem;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p, li {
+      color: var(--text2);
+      font-size: 0.92rem;
+      margin-bottom: 0.6rem;
+    }
+
+    ul { list-style: none; padding-left: 0; }
+    ul li {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+    ul li::before {
+      content: "—";
+      color: var(--gold);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    strong { color: var(--text); font-weight: 600; }
+    a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--gold-l); }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.88rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.02);
+    }
+    td { color: var(--text2); }
+    tr:last-child td { border-bottom: none; }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-g), transparent);
+      margin: 3rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text3);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 5.5rem 1rem 3rem; }
+      h1 { font-size: 1.5rem; }
+      table { font-size: 0.8rem; }
+      th, td { padding: 0.4rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="MH Structure — retour accueil">
+    <span class="nav-logo-mh" translate="no">MH</span>
+    <div class="nav-logo-sep" aria-hidden="true"></div>
+    <span class="nav-logo-struct" translate="no">STRUCTURE</span>
+  </a>
+  <a href="index.html" class="nav-back">← Retour au site</a>
+</nav>
+
+<main>
+  <h1>Politique de confidentialité</h1>
+  <p class="subtitle">Dernière mise à jour : avril 2025</p>
+
+  <h2>1. Responsable du traitement</h2>
+  <p>
+    <strong>MH Structure SAS</strong><br>
+    [Adresse à compléter], 81400 Carmaux, France<br>
+    Email : <a href="mailto:contact@mh-structure.fr">contact@mh-structure.fr</a>
+  </p>
+
+  <h2>2. Données collectées</h2>
+  <p>Nous collectons uniquement les données que vous nous transmettez volontairement via le formulaire de contact :</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Donnée</th>
+        <th>Finalité</th>
+        <th>Base légale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nom complet</td>
+        <td>Identification de l'interlocuteur</td>
+        <td>Consentement</td>
+      </tr>
+      <tr>
+        <td>Adresse email</td>
+        <td>Réponse à la demande de devis</td>
+        <td>Consentement</td>
+      </tr>
+      <tr>
+        <td>Téléphone (facultatif)</td>
+        <td>Prise de contact directe si nécessaire</td>
+        <td>Consentement</td>
+      </tr>
+      <tr>
+        <td>Type de prestation</td>
+        <td>Orientation de la demande</td>
+        <td>Consentement</td>
+      </tr>
+      <tr>
+        <td>Description du projet</td>
+        <td>Compréhension du besoin technique</td>
+        <td>Consentement</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Aucun cookie de suivi</strong> n'est déposé sur votre navigateur. Ce site n'utilise pas de solution d'analyse d'audience impliquant des cookies tiers.</p>
+
+  <h2>3. Durée de conservation</h2>
+  <p>Les données transmises via le formulaire de contact sont conservées pour une durée maximale de <strong>24 mois</strong> à compter de la réception, sauf relation contractuelle établie.</p>
+
+  <h2>4. Destinataires des données</h2>
+  <p>Vos données sont exclusivement destinées à MH Structure SAS pour le traitement de votre demande. Elles ne sont jamais vendues, louées ou transmises à des tiers à des fins commerciales.</p>
+  <p>Sous-traitants techniques pouvant avoir accès aux données dans le cadre de leur prestation :</p>
+  <ul>
+    <li><strong>Vercel Inc.</strong> — hébergement du site</li>
+    <li><strong>Web3Forms</strong> — acheminement des messages du formulaire de contact</li>
+  </ul>
+
+  <h2>5. Vos droits</h2>
+  <p>Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+  <ul>
+    <li><strong>Droit d'accès</strong> — obtenir confirmation du traitement de vos données et en recevoir une copie</li>
+    <li><strong>Droit de rectification</strong> — corriger des données inexactes ou incomplètes</li>
+    <li><strong>Droit d'effacement</strong> — demander la suppression de vos données</li>
+    <li><strong>Droit d'opposition</strong> — vous opposer au traitement de vos données</li>
+    <li><strong>Droit à la portabilité</strong> — recevoir vos données dans un format structuré</li>
+    <li><strong>Droit de limitation</strong> — restreindre le traitement de vos données</li>
+  </ul>
+  <p>Pour exercer ces droits : <a href="mailto:contact@mh-structure.fr">contact@mh-structure.fr</a> — réponse sous 30 jours.</p>
+
+  <h2>6. Sécurité</h2>
+  <p>Le site est servi exclusivement en HTTPS. Des mesures techniques (en-têtes HTTP de sécurité, protection CSRF, chiffrement TLS) sont mises en œuvre pour protéger vos données.</p>
+
+  <h2>7. Réclamation</h2>
+  <p>En cas de litige sur le traitement de vos données, vous pouvez adresser une réclamation à la <strong>CNIL</strong> :</p>
+  <p>
+    3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07<br>
+    <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
+  </p>
+
+  <div class="divider"></div>
+
+  <p style="text-align: center;">
+    <a href="mentions-legales.html">← Mentions légales</a>
+  </p>
+</main>
+
+<footer>
+  © 2025 MH Structure SAS — Bureau d'Études Techniques Structure
+</footer>
+
+</body>
+</html>

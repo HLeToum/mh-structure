@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales — MH Structure</title>
+  <meta name="description" content="Mentions légales du site MH Structure, bureau d'études techniques structure à Carmaux (Tarn).">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://bet-mh.fr/mentions-legales">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #0F1929;
+      --surface: #141E35;
+      --gold:    #C9A84C;
+      --gold-l:  #DFB95E;
+      --text:    #EEF2F8;
+      --text2:   #8899B4;
+      --text3:   #3D5068;
+      --border:  rgba(255,255,255,0.07);
+      --border-g:rgba(201,168,76,0.22);
+    }
+
+    html { color-scheme: dark; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text2);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(15,25,41,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(24px,5vw,64px);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-mh {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo-sep {
+      width: 1px;
+      height: 18px;
+      background: var(--border-g);
+    }
+    .nav-logo-struct {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--text2);
+      letter-spacing: 0.18em;
+    }
+    .nav-back {
+      font-size: 0.82rem;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+
+    /* ── Main ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p, li {
+      color: var(--text2);
+      font-size: 0.92rem;
+      margin-bottom: 0.6rem;
+    }
+
+    ul { list-style: none; padding-left: 0; }
+    ul li::before {
+      content: "—";
+      color: var(--gold);
+      margin-right: 0.6rem;
+      opacity: 0.6;
+    }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--gold-l); }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-g), transparent);
+      margin: 3rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text3);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 5.5rem 1rem 3rem; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="MH Structure — retour accueil">
+    <span class="nav-logo-mh" translate="no">MH</span>
+    <div class="nav-logo-sep" aria-hidden="true"></div>
+    <span class="nav-logo-struct" translate="no">STRUCTURE</span>
+  </a>
+  <a href="index.html" class="nav-back">← Retour au site</a>
+</nav>
+
+<main>
+  <h1>Mentions légales</h1>
+  <p class="subtitle">Dernière mise à jour : avril 2025</p>
+
+  <h2>1. Éditeur du site</h2>
+  <p>
+    <strong>MH Structure SAS</strong><br>
+    Bureau d'études techniques — Structure<br>
+    Siège social : [Adresse à compléter], 81400 Carmaux, France<br>
+    SIRET : [À compléter à l'immatriculation]<br>
+    RCS : Albi [À compléter]<br>
+    Capital social : [À compléter] €<br>
+    N° TVA intracommunautaire : [À compléter]<br>
+    Code APE : 7112B — Ingénierie, études techniques
+  </p>
+  <p>
+    <strong>Directeur de la publication :</strong> [Nom du Président ou DG]<br>
+    <strong>Email :</strong> <a href="mailto:contact@mh-structure.fr">contact@mh-structure.fr</a><br>
+    <strong>Téléphone :</strong> [À compléter]
+  </p>
+
+  <h2>2. Hébergement</h2>
+  <p>
+    <strong>Vercel Inc.</strong><br>
+    440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br>
+    Site : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">vercel.com</a>
+  </p>
+
+  <h2>3. Propriété intellectuelle</h2>
+  <p>
+    L'ensemble des contenus présents sur le site — textes, photographies, illustrations, logos, icônes, éléments graphiques — sont la propriété exclusive de MH Structure SAS ou font l'objet d'une autorisation d'utilisation. Toute reproduction, représentation ou diffusion, en tout ou partie, est interdite sans autorisation préalable écrite.
+  </p>
+  <p>
+    Le logo MH Structure et la marque associée sont protégés. Leur utilisation par des tiers est soumise à autorisation.
+  </p>
+
+  <h2>4. Limitation de responsabilité</h2>
+  <p>
+    Les informations diffusées sur ce site sont fournies à titre informatif et ne sauraient constituer un diagnostic technique ni engager la responsabilité de MH Structure SAS. Seule une mission contractualisée avec émission d'un rapport signé par un ingénieur structure engage la société.
+  </p>
+  <p>
+    MH Structure SAS ne saurait être tenue responsable des dommages directs ou indirects résultant de l'utilisation du site ou de l'impossibilité d'y accéder.
+  </p>
+
+  <h2>5. Liens hypertextes</h2>
+  <p>
+    Le site peut contenir des liens vers des sites tiers. MH Structure SAS n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+  </p>
+
+  <h2>6. Crédits</h2>
+  <p>
+    Conception et développement : MH Structure<br>
+    Photographies : Propriété de MH Structure SAS
+  </p>
+
+  <h2>7. Droit applicable</h2>
+  <p>
+    Les présentes mentions légales sont soumises au droit français. En cas de litige, et après tentative de résolution amiable, les tribunaux compétents seront ceux du ressort du siège social de MH Structure SAS.
+  </p>
+
+  <div class="divider"></div>
+
+  <p style="text-align: center;">
+    <a href="politique-confidentialite.html">Politique de confidentialité →</a>
+  </p>
+</main>
+
+<footer>
+  © 2025 MH Structure SAS — Bureau d'Études Techniques Structure
+</footer>
+
+</body>
+</html>

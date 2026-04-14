@@ -1305,6 +1305,20 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
   font-family: var(--ff-mono);
   letter-spacing: 0.04em;
 }
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  color: var(--text3);
+}
+.footer-legal a {
+  color: var(--text3);
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--gold); }
+.footer-legal a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
 /* ================================================================
    KEYFRAMES
