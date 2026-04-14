@@ -8,6 +8,18 @@
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
 
+  // ── Vérification support WebGL ────────────────────────
+  try {
+    const testCtx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!testCtx) {
+      canvas.style.display = 'none';
+      return;
+    }
+  } catch (e) {
+    canvas.style.display = 'none';
+    return;
+  }
+
   // ── Renderer ──────────────────────────────────────────
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -45,7 +57,11 @@
   scene.add(rim);
 
   // ── Paramètres bâtiment ───────────────────────────────
-  const W = 7.0, D = 4.5, fH = 2.2, nF = 5;
+  // Dimensions bâtiment (en unités Three.js ≈ mètres)
+  const W  = 7.0;  // largeur totale portique
+  const D  = 4.5;  // profondeur bâtiment
+  const fH = 2.2;  // hauteur d'un étage
+  const nF = 5;    // nombre d'étages
   const cW = 0.45, cD = 0.45;          // section poteau
   const bH = 0.50, bW = 0.35;          // hauteur / largeur poutre
   const sH = 0.18;                      // épaisseur dalle
@@ -389,6 +405,16 @@
 
   // ── Boucle d'animation ────────────────────────────────
   const clock = new THREE.Clock();
+
+  // ── Pause animation sur onglet caché (économie batterie) ──
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clock.stop();
+    } else {
+      clock.start();
+    }
+  });
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   (function animate() {

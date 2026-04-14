@@ -60,6 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   );
 
+  // ── Fermeture menu mobile (touche Escape) ─────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && hamburger.classList.contains('open')) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Ouvrir le menu');
+      hamburger.focus();
+    }
+  });
+
   // ── Hero entrance ─────────────────────────────────────
   if (reducedMotion) {
     gsap.set(['.hero-tag', '.hero-h1', '.hero-desc', '.hero-actions', '.hero-scroll'], { opacity: 1, x: 0, y: 0 });
@@ -147,7 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(s => {
       if (window.scrollY >= s.offsetTop - 130) cur = s.id;
     });
-    navEls.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+    navEls.forEach(l => {
+      const isActive = l.getAttribute('href') === '#' + cur;
+      l.classList.toggle('active', isActive);
+      if (isActive) {
+        l.setAttribute('aria-current', 'page');
+      } else {
+        l.removeAttribute('aria-current');
+      }
+    });
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
@@ -172,28 +191,24 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const json = await res.json();
       if (json.success) {
-        btn.innerHTML    = '✓ Demande envoyée !';
-        btn.style.background = '#22c55e';
-        btn.style.color      = '#fff';
+        btn.innerHTML = '✓ Demande envoyée !';
+        btn.classList.add('submit-btn--success');
         if (status) status.textContent = 'Votre demande a bien été envoyée. Réponse sous 48h.';
         setTimeout(() => {
-          btn.innerHTML        = orig;
-          btn.style.background = '';
-          btn.style.color      = '';
-          btn.disabled         = false;
+          btn.innerHTML = orig;
+          btn.classList.remove('submit-btn--success');
+          btn.disabled = false;
           if (status) status.textContent = '';
           form.reset();
-        }, 4000);
+        }, 2500);
       } else { throw new Error(); }
     } catch {
-      btn.innerHTML        = '✗ Erreur — réessayez';
-      btn.style.background = '#ef4444';
-      btn.style.color      = '#fff';
+      btn.innerHTML = '✗ Erreur — réessayez';
+      btn.classList.add('submit-btn--error');
       setTimeout(() => {
-        btn.innerHTML        = orig;
-        btn.style.background = '';
-        btn.style.color      = '';
-        btn.disabled         = false;
+        btn.innerHTML = orig;
+        btn.classList.remove('submit-btn--error');
+        btn.disabled = false;
       }, 3000);
     }
   });
@@ -201,8 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Marquee pause on hover ────────────────────────────
   const marquee = document.querySelector('.marquee-track');
   if (marquee && !reducedMotion) {
-    marquee.addEventListener('mouseenter', () => marquee.style.animationPlayState = 'paused');
-    marquee.addEventListener('mouseleave', () => marquee.style.animationPlayState = 'running');
+    marquee.addEventListener('mouseenter', () => marquee.classList.add('marquee--paused'));
+    marquee.addEventListener('mouseleave', () => marquee.classList.remove('marquee--paused'));
   }
 
 });

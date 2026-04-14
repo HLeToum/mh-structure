@@ -16,7 +16,7 @@
 
   --text:     #EEF2F8;
   --text2:    #8899B4;
-  --text3:    #3D5068;
+  --text3:    #7A90AA;
 
   --border:   rgba(255,255,255,0.07);
   --border-g: rgba(201,168,76,0.22);
@@ -43,6 +43,15 @@
   --max-w: 1280px;
   --pad-x: clamp(24px, 5vw, 64px);
   --py: clamp(80px, 10vw, 130px);
+
+  /* ── Z-index map ── */
+  --z-bg:     0;
+  --z-content: 1;
+  --z-inner:  2;
+  --z-overlay: 3;
+  --z-nav:    100;
+  --z-menu:   999;
+  --z-skip:   9999;
 }
 
 /* ================================================================
@@ -56,7 +65,7 @@
 
   --text:     #0D1726;
   --text2:    #3A5070;
-  --text3:    #7A90AA;
+  --text3:    #536A82;
 
   --border:   rgba(13,23,38,0.09);
   --border-g: rgba(201,168,76,0.38);
@@ -94,7 +103,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   top: -100%;
   left: 16px;
-  z-index: 9999;
+  z-index: var(--z-skip);
   padding: 8px 20px;
   background: var(--gold);
   color: #06090F;
@@ -110,7 +119,7 @@ img { display: block; max-width: 100%; }
 #bg-canvas {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: var(--z-bg);
   pointer-events: none;
 }
 
@@ -259,7 +268,7 @@ img { display: block; max-width: 100%; }
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: var(--z-nav);
   height: var(--nav-h);
   display: flex;
   align-items: center;
@@ -596,6 +605,7 @@ body,
 }
 .marquee-track span:hover { color: var(--gold); }
 .marquee-track .dot { color: var(--gold); padding: 0 4px; opacity: 0.5; }
+.marquee-track.marquee--paused { animation-play-state: paused; }
 
 /* ================================================================
    ABOUT
@@ -1407,6 +1417,16 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
 .footer-legal a:hover { color: var(--gold); }
 .footer-legal a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 
+/* ── États bouton formulaire ────────────────────────── */
+.submit-btn--success {
+  background: #22c55e !important;
+  color: #fff !important;
+}
+.submit-btn--error {
+  background: #ef4444 !important;
+  color: #fff !important;
+}
+
 /* ================================================================
    KEYFRAMES
    ================================================================ */
@@ -1456,7 +1476,7 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
     padding: 32px var(--pad-x);
     gap: 24px;
     border-bottom: 1px solid var(--border);
-    z-index: 999;
+    z-index: var(--z-menu);
     overscroll-behavior: contain;
     overflow-y: auto;
     max-height: calc(100svh - var(--nav-h));
