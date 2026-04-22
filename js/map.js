@@ -1,11 +1,11 @@
 /* ================================================================
    MAP — Leaflet + CartoDB tiles (dark/light thème sync)
-   Coordonnées : Carmaux, 81400 — Tarn (44.0497°N, 2.1564°E)
+   Coordonnées : 6 Bd du Rajol, 81400 Carmaux (44.0507°N, 2.1578°E)
    ================================================================ */
 (function () {
   'use strict';
 
-  var COORDS = [44.0507, 2.1578]; // 6 Bd du Rajol, 81400 Carmaux
+  var COORDS = [44.0507, 2.1578];
   var ZOOM   = 16;
   var TILES  = {
     dark:  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
@@ -58,19 +58,38 @@
         + '<br><span>81400 Carmaux &mdash; Tarn (81)</span>'
       )
       .openPopup();
+
+    /* ── Recalcul de la taille dès que la section est visible ──
+       Leaflet ne charge pas les tuiles si le conteneur est caché
+       au moment de l'initialisation (section hors viewport).     */
+    if ('IntersectionObserver' in window) {
+      var sizeObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            map.invalidateSize();
+            sizeObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+      sizeObserver.observe(el);
+    } else {
+      /* Fallback pour vieux navigateurs */
+      setTimeout(function () { map.invalidateSize(); }, 300);
+    }
   }
 
   /* ── Synchronisation avec le toggle dark/light ── */
   function syncTiles() {
     if (!tileLayer) return;
     tileLayer.setUrl(TILES[currentTheme()] || TILES.dark);
+    if (map) { setTimeout(function () { map.invalidateSize(); }, 50); }
   }
 
-  var observer = new MutationObserver(syncTiles);
+  var themeObserver = new MutationObserver(syncTiles);
 
   document.addEventListener('DOMContentLoaded', function () {
     initMap();
-    observer.observe(document.documentElement, {
+    themeObserver.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme']
     });
