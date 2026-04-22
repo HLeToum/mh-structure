@@ -891,6 +891,19 @@ body,
 }
 /* Marqueur custom (pas de fond blanc Leaflet par défaut) */
 .map-pin { background: none !important; border: none !important; }
+/* Lien Google Maps dans la popup */
+.map-gmaps-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--gold) !important;
+  text-decoration: none;
+  font-family: var(--ff-head);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+}
+.map-gmaps-link:hover { opacity: 0.75; }
 
 /* ================================================================
    SERVICES
