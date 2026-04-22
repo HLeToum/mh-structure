@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var COORDS = [44.0499, 2.1618];
+  var COORDS = [44.0508, 2.1602];
   var ZOOM   = 16;
   var TILES  = {
     dark:  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
