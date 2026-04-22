@@ -15,6 +15,8 @@
   <link rel="canonical" href="https://www.mhstructure.com/">
   <meta name="geo.region" content="FR-81">
   <meta name="geo.placename" content="Carmaux">
+  <meta name="geo.position" content="44.0508;2.1602">
+  <meta name="ICBM" content="44.0508, 2.1602">
   <meta property="og:type" content="website">
   <meta property="og:title" content="MH Structure — Bureau d'Études Structure | Carmaux, Tarn">
   <meta property="og:description" content="Ingénierie structurelle de précision. Notes de calcul, diagnostics, attestations parasismiques. Devis gratuit sous 48h.">
@@ -691,10 +693,10 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["ProfessionalService", "LocalBusiness"],
     "name": "MH Structure",
     "alternateName": "MH-Structure",
-    "description": "Bureau d'études techniques spécialisé en ingénierie structure : notes de calcul Eurocodes, diagnostics structurels, attestations parasismiques, contrôle réglementaire.",
+    "description": "Bureau d'études techniques structure à Carmaux (Tarn). Notes de calcul Eurocodes, diagnostic structurel, attestation parasismique AT2. Assuré SMABTP. Devis gratuit sous 48h.",
     "url": "https://www.mhstructure.com",
     "logo": "https://www.mhstructure.com/images/favicon.svg",
     "image": "https://www.mhstructure.com/images/og-mh-structure.jpg",
@@ -711,9 +713,14 @@
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 44.0508,
-      "longitude": 2.1589
+      "longitude": 2.1602
     },
-    "areaServed": { "@type": "Country", "name": "France" },
+    "hasMap": "https://maps.google.com/?q=44.0508,2.1602",
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Tarn" },
+      { "@type": "AdministrativeArea", "name": "Occitanie" },
+      { "@type": "Country", "name": "France" }
+    ],
     "serviceType": [
       "Notes de calcul structurel",
       "Diagnostic visuel structurel",
@@ -723,13 +730,17 @@
     ],
     "knowsAbout": ["Eurocode 2", "Eurocode 8", "Béton armé", "Fondations", "Diagnostic d'ouvrages", "Parasismique"],
     "priceRange": "Sur devis",
+    "currenciesAccepted": "EUR",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
       "opens": "08:00",
       "closes": "18:00"
     },
-    "sameAs": ["https://github.com/HLeToum/mh-structure"]
+    "sameAs": [
+      "https://www.mhstructure.com",
+      "https://maps.google.com/?q=MH+Structure+Carmaux"
+    ]
   }
   </script>
   <script type="application/ld+json">

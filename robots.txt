@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://bet-mh.fr/sitemap.xml
+Sitemap: https://www.mhstructure.com/sitemap.xml
