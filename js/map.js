@@ -6,7 +6,7 @@
   'use strict';
 
   var COORDS       = [44.0508, 2.1602];  /* MH Structure         */
-  var MAIRIE_COORDS= [44.0514, 2.1572];  /* Mairie de Carmaux    */
+  var MAIRIE_COORDS= [44.0500, 2.1608];  /* Mairie de Carmaux    */
   var ZOOM         = 16;
   var GMAPS_URL    = 'https://maps.google.com/?q=44.0508,2.1602';
 
