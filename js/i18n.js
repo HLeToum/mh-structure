@@ -83,6 +83,7 @@
       'about.client.5':     'Collectivités',
       'about.client.6':     'Entreprises de construction',
       'about.btn':          'Discutons de votre projet',
+      'about.map.label':    'Carmaux — Tarn (81)',
 
       /* Services */
       'svc.eyebrow': 'Services',
@@ -231,6 +232,7 @@
       'about.client.5':     'Local authorities',
       'about.client.6':     'Construction companies',
       'about.btn':          'Let\'s discuss your project',
+      'about.map.label':    'Carmaux — Tarn (81)',
 
       /* Services */
       'svc.eyebrow': 'Services',

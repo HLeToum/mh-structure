@@ -833,6 +833,77 @@ body,
   margin: 28px 0;
 }
 
+/* ── Carte interactive (Leaflet) ────────────────────────── */
+.about-map-wrap {
+  margin-top: clamp(40px, 5vw, 64px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.about-map-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+.about-map-label {
+  font-family: var(--ff-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text2);
+  text-transform: uppercase;
+}
+.about-map {
+  height: 320px;
+  width: 100%;
+}
+/* Override Leaflet controls au thème */
+.leaflet-popup-content-wrapper {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border-g) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
+  font-family: var(--ff-body) !important;
+  font-size: 0.82rem !important;
+}
+.leaflet-popup-content strong {
+  font-family: var(--ff-head);
+  font-size: 0.88rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+.leaflet-popup-content span {
+  color: var(--text2);
+  display: block;
+  line-height: 1.5;
+}
+.leaflet-popup-tip-container .leaflet-popup-tip { background: var(--card) !important; }
+.leaflet-popup-close-button { color: var(--text2) !important; }
+.leaflet-control-zoom a {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: var(--surface2) !important;
+  color: var(--gold) !important;
+}
+.leaflet-bar { border-color: var(--border) !important; box-shadow: none !important; }
+.leaflet-control-attribution {
+  background: rgba(15,25,41,0.72) !important;
+  color: var(--text3) !important;
+  font-size: 0.6rem !important;
+}
+[data-theme="light"] .leaflet-control-attribution {
+  background: rgba(239,243,250,0.85) !important;
+}
+/* Marqueur custom (pas de fond blanc Leaflet par défaut) */
+.map-pin { background: none !important; border: none !important; }
+
 /* ================================================================
    SERVICES
    ================================================================ */
