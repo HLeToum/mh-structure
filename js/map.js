@@ -52,7 +52,7 @@
     L.marker(COORDS, { icon: goldIcon })
       .addTo(map)
       .bindPopup(
-        '<strong>MH-Structure</strong>'
+        '<strong>MH Structure</strong>'
         + '<br><span>Bureau d\'études structure</span>'
         + '<br><span>6 Boulevard du Rajol</span>'
         + '<br><span>81400 Carmaux &mdash; Tarn (81)</span>'
