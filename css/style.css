@@ -88,6 +88,7 @@ html[data-theme="light"] { color-scheme: light; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); color-scheme: dark light; }
 body {
+  -webkit-tap-highlight-color: transparent;
   font-family: var(--ff-body);
   background: var(--bg);
   color: var(--text);
@@ -1446,7 +1447,7 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
   font-family: var(--ff-body);
   font-size: 0.875rem;
   padding: 12px 14px;
-  outline: 0;
+  outline: 2px solid transparent; /* visible via :focus-visible ci-dessous */
   transition: border-color 0.25s, background 0.25s;
   -webkit-appearance: none;
   appearance: none;
@@ -1462,7 +1463,7 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: var(--text3); }
-.form-group select option { background: var(--surface); }
+.form-group select option { background: var(--surface); color: var(--text); }
 .form-group textarea { resize: vertical; min-height: 120px; }
 .form-row {
   display: grid;

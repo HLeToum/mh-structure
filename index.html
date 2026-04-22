@@ -37,6 +37,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
+        href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuPa_p4r.woff2">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -612,7 +614,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="nom" data-i18n="form.nom.label">Nom complet *</label>
-                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" required data-i18n-ph="form.nom.ph">
+                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" spellcheck="false" required data-i18n-ph="form.nom.ph">
               </div>
               <div class="form-group">
                 <label for="email" data-i18n="form.email.label">Email *</label>
@@ -626,7 +628,7 @@
               </div>
               <div class="form-group">
                 <label for="type" data-i18n="form.type.label">Type de prestation *</label>
-                <select id="type" name="type" required>
+                <select id="type" name="type" autocomplete="off" required>
                   <option value="" data-i18n="form.type.default">Sélectionner…</option>
                   <option value="calcul" data-i18n="form.type.calcul">Notes de calcul structurel</option>
                   <option value="diagnostic-visuel" data-i18n="form.type.diag-vis">Diagnostic visuel structurel</option>
@@ -639,7 +641,7 @@
             </div>
             <div class="form-group">
               <label for="message" data-i18n="form.msg.label">Description du projet *</label>
-              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" required data-i18n-ph="form.msg.ph"></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" autocomplete="off" required data-i18n-ph="form.msg.ph"></textarea>
             </div>
             <div class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
             <button type="submit" class="btn-primary submit-btn">
