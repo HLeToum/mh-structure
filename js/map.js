@@ -1,6 +1,6 @@
 /* ================================================================
    MAP — Leaflet + CartoDB tiles (dark/light thème sync)
-   Coordonnées : 6 Bd du Rajol, 81400 Carmaux (44.0507°N, 2.1578°E)
+   6 Bd du Rajol, 81400 Carmaux (44.0507°N, 2.1578°E)
    ================================================================ */
 (function () {
   'use strict';
@@ -22,7 +22,8 @@
 
   function initMap() {
     var el = document.getElementById('about-map');
-    if (!el || typeof L === 'undefined') return;
+    if (!el) { console.warn('map.js : #about-map introuvable'); return; }
+    if (typeof L === 'undefined') { console.warn('map.js : Leaflet non chargé'); return; }
 
     map = L.map('about-map', {
       center: COORDS,
@@ -37,10 +38,10 @@
       subdomains: 'abcd'
     }).addTo(map);
 
-    /* ── Marqueur gold personnalisé ── */
+    /* ── Marqueur gold ── */
     var goldIcon = L.divIcon({
       className: 'map-pin',
-      html: '<svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">'
+      html: '<svg width="28" height="36" viewBox="0 0 28 36" fill="none">'
           + '<path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 22 14 22S28 24.5 28 14C28 6.268 21.732 0 14 0z" fill="#C9A84C"/>'
           + '<circle cx="14" cy="14" r="5" fill="#0F1929"/>'
           + '</svg>',
@@ -59,39 +60,38 @@
       )
       .openPopup();
 
-    /* ── Recalcul de la taille dès que la section est visible ──
-       Leaflet ne charge pas les tuiles si le conteneur est caché
-       au moment de l'initialisation (section hors viewport).     */
+    /* ── Recalcul de la taille quand la section entre dans le viewport ── */
+    setTimeout(function () { map.invalidateSize(); }, 100);
+
     if ('IntersectionObserver' in window) {
-      var sizeObserver = new IntersectionObserver(function (entries) {
+      new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             map.invalidateSize();
-            sizeObserver.disconnect();
+            obs.disconnect();
           }
         });
-      }, { threshold: 0.1 });
-      sizeObserver.observe(el);
-    } else {
-      /* Fallback pour vieux navigateurs */
-      setTimeout(function () { map.invalidateSize(); }, 300);
+      }, { threshold: 0.1 }).observe(el);
     }
   }
 
-  /* ── Synchronisation avec le toggle dark/light ── */
+  /* ── Synchronisation tuiles dark / light ── */
   function syncTiles() {
     if (!tileLayer) return;
     tileLayer.setUrl(TILES[currentTheme()] || TILES.dark);
-    if (map) { setTimeout(function () { map.invalidateSize(); }, 50); }
+    setTimeout(function () { if (map) map.invalidateSize(); }, 50);
   }
 
-  var themeObserver = new MutationObserver(syncTiles);
+  new MutationObserver(syncTiles).observe(
+    document.documentElement,
+    { attributes: true, attributeFilter: ['data-theme'] }
+  );
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ── Init : le DOM est déjà prêt (script en bas de body) ── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
     initMap();
-    themeObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme']
-    });
-  });
+  }
+
 })();
