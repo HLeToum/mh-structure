@@ -839,6 +839,14 @@ body,
   width: 100%;
   height: 100%;
 }
+/* Filtre sombre sur les tuiles en dark mode pour intégration visuelle */
+[data-theme="dark"] .leaflet-tile-pane {
+  filter: brightness(0.72) saturate(0.85) hue-rotate(195deg);
+}
+[data-theme="light"] .leaflet-tile-pane {
+  filter: none;
+}
+
 /* Override Leaflet controls au thème */
 .leaflet-popup-content-wrapper {
   background: var(--card) !important;
