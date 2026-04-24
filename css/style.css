@@ -1671,3 +1671,115 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
   .marquee-track { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ================================================================
+   VILLA 3D SCENE — Controls & Loader
+   ================================================================ */
+
+/* Ambiance toggle buttons */
+.villa-controls {
+  position: absolute;
+  bottom: 100px;
+  right: var(--pad-x);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.ambiance-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.18s;
+}
+.ambiance-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+.ambiance-btn:hover {
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.ambiance-btn.active {
+  background: rgba(201, 168, 76, 0.22);
+  border-color: var(--gold);
+  color: var(--gold-l);
+}
+.ambiance-btn.active svg {
+  stroke: var(--gold);
+}
+
+/* Camera angle dots */
+.villa-cam-dots {
+  position: absolute;
+  bottom: 66px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.cam-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.2s;
+}
+.cam-dot:hover { transform: scale(1.35); }
+.cam-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.2);
+}
+
+/* Loading progress bar */
+.villa-loader {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.08);
+}
+.villa-load-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-d), var(--gold));
+  transition: width 0.3s ease;
+}
+
+/* Mobile: stack controls vertically, reduce size */
+@media (max-width: 600px) {
+  .villa-controls {
+    bottom: 80px;
+    right: 12px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ambiance-btn span { display: none; }
+  .ambiance-btn { padding: 8px 10px; border-radius: 50%; }
+  .villa-cam-dots { display: none; }
+}
+
+/* Keep bg-canvas pointer events disabled (Three.js canvas) */
+#bg-canvas { pointer-events: none; }

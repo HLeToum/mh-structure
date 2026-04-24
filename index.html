@@ -37,9 +37,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
         href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuPa_p4r.woff2">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Three.js r163 ES module map (villa scene) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three":          "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.min.js",
+      "three/addons/":  "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -115,6 +125,35 @@
         </div>
       </div>
     </div>
+    <!-- Ambiance controls -->
+    <div id="villa-controls" class="villa-controls" role="group" aria-label="Ambiance de la scène 3D">
+      <button class="ambiance-btn active" data-ambiance="day"    aria-label="Journée ensoleillée" title="Journée">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span>Jour</span>
+      </button>
+      <button class="ambiance-btn" data-ambiance="sunset" aria-label="Coucher de soleil" title="Coucher de soleil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><line x1="8" y1="6" x2="8" y2="2"/><line x1="16" y1="6" x2="16" y2="2"/></svg>
+        <span>Coucher</span>
+      </button>
+      <button class="ambiance-btn" data-ambiance="night" aria-label="Nuit éclairée" title="Nuit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span>Nuit</span>
+      </button>
+    </div>
+
+    <!-- Camera angle dots -->
+    <div id="villa-cam-dots" class="villa-cam-dots" aria-hidden="true">
+      <button class="cam-dot active" title="Façade principale"></button>
+      <button class="cam-dot" title="Vue aérienne"></button>
+      <button class="cam-dot" title="Jardin &amp; piscine"></button>
+      <button class="cam-dot" title="Vue d'angle"></button>
+    </div>
+
+    <!-- Loading bar -->
+    <div id="villa-loader" class="villa-loader" aria-hidden="true">
+      <div id="villa-load-bar" class="villa-load-bar"></div>
+    </div>
+
     <div class="hero-scroll" aria-hidden="true">
       <span class="scroll-label" data-i18n="hero.scroll">Défiler</span>
       <div class="scroll-line"></div>
@@ -758,9 +797,6 @@
   }
   </script>
 
-  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"
-          integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu"
-          crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
           integrity="sha384-xjP10QrW7PA6WOlPOkWwDcyKJeREvuwWVAc5aS9/ObhcWcdopa9q3l7NXObVJQ8r"
           crossorigin="anonymous"></script>
@@ -768,7 +804,7 @@
           integrity="sha384-V0oE5KjuA5fwJoB7Ve6EjvvRB2skf+fPQ1IncPdJ4HurEaHbSKYUoW3Y13UzFcpD"
           crossorigin="anonymous"></script>
   <script src="js/i18n.js"></script>
-  <script src="js/scene.js"></script>
+  <script type="module" src="js/villa-scene.js"></script>
   <script src="js/main.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
   <script src="js/map.js"></script>
