@@ -7,6 +7,7 @@
 import * as THREE from 'three';
 import { GLTFLoader }        from 'three/addons/loaders/GLTFLoader.js';
 import { Sky }               from 'three/addons/objects/Sky.js';
+import { RoomEnvironment }   from 'three/addons/environments/RoomEnvironment.js';
 import { EffectComposer }    from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass }        from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass }   from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -60,6 +61,7 @@ const IS_MOBILE = window.innerWidth < 768 ||
 let renderer, scene, camera, composer, bloomPass;
 let sunLight, moonLight, hemiLight;
 let skyObj, starsObj;
+let pmremGenerator, envMapDay, envMapSunset, envMapNight;
 let camTarget = new THREE.Vector3();
 let currentAmb    = 'day';
 let currentCamIdx = 0;
@@ -89,6 +91,7 @@ function boot() {
   buildPool();
   buildTrees();
   buildSky();
+  buildEnvMaps();   // ← PMREM env maps for PBR textures
   buildPostProcessing();
 
   loadVilla().then(() => {
@@ -321,6 +324,58 @@ function buildSky() {
   scene.add(skyObj);
 }
 
+// ── PMREM Environment Maps ─────────────────────────────────────────────────
+// Génère 3 env maps (une par ambiance) depuis le ciel + RoomEnvironment.
+// C'est ce qui donne les réflexions, la profondeur des matériaux PBR du GLB.
+
+function buildEnvMaps() {
+  pmremGenerator = new THREE.PMREMGenerator(renderer);
+  pmremGenerator.compileCubemapShader();
+
+  // Env de base (RoomEnvironment neutre) — utilisée en fallback
+  const roomEnv = new RoomEnvironment(renderer);
+
+  // Day env : lumière chaude/blanche + ciel bleu
+  {
+    const s = new THREE.Scene();
+    s.background = new THREE.Color(0x87ceeb);
+    const hemi = new THREE.HemisphereLight(0x87ceeb, 0x3d7a2a, 4);
+    const dir  = new THREE.DirectionalLight(0xfff6d6, 6);
+    dir.position.set(1, 2, 1);
+    s.add(hemi, dir);
+    envMapDay = pmremGenerator.fromScene(s).texture;
+    s.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+  }
+
+  // Sunset env : lumières chaudes orangées
+  {
+    const s = new THREE.Scene();
+    s.background = new THREE.Color(0xff6622);
+    const hemi = new THREE.HemisphereLight(0xff7733, 0x331100, 3);
+    const dir  = new THREE.DirectionalLight(0xff5500, 5);
+    dir.position.set(-1, 0.3, 1);
+    s.add(hemi, dir);
+    envMapSunset = pmremGenerator.fromScene(s).texture;
+    s.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+  }
+
+  // Night env : lune froide bleue
+  {
+    const s = new THREE.Scene();
+    s.background = new THREE.Color(0x040810);
+    const hemi = new THREE.HemisphereLight(0x0a1830, 0x020508, 1.5);
+    const moon = new THREE.DirectionalLight(0x8ab6d9, 2.5);
+    moon.position.set(-1, 2, -0.5);
+    s.add(hemi, moon);
+    envMapNight = pmremGenerator.fromScene(s).texture;
+    s.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+  }
+
+  // Par défaut jour
+  scene.environment = envMapDay;
+  roomEnv.dispose();
+}
+
 function setSkyPreset(preset) {
   const u = skyObj.material.uniforms;
   u['turbidity'].value      = preset.turbidity;
@@ -404,19 +459,22 @@ async function loadVilla() {
           -center.z * scale,
         );
 
-        // PBR quality + shadows on all meshes
+        // PBR quality + shadows + env map intensity sur chaque mesh
         model.traverse((child) => {
-          if (child.isMesh) {
-            child.castShadow    = !IS_MOBILE;
-            child.receiveShadow = !IS_MOBILE;
-            if (child.material) {
-              child.material.envMapIntensity = 1.0;
-              // Keep original material but boost quality
-              if (child.material.isMeshStandardMaterial) {
-                child.material.needsUpdate = true;
-              }
-            }
-          }
+          if (!child.isMesh) return;
+          child.castShadow    = !IS_MOBILE;
+          child.receiveShadow = !IS_MOBILE;
+
+          const mats = Array.isArray(child.material) ? child.material : [child.material];
+          mats.forEach((mat) => {
+            if (!mat) return;
+            // Boost env map reflections (PBR réaliste)
+            mat.envMapIntensity = 1.4;
+            // Activer le tone mapping correct
+            mat.toneMapped = true;
+            // Force refresh
+            mat.needsUpdate = true;
+          });
         });
 
         scene.add(model);
@@ -449,6 +507,13 @@ function applyAmbiance(name, instant = false) {
   renderer.setClearColor(amb.bg, 1);
   scene.fog = new THREE.Fog(amb.fog.color, amb.fog.near, amb.fog.far);
   scene.background = new THREE.Color(amb.bg);
+
+  // Env map pour réflexions PBR
+  if (pmremGenerator) {
+    scene.environment = name === 'night'  ? envMapNight
+                      : name === 'sunset' ? envMapSunset
+                      : envMapDay;
+  }
 
   // Hemisphere (sky/ground fill)
   hemiLight.color.set(amb.ambient.sky);
