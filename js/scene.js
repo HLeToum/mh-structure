@@ -1,106 +1,137 @@
 /**
- * MH-Structure — Three.js Scene v4
- * Bâtiment gros oeuvre fini · Semelles isolées + longrines
- * Armatures + coffrage révélés au survol (effet rayon X)
+ * MH Structure — Three.js Scene v5
+ * Immeuble de grande hauteur fini (16 niveaux)
+ * Façade rideau vitrée · Noyau béton · Armatures révélées à la souris
  */
 (function () {
 
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
 
-  // ── Vérification support WebGL ────────────────────────
   try {
-    const testCtx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!testCtx) {
-      canvas.style.display = 'none';
-      return;
-    }
-  } catch (e) {
-    canvas.style.display = 'none';
-    return;
-  }
+    const t = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!t) { canvas.style.display = 'none'; return; }
+  } catch (e) { canvas.style.display = 'none'; return; }
 
-  // ── Renderer ──────────────────────────────────────────
+  // ── Renderer ──────────────────────────────────────────────────────────────
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x0F1929, 1);
+  renderer.setClearColor(0xEFF3FA, 1);
+  renderer.shadowMap.enabled = false;
 
-  // ── Scene & Camera ────────────────────────────────────
+  // ── Scène ─────────────────────────────────────────────────────────────────
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x0F1929, 0.014);
+  scene.fog = new THREE.FogExp2(0xEFF3FA, 0.009);
 
-  // ── API thème (appelée par main.js) ──────────────────
-  const THEME_DARK  = { bg: 0x0F1929, fog: 0x0F1929, fogDensity: 0.014 };
-  const THEME_LIGHT = { bg: 0xEFF3FA, fog: 0xEFF3FA, fogDensity: 0.010 };
-  window.mhSceneSetTheme = function (theme) {
-    const t = theme === 'light' ? THEME_LIGHT : THEME_DARK;
-    renderer.setClearColor(t.bg, 1);
-    scene.fog.color.setHex(t.fog);
-    scene.fog.density = t.fogDensity;
+  // ── Thème (appelé par main.js) ────────────────────────────────────────────
+  const T = {
+    light: { bg: 0xEFF3FA, fog: 0xEFF3FA, fogD: 0.009,
+             concrete: 0xBCC6D2, glass: 0x9BBFD8, spandrel: 0xA8B4C0,
+             core: 0xC4CDD8, ground: 0xD8DFE8, grid: 0x8A9EB4, gridFade: 0.14,
+             ambient: 0xF0F6FF, sun: 0xFFFFFF, rim: 0xC8D8F0,
+             ptColor: 0x6A8CB8, ptOpacity: 0.18 },
+    dark:  { bg: 0x0F1929, fog: 0x0F1929, fogD: 0.012,
+             concrete: 0x4A5668, glass: 0x1A3452, spandrel: 0x3A4558,
+             core: 0x3C4A5C, ground: 0x0D1420, grid: 0x1A3060, gridFade: 0.10,
+             ambient: 0xCCDDFF, sun: 0x99BBDD, rim: 0x223355,
+             ptColor: 0x2A5A9A, ptOpacity: 0.22 },
   };
-  // Applique le thème déjà actif au chargement
-  const initTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-  window.mhSceneSetTheme(initTheme);
+  let theme = T.light;
 
-  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 200);
-  camera.position.set(0, 3, 26);
-  camera.lookAt(0, 0, 0);
+  window.mhSceneSetTheme = function (name) {
+    theme = T[name] || T.light;
+    renderer.setClearColor(theme.bg, 1);
+    scene.fog.color.setHex(theme.fog);
+    scene.fog.density = theme.fogD;
+    concreteMat.color.setHex(theme.concrete);
+    fndMat.color.setHex(theme.concrete);
+    coreMat.color.setHex(theme.core);
+    spandrelMat.color.setHex(theme.spandrel);
+    glassMat.color.setHex(theme.glass);
+    groundMat.color.setHex(theme.ground);
+    grid.material.color.setHex(theme.grid);
+    grid.material.opacity = theme.gridFade;
+    ambLight.color.setHex(theme.ambient);
+    sun.color.setHex(theme.sun);
+    rimLight.color.setHex(theme.rim);
+    ptMat.color.setHex(theme.ptColor);
+    ptMat.opacity = theme.ptOpacity;
+  };
 
-  // ── Éclairage ─────────────────────────────────────────
-  scene.add(new THREE.AmbientLight(0xCCDDFF, 0.30));
-  const sun = new THREE.DirectionalLight(0x99BBDD, 1.1);
-  sun.position.set(8, 14, 6);
+  // Applique le thème actif
+  const initTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  // (les matériaux sont créés d'abord — l'appel final est en bas)
+
+  // ── Caméra ────────────────────────────────────────────────────────────────
+  const camera = new THREE.PerspectiveCamera(44, window.innerWidth / window.innerHeight, 0.1, 400);
+  camera.position.set(0, 14, 44);
+  camera.lookAt(0, 18, 0);
+
+  // ── Éclairage ─────────────────────────────────────────────────────────────
+  const ambLight = new THREE.AmbientLight(0xF0F6FF, 0.45);
+  scene.add(ambLight);
+
+  const sun = new THREE.DirectionalLight(0xFFFFFF, 1.2);
+  sun.position.set(10, 24, 12);
   scene.add(sun);
-  const rim = new THREE.DirectionalLight(0x223355, 0.55);
-  rim.position.set(-6, 2, -8);
-  scene.add(rim);
 
-  // ── Paramètres bâtiment ───────────────────────────────
-  // Dimensions bâtiment (en unités Three.js ≈ mètres)
-  const W  = 7.0;  // largeur totale portique
-  const D  = 4.5;  // profondeur bâtiment
-  const fH = 2.2;  // hauteur d'un étage
-  const nF = 5;    // nombre d'étages
-  const cW = 0.45, cD = 0.45;          // section poteau
-  const bH = 0.50, bW = 0.35;          // hauteur / largeur poutre
-  const sH = 0.18;                      // épaisseur dalle
-  const totalH = nF * fH;              // hauteur totale structure = 11.0
-  const bOff = 0.14;                    // offset armature / axe poteau
+  const rimLight = new THREE.DirectionalLight(0xC8D8F0, 0.5);
+  rimLight.position.set(-8, 4, -12);
+  scene.add(rimLight);
 
-  // Fondations
-  const sndW = 1.6, sndD = 1.6, sndH = 0.55;   // semelle isolée (plan + hauteur)
-  const lgH  = 0.35, lgW  = 0.40;               // longrine (H × largeur)
+  // ── Dimensions du bâtiment ────────────────────────────────────────────────
+  const W   = 10;    // largeur (X)
+  const D   = 6.5;   // profondeur (Z)
+  const nF  = 16;    // étages
+  const fH  = 3.2;   // hauteur par niveau (m)
+  const cW  = 0.55, cD = 0.55;   // section poteau
+  const bH  = 0.65, bW = 0.38;   // poutre hauteur / largeur
+  const sH  = 0.22;              // épaisseur dalle
+  const totalH = nF * fH;        // 51.2 m
+  const bOff   = 0.16;           // offset armature
 
-  // Murs de remplissage
-  const wallT = 0.13;
+  // Positions colonnes : 4 par rangée (3 travées)
+  const cx = [-W/2, -W/6, W/6, W/2];
+  const cz = [-D/2, D/2];
+  const colPositions = [];
+  cx.forEach(x => cz.forEach(z => colPositions.push([x, z])));
 
-  const colPositions = [
-    [-W/2, -D/2], [0, -D/2], [W/2, -D/2],
-    [-W/2,  D/2], [0,  D/2], [W/2,  D/2],
-  ];
-
-  // ── Matériaux béton ───────────────────────────────────
+  // ── Matériaux ─────────────────────────────────────────────────────────────
   const concreteMat = new THREE.MeshLambertMaterial({
-    color: 0x5A6475, transparent: true, opacity: 0.90, depthWrite: true,
+    color: 0xBCC6D2, transparent: true, opacity: 0.94, depthWrite: true,
   });
   const fndMat = new THREE.MeshLambertMaterial({
-    color: 0x4E5C6E, transparent: true, opacity: 0.95, depthWrite: true,
+    color: 0xBCC6D2, transparent: true, opacity: 0.96,
   });
-  // Murs de remplissage : assez opaques (gros oeuvre terminé)
-  const wallMat = new THREE.MeshLambertMaterial({
-    color: 0x4A5568, transparent: true, opacity: 0.82, depthWrite: true,
+  const coreMat = new THREE.MeshLambertMaterial({
+    color: 0xC4CDD8, transparent: true, opacity: 0.96,
+  });
+  const spandrelMat = new THREE.MeshLambertMaterial({
+    color: 0xA8B4C0, transparent: true, opacity: 0.98, depthWrite: true,
+  });
+  // Vitrage : semi-transparent, bleu-gris
+  const glassMat = new THREE.MeshPhongMaterial({
+    color: 0x9BBFD8,
+    transparent: true,
+    opacity: 0.38,
+    shininess: 90,
+    specular: new THREE.Color(0x88AACC),
+    side: THREE.DoubleSide,
+    depthWrite: false,
+  });
+  const groundMat = new THREE.MeshLambertMaterial({
+    color: 0xD8DFE8, transparent: true, opacity: 0.80,
   });
 
-  // ── Shader armatures / coffrage — effet rayon X ──────
+  // ── Shader armatures (effet rayon X) ─────────────────────────────────────
   const vsReveal = /* glsl */`
     varying float vNDCx;
     void main() {
-      vec4 clip = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      vec4 clip = projectionMatrix * modelViewMatrix * vec4(position,1.0);
       vNDCx = clip.x / clip.w;
       gl_Position = clip;
-    }
-  `;
+    }`;
   const fsReveal = /* glsl */`
     uniform float uMouseX;
     uniform float uReveal;
@@ -110,346 +141,294 @@
     void main() {
       float d    = abs(vNDCx - uMouseX);
       float band = 1.0 - smoothstep(0.0, uBand, d);
-      float glow = (1.0 - smoothstep(0.0, uBand * 0.25, d)) * 0.35;
+      float glow = (1.0 - smoothstep(0.0, uBand*0.25, d)) * 0.40;
       float alpha = (band + glow) * uReveal;
-      if (alpha < 0.015) discard;
+      if (alpha < 0.012) discard;
       gl_FragColor = vec4(uColor + vec3(glow), alpha);
-    }
-  `;
+    }`;
 
-  function makeRevealMat(hexColor, band) {
+  function revealMat(hex, band) {
     return new THREE.ShaderMaterial({
       uniforms: {
-        uMouseX: { value: 0.0 },
-        uReveal: { value: 0.0 },
-        uColor:  { value: new THREE.Color(hexColor) },
+        uMouseX: { value: 0 },
+        uReveal: { value: 0 },
+        uColor:  { value: new THREE.Color(hex) },
         uBand:   { value: band },
       },
-      vertexShader:   vsReveal,
-      fragmentShader: fsReveal,
-      transparent: true,
-      depthWrite:  false,
-      depthTest:   false,
+      vertexShader: vsReveal, fragmentShader: fsReveal,
+      transparent: true, depthWrite: false, depthTest: false,
     });
   }
 
-  // Armatures (or, cadres, treillis) — existants
-  const matRebar   = makeRevealMat(0xC9A84C, 0.40);   // barres longit. — or
-  const matStirrup = makeRevealMat(0xA07A30, 0.32);   // étriers
-  const matMesh    = makeRevealMat(0x8A6520, 0.28);   // treillis dalle
-  // Coffrage — planches, lambourdes (bois chaud)
-  const matCoffrage = makeRevealMat(0xA07840, 0.50);
+  const matRebar   = revealMat(0xC9A84C, 0.38);  // barres longit. (or)
+  const matStirrup = revealMat(0xAA8830, 0.30);  // étriers
+  const matMesh    = revealMat(0x8A6820, 0.26);  // treillis dalle
 
-  // ── Groupes & helpers ─────────────────────────────────
+  // ── Groupe bâtiment ───────────────────────────────────────────────────────
   const building = new THREE.Group();
 
-  function addBox(cx, cy, cz, w, h, d, mat) {
+  function box(cx, cy, cz, w, h, d, mat) {
     const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat || concreteMat);
     m.position.set(cx, cy, cz);
     building.add(m);
+    return m;
   }
 
-  // Tableaux de segments de lignes
-  const rb = [], st = [], ms = [], cf = [];
-  function rseg(arr, x1, y1, z1, x2, y2, z2) { arr.push(x1,y1,z1, x2,y2,z2); }
+  const rb = [], st = [], ms = [];
+  const seg = (a, x1,y1,z1,x2,y2,z2) => a.push(x1,y1,z1,x2,y2,z2);
 
-  function buildLS(arr, mat, order) {
-    if (!arr.length) return null;
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(arr), 3));
-    const ls = new THREE.LineSegments(geo, mat);
+  function lineSegs(arr, mat, order) {
+    if (!arr.length) return;
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(arr), 3));
+    const ls = new THREE.LineSegments(g, mat);
     ls.renderOrder = order || 2;
-    return ls;
+    building.add(ls);
   }
 
-  // ── FONDATIONS ────────────────────────────────────────
-  colPositions.forEach(([cx, cz]) => {
-    // Semelle isolée (below ground, local y < 0)
-    addBox(cx, -sndH / 2, cz, sndW, sndH, sndD, fndMat);
+  // ──────────────────────────────────────────────────────────────────────────
+  // STRUCTURE : poteaux + poutres + dalles + armatures
+  // ──────────────────────────────────────────────────────────────────────────
 
-    // Grille de ferraillage en fond de semelle
-    const fy = -sndH + 0.09;
-    for (let rx = cx - sndW/2 + 0.22; rx <= cx + sndW/2 - 0.15; rx += 0.28)
-      rseg(ms, rx, fy, cz-sndD/2+0.10, rx, fy, cz+sndD/2-0.10);
-    for (let rz = cz - sndD/2 + 0.22; rz <= cz + sndD/2 - 0.15; rz += 0.28)
-      rseg(ms, cx-sndW/2+0.10, fy, rz, cx+sndW/2-0.10, fy, rz);
-
-    // Attentes / barres de démarrage (semelle → poteau)
-    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx, sz]) => {
-      const bx = cx + sx * bOff, bz = cz + sz * bOff;
-      rseg(rb, bx, -sndH, bz, bx, 0.50, bz);
-    });
-    // Cadre de reprise de semelle
-    const ks = sndW/2 - 0.12;
-    rseg(st, cx-ks, -sndH+0.09, cz-ks, cx+ks, -sndH+0.09, cz-ks);
-    rseg(st, cx+ks, -sndH+0.09, cz-ks, cx+ks, -sndH+0.09, cz+ks);
-    rseg(st, cx+ks, -sndH+0.09, cz+ks, cx-ks, -sndH+0.09, cz+ks);
-    rseg(st, cx-ks, -sndH+0.09, cz+ks, cx-ks, -sndH+0.09, cz-ks);
-  });
-
-  // Longrines — parallèles X (le long des deux files Z)
-  const lgYc = -(sndH - lgH) / 2;  // top flush avec dessus semelle
-  [-D/2, D/2].forEach(pz => {
-    const lLen = W - sndW;
-    addBox(0, lgYc, pz, lLen, lgH, lgW, fndMat);
-    const yT = lgYc + lgH/2 - 0.08, yB = lgYc - lgH/2 + 0.07;
-    rseg(rb, -lLen/2, yT, pz-0.06, lLen/2, yT, pz-0.06);
-    rseg(rb, -lLen/2, yT, pz+0.06, lLen/2, yT, pz+0.06);
-    rseg(rb, -lLen/2, yB, pz,      lLen/2, yB, pz);
-    const ew = lgW/2-0.05, eh = lgH/2-0.05;
-    for (let ex = -lLen/2+0.20; ex < lLen/2; ex += 0.35) {
-      rseg(st, ex,lgYc-eh,pz-ew, ex,lgYc+eh,pz-ew);
-      rseg(st, ex,lgYc+eh,pz-ew, ex,lgYc+eh,pz+ew);
-      rseg(st, ex,lgYc+eh,pz+ew, ex,lgYc-eh,pz+ew);
-      rseg(st, ex,lgYc-eh,pz+ew, ex,lgYc-eh,pz-ew);
-    }
-  });
-
-  // Longrines — parallèles Z (le long des deux files X)
-  [-W/2, W/2].forEach(px => {
-    const lLen = D - sndD;
-    addBox(px, lgYc, 0, lgW, lgH, lLen, fndMat);
-    const yT = lgYc + lgH/2 - 0.08, yB = lgYc - lgH/2 + 0.07;
-    rseg(rb, px-0.06, yT, -lLen/2, px-0.06, yT, lLen/2);
-    rseg(rb, px+0.06, yT, -lLen/2, px+0.06, yT, lLen/2);
-    rseg(rb, px,      yB, -lLen/2, px,      yB, lLen/2);
-    const ew = lgW/2-0.05, eh = lgH/2-0.05;
-    for (let ez = -lLen/2+0.20; ez < lLen/2; ez += 0.35) {
-      rseg(st, px-ew,lgYc-eh,ez, px-ew,lgYc+eh,ez);
-      rseg(st, px-ew,lgYc+eh,ez, px+ew,lgYc+eh,ez);
-      rseg(st, px+ew,lgYc+eh,ez, px+ew,lgYc-eh,ez);
-      rseg(st, px+ew,lgYc-eh,ez, px-ew,lgYc-eh,ez);
-    }
-  });
-
-  // ── POTEAUX (toute hauteur) ───────────────────────────
-  colPositions.forEach(([cx, cz]) => {
-    addBox(cx, totalH / 2, cz, cW, totalH, cD);
+  // Poteaux (toute hauteur)
+  colPositions.forEach(([px, pz]) => {
+    box(px, totalH/2, pz, cW, totalH, cD);
     // 4 barres longitudinales
-    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx, sz]) => {
-      const bx = cx + sx * bOff, bz = cz + sz * bOff;
-      rseg(rb, bx, 0, bz, bx, totalH, bz);
+    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sz]) => {
+      const bx = px + sx*bOff, bz = pz + sz*bOff;
+      seg(rb, bx, 0, bz, bx, totalH, bz);
     });
-    // Étriers
-    const s = bOff + 0.03;
-    for (let y = 0.14; y < totalH; y += 0.28) {
-      rseg(st, cx-s,y,cz-s, cx+s,y,cz-s);
-      rseg(st, cx+s,y,cz-s, cx+s,y,cz+s);
-      rseg(st, cx+s,y,cz+s, cx-s,y,cz+s);
-      rseg(st, cx-s,y,cz+s, cx-s,y,cz-s);
+    // Étriers tous les 25 cm
+    const s = bOff + 0.04;
+    for (let y = 0.16; y < totalH; y += 0.25) {
+      seg(st, px-s,y,pz-s, px+s,y,pz-s);
+      seg(st, px+s,y,pz-s, px+s,y,pz+s);
+      seg(st, px+s,y,pz+s, px-s,y,pz+s);
+      seg(st, px-s,y,pz+s, px-s,y,pz-s);
     }
   });
 
-  // ── POUTRES & DALLES par niveau ───────────────────────
+  // Poutres longitudinales + dalles par niveau
   for (let f = 1; f <= nF; f++) {
-    const flY  = f * fH;
-    const bCY  = flY - bH / 2;
+    const flY = f * fH;
+    const bCY = flY - bH/2;
 
-    // Poutres longitudinales (parallèles X)
+    // Poutres long. (parallèles X) — une par travée
+    const spans = [[-W/2, -W/6], [-W/6, W/6], [W/6, W/2]];
     [-D/2, D/2].forEach(pz => {
-      const pLen = W - cW;
-      addBox(0, bCY, pz, pLen, bH, bW);
-      const x1 = -pLen/2, x2 = pLen/2;
-      const yT = bCY + bH/2 - 0.07, yB = bCY - bH/2 + 0.07;
-      rseg(rb, x1,yT,pz-0.06, x2,yT,pz-0.06);
-      rseg(rb, x1,yT,pz+0.06, x2,yT,pz+0.06);
-      rseg(rb, x1,yB,pz,      x2,yB,pz);
-      const ew = bW/2-0.05, eh = bH/2-0.05;
-      for (let ex = x1+0.16; ex < x2; ex += 0.32) {
-        rseg(st, ex,bCY-eh,pz-ew, ex,bCY+eh,pz-ew);
-        rseg(st, ex,bCY+eh,pz-ew, ex,bCY+eh,pz+ew);
-        rseg(st, ex,bCY+eh,pz+ew, ex,bCY-eh,pz+ew);
-        rseg(st, ex,bCY-eh,pz+ew, ex,bCY-eh,pz-ew);
-      }
+      spans.forEach(([x1, x2]) => {
+        const pLen = x2 - x1 - cW;
+        const pCx  = (x1 + x2) / 2;
+        box(pCx, bCY, pz, pLen, bH, bW);
+        const ew = bW/2-0.05, eh = bH/2-0.05;
+        seg(rb, x1+cW/2, bCY+eh-0.04, pz-0.06, x2-cW/2, bCY+eh-0.04, pz-0.06);
+        seg(rb, x1+cW/2, bCY-eh+0.04, pz,      x2-cW/2, bCY-eh+0.04, pz);
+        for (let ex = x1+cW/2+0.15; ex < x2-cW/2; ex += 0.28) {
+          seg(st, ex,bCY-eh,pz-ew, ex,bCY+eh,pz-ew);
+          seg(st, ex,bCY+eh,pz-ew, ex,bCY+eh,pz+ew);
+          seg(st, ex,bCY+eh,pz+ew, ex,bCY-eh,pz+ew);
+          seg(st, ex,bCY-eh,pz+ew, ex,bCY-eh,pz-ew);
+        }
+      });
     });
 
-    // Poutres transversales (parallèles Z)
-    [-W/2, W/2].forEach(px => {
+    // Poutres transversales (parallèles Z) sur chaque file X
+    cx.forEach(px => {
       const pLen = D - cD;
-      addBox(px, bCY, 0, bW, bH, pLen);
-      const z1 = -pLen/2, z2 = pLen/2;
-      const yT = bCY + bH/2 - 0.07, yB = bCY - bH/2 + 0.07;
-      rseg(rb, px,yT,z1, px,yT,z2);
-      rseg(rb, px,yB,z1, px,yB,z2);
+      box(px, bCY, 0, bW, bH, pLen);
+      seg(rb, px, bCY+bH/2-0.05, -pLen/2, px, bCY+bH/2-0.05, pLen/2);
       const ew = bW/2-0.05, eh = bH/2-0.05;
-      for (let ez = z1+0.16; ez < z2; ez += 0.32) {
-        rseg(st, px-ew,bCY-eh,ez, px-ew,bCY+eh,ez);
-        rseg(st, px-ew,bCY+eh,ez, px+ew,bCY+eh,ez);
-        rseg(st, px+ew,bCY+eh,ez, px+ew,bCY-eh,ez);
-        rseg(st, px+ew,bCY-eh,ez, px-ew,bCY-eh,ez);
+      for (let ez = -pLen/2+0.15; ez < pLen/2; ez += 0.28) {
+        seg(st, px-ew,bCY-eh,ez, px-ew,bCY+eh,ez);
+        seg(st, px-ew,bCY+eh,ez, px+ew,bCY+eh,ez);
+        seg(st, px+ew,bCY+eh,ez, px+ew,bCY-eh,ez);
+        seg(st, px+ew,bCY-eh,ez, px-ew,bCY-eh,ez);
       }
     });
 
-    // Dalle
-    addBox(0, flY - sH/2, 0, W, sH, D);
-    // Nappe de treillis (inférieure)
-    const my = flY - sH + 0.06;
-    for (let mz = -D/2+0.40; mz < D/2; mz += 0.40)
-      rseg(ms, -W/2, my, mz, W/2, my, mz);
-    for (let mx = -W/2+0.40; mx < W/2; mx += 0.40)
-      rseg(ms, mx, my, -D/2, mx, my, D/2);
+    // Dalle béton
+    box(0, flY - sH/2, 0, W, sH, D);
+    // Treillis nappe basse
+    const my = flY - sH + 0.07;
+    for (let mz = -D/2+0.35; mz < D/2; mz += 0.35)
+      seg(ms, -W/2, my, mz, W/2, my, mz);
+    for (let mx = -W/2+0.35; mx < W/2; mx += 0.35)
+      seg(ms, mx, my, -D/2, mx, my, D/2);
   }
 
-  // ── MURS DE REMPLISSAGE + COFFRAGE ───────────────────
-  for (let f = 1; f <= nF; f++) {
-    const wY0  = (f - 1) * fH;           // bas du panneau (dessus dalle précédente ou sol)
-    const wY1  = f * fH - bH;            // haut du panneau (sous-poutre)
-    const wH   = wY1 - wY0;
-    if (wH < 0.10) continue;
-    const wYc  = wY0 + wH / 2;
-
-    // ─ Façades longitudinales (z = ±D/2) ─ 2 travées
-    [-D/2, D/2].forEach(fz => {
-      const sgn = fz < 0 ? -1 : 1;
-      const outerZ = fz + sgn * wallT / 2;
-
-      for (let s = 0; s < 2; s++) {
-        const spanCx = (s === 0) ? -W / 4 : W / 4;
-        const spanW  = W / 2 - cW;
-        addBox(spanCx, wYc, fz, spanW, wH, wallT, wallMat);
-
-        // Coffrage : planches horizontales + contour
-        const pg = 0.22;
-        for (let py = wY0 + pg * 0.5; py < wY1; py += pg)
-          rseg(cf, spanCx-spanW/2, py, outerZ, spanCx+spanW/2, py, outerZ);
-        // Contour du panneau
-        rseg(cf, spanCx-spanW/2, wY0, outerZ, spanCx+spanW/2, wY0, outerZ);
-        rseg(cf, spanCx-spanW/2, wY1, outerZ, spanCx+spanW/2, wY1, outerZ);
-        rseg(cf, spanCx-spanW/2, wY0, outerZ, spanCx-spanW/2, wY1, outerZ);
-        rseg(cf, spanCx+spanW/2, wY0, outerZ, spanCx+spanW/2, wY1, outerZ);
-      }
-    });
-
-    // ─ Façades transversales (x = ±W/2) ─ 1 travée
-    [-W/2, W/2].forEach(fx => {
-      const sgn = fx < 0 ? -1 : 1;
-      const outerX = fx + sgn * wallT / 2;
-      const spanD  = D - cD;
-      addBox(fx, wYc, 0, wallT, wH, spanD, wallMat);
-
-      const pg = 0.22;
-      for (let py = wY0 + pg * 0.5; py < wY1; py += pg)
-        rseg(cf, outerX, py, -spanD/2, outerX, py, spanD/2);
-      rseg(cf, outerX, wY0, -spanD/2, outerX, wY0,  spanD/2);
-      rseg(cf, outerX, wY1, -spanD/2, outerX, wY1,  spanD/2);
-      rseg(cf, outerX, wY0, -spanD/2, outerX, wY1, -spanD/2);
-      rseg(cf, outerX, wY0,  spanD/2, outerX, wY1,  spanD/2);
+  // ──────────────────────────────────────────────────────────────────────────
+  // NOYAU BÉTON CENTRAL (escaliers + ascenseurs)
+  // ──────────────────────────────────────────────────────────────────────────
+  const coreW = 3.2, coreD = 2.2;
+  box(0, totalH/2, 0, coreW, totalH, coreD, coreMat);
+  // Ouvertures symboliques dans le noyau (porte ascenseurs)
+  for (let f = 0; f < nF; f++) {
+    const fy = f * fH + fH/2;
+    // Deux petites ouvertures face avant
+    [-0.7, 0.7].forEach(ox => {
+      const hole = new THREE.Mesh(
+        new THREE.BoxGeometry(0.85, 2.2, 0.12),
+        new THREE.MeshLambertMaterial({ color: 0x0F1929, transparent: true, opacity: 0.85 })
+      );
+      hole.position.set(ox, fy - 0.2, -coreD/2 - 0.02);
+      building.add(hole);
     });
   }
 
-  // ── Assemblage des lignes ─────────────────────────────
-  [
-    buildLS(rb, matRebar,    2),
-    buildLS(st, matStirrup,  2),
-    buildLS(ms, matMesh,     2),
-    buildLS(cf, matCoffrage, 3),   // coffrage au-dessus
-  ].forEach(ls => { if (ls) building.add(ls); });
+  // ──────────────────────────────────────────────────────────────────────────
+  // FAÇADE RIDEAU VITRÉE
+  // ──────────────────────────────────────────────────────────────────────────
+  const spH       = 0.80;   // hauteur spandrel (bande opaque entre niveaux)
+  const visionH   = fH - spH - sH * 0.5;  // hauteur vitrage visible
+  const glassFace = [];     // stocke pour mise à jour opacité
 
-  // Le bâtiment est centré verticalement ; on le remonte
-  // légèrement pour que les semelles soient visibles
-  building.position.y = -totalH / 2 + sndH * 0.4;
-  building.position.x = 3.8;   // décalage droite — laisse la zone texte libre
+  // Panels sur faces longitudinales (avant z=-D/2, arrière z=+D/2)
+  [-D/2, D/2].forEach(fz => {
+    const spans = [[-W/2, -W/6], [-W/6, W/6], [W/6, W/2]];
+    for (let f = 0; f < nF; f++) {
+      const flY    = f * fH;
+      const vCY    = flY + sH + visionH/2;
+      const sCY    = flY + sH/2 + 0.02;
+      spans.forEach(([x1, x2]) => {
+        const pW = (x2 - x1) - cW - 0.04;
+        // Vision panel (verre)
+        const g = box((x1+x2)/2, vCY, fz, pW, visionH, 0.06, glassMat);
+        glassFace.push(g);
+        // Spandrel band (béton habillé)
+        box((x1+x2)/2, sCY, fz, pW, spH - 0.06, 0.09, spandrelMat);
+      });
+    }
+  });
+
+  // Panels sur faces transversales (x = ±W/2)
+  [-W/2, W/2].forEach(fx => {
+    for (let f = 0; f < nF; f++) {
+      const flY = f * fH;
+      const vCY = flY + sH + visionH/2;
+      const sCY = flY + sH/2 + 0.02;
+      const pD  = D - cD - 0.04;
+      const g = box(fx, vCY, 0, 0.06, visionH, pD, glassMat);
+      glassFace.push(g);
+      box(fx, sCY, 0, 0.09, spH - 0.06, pD, spandrelMat);
+    }
+  });
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // ACROTÈRE / COURONNEMENT
+  // ──────────────────────────────────────────────────────────────────────────
+  const parapetH = 1.2;
+  // Acrotère avant / arrière (parallèles X)
+  box(0, totalH + parapetH/2, -D/2 - 0.11, W + 0.4, parapetH, 0.22, coreMat);
+  box(0, totalH + parapetH/2,  D/2 + 0.11, W + 0.4, parapetH, 0.22, coreMat);
+  // Acrotère lateral (parallèles Z)
+  box(-W/2 - 0.11, totalH + parapetH/2, 0, 0.22, parapetH, D + 0.4, coreMat);
+  box( W/2 + 0.11, totalH + parapetH/2, 0, 0.22, parapetH, D + 0.4, coreMat);
+  // Toit : machinerie / local technique
+  box(-W/4, totalH + parapetH + 1.5, 0, W/2, 3.0, D * 0.7, coreMat);
+  box( W/4, totalH + parapetH + 0.6, 0, W/3, 1.2, D * 0.5, spandrelMat);
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // LIGNES D'ARMATURES
+  // ──────────────────────────────────────────────────────────────────────────
+  lineSegs(rb, matRebar,   2);
+  lineSegs(st, matStirrup, 2);
+  lineSegs(ms, matMesh,    2);
+
+  // ── Positionnement final du bâtiment ──────────────────────────────────────
+  building.position.y = -totalH * 0.08;
+  building.position.x = 4.5;   // décalé à droite pour libérer la zone texte hero
   scene.add(building);
 
-  // ── Plan de sol (terre) ───────────────────────────────
-  const groundGeo = new THREE.PlaneGeometry(36, 36);
-  const groundMat = new THREE.MeshLambertMaterial({
-    color: 0x0D1626, transparent: true, opacity: 0.70, depthWrite: true,
-  });
-  const groundPlane = new THREE.Mesh(groundGeo, groundMat);
-  groundPlane.rotation.x = -Math.PI / 2;
-  groundPlane.position.set(building.position.x, building.position.y - 0.04, 0);
-  scene.add(groundPlane);
+  // ── Sol + grille ──────────────────────────────────────────────────────────
+  const groundGeo = new THREE.PlaneGeometry(80, 80);
+  const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+  groundMesh.rotation.x = -Math.PI / 2;
+  groundMesh.position.set(building.position.x, building.position.y - 0.05, 0);
+  scene.add(groundMesh);
 
-  // ── Grille légère ─────────────────────────────────────
-  const grid = new THREE.GridHelper(60, 32, 0x1A3060, 0x0F1E3A);
-  grid.position.set(building.position.x, building.position.y - 0.14, 0);
+  const grid = new THREE.GridHelper(100, 40, 0x8A9EB4, 0x8A9EB4);
+  grid.position.set(building.position.x, building.position.y - 0.04, 0);
   grid.material.transparent = true;
-  grid.material.opacity = 0.10;
+  grid.material.opacity = 0.14;
   scene.add(grid);
 
-  // ── Particules flottantes ─────────────────────────────
-  const ptPos = new Float32Array(200 * 3);
-  for (let i = 0; i < 200; i++) {
-    ptPos[i*3]   = (Math.random() - 0.5) * 48;
-    ptPos[i*3+1] = (Math.random() - 0.5) * 32;
-    ptPos[i*3+2] = (Math.random() - 0.5) * 32;
+  // ── Particules flottantes ─────────────────────────────────────────────────
+  const ptPos = new Float32Array(280 * 3);
+  for (let i = 0; i < 280; i++) {
+    ptPos[i*3]   = (Math.random()-0.5)*60;
+    ptPos[i*3+1] = (Math.random()-0.5)*50;
+    ptPos[i*3+2] = (Math.random()-0.5)*40;
   }
   const ptGeo = new THREE.BufferGeometry();
   ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPos, 3));
-  const ptMat = new THREE.PointsMaterial({ color: 0x2A5A9A, size: 0.055, transparent: true, opacity: 0.22 });
+  const ptMat = new THREE.PointsMaterial({ color: 0x6A8CB8, size: 0.06, transparent: true, opacity: 0.18 });
   scene.add(new THREE.Points(ptGeo, ptMat));
 
-  // ── Suivi souris / touch ──────────────────────────────
+  // ── Applique le thème initial ─────────────────────────────────────────────
+  window.mhSceneSetTheme(initTheme);
+
+  // ── Suivi souris ──────────────────────────────────────────────────────────
   let mX = 0, mY = 0, tX = 0, tY = 0;
   let smoothMX = 0, revealAmt = 0, lastMove = 0;
 
-  function onMove(clientX, clientY) {
-    mX = (clientX / window.innerWidth  - 0.5) * 2;
-    mY = (clientY / window.innerHeight - 0.5) * 2;
+  function onMove(cx, cy) {
+    mX = (cx / window.innerWidth  - 0.5) * 2;
+    mY = (cy / window.innerHeight - 0.5) * 2;
     lastMove = Date.now();
   }
   document.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
-  document.addEventListener('touchmove', e => {
-    onMove(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: true });
+  document.addEventListener('touchmove', e => onMove(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
 
   let scrollY = 0;
   window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
-
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // ── Boucle d'animation ────────────────────────────────
+  // ── Boucle animation ──────────────────────────────────────────────────────
   const clock = new THREE.Clock();
-
-  // ── Pause animation sur onglet caché (économie batterie) ──
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      clock.stop();
-    } else {
-      clock.start();
-    }
-  });
-
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? clock.stop() : clock.start();
+  });
 
   (function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // Rotation 360° continue — arrêtée si prefers-reduced-motion
-    building.rotation.y = reducedMotion ? 0.4 : t * 0.060;
+    // Rotation lente — bâtiment qui tourne doucement
+    building.rotation.y = reducedMotion ? 0.2 : t * 0.028;
 
-    // Parallaxe caméra (souris)
-    tX += (mX - tX) * 0.025;
-    tY += (mY - tY) * 0.025;
-    camera.position.x = tX * 2.5;
-    camera.position.y = 3 + tY * 1.5 - scrollY * 0.003;
-    camera.lookAt(0, 0, 0);
+    // Parallaxe caméra
+    tX += (mX - tX) * 0.022;
+    tY += (mY - tY) * 0.022;
+    camera.position.x = tX * 3;
+    camera.position.y = 14 + tY * 2 - scrollY * 0.002;
+    camera.lookAt(building.position.x * 0.35, 18 + tY * 0.5, 0);
 
-    // Position souris en NDC (lissée)
-    smoothMX += (mX * 0.78 - smoothMX) * 0.08;
+    // Lissage X souris
+    smoothMX += (mX * 0.75 - smoothMX) * 0.07;
 
-    // Fondu révélation : actif au mouvement, s'estompe après 2,5 s
+    // Fondu révélation armatures
     const idle   = (Date.now() - lastMove) / 1000;
-    const target = idle < 0.08 ? 1.0 : Math.max(0, 1.0 - Math.max(0, idle - 0.08) / 2.5);
-    revealAmt += (target - revealAmt) * 0.045;
+    const target = idle < 0.08 ? 1.0 : Math.max(0, 1 - Math.max(0, idle - 0.08) / 2.8);
+    revealAmt += (target - revealAmt) * 0.05;
 
-    // Mise à jour uniforms armatures + coffrage
-    [matRebar, matStirrup, matMesh, matCoffrage].forEach(m => {
+    // Update uniforms armatures
+    [matRebar, matStirrup, matMesh].forEach(m => {
       m.uniforms.uMouseX.value = smoothMX;
       m.uniforms.uReveal.value = revealAmt;
     });
 
-    // Pulsation légère du béton
-    const pulse = 0.86 + Math.sin(t * 0.28) * 0.05;
+    // Béton : légère pulsation
+    const pulse = 0.88 + Math.sin(t * 0.24) * 0.04;
     concreteMat.opacity = pulse;
-    // Murs légèrement plus transparents au survol (effet "voir à travers")
-    wallMat.opacity = 0.82 - revealAmt * 0.38;
+
+    // Vitrage : s'efface au survol pour révéler la structure
+    const glassTargetOp = 0.38 - revealAmt * 0.28;
+    glassMat.opacity = glassTargetOp;
 
     renderer.render(scene, camera);
   })();
