@@ -17,7 +17,7 @@
 
       /* Hero */
       'hero.tag':         'Bureau d\'Études Techniques — Structure',
-      'hero.h1':          'Ingénierie<br><em>Structurelle</em><br>de Précision',
+      'hero.h1':          'Ingénierie<br><em>Structurelle</em><br>à Carmaux, Tarn',
       'hero.desc':        'Étude de structures · Diagnostic d\'ouvrages · Contrôle réglementaire<br>Des solutions techniques adaptées à chaque situation.',
       'hero.btn-primary': 'Demander un devis',
       'hero.btn-ghost':   'Voir nos cas prévention',
@@ -160,7 +160,7 @@
       'footer.svc.3':      'Diagnostic Sismique',
       'footer.svc.4':      'Attestation PC',
       'footer.svc.5':      'Attestation AT2',
-      'footer.copy':       '© 2025 MH Structure. Tous droits réservés.',
+      'footer.copy':       '© 2026 MH Structure. Tous droits réservés.',
       'footer.legal':      'Mentions légales',
       'footer.privacy':    'Politique de confidentialité',
 
@@ -181,7 +181,7 @@
 
       /* Hero */
       'hero.tag':         'Structural Engineering Consultancy',
-      'hero.h1':          'Structural<br><em>Engineering</em><br>Precision',
+      'hero.h1':          'Structural<br><em>Engineering</em><br>Carmaux, France',
       'hero.desc':        'Structural analysis · Building diagnostics · Regulatory compliance<br>Technical solutions tailored to every situation.',
       'hero.btn-primary': 'Request a quote',
       'hero.btn-ghost':   'View case studies',
@@ -324,7 +324,7 @@
       'footer.svc.3':      'Seismic Assessment',
       'footer.svc.4':      'Seismic Certificate',
       'footer.svc.5':      'End-of-Works AT2',
-      'footer.copy':       '© 2025 MH Structure. All rights reserved.',
+      'footer.copy':       '© 2026 MH Structure. All rights reserved.',
       'footer.legal':      'Legal notice',
       'footer.privacy':    'Privacy policy',
 

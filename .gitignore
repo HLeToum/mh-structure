@@ -1,1 +1,6 @@
 .vercel
+# Fichiers temporaires de traitement d'images
+images/prevention/*-raw.jpg
+images/prevention/*-raw.webp
+# Modèle 3D non utilisé (21 MB)
+models/villa.glb

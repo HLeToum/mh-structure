@@ -32,15 +32,32 @@
   <meta name="twitter:image" content="https://www.mhstructure.com/images/og-mh-structure.jpg">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"/>
+  <!-- hreflang : même URL pour FR et EN (toggle JS) -->
+  <link rel="alternate" hreflang="fr" href="https://www.mhstructure.com/">
+  <link rel="alternate" hreflang="en" href="https://www.mhstructure.com/">
+  <link rel="alternate" hreflang="x-default" href="https://www.mhstructure.com/">
+
+  <!-- Leaflet CSS chargé en différé (carte hors viewport initial) -->
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"></noscript>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- Police critique préchargée -->
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
         href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuPa_p4r.woff2">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts chargées de façon non bloquante -->
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  </noscript>
 </head>
 <body>
 
@@ -104,7 +121,7 @@
         <h1 class="hero-h1" data-i18n-html="hero.h1">
           Ingénierie<br>
           <em>Structurelle</em><br>
-          de Précision
+          à Carmaux, Tarn
         </h1>
         <p class="hero-desc" data-i18n-html="hero.desc">
           Étude de structures · Diagnostic d'ouvrages · Contrôle réglementaire<br>
@@ -849,39 +866,72 @@
       "opens": "08:00",
       "closes": "18:00"
     },
-    "sameAs": [
-      "https://www.mhstructure.com",
-      "https://maps.google.com/?q=MH+Structure+Carmaux"
-    ]
+    "sameAs": []
   }
   </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Accueil",    "item": "https://www.mhstructure.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Prévention", "item": "https://www.mhstructure.com/#prevention" },
-      { "@type": "ListItem", "position": 3, "name": "Services",   "item": "https://www.mhstructure.com/#services" },
-      { "@type": "ListItem", "position": 4, "name": "Devis",      "item": "https://www.mhstructure.com/#contact" }
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce qu'une attestation parasismique AT2 ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L'attestation parasismique AT2 est un document réglementaire délivré par un ingénieur structure certifiant que les règles parasismiques (PS-MI ou Eurocode 8) ont bien été respectées à l'achèvement des travaux. Elle est obligatoire pour les constructions neuves en zone sismique et doit être jointe à la déclaration d'achèvement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quand faut-il faire appel à un ingénieur structure ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il est recommandé de consulter un ingénieur structure dès l'apparition de fissures importantes, avant tout projet d'extension ou de surélévation, lors d'une réhabilitation lourde, ou pour vérifier la stabilité d'un bâtiment existant. Un diagnostic précoce évite des travaux coûteux et prévient les risques structuraux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dans quels délais intervenez-vous pour un devis ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MH Structure s'engage à répondre à toute demande de devis sous 48 heures. Nous intervenons principalement dans le Tarn (81) et en Occitanie, mais pouvons étudier toute demande sur le territoire français."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la différence entre un diagnostic visuel et un diagnostic sismique ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le diagnostic visuel structurel consiste à inspecter un ouvrage pour identifier et classer les désordres visibles (fissures, déformations, humidité). Le diagnostic sismique évalue quant à lui la vulnérabilité d'un bâtiment existant face au risque sismique, selon les réglementations PS-MI et Eurocode 8."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelles sont les zones géographiques d'intervention de MH Structure ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MH Structure est basé à Carmaux dans le Tarn (81) et intervient sur l'ensemble du département et de la région Occitanie. Des interventions ponctuelles peuvent être réalisées sur le reste du territoire français pour des missions spécifiques."
+        }
+      }
     ]
   }
   </script>
 
-  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"
+  <script defer src="https://unpkg.com/three@0.128.0/build/three.min.js"
           integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu"
           crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
           integrity="sha384-xjP10QrW7PA6WOlPOkWwDcyKJeREvuwWVAc5aS9/ObhcWcdopa9q3l7NXObVJQ8r"
           crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
           integrity="sha384-V0oE5KjuA5fwJoB7Ve6EjvvRB2skf+fPQ1IncPdJ4HurEaHbSKYUoW3Y13UzFcpD"
           crossorigin="anonymous"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/scene.js"></script>
-  <script src="js/main.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
-  <script src="js/map.js"></script>
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/scene.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script defer src="js/map.js"></script>
 
   <!-- ── Cookie consent banner ── -->
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Consentement cookies" aria-live="polite" hidden>
@@ -899,7 +949,7 @@
     </div>
   </div>
 
-  <script src="js/accordion.js"></script>
-  <script src="js/cookies.js"></script>
+  <script defer src="js/accordion.js"></script>
+  <script defer src="js/cookies.js"></script>
 </body>
 </html>
