@@ -64,6 +64,16 @@
       'prev.c05.obs':   'Infiltrations d\'eau visibles sur plusieurs niveaux d\'une façade béton, concentrées aux angles des ouvertures et aux zones de jonction structure/menuiserie. Le caractère répété et généralisé est significatif.',
       'prev.c05.inv':   'Un défaut d\'étanchéité généralisé peut accélérer la corrosion des armatures de façade. L\'évaluation de la profondeur d\'humidité, l\'état des joints de menuiserie et la présence de fissures traversantes sont des points clés.',
 
+      'prev.c06.cat':   'Soutènement · Structure',
+      'prev.c06.title': 'Déversement et fissuration d\'un mur de soutènement',
+      'prev.c06.obs':   'Inclinaison progressive du parement vers l\'extérieur, accompagnée de fissures verticales ou obliques sur le voile béton armé. Un dévers visible à l\'œil nu indique un déséquilibre des forces agissant sur l\'ouvrage.',
+      'prev.c06.inv':   'La poussée des terres, l\'absence ou la dégradation du drainage, et l\'état des armatures sont à évaluer en priorité. Un calcul de stabilité au glissement et au renversement est indispensable avant toute décision d\'intervention.',
+
+      'prev.c07.cat':   'Soutènement · Drainage',
+      'prev.c07.title': 'Infiltrations et défaut de drainage en pied de mur',
+      'prev.c07.obs':   'Remontées d\'humidité, suintements en parement ou stagnation d\'eau en pied de mur de soutènement. Un drainage insuffisant génère une surpression hydrostatique qui amplifie considérablement la poussée exercée sur le voile.',
+      'prev.c07.inv':   'L\'état du drain perforé, du géotextile et des barbacanes est à contrôler. Une étude géotechnique permet d\'évaluer la perméabilité des sols et de dimensionner un système de drainage adapté pour pérenniser l\'ouvrage.',
+
       'prev.cta.q':   'Vous reconnaissez un de ces signes sur votre bâtiment ?',
       'prev.cta.sub': 'Chaque situation est unique. Un examen par un ingénieur structure est indispensable pour évaluer le niveau de risque réel.',
       'prev.cta.btn': 'Demander un diagnostic',
@@ -212,6 +222,16 @@
       'prev.c05.title': 'Repeated infiltrations on a façade',
       'prev.c05.obs':   'Water infiltration visible on multiple levels of a concrete façade, concentrated at opening corners and structure/joinery junctions. The repeated and widespread nature is significant.',
       'prev.c05.inv':   'A widespread waterproofing failure can accelerate façade reinforcement corrosion. Evaluating moisture depth, the condition of joinery seals and the presence of through-cracks are key points.',
+
+      'prev.c06.cat':   'Retaining wall · Structure',
+      'prev.c06.title': 'Tilting and cracking of a retaining wall',
+      'prev.c06.obs':   'Progressive outward tilt of the facing, accompanied by vertical or oblique cracks on the reinforced concrete wall. A visible lean indicates an imbalance in the forces acting on the structure.',
+      'prev.c06.inv':   'Soil pressure, the absence or deterioration of drainage, and the condition of the reinforcement are priority items. A sliding and overturning stability calculation is essential before any intervention decision.',
+
+      'prev.c07.cat':   'Retaining wall · Drainage',
+      'prev.c07.title': 'Infiltrations and drainage failure at the base of a retaining wall',
+      'prev.c07.obs':   'Rising damp, seepage on the facing or water pooling at the base of a retaining wall. Insufficient drainage generates hydrostatic pressure that significantly amplifies the thrust on the wall.',
+      'prev.c07.inv':   'The condition of the perforated drain, geotextile and weep holes must be checked. A geotechnical study assesses soil permeability and allows a suitable drainage system to be designed to ensure the long-term performance of the structure.',
 
       'prev.cta.q':   'Do you recognise any of these signs on your building?',
       'prev.cta.sub': 'Every situation is unique. An inspection by a structural engineer is essential to assess the actual level of risk.',
