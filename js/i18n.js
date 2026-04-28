@@ -163,6 +163,11 @@
       'footer.copy':       '© 2025 MH Structure. Tous droits réservés.',
       'footer.legal':      'Mentions légales',
       'footer.privacy':    'Politique de confidentialité',
+
+      /* Cookie banner */
+      'cookie.text':   'Ce site utilise uniquement un stockage local pour mémoriser votre préférence de thème (clair / sombre). Aucun cookie tiers ni outil de suivi.',
+      'cookie.learn':  'En savoir plus',
+      'cookie.accept': 'J\'ai compris',
     },
 
     en: {
@@ -322,6 +327,11 @@
       'footer.copy':       '© 2025 MH Structure. All rights reserved.',
       'footer.legal':      'Legal notice',
       'footer.privacy':    'Privacy policy',
+
+      /* Cookie banner */
+      'cookie.text':   'This site only uses local storage to remember your theme preference (light / dark). No third-party cookies or tracking tools.',
+      'cookie.learn':  'Learn more',
+      'cookie.accept': 'Got it',
     },
   };
 
