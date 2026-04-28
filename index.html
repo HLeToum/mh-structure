@@ -37,10 +37,7 @@
   <link rel="alternate" hreflang="en" href="https://www.mhstructure.com/">
   <link rel="alternate" hreflang="x-default" href="https://www.mhstructure.com/">
 
-  <!-- Leaflet CSS chargé en différé (carte hors viewport initial) -->
-  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"></noscript>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,16 +45,9 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <!-- Police critique préchargée -->
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
         href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuPa_p4r.woff2">
-
-  <!-- Google Fonts chargées de façon non bloquante -->
-  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  </noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -918,20 +908,20 @@
   }
   </script>
 
-  <script defer src="https://unpkg.com/three@0.128.0/build/three.min.js"
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"
           integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu"
           crossorigin="anonymous"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
           integrity="sha384-xjP10QrW7PA6WOlPOkWwDcyKJeREvuwWVAc5aS9/ObhcWcdopa9q3l7NXObVJQ8r"
           crossorigin="anonymous"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
           integrity="sha384-V0oE5KjuA5fwJoB7Ve6EjvvRB2skf+fPQ1IncPdJ4HurEaHbSKYUoW3Y13UzFcpD"
           crossorigin="anonymous"></script>
-  <script defer src="js/i18n.js"></script>
-  <script defer src="js/scene.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
-  <script defer src="js/map.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script src="js/map.js"></script>
 
   <!-- ── Cookie consent banner ── -->
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Consentement cookies" aria-live="polite" hidden>
@@ -949,7 +939,7 @@
     </div>
   </div>
 
-  <script defer src="js/accordion.js"></script>
-  <script defer src="js/cookies.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/cookies.js"></script>
 </body>
 </html>
