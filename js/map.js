@@ -14,8 +14,8 @@
     dark:  'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
     light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
   };
-  var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-           + ' &copy; <a href="https://carto.com/" target="_blank" rel="noopener">CARTO</a>';
+  var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" aria-label="OpenStreetMap (nouvelle fenêtre)">OpenStreetMap</a>'
+           + ' &copy; <a href="https://carto.com/" target="_blank" rel="noopener noreferrer" aria-label="CARTO (nouvelle fenêtre)">CARTO</a>';
 
   var map, tileLayer;
 
@@ -65,7 +65,7 @@
         + '<br><span>Bureau d\'études structure</span>'
         + '<br><span>6 Boulevard du Rajol</span>'
         + '<br><span>81400 Carmaux &mdash; Tarn (81)</span>'
-        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener">'
+        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener noreferrer" aria-label="Voir MH Structure sur Google Maps (s\'ouvre dans un nouvel onglet)">'
         + '📍 Voir sur Google Maps</a>'
       )
       .openPopup();
