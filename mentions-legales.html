@@ -193,7 +193,10 @@
 </head>
 <body>
 
-<nav>
+<a href="#main-content" class="skip-link" style="position:absolute;top:-100%;left:16px;z-index:9999;padding:8px 20px;background:#C9A84C;color:#06090F;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.85rem;border-radius:6px;transition:top 0.2s;text-decoration:none;">Aller au contenu principal</a>
+<style>.skip-link:focus{top:16px}</style>
+
+<nav aria-label="Navigation principale">
   <a href="index.html" class="nav-logo" aria-label="MH Structure — retour accueil">
     <span class="nav-logo-mh" translate="no">MH</span>
     <div class="nav-logo-sep" aria-hidden="true"></div>
@@ -229,7 +232,16 @@
   })();
 </script>
 
-<main>
+<main id="main-content">
+  <!-- Fil d'Ariane — second système de navigation (RGAA 12.1) -->
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <ol style="list-style:none;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--text3);margin-bottom:2rem;">
+      <li><a href="index.html" style="color:var(--gold);text-decoration:none;">Accueil</a></li>
+      <li aria-hidden="true" style="opacity:0.5;">›</li>
+      <li aria-current="page" style="color:var(--text2);">Mentions légales</li>
+    </ol>
+  </nav>
+
   <h1>Mentions légales</h1>
   <p class="subtitle">Dernière mise à jour : avril 2026</p>
 

@@ -166,7 +166,7 @@
 
       /* Cookie banner */
       'cookie.text':   'Ce site utilise uniquement un stockage local pour mémoriser votre préférence de thème (clair / sombre). Aucun cookie tiers ni outil de suivi.',
-      'cookie.learn':  'En savoir plus',
+      'cookie.learn':  'Politique de confidentialité',
       'cookie.accept': 'J\'ai compris',
     },
 
@@ -330,7 +330,7 @@
 
       /* Cookie banner */
       'cookie.text':   'This site only uses local storage to remember your theme preference (light / dark). No third-party cookies or tracking tools.',
-      'cookie.learn':  'Learn more',
+      'cookie.learn':  'Privacy policy',
       'cookie.accept': 'Got it',
     },
   };

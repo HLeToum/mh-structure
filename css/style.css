@@ -65,7 +65,7 @@
 
   --text:     #0D1726;
   --text2:    #3A5070;
-  --text3:    #536A82;
+  --text3:    #4E6680; /* ratio 4.73:1 sur #EFF3FA — WCAG AA ✓ */
 
   --border:   rgba(13,23,38,0.09);
   --border-g: rgba(201,168,76,0.38);
@@ -1205,6 +1205,19 @@ body,
   line-height: 1.55;
 }
 
+/* ── Erreurs de champ formulaire (RGAA 11.11) ── */
+.field-error {
+  display: block;
+  min-height: 0;
+  font-size: 0.78rem;
+  color: #E05252;
+  font-family: var(--ff-body);
+  line-height: 1.4;
+  margin-top: -4px;
+}
+.field-error:empty { display: none; }
+[data-theme="light"] .field-error { color: #C03030; }
+
 /* ── Accordion toggle ── */
 .patho-toggle {
   display: flex;
@@ -1835,6 +1848,43 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
 
 /* Keep bg-canvas pointer events disabled (Three.js canvas) */
 #bg-canvas { pointer-events: none; }
+
+/* ================================================================
+   MARQUEE — Bouton pause (RGAA 13.8)
+   ================================================================ */
+.marquee-container { position: relative; }
+.marquee-pause-btn {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--pad-x) + 8px);
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, border-color 0.2s, color 0.2s;
+}
+.marquee-pause-btn:focus,
+.marquee-pause-btn:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  color: var(--gold);
+  border-color: var(--border-g);
+}
 
 /* ================================================================
    COOKIE CONSENT BANNER

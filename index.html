@@ -99,6 +99,9 @@
     </div>
   </nav>
 
+  <!-- ========== CONTENU PRINCIPAL ========== -->
+  <main id="main-content">
+
   <!-- ========== HERO ========== -->
   <section id="accueil" class="hero" aria-label="Accueil">
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -130,7 +133,7 @@
   </section>
 
   <!-- ========== METRICS STRIP ========== -->
-  <div class="metrics-strip" id="main-content">
+  <div class="metrics-strip">
     <div class="metric-item">
       <div class="metric-val"><span class="counter" data-target="8">0</span><span data-i18n="metric.years.unit"> ans</span></div>
       <div class="metric-lbl" data-i18n="metric.years.label">Expérience en ingénierie structure</div>
@@ -162,7 +165,16 @@
   </div>
 
   <!-- ========== MARQUEE ========== -->
-  <div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-container">
+    <button class="marquee-pause-btn" id="marqueePauseBtn"
+            aria-label="Mettre en pause le défilement" aria-pressed="false">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+        <rect x="1" y="1" width="3" height="8" rx="1"/>
+        <rect x="6" y="1" width="3" height="8" rx="1"/>
+      </svg>
+      Pause
+    </button>
+    <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
       <span>Béton Armé</span><span class="dot">·</span>
       <span>Notes de Calcul</span><span class="dot">·</span>
@@ -187,7 +199,8 @@
       <span>Diagnostic Sismique</span><span class="dot">·</span>
       <span>Assuré SMABTP</span><span class="dot">·</span>
     </div>
-  </div>
+  </div><!-- /.marquee-wrap -->
+  </div><!-- /.marquee-container -->
 
   <!-- ========== PREVENTION ========== -->
   <section id="prevention" class="section prevention-section">
@@ -230,7 +243,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c01.title">Fissure diagonale sur poteau de façade</h3>
+              <span class="patho-title" data-i18n="prev.c01.title">Fissure diagonale sur poteau de façade</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -267,7 +280,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c02.title">Fissure oblique en pied de mur</h3>
+              <span class="patho-title" data-i18n="prev.c02.title">Fissure oblique en pied de mur</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -304,7 +317,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c03.title">Fissuration multiple en zone de travaux</h3>
+              <span class="patho-title" data-i18n="prev.c03.title">Fissuration multiple en zone de travaux</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -341,7 +354,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c04.title">Exfiltration d'eau en façade béton</h3>
+              <span class="patho-title" data-i18n="prev.c04.title">Exfiltration d'eau en façade béton</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -378,7 +391,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c05.title">Infiltrations répétées sur façade</h3>
+              <span class="patho-title" data-i18n="prev.c05.title">Infiltrations répétées sur façade</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -415,7 +428,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c06.title">Déversement et fissuration d'un mur de soutènement</h3>
+              <span class="patho-title" data-i18n="prev.c06.title">Déversement et fissuration d'un mur de soutènement</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -452,7 +465,7 @@
           </div>
           <div class="patho-body">
             <button class="patho-toggle" aria-expanded="false">
-              <h3 class="patho-title" data-i18n="prev.c07.title">Infiltrations et défaut de drainage en pied de mur</h3>
+              <span class="patho-title" data-i18n="prev.c07.title">Infiltrations et défaut de drainage en pied de mur</span>
               <svg class="patho-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="patho-details">
@@ -507,11 +520,11 @@
             </div>
           </div>
           <div class="tools-grid">
-            <span class="tool-tag" translate="no">REVIT</span>
-            <span class="tool-tag" translate="no">AutoCAD</span>
-            <span class="tool-tag" translate="no">Advanced Design</span>
+            <span class="tool-tag" translate="no" lang="en">REVIT</span>
+            <span class="tool-tag" translate="no" lang="en">AutoCAD</span>
+            <span class="tool-tag" translate="no" lang="en">Advanced Design</span>
             <span class="tool-tag" translate="no">Eurocode 2 &amp; 8</span>
-            <span class="tool-tag" translate="no">BIM 360</span>
+            <span class="tool-tag" translate="no" lang="en">BIM 360</span>
           </div>
           <div class="smabtp-trust">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -731,11 +744,13 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="nom" data-i18n="form.nom.label">Nom complet *</label>
-                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" spellcheck="false" required data-i18n-ph="form.nom.ph">
+                <input type="text" id="nom" name="nom" placeholder="Jean Dupont…" autocomplete="name" spellcheck="false" required aria-describedby="nom-error" data-i18n-ph="form.nom.ph">
+                <span id="nom-error" class="field-error" role="alert" aria-live="polite"></span>
               </div>
               <div class="form-group">
                 <label for="email" data-i18n="form.email.label">Email *</label>
-                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" autocomplete="email" spellcheck="false" required data-i18n-ph="form.email.ph">
+                <input type="email" id="email" name="email" placeholder="jean@exemple.fr" autocomplete="email" spellcheck="false" required aria-describedby="email-error" data-i18n-ph="form.email.ph">
+                <span id="email-error" class="field-error" role="alert" aria-live="polite"></span>
               </div>
             </div>
             <div class="form-row">
@@ -745,7 +760,7 @@
               </div>
               <div class="form-group">
                 <label for="type" data-i18n="form.type.label">Type de prestation *</label>
-                <select id="type" name="type" autocomplete="off" required>
+                <select id="type" name="type" autocomplete="off" required aria-describedby="type-error">
                   <option value="" data-i18n="form.type.default">Sélectionner…</option>
                   <option value="calcul" data-i18n="form.type.calcul">Notes de calcul structurel</option>
                   <option value="diagnostic-visuel" data-i18n="form.type.diag-vis">Diagnostic visuel structurel</option>
@@ -754,11 +769,13 @@
                   <option value="attestation-at2" data-i18n="form.type.att-at2">Attestation fin de chantier AT2</option>
                   <option value="autre" data-i18n="form.type.autre">Autre / Question</option>
                 </select>
+                <span id="type-error" class="field-error" role="alert" aria-live="polite"></span>
               </div>
             </div>
             <div class="form-group">
               <label for="message" data-i18n="form.msg.label">Description du projet *</label>
-              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" autocomplete="off" required data-i18n-ph="form.msg.ph"></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" autocomplete="off" required aria-describedby="message-error" data-i18n-ph="form.msg.ph"></textarea>
+              <span id="message-error" class="field-error" role="alert" aria-live="polite"></span>
             </div>
             <div class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
             <button type="submit" class="btn-primary submit-btn">
@@ -770,6 +787,8 @@
       </div>
     </div>
   </section>
+
+  </main><!-- /#main-content -->
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer" role="contentinfo">
@@ -924,7 +943,7 @@
   <script src="js/map.js"></script>
 
   <!-- ── Cookie consent banner ── -->
-  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Consentement cookies" aria-live="polite" hidden>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-label="Consentement cookies" hidden>
     <div class="cookie-banner-inner">
       <div class="cookie-banner-text">
         <svg class="cookie-banner-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -933,7 +952,7 @@
         <p data-i18n="cookie.text">Ce site utilise uniquement un stockage local pour mémoriser votre préférence de thème (clair / sombre). Aucun cookie tiers ni outil de suivi.</p>
       </div>
       <div class="cookie-banner-actions">
-        <a href="politique-confidentialite.html" class="cookie-banner-link" data-i18n="cookie.learn">En savoir plus</a>
+        <a href="politique-confidentialite.html" class="cookie-banner-link" data-i18n="cookie.learn">Politique de confidentialité</a>
         <button id="cookie-accept" class="cookie-banner-btn" data-i18n="cookie.accept">J'ai compris</button>
       </div>
     </div>

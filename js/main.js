@@ -172,6 +172,22 @@ document.addEventListener('DOMContentLoaded', () => {
   updateNav();
 
   // ── Contact form — Web3Forms ──────────────────────────
+  function getFieldError(field) {
+    if (field.validity.valueMissing)  return 'Ce champ est obligatoire.';
+    if (field.validity.typeMismatch && field.type === 'email') return 'Veuillez saisir une adresse e-mail valide.';
+    return 'Veuillez remplir ce champ correctement.';
+  }
+  function setFieldError(field, msg) {
+    field.setAttribute('aria-invalid', 'true');
+    const errEl = document.getElementById(field.id + '-error');
+    if (errEl) errEl.textContent = msg;
+  }
+  function clearFieldError(field) {
+    field.removeAttribute('aria-invalid');
+    const errEl = document.getElementById(field.id + '-error');
+    if (errEl) errEl.textContent = '';
+  }
+
   document.getElementById('contactForm').addEventListener('submit', async e => {
     e.preventDefault();
     const form   = e.target;
@@ -179,19 +195,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const status = form.querySelector('.form-status');
     const orig   = btn.innerHTML;
 
-    // ── Validation HTML5 + aria-invalid ──────────────────
+    // ── Validation HTML5 + aria-invalid + messages par champ ─
     const requiredFields = form.querySelectorAll('[required]');
     let hasError = false;
     requiredFields.forEach(field => {
       if (!field.validity.valid) {
-        field.setAttribute('aria-invalid', 'true');
+        setFieldError(field, getFieldError(field));
         hasError = true;
       } else {
-        field.removeAttribute('aria-invalid');
+        clearFieldError(field);
       }
     });
     if (hasError) {
-      // Focus sur le premier champ invalide
       const firstInvalid = form.querySelector('[aria-invalid="true"]');
       if (firstInvalid) firstInvalid.focus();
       return;
@@ -212,8 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.innerHTML = '✓ Demande envoyée !';
         btn.classList.add('submit-btn--success');
         if (status) status.textContent = 'Votre demande a bien été envoyée. Réponse sous 48h.';
-        // Retire tous les aria-invalid au succès
-        requiredFields.forEach(f => f.removeAttribute('aria-invalid'));
+        // Retire tous les aria-invalid et messages d'erreur au succès
+        requiredFields.forEach(f => clearFieldError(f));
         setTimeout(() => {
           btn.innerHTML = orig;
           btn.classList.remove('submit-btn--success');
@@ -233,18 +248,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Retire aria-invalid en temps réel quand le champ est corrigé ─
+  // ── Retire aria-invalid + message en temps réel quand le champ est corrigé ─
   document.getElementById('contactForm').querySelectorAll('[required]').forEach(field => {
     field.addEventListener('input', () => {
-      if (field.validity.valid) field.removeAttribute('aria-invalid');
+      if (field.validity.valid) clearFieldError(field);
+    });
+    field.addEventListener('change', () => {
+      if (field.validity.valid) clearFieldError(field);
     });
   });
 
-  // ── Marquee pause on hover ────────────────────────────
+  // ── Marquee pause (hover + bouton clavier) ───────────
   const marquee = document.querySelector('.marquee-track');
   if (marquee && !reducedMotion) {
     marquee.addEventListener('mouseenter', () => marquee.classList.add('marquee--paused'));
-    marquee.addEventListener('mouseleave', () => marquee.classList.remove('marquee--paused'));
+    marquee.addEventListener('mouseleave', () => {
+      // Ne pas reprendre si le bouton a mis en pause manuellement
+      if (!marquee.dataset.manualPause) marquee.classList.remove('marquee--paused');
+    });
+    const pauseBtn = document.getElementById('marqueePauseBtn');
+    if (pauseBtn) {
+      pauseBtn.addEventListener('click', () => {
+        const isPaused = marquee.classList.toggle('marquee--paused');
+        marquee.dataset.manualPause = isPaused ? '1' : '';
+        pauseBtn.setAttribute('aria-pressed', isPaused ? 'true' : 'false');
+        pauseBtn.setAttribute('aria-label',
+          isPaused ? 'Reprendre le défilement' : 'Mettre en pause le défilement'
+        );
+      });
+    }
   }
 
 });
