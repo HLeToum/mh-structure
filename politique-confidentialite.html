@@ -31,8 +31,8 @@
     [data-theme="light"] {
       --bg:      #EFF3FA;
       --surface: #FFFFFF;
-      --gold:    #B8922A;
-      --gold-l:  #C9A84C;
+      --gold:    #7B6010; /* 5.36:1 sur #EFF3FA — WCAG AA ✓ */
+      --gold-l:  #886814; /* 4.67:1 sur #EFF3FA — WCAG AA ✓ */
       --text:    #0D1726;
       --text2:   #3A5070;
       --text3:   #7A90AA;
@@ -157,6 +157,9 @@
     a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
     a:hover { color: var(--gold-l); }
     a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+    /* RGAA 10.6 : liens dans le corps du texte distingués par autre chose que la couleur */
+    p a, li a, td a { text-decoration: underline; }
+    p a:hover, li a:hover, td a:hover { text-decoration: none; }
 
     table {
       width: 100%;
@@ -385,7 +388,7 @@
   <p>En cas de litige sur le traitement de vos données, vous pouvez adresser une réclamation à la <strong>CNIL</strong> :</p>
   <p>
     3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07<br>
-    <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a>
+    <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" aria-label="www.cnil.fr (s'ouvre dans un nouvel onglet)">www.cnil.fr</a>
   </p>
 
   <div class="divider"></div>

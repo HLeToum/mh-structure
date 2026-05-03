@@ -58,7 +58,7 @@
       popupAnchor: [0, -44]
     });
 
-    L.marker(COORDS, { icon: goldIcon })
+    var mhMarker = L.marker(COORDS, { icon: goldIcon })
       .addTo(map)
       .bindPopup(
           '<strong>MH Structure</strong>'
@@ -69,6 +69,9 @@
         + '📍 Voir sur Google Maps</a>'
       )
       .openPopup();
+    /* Nom accessible sur le marqueur interactif (RGAA 7.1) */
+    var mhEl = mhMarker.getElement();
+    if (mhEl) mhEl.setAttribute('aria-label', 'MH Structure — 6 Boulevard du Rajol, 81400 Carmaux (cliquer pour les détails)');
 
     /* ── Marqueur secondaire Mairie de Carmaux ── */
     var mairieIcon = L.divIcon({
@@ -82,9 +85,11 @@
       popupAnchor: [0, -14]
     });
 
-    L.marker(MAIRIE_COORDS, { icon: mairieIcon })
+    var mairieMarker = L.marker(MAIRIE_COORDS, { icon: mairieIcon })
       .addTo(map)
       .bindPopup('<strong style="font-family:sans-serif">Mairie de Carmaux</strong><br><span style="font-size:0.78rem;color:#888">Place de la Mairie — 81400 Carmaux</span>');
+    var mairieEl = mairieMarker.getElement();
+    if (mairieEl) mairieEl.setAttribute('aria-label', 'Mairie de Carmaux — Place de la Mairie, 81400 Carmaux');
 
     /* ── invalidateSize quand visible ── */
     setTimeout(function () { map.invalidateSize(); }, 100);

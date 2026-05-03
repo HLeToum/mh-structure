@@ -371,7 +371,8 @@
         frEl.classList.toggle('lt-active', lang === 'fr');
         enEl.classList.toggle('lt-active', lang === 'en');
       }
-      btn.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
+      /* WCAG 2.5.3 : le nom accessible doit contenir le libellé visible (FR | EN) */
+      btn.setAttribute('aria-label', lang === 'fr' ? 'FR | EN — Switch to English' : 'FR | EN — Passer en français');
     }
   }
 
