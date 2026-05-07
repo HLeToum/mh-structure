@@ -212,6 +212,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // \u2500\u2500 Renseignement dynamique des champs hidden avant envoi \u2500
+    // Sujet incluant le nom du client pour identifier rapidement en bo\u00eete mail
+    const clientNom = (form.querySelector('#nom')?.value || 'Client').trim();
+    const subjectField = document.getElementById('form-subject');
+    if (subjectField) subjectField.value = `Nouvelle demande de devis \u2014 ${clientNom} \u2014 MH Structure`;
+
+    // Replyto = email du client \u2192 Web3Forms envoie l'auto-r\u00e9ponse \u00e0 cette adresse
+    const clientEmail = form.querySelector('#email')?.value || '';
+    const replytoField = document.getElementById('replyto-field');
+    if (replytoField) replytoField.value = clientEmail;
+
     btn.disabled  = true;
     btn.innerHTML = 'Envoi en cours\u2026';
     if (status) status.textContent = '';

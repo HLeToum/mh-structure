@@ -738,9 +738,13 @@
         <div class="contact-right">
           <form class="contact-form" id="contactForm" novalidate>
             <input type="hidden" name="access_key" value="49a85a4d-a018-4124-b277-cd56c04d75fc">
-            <input type="hidden" name="subject" value="Nouvelle demande de devis — MH Structure">
+            <input type="hidden" id="form-subject" name="subject" value="Nouvelle demande de devis — MH Structure">
             <input type="hidden" name="from_name" value="MH Structure">
             <input type="hidden" name="botcheck" value="">
+            <!-- Multi-destinataires : mario et gunel reçoivent une copie -->
+            <input type="hidden" name="cc" value="mario@mhstructure.com,gunel@mhstructure.com">
+            <!-- Auto-réponse client : champ renseigné dynamiquement par JS avant envoi -->
+            <input type="hidden" id="replyto-field" name="replyto" value="">
             <div class="form-row">
               <div class="form-group">
                 <label for="nom" data-i18n="form.nom.label">Nom complet *</label>
