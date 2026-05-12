@@ -1009,6 +1009,53 @@ body,
   border: 1px solid var(--border);
   border-radius: 2px;
 }
+/* Lien "En savoir plus" — stretched link (toute la card est cliquable) */
+.svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: gap 0.2s, color 0.2s;
+}
+.svc-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.svc-card:hover .svc-link { gap: 10px; color: var(--gold-l); }
+.svc-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+/* Card avec plusieurs liens régionaux (AT parasismique) */
+.svc-region-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.svc-region-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border: 1px solid var(--border-g);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.svc-region-link:hover { background: rgba(201,168,76,0.1); color: var(--gold-l); }
 .svc-card.svc-featured { background: var(--surface2); }
 .svc-card.svc-featured .svc-icon { background: rgba(201,168,76,0.12); }
 .svc-badge-pill {
