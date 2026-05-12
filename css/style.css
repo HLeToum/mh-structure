@@ -1847,6 +1847,87 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
   transition: width 0.3s ease;
 }
 
+/* ================================================================
+   ZONES D'INTERVENTION
+   ================================================================ */
+.zones-section { background: var(--surface); }
+.zones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-top: clamp(32px, 5vw, 52px);
+}
+.zone-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(20px, 3vw, 28px);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.zone-card:hover {
+  border-color: var(--border-g);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.07);
+}
+.zone-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-bottom: 14px;
+  display: block;
+}
+.zone-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-family: var(--ff-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.zone-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.zone-list li {
+  font-size: 0.82rem;
+  color: var(--text2);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.zone-list li:last-child { border-bottom: none; }
+.zone-list li::before {
+  content: "—";
+  color: var(--gold);
+  opacity: 0.45;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  margin-top: 1px;
+}
+.zone-list li strong { color: var(--text); }
+
+/* ── Footer addresses ── */
+.footer-col--addresses address {
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--text3);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.footer-col--addresses address:last-child { margin-bottom: 0; }
+.footer-col--addresses address strong { color: var(--text2); font-size: 0.76rem; }
+.footer-col--addresses address a { color: var(--text3); }
+.footer-col--addresses address a:hover { color: var(--gold); }
+
+@media (max-width: 900px) {
+  .zones-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .zones-grid { grid-template-columns: 1fr; }
+}
+
 /* Mobile: stack controls vertically, reduce size */
 @media (max-width: 600px) {
   .villa-controls {

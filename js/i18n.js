@@ -82,9 +82,9 @@
       'about.eyebrow':      'À propos',
       'about.badge.title':  'Bureau d\'Études',
       'about.badge.sub':    'Ingénierie Structure',
-      'about.h2':           'Bureau d\'études structure à Carmaux — Tarn & Occitanie',
-      'about.p1':           'MH Structure est un bureau d\'études structure basé à Carmaux (Tarn) qui accompagne maîtres d\'ouvrage, architectes et particuliers dans leurs projets de construction neuve et de réhabilitation en Occitanie. Nous intervenons à chaque étape d\'un ouvrage, du dimensionnement initial au diagnostic des désordres, avec rigueur et méthode.',
-      'about.p2':           'Nos compétences couvrent le calcul béton armé, le diagnostic fissures et pathologies structurelles, et le contrôle réglementaire parasismique — notamment les attestations AT2 pour les bâtiments soumis aux exigences sismiques du Tarn.',
+      'about.h2':           'Bureau d\'études structure — Tarn (81), Albi, Rodez & Guadeloupe',
+      'about.p1':           'MH Structure est un bureau d\'études techniques structure basé à Carmaux (Tarn, 81) et en Guadeloupe (971), accompagnant maîtres d\'ouvrage, architectes et particuliers dans leurs projets de construction neuve et de réhabilitation. Nous intervenons à Albi, Rodez, dans tout le Tarn et l\'Occitanie, ainsi qu\'en Guadeloupe.',
+      'about.p2':           'Nos compétences couvrent les notes de calcul béton armé (Eurocode 2), les plans de coffrage et armatures, le diagnostic structurel, le diagnostic sismique et les attestations parasismiques AT1/AT2 — notamment pour les zones sismiques du Tarn et de la Guadeloupe (zone 5).',
       'about.clients.label':'Nous intervenons pour',
       'about.client.1':     'Architectes',
       'about.client.2':     'Maîtres d\'ouvrage',
@@ -127,7 +127,7 @@
       'contact.email.label': 'Email',
       'contact.phone.label': 'Téléphone',
       'contact.loc.label':   'Localisation',
-      'contact.loc.val':     'Carmaux · Tarn (81) — Interventions en France',
+      'contact.loc.val':     'Carmaux (81) · Guadeloupe (971) — France entière',
 
       /* Form */
       'form.nom.label':      'Nom complet *',
@@ -246,9 +246,9 @@
       'about.eyebrow':      'About',
       'about.badge.title':  'Engineering Firm',
       'about.badge.sub':    'Structural Engineering',
-      'about.h2':           'Structural engineering firm — Carmaux, Tarn (Occitanie)',
-      'about.p1':           'MH Structure is a structural engineering consultancy based in Carmaux (Tarn, Occitanie) that supports project owners, architects and private clients in their new construction and renovation projects. We intervene at every stage of a structure, from initial sizing to defect diagnosis, with rigour and methodology.',
-      'about.p2':           'Our expertise covers reinforced concrete calculations, crack and structural defect diagnostics, and seismic compliance — including AT2 completion certificates for buildings subject to earthquake requirements in the Tarn region.',
+      'about.h2':           'Structural engineering firm — Tarn (81), Albi, Rodez & Guadeloupe',
+      'about.p1':           'MH Structure is a structural engineering consultancy with offices in Carmaux (Tarn, 81) and Guadeloupe (971), supporting project owners, architects and private clients in their new construction and renovation projects. We work in Albi, Rodez, throughout the Tarn, Occitanie and in Guadeloupe.',
+      'about.p2':           'Our expertise covers reinforced concrete calculations (Eurocode 2), formwork and reinforcement drawings, structural and seismic diagnostics, and seismic compliance certificates AT1/AT2 — including for high seismic zones in the Tarn and Guadeloupe (seismic zone 5).',
       'about.clients.label':'We work with',
       'about.client.1':     'Architects',
       'about.client.2':     'Project owners',
@@ -291,7 +291,7 @@
       'contact.email.label': 'Email',
       'contact.phone.label': 'Phone',
       'contact.loc.label':   'Location',
-      'contact.loc.val':     'Carmaux · Tarn (81) — Nationwide service',
+      'contact.loc.val':     'Carmaux (81) · Guadeloupe (971) — Nationwide service',
 
       /* Form */
       'form.nom.label':      'Full name *',
