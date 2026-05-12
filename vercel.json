@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -15,17 +17,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    { "source": "/mentions-legales",                        "destination": "/mentions-legales.html" },
-    { "source": "/politique-confidentialite",               "destination": "/politique-confidentialite.html" },
-    { "source": "/attestation-parasismique-guadeloupe",     "destination": "/attestation-parasismique-guadeloupe.html" },
-    { "source": "/attestation-parasismique-tarn",           "destination": "/attestation-parasismique-tarn.html" },
-    { "source": "/note-de-calcul-beton-arme",               "destination": "/note-de-calcul-beton-arme.html" },
-    { "source": "/diagnostic-sismique-guadeloupe",          "destination": "/diagnostic-sismique-guadeloupe.html" },
-    { "source": "/diagnostic-structurel-tarn",              "destination": "/diagnostic-structurel-tarn.html" },
-    { "source": "/attestation-at2-fin-de-chantier",         "destination": "/attestation-at2-fin-de-chantier.html" },
-    { "source": "/etude-parasismique-zone-5",               "destination": "/etude-parasismique-zone-5.html" },
-    { "source": "/plans-coffrage-armatures",                "destination": "/plans-coffrage-armatures.html" }
   ]
 }
