@@ -1727,6 +1727,8 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
+  /* Réduire le gap pour que logo + lang + theme + hamburger tiennent sur mobile */
+  .nav-inner { gap: 10px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .nav-links.open {
