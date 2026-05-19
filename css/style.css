@@ -1014,6 +1014,21 @@ body,
 .svc-card:hover .svc-img img {
   transform: scale(1.03);
 }
+/* Images de type document (fond blanc, contenu plein cadre) */
+.svc-img--doc {
+  background: #f8f8f8;
+}
+.svc-img--doc img {
+  object-fit: contain;
+  object-position: center top;
+}
+.svc-card:hover .svc-img--doc img {
+  transform: scale(1.02);
+}
+/* Modèle FEM 3D : focus sur le centre du mesh */
+.svc-img--fem img {
+  object-position: center center;
+}
 .svc-num {
   font-family: var(--ff-mono);
   font-size: 0.65rem;
