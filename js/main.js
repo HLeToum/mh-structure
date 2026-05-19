@@ -72,16 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Hero entrance ─────────────────────────────────────
-  if (reducedMotion) {
-    gsap.set(['.hero-tag', '.hero-h1', '.hero-desc', '.hero-actions', '.hero-scroll'], { opacity: 1, x: 0, y: 0 });
-  } else {
-    const tl = gsap.timeline({ delay: 0.15 });
-    tl.fromTo('.hero-tag',     { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
-      .fromTo('.hero-h1',      { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.3')
-      .fromTo('.hero-desc',    { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.5')
-      .fromTo('.hero-actions', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
-      .fromTo('.hero-scroll',  { opacity: 0 },        { opacity: 1, duration: 0.5 }, '-=0.2');
-  }
+  // Géré par CSS @keyframes mhHeroIn — CTA visible en < 500ms, sans dépendance JS
+  // GSAP nettoie les styles inline pour laisser le CSS CSS prendre le relais
+  gsap.set(['.hero-tag', '.hero-h1', '.hero-desc', '.hero-actions', '.hero-scroll'], { clearProps: 'all' });
 
   // ── Counters ──────────────────────────────────────────
   ScrollTrigger.create({

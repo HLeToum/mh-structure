@@ -419,6 +419,55 @@ a.ci-link:focus,
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── Bouton langue FR / EN ──────────────────────────── */
+/* ── Téléphone nav ──────────────────────────────────── */
+.nav-phone {
+  display: none; /* caché sur mobile, affiché sur desktop */
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ff-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text2);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.nav-phone:hover { color: var(--gold); }
+.nav-phone-num { display: none; }
+@media (min-width: 1024px) {
+  .nav-phone { display: flex; }
+  .nav-phone-num { display: inline; }
+}
+
+/* ── RGPD checkbox ──────────────────────────────────── */
+.form-group--rgpd { margin-top: 4px; }
+.rgpd-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+.rgpd-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.rgpd-label span {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+.rgpd-link {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.rgpd-link:hover { opacity: 0.8; }
+
 .lang-toggle {
   display: flex;
   align-items: center;
@@ -534,6 +583,7 @@ body,
   margin-bottom: 32px;
   opacity: 0;
   transform: translateY(12px);
+  animation: mhHeroIn 0.4s ease-out 0.05s both;
 }
 .tag-dot {
   width: 6px;
@@ -552,6 +602,8 @@ body,
   color: var(--text);
   margin-bottom: 28px;
   text-wrap: balance;
+  opacity: 0;
+  animation: mhHeroIn 0.5s ease-out 0.12s both;
 }
 .hero-h1 em {
   font-style: normal;
@@ -570,6 +622,7 @@ body,
   margin-bottom: 40px;
   max-width: 500px;
   opacity: 0;
+  animation: mhHeroIn 0.4s ease-out 0.28s both;
 }
 .hero-actions {
   display: flex;
@@ -577,6 +630,7 @@ body,
   gap: 28px;
   flex-wrap: wrap;
   opacity: 0;
+  animation: mhHeroIn 0.4s ease-out 0.40s both;
 }
 .hero-scroll {
   position: absolute;
@@ -1688,6 +1742,20 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
 /* ================================================================
    KEYFRAMES
    ================================================================ */
+
+/* Hero entrance — CSS pur, sans dépendance JS (CTA visible < 500ms) */
+@keyframes mhHeroIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-tag, .hero-h1, .hero-desc, .hero-actions, .hero-scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.4; transform: scale(0.7); }

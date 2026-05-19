@@ -17,7 +17,7 @@
 
       /* Hero */
       'hero.tag':         'Bureau d\'Études Techniques — Structure',
-      'hero.h1':          'Ingénierie<br><em>Structurelle</em><br>à Carmaux, Tarn',
+      'hero.h1':          'Ingénierie<br><em>Structurelle</em><br>Tarn &amp; Guadeloupe',
       'hero.desc':        'Étude de structures · Diagnostic d\'ouvrages · Contrôle réglementaire<br>Des solutions techniques adaptées à chaque situation.',
       'hero.btn-primary': 'Demander un devis',
       'hero.btn-ghost':   'Voir nos cas prévention',
@@ -145,6 +145,7 @@
       'form.type.autre':     'Autre / Question',
       'form.msg.label':      'Description du projet *',
       'form.msg.ph':         'Décrivez votre projet, le type d\'ouvrage, la localisation, les délais souhaités…',
+      'form.rgpd.label':     'J\'accepte que mes données soient utilisées pour traiter ma demande de devis, conformément à la <a href="politique-confidentialite" class="rgpd-link">politique de confidentialité</a>.',
       'form.submit':         'Envoyer ma demande',
 
       /* Footer */
@@ -181,7 +182,7 @@
 
       /* Hero */
       'hero.tag':         'Structural Engineering Consultancy',
-      'hero.h1':          'Structural<br><em>Engineering</em><br>Carmaux, France',
+      'hero.h1':          'Structural<br><em>Engineering</em><br>Tarn &amp; Guadeloupe',
       'hero.desc':        'Structural analysis · Building diagnostics · Regulatory compliance<br>Technical solutions tailored to every situation.',
       'hero.btn-primary': 'Request a quote',
       'hero.btn-ghost':   'View case studies',
@@ -309,6 +310,7 @@
       'form.type.autre':     'Other / Question',
       'form.msg.label':      'Project description *',
       'form.msg.ph':         'Describe your project, structure type, location, desired timeline…',
+      'form.rgpd.label':     'I agree that my data will be used to process my quote request, in accordance with the <a href="politique-confidentialite" class="rgpd-link">privacy policy</a>.',
       'form.submit':         'Send my request',
 
       /* Footer */
