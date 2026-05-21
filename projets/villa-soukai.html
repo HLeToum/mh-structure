@@ -194,6 +194,13 @@
       display: block; color: var(--text); font-size: 0.83rem;
       font-family: var(--ff); font-weight: 600; margin-bottom: 2px;
     }
+    .proj-plan-item--wide { display: block; }
+    .proj-plan-img--model {
+      aspect-ratio: 16/7;
+      object-fit: contain;
+      object-position: center center;
+      background: #f0f2f5;
+    }
 
     /* CTA */
     .proj-cta {
@@ -416,6 +423,19 @@
             <p class="proj-plans-sub">Dossier BA02 — Réalisé par MH Structure · Eurocode 2 + Eurocode 8</p>
           </div>
         </div>
+        <!-- Modèle 3D -->
+        <div class="proj-plan-item proj-plan-item--wide" style="margin-bottom:16px;">
+          <img class="proj-plan-img proj-plan-img--model"
+               src="../images/projets/villa-soukai/modele-design.png"
+               alt="Modèle structurel 3D Advanced Design — Vue RDC sans charpente, chaînages bleus, voiles et semelles"
+               loading="lazy">
+          <div class="proj-plan-caption">
+            <strong>Modèle structurel 3D — Vue RDC (sans charpente)</strong>
+            Advanced Design · Voiles, chaînages (bleu), plancher, semelles · Axes locaux
+          </div>
+        </div>
+
+        <!-- 2 plans -->
         <div class="proj-plans-grid">
           <div class="proj-plan-item">
             <img class="proj-plan-img"
