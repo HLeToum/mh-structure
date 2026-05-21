@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <script>(function(){var t=localStorage.getItem('mh-theme')||'light';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
+  <title>Villa Soukai — Plans de Coffrage &amp; Armatures | MH Structure</title>
+  <meta name="description" content="Villa individuelle R+1 à Petit-Canal, Guadeloupe. Plans de coffrage et d'armatures réalisés par MH Structure : semelles, voiles béton armé, planchers. Zone sismique 5, Eurocode 8.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.mhstructure.com/projets/villa-soukai">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Villa Soukai — Petit-Canal, Guadeloupe | MH Structure">
+  <meta property="og:description" content="Plans de coffrage et d'armatures pour villa R+1 en zone sismique 5 (Guadeloupe). Semelles, voiles béton armé, planchers — Eurocode 8.">
+  <meta property="og:image" content="https://www.mhstructure.com/images/projets/villa-soukai/13.jpg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="apple-touch-icon" href="../images/favicon-192.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Page projet ─────────────────────────────────── */
+    .proj-page { padding-top: 0; }
+
+    /* Hero */
+    .proj-hero {
+      position: relative;
+      height: clamp(380px, 55vw, 640px);
+      overflow: hidden;
+      background: #0a0e18;
+    }
+    .proj-hero-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      display: block;
+      filter: brightness(0.72);
+    }
+    .proj-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(9,13,24,0.85) 0%, rgba(9,13,24,0.1) 60%);
+      display: flex; align-items: flex-end;
+      padding: clamp(28px,5vw,56px);
+    }
+    .proj-hero-content { max-width: 780px; }
+    .proj-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--gold); opacity: 0.9; margin-bottom: 12px;
+    }
+    .proj-breadcrumb a { color: inherit; text-decoration: none; }
+    .proj-breadcrumb a:hover { text-decoration: underline; }
+    .proj-breadcrumb span { opacity: 0.5; }
+    .proj-hero-title {
+      font-family: var(--ff); font-size: clamp(2.2rem,5vw,3.8rem);
+      font-weight: 700; color: #fff; line-height: 1.1; margin: 0 0 12px;
+    }
+    .proj-hero-sub {
+      font-size: clamp(0.9rem,1.5vw,1.05rem); color: rgba(255,255,255,0.75);
+      font-weight: 400; margin: 0;
+    }
+
+    /* Meta bar */
+    .proj-meta-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .proj-meta-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 clamp(20px,5vw,48px);
+      display: flex; flex-wrap: wrap; gap: 0;
+    }
+    .proj-meta-item {
+      padding: 18px 32px 18px 0;
+      margin-right: 32px;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .proj-meta-item:last-child { border-right: none; margin-right: 0; }
+    .proj-meta-label {
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600;
+    }
+    .proj-meta-value {
+      font-size: 0.9rem; color: var(--text); font-weight: 500;
+    }
+
+    /* Body layout */
+    .proj-body {
+      max-width: 1200px; margin: 0 auto;
+      padding: clamp(40px,6vw,72px) clamp(20px,5vw,48px);
+    }
+
+    /* Gallery */
+    .proj-gallery-title {
+      font-family: var(--ff); font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+      margin: 0 0 24px;
+    }
+    .proj-gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 220px;
+      gap: 6px;
+      margin-bottom: 72px;
+    }
+    /* Row 1 */
+    .proj-gallery-item:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+    .proj-gallery-item:nth-child(2) { grid-column: span 5; }
+    .proj-gallery-item:nth-child(3) { grid-column: span 5; }
+    /* Row 2 */
+    .proj-gallery-item:nth-child(4) { grid-column: span 4; }
+    .proj-gallery-item:nth-child(5) { grid-column: span 4; }
+    .proj-gallery-item:nth-child(6) { grid-column: span 4; }
+    /* Row 3 */
+    .proj-gallery-item:nth-child(7) { grid-column: span 6; }
+    .proj-gallery-item:nth-child(8) { grid-column: span 6; }
+
+    .proj-gallery-item {
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--surface);
+      cursor: pointer;
+    }
+    .proj-gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+    .proj-gallery-item:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.08);
+    }
+
+    /* Plans techniques */
+    .proj-plans-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(28px,4vw,48px);
+      margin-bottom: 64px;
+    }
+    .proj-plans-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 28px;
+    }
+    .proj-plans-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(201,168,76,0.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+    }
+    .proj-plans-heading {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 0 0 2px;
+    }
+    .proj-plans-sub {
+      font-size: 0.82rem; color: var(--text-muted); margin: 0;
+    }
+    .proj-plans-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .proj-plan-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .proj-plan-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      object-position: center top;
+      display: block;
+      background: #f9f9f9;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+    .proj-plan-caption {
+      padding: 12px 16px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--text-muted);
+      font-family: var(--ff-mono);
+    }
+    .proj-plan-caption strong {
+      display: block; color: var(--text); font-size: 0.83rem;
+      font-family: var(--ff); font-weight: 600; margin-bottom: 2px;
+    }
+
+    /* CTA */
+    .proj-cta {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: clamp(24px,4vw,40px) clamp(24px,4vw,40px);
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .proj-cta-text { flex: 1; min-width: 200px; }
+    .proj-cta-text h3 {
+      font-family: var(--ff); font-size: 1.25rem; font-weight: 600;
+      color: var(--text); margin: 0 0 6px;
+    }
+    .proj-cta-text p {
+      font-size: 0.88rem; color: var(--text-muted); margin: 0;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.92);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw; max-height: 88vh;
+      object-fit: contain; border-radius: 4px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: #fff; font-size: 2rem;
+      cursor: pointer; line-height: 1; padding: 8px;
+    }
+    .lightbox-prev, .lightbox-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; border-radius: 50%; width: 48px; height: 48px;
+      font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+    .lightbox-counter {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.6); font-size: 0.8rem; font-family: var(--ff-mono);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .proj-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+      }
+      .proj-gallery-item:nth-child(n) { grid-column: span 1 !important; grid-row: span 1 !important; }
+      .proj-plans-grid { grid-template-columns: 1fr; }
+      .proj-meta-item { padding: 14px 20px 14px 0; margin-right: 20px; }
+    }
+    @media (max-width: 600px) {
+      .proj-gallery { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+      .proj-meta-inner { flex-direction: column; gap: 0; }
+      .proj-meta-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 0; margin-right: 0; }
+      .proj-meta-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body class="proj-page">
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="MH Structure — retour accueil">
+        <span class="logo-mh" translate="no">MH</span>
+        <div class="logo-sep" aria-hidden="true"></div>
+        <span class="logo-struct" translate="no">STRUCTURE</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/#accueil"    class="nav-link">Accueil</a>
+        <a href="/#services"   class="nav-link">Services</a>
+        <a href="/#contact"    class="nav-link">Devis</a>
+      </div>
+      <a href="tel:+33782883421" class="nav-phone" aria-label="Appeler MH Structure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="nav-phone-num">+33 7 82 88 34 21</span>
+      </a>
+      <a href="/#contact" class="btn-cta nav-cta">Devis gratuit</a>
+      <button class="lang-toggle" id="langToggle" aria-label="FR | EN">
+        <span class="lt-fr">FR</span><span class="lt-sep" aria-hidden="true">|</span><span class="lt-en">EN</span>
+      </button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Activer le mode sombre">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ── Hero ─────────────────────────────────── -->
+    <div class="proj-hero">
+      <img class="proj-hero-img"
+           src="../images/projets/villa-soukai/13.jpg"
+           alt="Façade principale de la Villa Soukai en cours de construction à Petit-Canal, Guadeloupe"
+           width="1200" height="800">
+      <div class="proj-hero-overlay">
+        <div class="proj-hero-content">
+          <nav class="proj-breadcrumb" aria-label="Fil d'Ariane">
+            <a href="/">MH Structure</a>
+            <span aria-hidden="true">›</span>
+            <span>Réalisations</span>
+            <span aria-hidden="true">›</span>
+            <span>Villa Soukai</span>
+          </nav>
+          <h1 class="proj-hero-title">Villa Soukai</h1>
+          <p class="proj-hero-sub">Villa individuelle R+1 &mdash; Petit-Canal, Guadeloupe &mdash; Zone sismique 5</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Métadonnées ───────────────────────────── -->
+    <div class="proj-meta-bar">
+      <div class="proj-meta-inner">
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Localisation</span>
+          <span class="proj-meta-value">Petit-Canal, Guadeloupe (971)</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Type</span>
+          <span class="proj-meta-value">Villa individuelle R+1</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Mission MH Structure</span>
+          <span class="proj-meta-value">Plans de coffrage &amp; armatures</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Réglementation</span>
+          <span class="proj-meta-value">Eurocode 8 — Zone sismique 5</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Collaboration</span>
+          <span class="proj-meta-value">Architecte + MH Structure</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Corps ────────────────────────────────── -->
+    <div class="proj-body">
+
+      <!-- Galerie photos -->
+      <p class="proj-gallery-title">Photos de chantier</p>
+      <div class="proj-gallery" role="list" aria-label="Galerie photos du chantier">
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="0"
+             aria-label="Façade principale, voiles et menuiseries en attente">
+          <img src="../images/projets/villa-soukai/13.jpg"
+               alt="Façade principale de la Villa Soukai — voiles béton et ouvertures menuiseries" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="1"
+             aria-label="Coin de façade avec armatures en attente">
+          <img src="../images/projets/villa-soukai/14.jpg"
+               alt="Angle de façade avec armatures en attente et végétation Guadeloupe" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="2"
+             aria-label="Façade latérale avec baie">
+          <img src="../images/projets/villa-soukai/15.jpg"
+               alt="Façade latérale de la villa avec ouverture baie vitrée" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="3"
+             aria-label="Vue extérieure de l'angle du bâtiment">
+          <img src="../images/projets/villa-soukai/10.jpg"
+               alt="Angle extérieur du bâtiment avec maçonnerie bloc béton" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="4"
+             aria-label="Façade avec charpente bois et platelage">
+          <img src="../images/projets/villa-soukai/11.jpg"
+               alt="Façade frontale avec charpente bois du platelage en cours de pose" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="5"
+             aria-label="Façade avec coffrage platelage">
+          <img src="../images/projets/villa-soukai/12.jpg"
+               alt="Détail façade avec coffrage du platelage de la dalle de rive" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="6"
+             aria-label="Vue intérieure R+1 avec charpente">
+          <img src="../images/projets/villa-soukai/16.jpg"
+               alt="Vue intérieure niveau R+1 avec charpente bois visible et murs bloc béton" loading="lazy">
+        </div>
+
+        <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="7"
+             aria-label="Vue intérieure RDC">
+          <img src="../images/projets/villa-soukai/01.jpg"
+               alt="Vue intérieure RDC avec menuiserie et structure en bloc béton" loading="lazy">
+        </div>
+
+      </div>
+
+      <!-- Plans techniques -->
+      <div class="proj-plans-section">
+        <div class="proj-plans-header">
+          <div class="proj-plans-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+          </div>
+          <div>
+            <h2 class="proj-plans-heading">Plans de coffrage &amp; armatures</h2>
+            <p class="proj-plans-sub">Dossier BA02 — Réalisé par MH Structure · Eurocode 2 + Eurocode 8</p>
+          </div>
+        </div>
+        <div class="proj-plans-grid">
+          <div class="proj-plan-item">
+            <img class="proj-plan-img"
+                 src="../images/projets/villa-soukai/plan-01-semelles.jpg"
+                 alt="Plan BA02 planche 4 — Principes d'armatures des semelles isolées et filantes"
+                 loading="lazy">
+            <div class="proj-plan-caption">
+              <strong>Principes d'armatures — Semelles</strong>
+              BA02 · Planche 4 · Ech. 1/20 — S1, S2, Lg, SF1, SF2
+            </div>
+          </div>
+          <div class="proj-plan-item">
+            <img class="proj-plan-img"
+                 src="../images/projets/villa-soukai/plan-02-armatures-rdc.jpg"
+                 alt="Plan BA02 planche 10 — Armatures des voiles du rez-de-chaussée, élévation 06"
+                 loading="lazy">
+            <div class="proj-plan-caption">
+              <strong>Armatures RDC — Élévation 06</strong>
+              BA02 · Planche 10 · Voiles B–C–D–F, TV155
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="proj-cta">
+        <div class="proj-cta-text">
+          <h3>Un projet similaire ?</h3>
+          <p>Villa, maison individuelle, immeuble — nous intervenons sur toute la Guadeloupe et dans le Tarn. Demandez un devis gratuit sous 48h.</p>
+        </div>
+        <a href="/#contact" class="btn-cta">Demander un devis</a>
+      </div>
+
+    </div><!-- /.proj-body -->
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="footer-logo" aria-label="MH Structure — retour accueil">
+          <span class="fl-mh">MH</span>
+          <span class="fl-struct">STRUCTURE</span>
+        </a>
+        <nav class="footer-nav" aria-label="Navigation footer">
+          <div class="footer-col">
+            <div class="footer-col-title">Navigation</div>
+            <a href="/">Accueil</a>
+            <a href="/#services">Services</a>
+            <a href="/#contact">Devis</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Prestations</div>
+            <a href="/note-de-calcul-beton-arme">Notes de Calcul</a>
+            <a href="/plans-coffrage-armatures">Plans de coffrage</a>
+            <a href="/diagnostic-sismique-guadeloupe">Diagnostic Sismique</a>
+            <a href="/attestation-parasismique-guadeloupe">Attestation PC (Guadeloupe)</a>
+            <a href="/attestation-at2-fin-de-chantier">Attestation AT2</a>
+          </div>
+          <div class="footer-col footer-col--addresses">
+            <div class="footer-col-title">Nos bureaux</div>
+            <address class="footer-address">
+              <strong>Tarn (81)</strong><br>
+              6 Bd du Rajol — 81400 Carmaux<br>
+              <a href="tel:+33782883421">+33 7 82 88 34 21</a>
+            </address>
+            <address class="footer-address">
+              <strong>Guadeloupe (971)</strong><br>
+              2049B Chemin de Caféire — 97170 Petit-Bourg<br>
+              <a href="tel:+590690374142">+590 690 37 41 42</a>
+            </address>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MH Structure. Tous droits réservés.</span>
+        <div class="footer-legal">
+          <a href="/mentions-legales">Mentions légales</a>
+          <span aria-hidden="true">·</span>
+          <a href="/politique-confidentialite">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse photo">
+    <button class="lightbox-close" id="lbClose" aria-label="Fermer">&times;</button>
+    <button class="lightbox-prev" id="lbPrev" aria-label="Photo précédente">&#8249;</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lightbox-next" id="lbNext" aria-label="Photo suivante">&#8250;</button>
+    <span class="lightbox-counter" id="lbCounter"></span>
+  </div>
+
+  <script src="../js/main.js" defer></script>
+  <script>
+    // Theme toggle (standalone, pas de GSAP/ScrollTrigger nécessaire)
+    (function(){
+      const root = document.documentElement;
+      const btn  = document.getElementById('themeToggle');
+      if (!btn) return;
+      function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        localStorage.setItem('mh-theme', t);
+        btn.setAttribute('aria-label', t === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
+      }
+      applyTheme(root.getAttribute('data-theme') || 'light');
+      btn.addEventListener('click', () => {
+        applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    })();
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hamburger
+    const hbg = document.getElementById('hamburger');
+    const nls = document.getElementById('navLinks');
+    hbg.addEventListener('click', () => {
+      const open = hbg.classList.toggle('open');
+      nls.classList.toggle('open', open);
+      hbg.setAttribute('aria-expanded', open);
+    });
+
+    // Lightbox
+    const galleryItems = document.querySelectorAll('.proj-gallery-item');
+    const lb    = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCnt = document.getElementById('lbCounter');
+    const imgs  = Array.from(galleryItems).map(el => ({
+      src: el.querySelector('img').src,
+      alt: el.querySelector('img').alt
+    }));
+    let cur = 0;
+
+    function openLb(idx) {
+      cur = idx;
+      lbImg.src = imgs[cur].src;
+      lbImg.alt = imgs[cur].alt;
+      lbCnt.textContent = (cur + 1) + ' / ' + imgs.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lbImg.focus();
+    }
+    function closeLb() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function prev() { openLb((cur - 1 + imgs.length) % imgs.length); }
+    function next() { openLb((cur + 1) % imgs.length); }
+
+    galleryItems.forEach((el, i) => {
+      el.addEventListener('click', () => openLb(i));
+      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(i); } });
+    });
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', prev);
+    document.getElementById('lbNext').addEventListener('click', next);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    });
+  </script>
+</body>
+</html>
