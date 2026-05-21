@@ -1548,6 +1548,94 @@ body,
 }
 
 /* ================================================================
+   RÉALISATIONS
+   ================================================================ */
+.realisations-section { background: var(--bg); }
+
+.real-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.real-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.real-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+}
+
+.real-card-img {
+  position: relative;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: var(--surface2);
+}
+.real-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.real-card:hover .real-card-img img { transform: scale(1.05); }
+
+.real-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(9,13,24,0.7) 0%, transparent 55%);
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.real-card:hover .real-card-overlay { opacity: 1; }
+.real-card-cta {
+  font-size: 0.82rem; font-weight: 600; color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.real-card-body { padding: 20px 22px 24px; flex: 1; }
+
+.real-card-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 10px;
+}
+.real-card-tags span {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 3px 9px; border-radius: 20px;
+}
+
+.real-card-title {
+  font-family: var(--ff); font-size: 1.2rem; font-weight: 700;
+  color: var(--text); margin: 0 0 8px; line-height: 1.2;
+}
+.real-card-desc {
+  font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.55;
+}
+
+/* Carte "à venir" */
+.real-card--soon { cursor: default; pointer-events: none; }
+.real-card-img--placeholder {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface2);
+}
+.real-soon-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  color: var(--text-muted); font-size: 0.82rem;
+}
+
+/* ================================================================
    CONTACT
    ================================================================ */
 .contact-grid {
