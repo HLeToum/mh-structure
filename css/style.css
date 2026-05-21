@@ -256,6 +256,28 @@ a.ci-link:focus,
 .btn-cta:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
 .btn-cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
+/* Bouton outline gold (CTA secondaire) */
+.btn-outline-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 24px;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: var(--radius);
+  color: var(--gold);
+  font-family: var(--ff-head); font-size: 0.82rem;
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s;
+}
+.btn-outline-gold:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+.btn-outline-gold:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* CTA réalisations sous la grille services */
+.services-real-cta {
+  display: flex; justify-content: center;
+  margin-top: 40px;
+}
+
 /* ── Eyebrow labels ─────────────────────────────────────── */
 .section-eyebrow {
   display: flex;

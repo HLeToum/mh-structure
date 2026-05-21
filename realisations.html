@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <script>(function(){var t=localStorage.getItem('mh-theme')||'light';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
+  <title>Nos Réalisations — Projets Structure | MH Structure</title>
+  <meta name="description" content="Découvrez les projets réalisés par MH Structure : plans de coffrage et armatures, diagnostics sismiques, attestations parasismiques en Guadeloupe et dans le Tarn.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.mhstructure.com/realisations">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nos Réalisations — MH Structure">
+  <meta property="og:description" content="Projets de structure réalisés par MH Structure : plans de coffrage, armatures, diagnostics sismiques en Guadeloupe et dans le Tarn.">
+  <meta property="og:image" content="https://www.mhstructure.com/images/projets/villa-soukai/13.jpg">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="apple-touch-icon" href="images/favicon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .real-page-hero {
+      padding: calc(var(--nav-h, 68px) + 48px) 0 48px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .real-page-hero .container {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .real-page-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .real-page-title {
+      font-family: var(--ff); font-size: clamp(2rem,4vw,3rem);
+      font-weight: 700; color: var(--text); margin: 0 0 10px; line-height: 1.1;
+    }
+    .real-page-desc {
+      font-size: 1rem; color: var(--text-muted); margin: 0; max-width: 540px;
+    }
+    .real-page-count {
+      font-family: var(--ff-mono); font-size: 0.78rem; color: var(--text-muted);
+      white-space: nowrap; padding-bottom: 4px;
+    }
+
+    .real-page-body {
+      padding: clamp(40px,6vw,72px) 0;
+    }
+
+    .real-page-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* Carte "à venir" */
+    .real-card--soon { pointer-events: none; }
+    .real-card-img--placeholder {
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface2);
+    }
+    .real-soon-inner {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: var(--text-muted); font-size: 0.82rem; opacity: 0.5;
+    }
+
+    @media (max-width: 600px) {
+      .real-page-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="MH Structure — retour accueil">
+        <span class="logo-mh" translate="no">MH</span>
+        <div class="logo-sep" aria-hidden="true"></div>
+        <span class="logo-struct" translate="no">STRUCTURE</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/" class="nav-link">Accueil</a>
+        <a href="/#services" class="nav-link">Services</a>
+        <a href="/realisations" class="nav-link active" aria-current="page">Réalisations</a>
+        <a href="/#contact" class="nav-link">Devis</a>
+      </div>
+      <a href="tel:+33782883421" class="nav-phone" aria-label="Appeler MH Structure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="nav-phone-num">+33 7 82 88 34 21</span>
+      </a>
+      <a href="/#contact" class="btn-cta nav-cta">Devis gratuit</a>
+      <button class="lang-toggle" id="langToggle" aria-label="FR | EN">
+        <span class="lt-fr">FR</span><span class="lt-sep" aria-hidden="true">|</span><span class="lt-en">EN</span>
+      </button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Activer le mode sombre">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <div class="real-page-hero">
+      <div class="container">
+        <div>
+          <p class="real-page-label">Portfolio</p>
+          <h1 class="real-page-title">Nos réalisations</h1>
+          <p class="real-page-desc">Projets de structure réalisés par MH Structure — plans de coffrage &amp; armatures, diagnostics, attestations parasismiques en Guadeloupe et dans le Tarn.</p>
+        </div>
+        <p class="real-page-count">1 projet publié</p>
+      </div>
+    </div>
+
+    <!-- Grille projets -->
+    <div class="real-page-body">
+      <div class="container">
+        <div class="real-page-grid">
+
+          <!-- Villa Soukai -->
+          <a href="/projets/villa-soukai" class="real-card" aria-label="Voir le projet Villa Soukai">
+            <div class="real-card-img">
+              <img src="images/projets/villa-soukai/13.jpg"
+                   alt="Villa Soukai en construction — façade béton armé, Petit-Canal Guadeloupe"
+                   width="600" height="400" loading="lazy">
+              <div class="real-card-overlay">
+                <span class="real-card-cta">Voir le projet →</span>
+              </div>
+            </div>
+            <div class="real-card-body">
+              <div class="real-card-tags">
+                <span>Guadeloupe</span><span>Plans de coffrage</span><span>Eurocode 8</span>
+              </div>
+              <h2 class="real-card-title">Villa Soukai</h2>
+              <p class="real-card-desc">Villa individuelle R+1 à Petit-Canal — plans de coffrage et d'armatures en zone sismique 5. Semelles, voiles béton armé, planchers.</p>
+            </div>
+          </a>
+
+          <!-- Prochain projet -->
+          <div class="real-card real-card--soon" aria-label="Prochain projet à venir">
+            <div class="real-card-img real-card-img--placeholder">
+              <div class="real-soon-inner">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                <span>Projet à venir</span>
+              </div>
+            </div>
+            <div class="real-card-body">
+              <div class="real-card-tags"><span style="opacity:.4">Tarn</span></div>
+              <h2 class="real-card-title" style="opacity:.3">—</h2>
+              <p class="real-card-desc" style="opacity:.3">Prochaine réalisation</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="footer-logo" aria-label="MH Structure — retour accueil">
+          <span class="fl-mh">MH</span>
+          <span class="fl-struct">STRUCTURE</span>
+        </a>
+        <nav class="footer-nav" aria-label="Navigation footer">
+          <div class="footer-col">
+            <div class="footer-col-title">Navigation</div>
+            <a href="/">Accueil</a>
+            <a href="/#services">Services</a>
+            <a href="/realisations">Réalisations</a>
+            <a href="/#contact">Devis</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Prestations</div>
+            <a href="/note-de-calcul-beton-arme">Notes de Calcul</a>
+            <a href="/plans-coffrage-armatures">Plans de coffrage</a>
+            <a href="/diagnostic-sismique-guadeloupe">Diagnostic Sismique</a>
+            <a href="/attestation-parasismique-guadeloupe">Attestation PC (Guadeloupe)</a>
+            <a href="/attestation-at2-fin-de-chantier">Attestation AT2</a>
+          </div>
+          <div class="footer-col footer-col--addresses">
+            <div class="footer-col-title">Nos bureaux</div>
+            <address class="footer-address">
+              <strong>Tarn (81)</strong><br>
+              6 Bd du Rajol — 81400 Carmaux<br>
+              <a href="tel:+33782883421">+33 7 82 88 34 21</a>
+            </address>
+            <address class="footer-address">
+              <strong>Guadeloupe (971)</strong><br>
+              2049B Chemin de Caféire — 97170 Petit-Bourg<br>
+              <a href="tel:+590690374142">+590 690 37 41 42</a>
+            </address>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MH Structure. Tous droits réservés.</span>
+        <div class="footer-legal">
+          <a href="/mentions-legales">Mentions légales</a>
+          <span aria-hidden="true">·</span>
+          <a href="/politique-confidentialite">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        localStorage.setItem('mh-theme', t);
+        btn.setAttribute('aria-label', t === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
+      }
+      applyTheme(root.getAttribute('data-theme') || 'light');
+      btn.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+    })();
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hamburger
+    const hbg = document.getElementById('hamburger');
+    const nls = document.getElementById('navLinks');
+    hbg.addEventListener('click', () => {
+      const open = hbg.classList.toggle('open');
+      nls.classList.toggle('open', open);
+      hbg.setAttribute('aria-expanded', open);
+      hbg.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && hbg.classList.contains('open')) {
+        hbg.classList.remove('open'); nls.classList.remove('open');
+        hbg.setAttribute('aria-expanded', 'false');
+        hbg.setAttribute('aria-label', 'Ouvrir le menu');
+        hbg.focus();
+      }
+    });
+  </script>
+</body>
+</html>
