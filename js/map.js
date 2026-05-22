@@ -1,8 +1,8 @@
 /* ================================================================
    MAP — Leaflet + CartoDB Voyager (dark/light thème sync)
-   Bureaux MH Structure :
-     • Carmaux   — lat 44.0508  / lon  2.1602
-     • Guadeloupe — lat 16.1938 / lon -61.6224
+   Deux cartes dans la section "Zones d'intervention" :
+     • map-carmaux    — Tarn (81)        lat 44.0508  / lon  2.1602
+     • map-guadeloupe — Guadeloupe (971) lat 16.1938  / lon -61.6224
    ================================================================ */
 (function () {
   'use strict';
@@ -31,20 +31,6 @@
       iconSize:    [32, 42],
       iconAnchor:  [16, 42],
       popupAnchor: [0, -44]
-    });
-  }
-
-  /* ── Icône marqueur secondaire (landmark) ── */
-  function makeSecondaryIcon(emoji) {
-    return L.divIcon({
-      className: 'map-pin',
-      html: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none">'
-          + '<circle cx="12" cy="12" r="10" fill="#4a6fa5" stroke="#fff" stroke-width="2"/>'
-          + '<text x="12" y="16" text-anchor="middle" font-size="11" fill="#fff" font-family="sans-serif">' + emoji + '</text>'
-          + '</svg>',
-      iconSize:    [24, 24],
-      iconAnchor:  [12, 12],
-      popupAnchor: [0, -14]
     });
   }
 
@@ -85,38 +71,7 @@
     return m;
   }
 
-  /* ================================================================
-     CARTE 1 — Section "À propos" : Carmaux (about-map)
-     ================================================================ */
-  function initAboutMap() {
-    var COORDS     = [44.0508, 2.1602];
-    var GMAPS_URL  = 'https://maps.google.com/?q=44.0508,2.1602';
-
-    var m = createMap('about-map', COORDS, 16);
-    if (!m) return;
-
-    var mhMarker = L.marker(COORDS, { icon: makeGoldIcon() })
-      .addTo(m)
-      .bindPopup(
-          '<strong>MH Structure</strong>'
-        + '<br><span>Bureau d\'études structure</span>'
-        + '<br><span>6 Boulevard du Rajol</span>'
-        + '<br><span>81400 Carmaux &mdash; Tarn (81)</span>'
-        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener noreferrer"'
-        + ' aria-label="Voir MH Structure sur Google Maps (s\'ouvre dans un nouvel onglet)">📍 Voir sur Google Maps</a>'
-      )
-      .openPopup();
-    var mhEl = mhMarker.getElement();
-    if (mhEl) mhEl.setAttribute('aria-label', 'MH Structure — 6 Boulevard du Rajol, 81400 Carmaux (cliquer pour les détails)');
-
-    var mairieMarker = L.marker([44.0500, 2.1608], { icon: makeSecondaryIcon('🏛') })
-      .addTo(m)
-      .bindPopup('<strong style="font-family:sans-serif">Mairie de Carmaux</strong><br><span style="font-size:0.78rem;color:#888">Place de la Mairie — 81400 Carmaux</span>');
-    var mairieEl = mairieMarker.getElement();
-    if (mairieEl) mairieEl.setAttribute('aria-label', 'Mairie de Carmaux — Place de la Mairie, 81400 Carmaux');
-  }
-
-  /* ================================================================
+    /* ================================================================
      CARTE 2 — Section "Zones" : Carmaux (map-carmaux)
      ================================================================ */
   function initZoneCarmaux() {
@@ -177,7 +132,6 @@
 
   /* ── Init toutes les cartes ── */
   function initAll() {
-    initAboutMap();
     initZoneCarmaux();
     initZoneGuadeloupe();
   }
