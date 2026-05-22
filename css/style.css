@@ -17,6 +17,7 @@
   --text:     #EEF2F8;
   --text2:    #8899B4;
   --text3:    #7A90AA;
+  --text-muted: #8899B4;
 
   --border:   rgba(255,255,255,0.07);
   --border-g: rgba(201,168,76,0.22);
@@ -66,6 +67,7 @@
   --text:     #0D1726;
   --text2:    #3A5070;
   --text3:    #4E6680; /* ratio 4.73:1 sur #EFF3FA — WCAG AA ✓ */
+  --text-muted: #4E6680;
 
   --border:   rgba(13,23,38,0.09);
   --border-g: rgba(201,168,76,0.38);
