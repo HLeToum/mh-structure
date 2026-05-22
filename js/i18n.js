@@ -74,6 +74,11 @@
       'prev.c07.obs':   'Remontées d\'humidité, suintements en parement ou stagnation d\'eau en pied de mur de soutènement. Un drainage insuffisant génère une surpression hydrostatique qui amplifie considérablement la poussée exercée sur le voile.',
       'prev.c07.inv':   'L\'état du drain perforé, du géotextile et des barbacanes est à contrôler. Une étude géotechnique permet d\'évaluer la perméabilité des sols et de dimensionner un système de drainage adapté pour pérenniser l\'ouvrage.',
 
+      'prev.c08.cat':   'Dallage · Tassement',
+      'prev.c08.title': 'Fissuration du dallage industriel par tassement de plateforme',
+      'prev.c08.obs':   'Fissures traversantes en étoile ou en réseau sur un dallage béton, parfois accompagnées de soulèvements ou d\'affaissements locaux. Ce mode de rupture est typique d\'un défaut de compactage de la plateforme support : le sol se tasse de façon différentielle sous la dalle, qui n\'est pas armée pour reprendre ces déformations.',
+      'prev.c08.inv':   'L\'état de compactage de la plateforme support est à vérifier (essais à la plaque, pénétromètre dynamique). La présence de vides sous dallage peut être détectée par géoradar. Selon la sévérité, les solutions vont de l\'injection de résine expansive à la reprise complète du dallage avec compactage renforcé de la plateforme.',
+
       'prev.cta.q':   'Vous reconnaissez un de ces signes sur votre bâtiment ?',
       'prev.cta.sub': 'Chaque situation est unique. Un examen par un ingénieur structure est indispensable pour évaluer le niveau de risque réel.',
       'prev.cta.btn': 'Demander un diagnostic',
@@ -238,6 +243,11 @@
       'prev.c07.title': 'Infiltrations and drainage failure at the base of a retaining wall',
       'prev.c07.obs':   'Rising damp, seepage on the facing or water pooling at the base of a retaining wall. Insufficient drainage generates hydrostatic pressure that significantly amplifies the thrust on the wall.',
       'prev.c07.inv':   'The condition of the perforated drain, geotextile and weep holes must be checked. A geotechnical study assesses soil permeability and allows a suitable drainage system to be designed to ensure the long-term performance of the structure.',
+
+      'prev.c08.cat':   'Floor slab · Settlement',
+      'prev.c08.title': 'Industrial floor slab cracking due to subgrade settlement',
+      'prev.c08.obs':   'Through cracks in a star pattern or network across a concrete floor slab, sometimes accompanied by local heaving or subsidence. This failure mode is typical of inadequate compaction of the supporting subgrade: the soil settles unevenly beneath the slab, which is not reinforced to accommodate these deformations.',
+      'prev.c08.inv':   'The compaction level of the supporting subgrade should be assessed (plate load tests, dynamic penetrometer). Voids beneath the slab can be detected using ground-penetrating radar. Depending on severity, solutions range from expanding resin injection to full slab replacement with improved subgrade compaction.',
 
       'prev.cta.q':   'Do you recognise any of these signs on your building?',
       'prev.cta.sub': 'Every situation is unique. An inspection by a structural engineer is essential to assess the actual level of risk.',
