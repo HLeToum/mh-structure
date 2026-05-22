@@ -270,7 +270,29 @@
       .proj-meta-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 0; margin-right: 0; }
       .proj-meta-item:last-child { border-bottom: none; }
     }
-  </style>
+
+    /* Bouton retour */
+    .proj-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 16px;
+      margin-bottom: 36px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .proj-back-btn:hover {
+      color: var(--gold);
+      border-color: var(--border-g);
+      background: rgba(201,168,76,0.06);
+    }
+    .proj-back-btn svg { transition: transform 0.2s; }
+    .proj-back-btn:hover svg { transform: translateX(-3px); }  </style>
 </head>
 <body class="proj-page">
 
@@ -358,6 +380,11 @@
 
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
+      <!-- ── Bouton retour réalisations ── -->
+      <a href="/realisations" class="proj-back-btn" aria-label="Retour à la liste des réalisations">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Retour aux réalisations
+      </a>
 
       <!-- Galerie photos -->
       <p class="proj-gallery-title">Photos de chantier</p>
@@ -607,3 +634,5 @@
   </script>
 </body>
 </html>
+
+
