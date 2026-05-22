@@ -17,7 +17,7 @@
 
       /* Hero */
       'hero.tag':         'Bureau d\'Études Techniques — Structure',
-      'hero.h1':          'Ingénierie<br><em>Structurelle</em><br>Tarn &amp; Guadeloupe',
+      'hero.h1':          'Ingénierie<br><em>Structurelle</em><br>Partout en France',
       'hero.desc':        'Étude de structures · Diagnostic d\'ouvrages · Contrôle réglementaire<br>Des solutions techniques adaptées à chaque situation.',
       'hero.btn-primary': 'Demander un devis',
       'hero.btn-ghost':   'Voir nos cas prévention',
@@ -82,9 +82,9 @@
       'about.eyebrow':      'À propos',
       'about.badge.title':  'Bureau d\'Études',
       'about.badge.sub':    'Ingénierie Structure',
-      'about.h2':           'Bureau d\'études structure — Tarn (81) & Guadeloupe',
-      'about.p1':           'Basé à Carmaux (Tarn) et à Petit-Bourg (Guadeloupe), nous travaillons directement avec architectes, maîtres d\'ouvrage et particuliers — de la conception jusqu\'à la réception de chantier. Pas d\'intermédiaire : votre dossier est suivi par notre ingénieur structure, du début à la fin.',
-      'about.p2':           'Notes de calcul béton armé, plans d\'exécution, diagnostics structuraux, attestations parasismiques AT1/AT2 : nous couvrons l\'ensemble du cycle structure de votre projet, dans le Tarn, en Occitanie et en Guadeloupe (zone sismique 5).',
+      'about.h2':           'Bureau d\'études structure — Partout en France',
+      'about.p1':           'Nous travaillons directement avec architectes, maîtres d\'ouvrage et particuliers — de la conception jusqu\'à la réception de chantier. Pas d\'intermédiaire : votre dossier est suivi par notre ingénieur structure, du début à la fin.',
+      'about.p2':           'Notes de calcul béton armé, plans d\'exécution, diagnostics structuraux, attestations parasismiques AT1/AT2 : nous couvrons l\'ensemble du cycle structure de votre projet, sur tout le territoire français.',
       'about.clients.label':'Nous intervenons pour',
       'about.client.1':     'Architectes',
       'about.client.2':     'Maîtres d\'ouvrage',
@@ -182,7 +182,7 @@
 
       /* Hero */
       'hero.tag':         'Structural Engineering Consultancy',
-      'hero.h1':          'Structural<br><em>Engineering</em><br>Tarn &amp; Guadeloupe',
+      'hero.h1':          'Structural<br><em>Engineering</em><br>Across France',
       'hero.desc':        'Structural analysis · Building diagnostics · Regulatory compliance<br>Technical solutions tailored to every situation.',
       'hero.btn-primary': 'Request a quote',
       'hero.btn-ghost':   'View case studies',
@@ -247,9 +247,9 @@
       'about.eyebrow':      'About',
       'about.badge.title':  'Engineering Firm',
       'about.badge.sub':    'Structural Engineering',
-      'about.h2':           'Structural engineering firm — Tarn (81) & Guadeloupe',
-      'about.p1':           'Based in Carmaux (Tarn) and Petit-Bourg (Guadeloupe), we work directly with architects, project owners and private clients — from design through to site completion. No middlemen: your file is handled by our structural engineer, start to finish.',
-      'about.p2':           'Reinforced concrete calculations, execution drawings, structural diagnostics, seismic compliance certificates AT1/AT2 — we cover the full structural engineering cycle for your project, across the Tarn, Occitanie and Guadeloupe (seismic zone 5).',
+      'about.h2':           'Structural engineering firm — Across France',
+      'about.p1':           'We work directly with architects, project owners and private clients — from design through to site completion. No middlemen: your file is handled by our structural engineer, start to finish.',
+      'about.p2':           'Reinforced concrete calculations, execution drawings, structural diagnostics, seismic compliance certificates AT1/AT2 — we cover the full structural engineering cycle for your project, anywhere in France.',
       'about.clients.label':'We work with',
       'about.client.1':     'Architects',
       'about.client.2':     'Project owners',
