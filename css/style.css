@@ -1050,8 +1050,7 @@ body,
   overflow: hidden;
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  aspect-ratio: 400 / 320;
+  aspect-ratio: 5 / 3;
   flex-shrink: 0;
 }
 .svc-img img {
@@ -1063,21 +1062,6 @@ body,
 }
 .svc-card:hover .svc-img img {
   transform: scale(1.03);
-}
-/* Images de type document (fond blanc, contenu plein cadre) */
-.svc-img--doc {
-  background: #f8f8f8;
-}
-.svc-img--doc img {
-  object-fit: contain;
-  object-position: center top;
-}
-.svc-card:hover .svc-img--doc img {
-  transform: scale(1.02);
-}
-/* Modèle FEM 3D : focus sur le centre du mesh */
-.svc-img--fem img {
-  object-position: center center;
 }
 .svc-num {
   font-family: var(--ff-mono);
