@@ -127,7 +127,7 @@
       'contact.email.label': 'Email',
       'contact.phone.label': 'Téléphone',
       'contact.loc.label':   'Localisation',
-      'contact.loc.val':     'Carmaux (81) · Guadeloupe (971) — France entière',
+      'contact.loc.val':     'France métropolitaine &amp; DOM-TOM',
 
       /* Form */
       'form.nom.label':      'Nom complet *',
@@ -292,7 +292,7 @@
       'contact.email.label': 'Email',
       'contact.phone.label': 'Phone',
       'contact.loc.label':   'Location',
-      'contact.loc.val':     'Carmaux (81) · Guadeloupe (971) — Nationwide service',
+      'contact.loc.val':     'Metropolitan France &amp; Overseas Territories',
 
       /* Form */
       'form.nom.label':      'Full name *',
