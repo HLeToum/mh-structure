@@ -317,7 +317,18 @@
       background: rgba(201,168,76,0.06);
     }
     .proj-back-btn svg { transition: transform 0.2s; }
-    .proj-back-btn:hover svg { transform: translateX(-3px); }  </style>
+    .proj-back-btn:hover svg { transform: translateX(-3px); }
+    /* Back strip */
+    .proj-back-strip {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(20px,5vw,48px);
+    }
+    .proj-back-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 0;
+    }  </style>
 </head>
 <body class="proj-page">
 
@@ -401,8 +412,15 @@
           <span class="proj-meta-value">Estimation chiffrée + Note de calcul</span>
         </div>
       </div>
+    <!-- ── Back strip ── -->
+    <div class="proj-back-strip">
+      <div class="proj-back-inner">
+        <a href="/realisations" class="proj-back-btn" aria-label="Retour à la liste des réalisations">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Retour aux réalisations
+        </a>
+      </div>
     </div>
-
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
 
@@ -660,5 +678,7 @@
   </script>
 </body>
 </html>
+
+
 
 
