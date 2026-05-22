@@ -1,55 +1,30 @@
 /* ================================================================
    MAP — Leaflet + CartoDB Voyager (dark/light thème sync)
-   6 Bd du Rajol, 81400 Carmaux — lat 44.0508 / lon 2.1602
+   Bureaux MH Structure :
+     • Carmaux   — lat 44.0508  / lon  2.1602
+     • Guadeloupe — lat 16.1938 / lon -61.6224
    ================================================================ */
 (function () {
   'use strict';
 
-  var COORDS       = [44.0508, 2.1602];  /* MH Structure         */
-  var MAIRIE_COORDS= [44.0500, 2.1608];  /* Mairie de Carmaux    */
-  var ZOOM         = 16;
-  var GMAPS_URL    = 'https://maps.google.com/?q=44.0508,2.1602';
-
-  var TILES = {
-    dark:  'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
-  };
+  var TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
   var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" aria-label="OpenStreetMap (nouvelle fenêtre)">OpenStreetMap</a>'
            + ' &copy; <a href="https://carto.com/" target="_blank" rel="noopener noreferrer" aria-label="CARTO (nouvelle fenêtre)">CARTO</a>';
 
-  var map, tileLayer;
+  /* Registre de toutes les instances pour le sync thème */
+  var allInstances = [];
 
   function currentTheme() {
     return document.documentElement.getAttribute('data-theme') || 'dark';
   }
 
-  function initMap() {
-    var el = document.getElementById('about-map');
-    if (!el) { console.warn('map.js : #about-map introuvable'); return; }
-    if (typeof L === 'undefined') { console.warn('map.js : Leaflet non chargé'); return; }
-
-    map = L.map('about-map', {
-      center: COORDS,
-      zoom: ZOOM,
-      scrollWheelZoom: 'center',
-      zoomControl: true,
-      zoomSnap: 0.5,
-      zoomDelta: 0.5,
-      wheelDebounceTime: 40
-    });
-
-    tileLayer = L.tileLayer(TILES[currentTheme()], {
-      attribution: ATTR,
-      maxZoom: 19,
-      subdomains: 'abcd'
-    }).addTo(map);
-
-    /* ── Marqueur principal MH Structure (gold) ── */
-    var goldIcon = L.divIcon({
+  /* ── Icône marqueur gold MH Structure ── */
+  function makeGoldIcon() {
+    return L.divIcon({
       className: 'map-pin',
       html: '<svg width="32" height="42" viewBox="0 0 32 42" fill="none">'
-          + '<filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.4"/></filter>'
-          + '<path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 26 16 26S32 28 32 16C32 7.163 24.837 0 16 0z" fill="#C9A84C" filter="url(#sh)"/>'
+          + '<filter id="mh-sh"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.4"/></filter>'
+          + '<path d="M16 0C7.163 0 0 7.163 0 16c0 12 16 26 16 26S32 28 32 16C32 7.163 24.837 0 16 0z" fill="#C9A84C" filter="url(#mh-sh)"/>'
           + '<circle cx="16" cy="16" r="6" fill="#1a2a42"/>'
           + '<circle cx="16" cy="16" r="3" fill="#C9A84C"/>'
           + '</svg>',
@@ -57,56 +32,142 @@
       iconAnchor:  [16, 42],
       popupAnchor: [0, -44]
     });
+  }
 
-    var mhMarker = L.marker(COORDS, { icon: goldIcon })
-      .addTo(map)
-      .bindPopup(
-          '<strong>MH Structure</strong>'
-        + '<br><span>Bureau d\'études structure</span>'
-        + '<br><span>6 Boulevard du Rajol</span>'
-        + '<br><span>81400 Carmaux &mdash; Tarn (81)</span>'
-        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener noreferrer" aria-label="Voir MH Structure sur Google Maps (s\'ouvre dans un nouvel onglet)">'
-        + '📍 Voir sur Google Maps</a>'
-      )
-      .openPopup();
-    /* Nom accessible sur le marqueur interactif (RGAA 7.1) */
-    var mhEl = mhMarker.getElement();
-    if (mhEl) mhEl.setAttribute('aria-label', 'MH Structure — 6 Boulevard du Rajol, 81400 Carmaux (cliquer pour les détails)');
-
-    /* ── Marqueur secondaire Mairie de Carmaux ── */
-    var mairieIcon = L.divIcon({
+  /* ── Icône marqueur secondaire (landmark) ── */
+  function makeSecondaryIcon(emoji) {
+    return L.divIcon({
       className: 'map-pin',
       html: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none">'
           + '<circle cx="12" cy="12" r="10" fill="#4a6fa5" stroke="#fff" stroke-width="2"/>'
-          + '<text x="12" y="16" text-anchor="middle" font-size="11" fill="#fff" font-family="sans-serif">🏛</text>'
+          + '<text x="12" y="16" text-anchor="middle" font-size="11" fill="#fff" font-family="sans-serif">' + emoji + '</text>'
           + '</svg>',
       iconSize:    [24, 24],
       iconAnchor:  [12, 12],
       popupAnchor: [0, -14]
     });
+  }
 
-    var mairieMarker = L.marker(MAIRIE_COORDS, { icon: mairieIcon })
-      .addTo(map)
-      .bindPopup('<strong style="font-family:sans-serif">Mairie de Carmaux</strong><br><span style="font-size:0.78rem;color:#888">Place de la Mairie — 81400 Carmaux</span>');
-    var mairieEl = mairieMarker.getElement();
-    if (mairieEl) mairieEl.setAttribute('aria-label', 'Mairie de Carmaux — Place de la Mairie, 81400 Carmaux');
+  /* ── Fabrique une carte Leaflet et enregistre l'instance ── */
+  function createMap(elId, coords, zoom) {
+    var el = document.getElementById(elId);
+    if (!el) return null;
+    if (typeof L === 'undefined') { console.warn('map.js : Leaflet non chargé'); return null; }
 
-    /* ── invalidateSize quand visible ── */
-    setTimeout(function () { map.invalidateSize(); }, 100);
+    var m = L.map(elId, {
+      center: coords,
+      zoom: zoom,
+      scrollWheelZoom: 'center',
+      zoomControl: true,
+      zoomSnap: 0.5,
+      zoomDelta: 0.5,
+      wheelDebounceTime: 40
+    });
+
+    var tl = L.tileLayer(TILE_URL, {
+      attribution: ATTR,
+      maxZoom: 19,
+      subdomains: 'abcd'
+    }).addTo(m);
+
+    allInstances.push({ map: m, tileLayer: tl });
+
+    /* Invalide la taille dès que le conteneur est visible */
+    setTimeout(function () { m.invalidateSize(); }, 120);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { map.invalidateSize(); obs.disconnect(); }
+          if (entry.isIntersecting) { m.invalidateSize(); obs.disconnect(); }
         });
       }, { threshold: 0.1 }).observe(el);
     }
+
+    return m;
   }
 
-  /* ── Sync tuiles dark/light ── */
+  /* ================================================================
+     CARTE 1 — Section "À propos" : Carmaux (about-map)
+     ================================================================ */
+  function initAboutMap() {
+    var COORDS     = [44.0508, 2.1602];
+    var GMAPS_URL  = 'https://maps.google.com/?q=44.0508,2.1602';
+
+    var m = createMap('about-map', COORDS, 16);
+    if (!m) return;
+
+    var mhMarker = L.marker(COORDS, { icon: makeGoldIcon() })
+      .addTo(m)
+      .bindPopup(
+          '<strong>MH Structure</strong>'
+        + '<br><span>Bureau d\'études structure</span>'
+        + '<br><span>6 Boulevard du Rajol</span>'
+        + '<br><span>81400 Carmaux &mdash; Tarn (81)</span>'
+        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener noreferrer"'
+        + ' aria-label="Voir MH Structure sur Google Maps (s\'ouvre dans un nouvel onglet)">📍 Voir sur Google Maps</a>'
+      )
+      .openPopup();
+    var mhEl = mhMarker.getElement();
+    if (mhEl) mhEl.setAttribute('aria-label', 'MH Structure — 6 Boulevard du Rajol, 81400 Carmaux (cliquer pour les détails)');
+
+    var mairieMarker = L.marker([44.0500, 2.1608], { icon: makeSecondaryIcon('🏛') })
+      .addTo(m)
+      .bindPopup('<strong style="font-family:sans-serif">Mairie de Carmaux</strong><br><span style="font-size:0.78rem;color:#888">Place de la Mairie — 81400 Carmaux</span>');
+    var mairieEl = mairieMarker.getElement();
+    if (mairieEl) mairieEl.setAttribute('aria-label', 'Mairie de Carmaux — Place de la Mairie, 81400 Carmaux');
+  }
+
+  /* ================================================================
+     CARTE 2 — Section "Zones" : Carmaux (map-carmaux)
+     ================================================================ */
+  function initZoneCarmaux() {
+    var COORDS    = [44.0508, 2.1602];
+    var GMAPS_URL = 'https://maps.google.com/?q=44.0508,2.1602';
+
+    var m = createMap('map-carmaux', COORDS, 15);
+    if (!m) return;
+
+    var marker = L.marker(COORDS, { icon: makeGoldIcon() })
+      .addTo(m)
+      .bindPopup(
+          '<strong>MH Structure</strong>'
+        + '<br><span>6 Boulevard du Rajol</span>'
+        + '<br><span>81400 Carmaux — Tarn (81)</span>'
+        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener noreferrer"'
+        + ' aria-label="Voir sur Google Maps (nouvel onglet)">📍 Voir sur Google Maps</a>'
+      );
+    var el = marker.getElement();
+    if (el) el.setAttribute('aria-label', 'MH Structure Carmaux — 6 Boulevard du Rajol, 81400 Carmaux');
+  }
+
+  /* ================================================================
+     CARTE 3 — Section "Zones" : Guadeloupe (map-guadeloupe)
+     ================================================================ */
+  function initZoneGuadeloupe() {
+    var COORDS    = [16.193797, -61.622398];
+    var GMAPS_URL = 'https://maps.google.com/?q=16.193797,-61.622398';
+
+    var m = createMap('map-guadeloupe', COORDS, 15);
+    if (!m) return;
+
+    var marker = L.marker(COORDS, { icon: makeGoldIcon() })
+      .addTo(m)
+      .bindPopup(
+          '<strong>MH Structure</strong>'
+        + '<br><span>2049B Chemin de Caféire</span>'
+        + '<br><span>97170 Petit-Bourg — Guadeloupe (971)</span>'
+        + '<br><a class="map-gmaps-link" href="' + GMAPS_URL + '" target="_blank" rel="noopener noreferrer"'
+        + ' aria-label="Voir sur Google Maps (nouvel onglet)">📍 Voir sur Google Maps</a>'
+      );
+    var el = marker.getElement();
+    if (el) el.setAttribute('aria-label', 'MH Structure Guadeloupe — 2049B Chemin de Caféire, 97170 Petit-Bourg');
+  }
+
+  /* ── Sync tuiles dark/light sur changement de thème ── */
   function syncTiles() {
-    if (!tileLayer) return;
-    tileLayer.setUrl(TILES[currentTheme()] || TILES.dark);
-    setTimeout(function () { if (map) map.invalidateSize(); }, 50);
+    allInstances.forEach(function (inst) {
+      inst.tileLayer.setUrl(TILE_URL);
+      setTimeout(function () { inst.map.invalidateSize(); }, 50);
+    });
   }
 
   new MutationObserver(syncTiles).observe(
@@ -114,9 +175,17 @@
     { attributes: true, attributeFilter: ['data-theme'] }
   );
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-  } else {
-    initMap();
+  /* ── Init toutes les cartes ── */
+  function initAll() {
+    initAboutMap();
+    initZoneCarmaux();
+    initZoneGuadeloupe();
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+
 })();
