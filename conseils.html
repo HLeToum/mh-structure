@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Nos Réalisations — Projets Structure | MH Structure</title>
-  <meta name="description" content="Découvrez les projets réalisés par MH Structure : plans de coffrage et armatures, diagnostics sismiques, attestations parasismiques en Guadeloupe et dans le Tarn.">
+  <title>Conseils & Actualités — Structure, Parasismique, Réglementation | MH Structure</title>
+  <meta name="description" content="Conseils d'experts en ingénierie structure : diagnostics sismiques, réglementation Eurocode, plans de coffrage, attestations parasismiques. MH Structure vous guide.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.mhstructure.com/realisations">
+  <link rel="canonical" href="https://www.mhstructure.com/conseils">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Nos Réalisations — MH Structure">
-  <meta property="og:description" content="Projets de structure réalisés par MH Structure : plans de coffrage, armatures, diagnostics sismiques en Guadeloupe et dans le Tarn.">
-  <meta property="og:image" content="https://www.mhstructure.com/images/projets/villa-soukai/13.jpg">
+  <meta property="og:title" content="Conseils & Actualités — MH Structure">
+  <meta property="og:description" content="Conseils d'experts en ingénierie structure : diagnostics sismiques, réglementation Eurocode, plans de coffrage, attestations parasismiques.">
+  <meta property="og:image" content="https://www.mhstructure.com/images/logo-mh-structure.png">
   <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="apple-touch-icon" href="images/favicon-192.png">
@@ -21,57 +21,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    .real-page-hero {
-      padding: calc(var(--nav-h, 68px) + 48px) 0 48px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    .real-page-hero .container {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      gap: 24px; flex-wrap: wrap;
-    }
-    .real-page-label {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
-    }
-    .real-page-title {
-      font-family: var(--ff); font-size: clamp(2rem,4vw,3rem);
-      font-weight: 700; color: var(--text); margin: 0 0 10px; line-height: 1.1;
-    }
-    .real-page-desc {
-      font-size: 1rem; color: var(--text-muted); margin: 0; max-width: 540px;
-    }
-    .real-page-count {
-      font-family: var(--ff-mono); font-size: 0.78rem; color: var(--text-muted);
-      white-space: nowrap; padding-bottom: 4px;
-    }
-
-    .real-page-body {
-      padding: clamp(40px,6vw,72px) 0;
-    }
-
-    .real-page-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 24px;
-    }
-
-    /* Carte "à venir" */
-    .real-card--soon { pointer-events: none; }
-    .real-card-img--placeholder {
-      display: flex; align-items: center; justify-content: center;
-      background: var(--surface2);
-    }
-    .real-soon-inner {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      color: var(--text-muted); font-size: 0.82rem; opacity: 0.5;
-    }
-
-    @media (max-width: 600px) {
-      .real-page-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
@@ -88,8 +37,8 @@
       <div class="nav-links" id="navLinks">
         <a href="/" class="nav-link">Accueil</a>
         <a href="/#services" class="nav-link">Services</a>
-        <a href="/realisations" class="nav-link active" aria-current="page">Réalisations</a>
-        <a href="/conseils" class="nav-link">Conseils</a>
+        <a href="/realisations" class="nav-link">Réalisations</a>
+        <a href="/conseils" class="nav-link active" aria-current="page">Conseils</a>
         <a href="/#contact" class="nav-link">Devis</a>
       </div>
       <a href="tel:+33782883421" class="nav-phone" aria-label="Appeler MH Structure">
@@ -113,74 +62,43 @@
   <main id="main-content">
 
     <!-- Hero -->
-    <div class="real-page-hero">
+    <div class="blog-hero">
       <div class="container">
         <div>
-          <p class="real-page-label">Portfolio</p>
-          <h1 class="real-page-title">Nos réalisations</h1>
-          <p class="real-page-desc">Projets de structure réalisés par MH Structure — plans de coffrage &amp; armatures, diagnostics, attestations parasismiques en Guadeloupe et dans le Tarn.</p>
+          <p class="blog-hero-label">Expertise & Réglementation</p>
+          <h1 class="blog-hero-title">Conseils & Actualités</h1>
+          <p class="blog-hero-desc">Guides pratiques, obligations réglementaires, décryptage des Eurocodes — par les ingénieurs de MH Structure, pour vous aider à construire en toute sécurité.</p>
         </div>
-        <p class="real-page-count">1 projet publié</p>
+        <p class="blog-hero-count" id="article-count">1 article publié</p>
       </div>
     </div>
 
-    <!-- Grille projets -->
-    <div class="real-page-body">
+    <!-- Grille articles -->
+    <div class="blog-body">
       <div class="container">
-        <div class="real-page-grid">
+        <div class="blog-grid" id="blog-grid">
 
-          <!-- Villa RDC — Petit-Canal -->
-          <a href="/projets/villa-rdc-guadeloupe" class="real-card" aria-label="Voir le projet Villa individuelle RDC — Petit-Canal">
-            <div class="real-card-img">
-              <img src="images/projets/villa-soukai/13.jpg"
-                   alt="Villa individuelle RDC en construction — façade béton armé, Petit-Canal Guadeloupe"
-                   width="600" height="400" loading="lazy">
-              <div class="real-card-overlay">
-                <span class="real-card-cta">Voir le projet →</span>
-              </div>
+          <!-- Article 01 — Diagnostic sismique -->
+          <a href="/conseils/diagnostic-sismique-obligation-legale" class="blog-card" aria-label="Lire l'article : Diagnostic sismique — ce que dit la loi">
+            <div class="blog-card-cat-bar">
+              <span class="blog-card-cat">Réglementation</span>
+              <span class="blog-card-date">2 juin 2026</span>
             </div>
-            <div class="real-card-body">
-              <div class="real-card-tags">
-                <span>Guadeloupe</span><span>Plans de coffrage</span><span>Eurocode 8</span>
-              </div>
-              <h2 class="real-card-title">Villa individuelle RDC</h2>
-              <p class="real-card-desc">Villa RDC à Petit-Canal — plans de coffrage et d'armatures en zone sismique 5. Semelles, voiles béton armé, planchers.</p>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">Diagnostic sismique : ce que dit la loi et pourquoi votre bâtiment est concerné</h2>
+              <p class="blog-card-excerpt">En France et dans les DOM-TOM, les obligations en matière de diagnostic sismique sont souvent méconnues. Pourtant, elles s'appliquent à des milliers de bâtiments — y compris les constructions récentes. On fait le point.</p>
+            </div>
+            <div class="blog-card-footer">
+              <span class="blog-card-read">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                Lire l'article
+              </span>
+              <span class="blog-card-likes-preview">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span class="card-like-count-01">—</span>
+              </span>
             </div>
           </a>
-
-          <!-- Charpente métallique — Prédimensionnement -->
-          <a href="/projets/predim-charpente-metallique" class="real-card" aria-label="Voir le projet Bâtiment industriel charpente métallique">
-            <div class="real-card-img">
-              <img src="images/projets/charpente-metallique/vue-3d-iso.png"
-                   alt="Modèle 3D Advanced Design — charpente métallique, portiques acier, dallage et semelles isolées"
-                   width="600" height="400" loading="lazy">
-              <div class="real-card-overlay">
-                <span class="real-card-cta">Voir le projet →</span>
-              </div>
-            </div>
-            <div class="real-card-body">
-              <div class="real-card-tags">
-                <span>Charpente métallique</span><span>Prédimensionnement</span><span>Eurocode 3</span>
-              </div>
-              <h2 class="real-card-title">Bâtiment industriel — Acier</h2>
-              <p class="real-card-desc">Prédimensionnement complet d'une charpente métallique (portiques, contreventements) avec calcul du dallage sur sol élastique et des fondations (semelles isolées, longrines).</p>
-            </div>
-          </a>
-
-          <!-- Prochain projet -->
-          <div class="real-card real-card--soon" aria-label="Prochain projet à venir">
-            <div class="real-card-img real-card-img--placeholder">
-              <div class="real-soon-inner">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-                <span>Projet à venir</span>
-              </div>
-            </div>
-            <div class="real-card-body">
-              <div class="real-card-tags"><span style="opacity:.4">Tarn</span></div>
-              <h2 class="real-card-title" style="opacity:.3">—</h2>
-              <p class="real-card-desc" style="opacity:.3">Prochaine réalisation</p>
-            </div>
-          </div>
 
         </div>
       </div>
@@ -202,6 +120,7 @@
             <a href="/">Accueil</a>
             <a href="/#services">Services</a>
             <a href="/realisations">Réalisations</a>
+            <a href="/conseils">Conseils</a>
             <a href="/#contact">Devis</a>
           </div>
           <div class="footer-col">
@@ -209,7 +128,7 @@
             <a href="/note-de-calcul-beton-arme">Notes de Calcul</a>
             <a href="/plans-coffrage-armatures">Plans de coffrage</a>
             <a href="/diagnostic-sismique-guadeloupe">Diagnostic Sismique</a>
-            <a href="/attestation-parasismique-guadeloupe">Attestation PC (Guadeloupe)</a>
+            <a href="/attestation-parasismique-guadeloupe">Attestation PC (DOM-TOM)</a>
             <a href="/attestation-at2-fin-de-chantier">Attestation AT2</a>
           </div>
           <div class="footer-col footer-col--addresses">
