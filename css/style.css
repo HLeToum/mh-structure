@@ -2685,3 +2685,22 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
 }
 .article-back-btn:hover { color: var(--gold); }
 .article-back-btn svg { flex-shrink: 0; }
+
+/* ── Images dans le corps de l'article ── */
+.article-img {
+  margin: 32px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.article-img img {
+  width: 100%; height: auto; display: block;
+  max-height: 440px; object-fit: cover; object-position: center;
+}
+.article-img figcaption {
+  font-size: 0.76rem; color: var(--text-muted);
+  padding: 8px 12px;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  font-style: italic;
+}
