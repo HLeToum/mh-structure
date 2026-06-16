@@ -257,6 +257,17 @@
         hbg.focus();
       }
     });
+
+    // Compteur de likes des cartes : reprend le stockage des pages articles
+    // (même clé que js/blog-likes.js : mh-like-count-{slug}).
+    document.querySelectorAll('.blog-card').forEach(card => {
+      const href = card.getAttribute('href') || '';
+      const slug = href.split('/').filter(Boolean).pop();
+      const countEl = card.querySelector('.blog-card-likes-preview span:last-child');
+      if (!slug || !countEl) return;
+      const n = parseInt(localStorage.getItem('mh-like-count-' + slug), 10) || 0;
+      countEl.textContent = n;
+    });
   </script>
 <script defer src="/js/back-to-top.js"></script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
