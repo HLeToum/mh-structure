@@ -28,6 +28,32 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- Pages géo attestation parasismique (zones sismiques) -->
+  <url>
+    <loc>https://www.mhstructure.com/attestation-parasismique-martinique</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/attestation-parasismique-nice</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/attestation-parasismique-grenoble</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/attestation-parasismique-annecy</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- Pages services — Haute priorité -->
   <url>
     <loc>https://www.mhstructure.com/attestation-parasismique-guadeloupe</loc>
