@@ -927,6 +927,20 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="adresse" data-i18n="form.addr.section">Adresse du projet</label>
+              <input type="text" id="adresse" name="adresse" placeholder="N° et rue…" autocomplete="street-address" data-i18n-ph="form.addr.ph">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="code_postal" data-i18n="form.cp.label">Code postal</label>
+                <input type="text" id="code_postal" name="code_postal" placeholder="45500" autocomplete="postal-code" inputmode="numeric" maxlength="5" data-i18n-ph="form.cp.ph">
+              </div>
+              <div class="form-group">
+                <label for="ville" data-i18n="form.ville.label">Ville</label>
+                <input type="text" id="ville" name="ville" placeholder="Gien…" autocomplete="address-level2" data-i18n-ph="form.ville.ph">
+              </div>
+            </div>
+            <div class="form-group">
               <label for="message" data-i18n="form.msg.label">Description du projet *</label>
               <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet, le type d'ouvrage, la localisation, les délais souhaités…" autocomplete="off" required aria-describedby="message-error" data-i18n-ph="form.msg.ph"></textarea>
               <span id="message-error" class="field-error" role="alert" aria-live="polite"></span>
