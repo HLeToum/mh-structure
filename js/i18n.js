@@ -132,7 +132,7 @@
       'contact.email.label': 'Email',
       'contact.phone.label': 'Téléphone',
       'contact.loc.label':   'Localisation',
-      'contact.loc.val':     'France métropolitaine &amp; DOM-TOM',
+      'contact.loc.val':     'France métropolitaine & DOM-TOM',
 
       /* Form */
       'form.nom.label':      'Nom complet *',
@@ -140,7 +140,7 @@
       'form.email.label':    'Email *',
       'form.email.ph':       'jean@exemple.fr',
       'form.tel.label':      'Téléphone',
-      'form.addr.section':   'Adresse du projet',
+      'form.addr.section':   'Adresse du client',
       'form.addr.label':     'Adresse',
       'form.addr.ph':        'N° et rue…',
       'form.cp.label':       'Code postal',
@@ -309,7 +309,7 @@
       'contact.email.label': 'Email',
       'contact.phone.label': 'Phone',
       'contact.loc.label':   'Location',
-      'contact.loc.val':     'Metropolitan France &amp; Overseas Territories',
+      'contact.loc.val':     'Metropolitan France & Overseas Territories',
 
       /* Form */
       'form.nom.label':      'Full name *',
@@ -317,7 +317,7 @@
       'form.email.label':    'Email *',
       'form.email.ph':       'john@example.com',
       'form.tel.label':      'Phone',
-      'form.addr.section':   'Project address',
+      'form.addr.section':   'Client address',
       'form.addr.label':     'Address',
       'form.addr.ph':        'Street and number…',
       'form.cp.label':       'Postal code',
