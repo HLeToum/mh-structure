@@ -8,6 +8,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Contact -->
+  <url>
+    <loc>https://www.mhstructure.com/contact</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Pages piliers — Haute priorité -->
   <url>
     <loc>https://www.mhstructure.com/attestation-parasismique</loc>

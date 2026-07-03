@@ -233,13 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (status) status.textContent = 'Votre demande a bien été envoyée. Réponse sous 48h.';
         // Retire tous les aria-invalid et messages d'erreur au succès
         requiredFields.forEach(f => clearFieldError(f));
-        setTimeout(() => {
-          btn.innerHTML = orig;
-          btn.classList.remove('submit-btn--success');
-          btn.disabled = false;
-          if (status) status.textContent = '';
-          form.reset();
-        }, 2500);
+        // Page de confirmation : sert aussi de mesure de conversion (visite de /merci)
+        setTimeout(() => { window.location.href = '/merci'; }, 1200);
       } else { throw new Error(); }
     } catch {
       btn.innerHTML = '✗ Erreur — réessayez';
