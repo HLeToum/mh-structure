@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <script>(function(){var t=localStorage.getItem('mh-theme')||'light';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
+  <title>La descente de charges : le calcul qui conditionne toute la structure — MH Structure</title>
+  <meta name="description" content="Descente de charges en béton armé : comment ce calcul détermine les sections de poteaux, poutres et fondations, quelles charges prendre en compte selon l'Eurocode 1, et pourquoi une erreur s'y répercute sur toute la structure.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.mhstructure.com/conseils/descente-de-charges">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="La descente de charges : le calcul qui conditionne toute la structure — MH Structure">
+  <meta property="og:description" content="Comment la descente de charges fait cheminer les efforts de la toiture aux fondations, quelles valeurs de charges retenir, et pourquoi ce calcul conditionne le dimensionnement de toute la structure.">
+  <meta property="og:image" content="https://www.mhstructure.com/images/logo-mh-structure.png">
+  <meta property="article:published_time" content="2026-07-13">
+  <meta property="article:author" content="MH Structure">
+  <meta property="article:section" content="Béton armé">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "La descente de charges : le calcul qui conditionne toute la structure",
+    "datePublished": "2026-07-13",
+    "dateModified": "2026-07-13",
+    "author": { "@type": "Organization", "name": "MH Structure", "url": "https://www.mhstructure.com" },
+    "publisher": { "@type": "Organization", "name": "MH Structure", "logo": { "@type": "ImageObject", "url": "https://www.mhstructure.com/images/logo-mh-structure.png" } },
+    "description": "Principe de la descente de charges, charges permanentes et d'exploitation selon l'Eurocode 1, cheminement des efforts, combinaisons ELU et ELS, et conséquences d'une erreur sur le dimensionnement.",
+    "url": "https://www.mhstructure.com/conseils/descente-de-charges"
+  }
+  </script>
+  <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="apple-touch-icon" href="../images/favicon-192.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="MH Structure — retour accueil">
+        <span class="logo-mh" translate="no">MH</span>
+        <div class="logo-sep" aria-hidden="true"></div>
+        <span class="logo-struct" translate="no">STRUCTURE</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/" class="nav-link">Accueil</a>
+        <a href="/#services" class="nav-link">Services</a>
+        <a href="/realisations" class="nav-link">Réalisations</a>
+        <a href="/conseils" class="nav-link active" aria-current="page">Conseils</a>
+        <a href="/contact" class="nav-link">Devis</a>
+        <a href="tel:+33782883421" class="nav-phone-mobile" aria-label="Appeler MH Structure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+33 7 82 88 34 21</a>
+      </div>
+      <a href="tel:+33782883421" class="nav-phone" aria-label="Appeler MH Structure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="nav-phone-num">+33 7 82 88 34 21</span>
+      </a>
+      <a href="/contact" class="btn-cta nav-cta">Devis gratuit</a>
+      <button class="lang-toggle" id="langToggle" aria-label="FR | EN">
+        <span class="lt-fr">FR</span><span class="lt-sep" aria-hidden="true">|</span><span class="lt-en">EN</span>
+      </button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Activer le mode sombre">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Retour -->
+    <div class="article-back-strip">
+      <div class="article-back-inner">
+        <a href="/conseils" class="article-back-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Retour aux conseils
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero article -->
+    <div class="article-hero">
+      <div class="container">
+        <nav class="article-breadcrumb" aria-label="Fil d'Ariane">
+          <a href="/">Accueil</a>
+          <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
+          <a href="/conseils">Conseils</a>
+          <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
+          <span aria-current="page">La descente de charges</span>
+        </nav>
+        <div class="article-meta-top">
+          <span class="article-cat">Béton armé</span>
+          <span class="article-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            13 juillet 2026
+          </span>
+          <span class="article-read-time">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            9 min de lecture
+          </span>
+        </div>
+        <h1 class="article-title">La descente de charges : le calcul qui conditionne toute la structure</h1>
+        <p class="article-intro">Avant de dimensionner le moindre poteau, un ingénieur structure doit répondre à une question simple en apparence : quel poids chaque élément doit-il reprendre ? C'est tout l'objet de la descente de charges, le calcul qui suit le cheminement des efforts depuis la toiture jusqu'aux fondations. Une erreur commise à cette étape se répercute sur l'ensemble du bâtiment. Voici comment elle se construit et pourquoi elle conditionne tout le reste de l'étude.</p>
+      </div>
+      <img
+        src="../images/conseils/descente-de-charges/hero.jpg"
+        alt="Bâtiment en béton armé en cours de construction, ossature de poteaux et planchers reprenant les charges vers les fondations"
+        class="article-hero-img"
+        width="1200" height="670"
+        loading="eager"
+        fetchpriority="high">
+    </div>
+
+    <!-- Corps de l'article -->
+    <div class="article-layout">
+      <div class="container">
+
+        <!-- Contenu principal -->
+        <article class="article-content">
+
+          <h2 id="s1">Qu'est-ce que la descente de charges ?</h2>
+          <p>La descente de charges est le calcul qui consiste à additionner, niveau par niveau, tous les poids et efforts qu'une structure doit supporter, puis à les faire cheminer à travers les éléments porteurs jusqu'au sol. Elle part de la toiture ou de la terrasse la plus haute et progresse vers le bas : dalle, poutre, poteau ou voile, semelle, jusqu'à la fondation.</p>
+          <p>À chaque niveau, les charges reçues par un élément s'ajoutent à celles qu'il reprend déjà, avant d'être transmises à l'élément situé en dessous. C'est cette accumulation progressive, niveau après niveau, qui donne son nom au calcul. Elle est menée conformément à l'Eurocode 1 (NF EN 1991), qui fixe les valeurs des charges à considérer, puis exploitée pour le dimensionnement en béton armé selon l'Eurocode 2 (NF EN 1992).</p>
+
+          <div class="article-callout">
+            <p><strong>Un calcul qui précède tous les autres.</strong> La descente de charges n'est pas une formalité administrative. Elle fixe l'effort que devra reprendre chaque poteau et chaque semelle. Sous-évaluer une charge à un niveau intermédiaire fausse le résultat de tous les niveaux inférieurs, jusqu'aux fondations.</p>
+          </div>
+
+          <h2 id="s2">Les charges à prendre en compte</h2>
+          <p>La descente de charges distingue deux grandes familles d'actions, définies par l'Eurocode 1.</p>
+          <ul>
+            <li>Les <strong>charges permanentes (G)</strong> : le poids propre de la structure elle-même (dalles, poutres, poteaux) et celui des éléments fixes qu'elle supporte durablement (chapes, revêtements de sol, cloisons, étanchéité).</li>
+            <li>Les <strong>charges d'exploitation ou variables (Q)</strong> : le poids des occupants, du mobilier, des équipements, ainsi que les charges climatiques (neige, vent) selon la zone du projet.</li>
+          </ul>
+          <p>Ces valeurs varient selon la nature du local et l'usage du bâtiment. Le tableau ci-dessous présente les ordres de grandeur les plus fréquemment retenus.</p>
+
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Élément ou usage</th>
+                <th>Type de charge</th>
+                <th>Valeur usuelle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dalle béton armé pleine, 16 cm</td>
+                <td>Permanente (G)</td>
+                <td>4,0 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Revêtement de sol + chape</td>
+                <td>Permanente (G)</td>
+                <td>0,8 à 1,2 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Cloisons de distribution légères</td>
+                <td>Permanente (G)</td>
+                <td>1,0 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Logement d'habitation (catégorie A)</td>
+                <td>Exploitation (Q)</td>
+                <td>1,5 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Bureaux (catégorie B)</td>
+                <td>Exploitation (Q)</td>
+                <td>2,5 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Commerces (catégorie D)</td>
+                <td>Exploitation (Q)</td>
+                <td>4,0 à 5,0 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Escaliers d'habitation</td>
+                <td>Exploitation (Q)</td>
+                <td>2,5 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Toiture terrasse non accessible</td>
+                <td>Exploitation (Q)</td>
+                <td>0,8 kN/m²</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="s3">Le cheminement des charges dans la structure</h2>
+          <p>Une fois les charges surfaciques connues, l'ingénieur détermine la <strong>surface d'influence</strong> de chaque élément porteur, c'est-à-dire la portion de plancher dont il reprend le poids. Pour un poteau central, cette surface correspond généralement à la moitié des travées adjacentes dans chaque direction ; pour un poteau de rive, elle est plus restreinte.</p>
+          <p>Le calcul suit ensuite un ordre logique et descendant :</p>
+          <ul>
+            <li>La <strong>dalle</strong> reçoit les charges permanentes et d'exploitation du niveau et les transmet à ses appuis (poutres ou voiles porteurs).</li>
+            <li>La <strong>poutre</strong> cumule les charges de dalle sur sa longueur et les concentre sur ses propres appuis : les poteaux ou les voiles.</li>
+            <li>Le <strong>poteau</strong> reçoit les efforts de tous les niveaux situés au-dessus de lui, additionnés étage par étage, et les transmet à la fondation.</li>
+            <li>La <strong>semelle</strong> reprend l'effort cumulé du poteau et le répartit sur le sol, selon la portance déterminée par l'étude géotechnique.</li>
+          </ul>
+          <p>Dans un bâtiment à plusieurs niveaux, un poteau du rez-de-chaussée ne reprend donc pas seulement les charges de l'étage immédiatement supérieur : il cumule celles de tous les planchers qu'il porte, jusqu'à la toiture.</p>
+
+          <figure class="article-img">
+            <img src="../images/conseils/descente-de-charges/img-2.jpg"
+                 alt="Rangée de poteaux en béton armé supportant les planchers d'un bâtiment, chaque poteau reprenant les charges des niveaux supérieurs"
+                 width="1000" height="667" loading="lazy">
+            <figcaption>Le cheminement des charges suit un ordre strict : dalle, poutre, poteau ou voile, semelle, sol. Chaque niveau cumule les efforts de tous ceux qu'il porte au-dessus de lui.</figcaption>
+          </figure>
+
+          <h2 id="s4">Combinaisons d'actions : ELU et ELS</h2>
+          <p>Les charges G et Q ne s'additionnent pas simplement. L'Eurocode impose de les combiner avec des coefficients de pondération, selon l'état limite étudié :</p>
+          <ul>
+            <li>À l'<strong>état limite ultime (ELU)</strong>, qui vérifie la résistance et la sécurité de la structure, la combinaison fondamentale la plus courante est 1,35 G + 1,5 Q. Ces coefficients majorent les charges pour couvrir les incertitudes de calcul et les aléas d'exécution.</li>
+            <li>À l'<strong>état limite de service (ELS)</strong>, qui vérifie le confort d'usage (flèches, fissuration, vibrations), la combinaison caractéristique retenue est G + Q, sans majoration.</li>
+          </ul>
+          <p>C'est la combinaison ELU qui dimensionne en général les sections de béton et les quantités d'acier ; l'ELS vient ensuite vérifier que la déformation de l'ouvrage en service reste acceptable.</p>
+
+          <div class="article-callout">
+            <p><strong>Pourquoi majorer les charges ?</strong> Les coefficients 1,35 et 1,5 ne sont pas arbitraires : ils traduisent statistiquement la marge de sécurité nécessaire face à la variabilité réelle des charges et aux imprécisions inévitables du calcul. C'est ce qui garantit qu'un ouvrage correctement dimensionné dispose d'une réserve de résistance.</p>
+          </div>
+
+          <h2 id="s5">Points de vigilance et erreurs fréquentes</h2>
+          <p>La descente de charges paraît simple sur le principe, mais plusieurs pièges peuvent fausser le résultat si l'on n'y prend pas garde :</p>
+          <ul>
+            <li><strong>Charges concentrées oubliées</strong> : un chauffe-eau, une cloison lourde, une mezzanine ou un équipement technique représentent des charges ponctuelles qui ne se résument pas à une simple charge surfacique moyenne.</li>
+            <li><strong>Surface d'influence mal évaluée</strong> : une erreur sur la trame des porteurs ou sur la position réelle des appuis fausse la répartition des charges entre poteaux.</li>
+            <li><strong>Poids propre des éléments porteurs négligé</strong> : les poutres et poteaux eux-mêmes ont un poids, qui s'ajoute aux charges qu'ils transmettent.</li>
+            <li><strong>Report de charge non identifié</strong> : lorsque la trame des poteaux change d'un étage à l'autre, une poutre dite de report doit reprendre l'effort d'un poteau non aligné et le transférer latéralement vers un appui existant.</li>
+            <li><strong>Charges climatiques omises</strong> : neige selon la zone, vent, ou charges spécifiques aux toitures terrasses et aux DOM-TOM (entretien, équipements techniques en toiture).</li>
+          </ul>
+
+          <div class="article-callout">
+            <p><strong>Le cas du report de charge.</strong> Un poteau qui ne descend pas directement jusqu'aux fondations, parce que le rez-de-chaussée doit rester dégagé par exemple, impose une poutre de report fortement sollicitée. Ce type de disposition doit être identifié dès l'esquisse, car il modifie significativement les sections nécessaires.</p>
+          </div>
+
+          <figure class="article-img">
+            <img src="../images/conseils/descente-de-charges/img-3.jpg"
+                 alt="Professionnels du bâtiment étudiant des plans de structure sur un chantier avant le dimensionnement des éléments"
+                 width="1000" height="1250" loading="lazy">
+            <figcaption>La descente de charges precède le dimensionnement de chaque élément : elle est vérifiée et recoupée avec les plans d'architecte avant toute note de calcul détaillée.</figcaption>
+          </figure>
+
+          <h2 id="s6">Conséquences d'une descente de charges mal réalisée</h2>
+          <p>Une descente de charges sous-évaluée conduit à des éléments de structure sous-dimensionnés : sections de béton insuffisantes, ferraillage inadapté, fondations incapables de reprendre l'effort réel une fois le bâtiment occupé. Les conséquences vont de la fissuration et des déformations excessives jusqu'au risque, dans les cas les plus graves, de mise en cause de la sécurité de l'ouvrage.</p>
+          <p>À l'inverse, une descente de charges surestimée n'est pas anodine non plus : elle conduit à surdimensionner les éléments porteurs, donc à augmenter inutilement le coût du béton, de l'acier et des fondations. Un calcul rigoureux, ni trop prudent ni trop optimiste, est la condition d'un projet à la fois sûr et économiquement maîtrisé.</p>
+
+          <h2 id="s7">Comment MH Structure vous accompagne</h2>
+          <p>La descente de charges est la première étape technique de toute étude de structure. MH Structure la réalise systématiquement avant le dimensionnement, en s'appuyant sur :</p>
+          <ul>
+            <li>Les <strong>plans d'architecte</strong> pour identifier la trame porteuse réelle et les surfaces d'influence.</li>
+            <li>L'<strong>étude géotechnique</strong> pour confronter les charges transmises à la portance du sol.</li>
+            <li>Les valeurs de l'<strong>Eurocode 1</strong> selon l'usage exact de chaque local.</li>
+            <li>Le dimensionnement en béton armé selon l'<strong>Eurocode 2</strong>, cohérent avec les charges ainsi déterminées.</li>
+          </ul>
+
+          <div class="article-callout">
+            <p><strong>Un projet à dimensionner ?</strong> Transmettez-nous vos plans d'architecte et votre étude de sol : nous réalisons la descente de charges et la note de calcul complète de votre structure en béton armé, partout en France et dans les DOM-TOM. Premier échange gratuit, devis sous 48h.</p>
+          </div>
+
+          <p style="font-size:0.72rem;color:var(--text-muted);margin-top:32px;margin-bottom:0">Photos : <a href="https://unsplash.com/photos/BhctH6b8hdA" rel="nofollow noopener" target="_blank" style="color:inherit">Mathias Reding</a>, <a href="https://unsplash.com/photos/GX2msSo7Jzo" rel="nofollow noopener" target="_blank" style="color:inherit">Graphic Node</a>, <a href="https://unsplash.com/photos/DowtEyavqsY" rel="nofollow noopener" target="_blank" style="color:inherit">Nate Johnston</a> — via Unsplash</p>
+
+          <!-- Auteur -->
+          <div class="article-author-block">
+            <div class="article-author-avatar" aria-hidden="true">MH</div>
+            <div>
+              <div class="article-author-name">MH Structure</div>
+              <div class="article-author-role">Bureau d'études en ingénierie structure — Tarn & Guadeloupe</div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Informations complémentaires">
+
+          <!-- Widget likes -->
+          <div class="like-widget" role="region" aria-label="J'aime cet article">
+            <p class="like-widget-label">Cet article vous a été utile ?</p>
+            <button
+              class="like-btn"
+              id="like-btn"
+              data-article-id="descente-de-charges"
+              aria-pressed="false"
+              aria-label="Marquer cet article comme utile"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Utile
+            </button>
+            <span class="like-count" id="like-count">0</span>
+            <p class="like-count-label" id="like-count-label">personne a trouvé cet article utile</p>
+          </div>
+
+          <!-- Sommaire -->
+          <nav class="sidebar-toc" aria-label="Sommaire de l'article">
+            <p class="sidebar-toc-title">Sommaire</p>
+            <ol>
+              <li><a href="#s1">Définition de la descente de charges</a></li>
+              <li><a href="#s2">Les charges à prendre en compte</a></li>
+              <li><a href="#s3">Le cheminement dans la structure</a></li>
+              <li><a href="#s4">Combinaisons ELU et ELS</a></li>
+              <li><a href="#s5">Points de vigilance</a></li>
+              <li><a href="#s6">Conséquences d'une erreur</a></li>
+              <li><a href="#s7">Comment MH Structure aide</a></li>
+            </ol>
+          </nav>
+
+          <!-- CTA -->
+          <div class="sidebar-cta">
+            <h3 class="sidebar-cta-title">Une structure à dimensionner ?</h3>
+            <p class="sidebar-cta-text">Descente de charges, note de calcul et plans conformes à l'Eurocode 2. Partout en France et dans les DOM-TOM.</p>
+            <a href="/contact" class="sidebar-cta-btn">Demander un devis gratuit</a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="footer-logo" aria-label="MH Structure — retour accueil">
+          <span class="fl-mh">MH</span>
+          <span class="fl-struct">STRUCTURE</span>
+        </a>
+        <nav class="footer-nav" aria-label="Navigation footer">
+          <div class="footer-col">
+            <div class="footer-col-title">Navigation</div>
+            <a href="/">Accueil</a>
+            <a href="/#services">Services</a>
+            <a href="/realisations">Réalisations</a>
+            <a href="/conseils">Conseils</a>
+            <a href="/contact">Devis</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Prestations</div>
+            <a href="/note-de-calcul-beton-arme">Notes de Calcul</a>
+            <a href="/plans-coffrage-armatures">Plans de coffrage</a>
+            <a href="/diagnostic-sismique-guadeloupe">Diagnostic Sismique</a>
+            <a href="/attestation-parasismique-guadeloupe">Attestation PC (DOM-TOM)</a>
+            <a href="/attestation-at2-fin-de-chantier">Attestation AT2</a>
+          </div>
+          <div class="footer-col footer-col--addresses">
+            <div class="footer-col-title">Nos bureaux</div>
+            <address class="footer-address">
+              <strong>Tarn (81)</strong><br>
+              6 Bd du Rajol — 81400 Carmaux<br>
+              <a href="tel:+33782883421">+33 7 82 88 34 21</a>
+            </address>
+            <address class="footer-address">
+              <strong>Guadeloupe (971)</strong><br>
+              2049B Chemin de Caféire — 97170 Petit-Bourg<br>
+              <a href="tel:+590690374142">+590 690 37 41 42</a>
+            </address>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MH Structure. Tous droits réservés.</span>
+        <div class="footer-legal">
+          <a href="/mentions-legales">Mentions légales</a>
+          <span aria-hidden="true">·</span>
+          <a href="/politique-confidentialite">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/blog-likes.js" type="module"></script>
+  <script>
+    // Theme
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        localStorage.setItem('mh-theme', t);
+        btn.setAttribute('aria-label', t === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
+      }
+      applyTheme(root.getAttribute('data-theme') || 'light');
+      btn.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+    })();
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hamburger
+    const hbg = document.getElementById('hamburger');
+    const nls = document.getElementById('navLinks');
+    hbg.addEventListener('click', () => {
+      const open = hbg.classList.toggle('open');
+      nls.classList.toggle('open', open);
+      hbg.setAttribute('aria-expanded', open);
+      hbg.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && hbg.classList.contains('open')) {
+        hbg.classList.remove('open'); nls.classList.remove('open');
+        hbg.setAttribute('aria-expanded', 'false');
+        hbg.setAttribute('aria-label', 'Ouvrir le menu');
+        hbg.focus();
+      }
+    });
+
+    // Smooth scroll sommaire
+    document.querySelectorAll('.sidebar-toc a').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+<script defer src="/js/back-to-top.js"></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
