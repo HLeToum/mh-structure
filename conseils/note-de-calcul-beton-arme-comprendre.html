@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <script>(function(){var t=localStorage.getItem('mh-theme')||'light';document.documentElement.setAttribute('data-theme',t);})()</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
+  <title>Note de calcul béton armé : à quoi ça sert et comment la lire ? — MH Structure</title>
+  <meta name="description" content="Note de calcul béton armé : ce document contient les hypothèses, la descente de charges et le dimensionnement de chaque élément selon l'Eurocode 2. Comment elle est construite et comment la lire.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.mhstructure.com/conseils/note-de-calcul-beton-arme-comprendre">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Note de calcul béton armé : à quoi ça sert et comment la lire ? — MH Structure">
+  <meta property="og:description" content="Hypothèses, descente de charges, dimensionnement élément par élément : ce que contient une note de calcul béton armé et comment en lire les résultats sans être ingénieur.">
+  <meta property="og:image" content="https://www.mhstructure.com/images/logo-mh-structure.png">
+  <meta property="article:published_time" content="2026-08-10">
+  <meta property="article:author" content="MH Structure">
+  <meta property="article:section" content="Béton armé">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Note de calcul béton armé : à quoi ça sert et comment la lire ?",
+    "datePublished": "2026-08-10",
+    "dateModified": "2026-08-10",
+    "author": { "@type": "Organization", "name": "MH Structure", "url": "https://www.mhstructure.com" },
+    "publisher": { "@type": "Organization", "name": "MH Structure", "logo": { "@type": "ImageObject", "url": "https://www.mhstructure.com/images/logo-mh-structure.png" } },
+    "description": "Hypothèses, descente de charges, dimensionnement élément par élément : ce que contient une note de calcul béton armé, selon quelle norme elle est établie et comment en lire les résultats.",
+    "url": "https://www.mhstructure.com/conseils/note-de-calcul-beton-arme-comprendre"
+  }
+  </script>
+  <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="apple-touch-icon" href="../images/favicon-192.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="MH Structure — retour accueil">
+        <span class="logo-mh" translate="no">MH</span>
+        <div class="logo-sep" aria-hidden="true"></div>
+        <span class="logo-struct" translate="no">STRUCTURE</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/" class="nav-link">Accueil</a>
+        <a href="/#services" class="nav-link">Services</a>
+        <a href="/realisations" class="nav-link">Réalisations</a>
+        <a href="/conseils" class="nav-link active" aria-current="page">Conseils</a>
+        <a href="/contact" class="nav-link">Devis</a>
+        <a href="tel:+33782883421" class="nav-phone-mobile" aria-label="Appeler MH Structure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+33 7 82 88 34 21</a>
+      </div>
+      <a href="tel:+33782883421" class="nav-phone" aria-label="Appeler MH Structure">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="nav-phone-num">+33 7 82 88 34 21</span>
+      </a>
+      <a href="/contact" class="btn-cta nav-cta">Devis gratuit</a>
+      <button class="lang-toggle" id="langToggle" aria-label="FR | EN">
+        <span class="lt-fr">FR</span><span class="lt-sep" aria-hidden="true">|</span><span class="lt-en">EN</span>
+      </button>
+      <button id="themeToggle" class="theme-toggle" aria-label="Activer le mode sombre">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Retour -->
+    <div class="article-back-strip">
+      <div class="article-back-inner">
+        <a href="/conseils" class="article-back-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Retour aux conseils
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero article -->
+    <div class="article-hero">
+      <div class="container">
+        <nav class="article-breadcrumb" aria-label="Fil d'Ariane">
+          <a href="/">Accueil</a>
+          <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
+          <a href="/conseils">Conseils</a>
+          <span class="article-breadcrumb-sep" aria-hidden="true">/</span>
+          <span aria-current="page">Note de calcul béton armé</span>
+        </nav>
+        <div class="article-meta-top">
+          <span class="article-cat">Béton armé</span>
+          <span class="article-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            10 août 2026
+          </span>
+          <span class="article-read-time">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            7 min de lecture
+          </span>
+        </div>
+        <h1 class="article-title">Note de calcul béton armé : à quoi ça sert et comment la lire ?</h1>
+        <p class="article-intro">Derrière chaque poutre, chaque poteau et chaque fondation en béton armé se cache un document que peu de maîtres d'ouvrage lisent en entier : la note de calcul. C'est pourtant elle qui justifie les dimensions retenues et les quantités d'acier prévues. Voici ce qu'elle contient, comment elle est construite selon l'Eurocode 2, et comment en comprendre les résultats sans être ingénieur.</p>
+      </div>
+      <img
+        src="../images/conseils/note-de-calcul-beton-arme-comprendre/hero.jpg"
+        alt="Ingénieur structure examinant une note de calcul béton armé avec tableaux de résultats sur un bureau d'études"
+        class="article-hero-img"
+        width="1200" height="670"
+        loading="eager"
+        fetchpriority="high">
+    </div>
+
+    <!-- Corps de l'article -->
+    <div class="article-layout">
+      <div class="container">
+
+        <!-- Contenu principal -->
+        <article class="article-content">
+
+          <h2 id="s1">À quoi sert une note de calcul béton armé ?</h2>
+          <p>La note de calcul est le document qui justifie techniquement un projet de structure en béton armé. Elle démontre, chiffres à l'appui, que chaque élément porteur (fondation, poteau, poutre, dalle, voile) résiste aux charges qu'il devra supporter pendant toute la durée de vie de l'ouvrage, sans se déformer excessivement ni se rompre.</p>
+          <p>Ce n'est pas un document facultatif ni une simple formalité administrative. C'est la pièce technique qui relie les plans d'architecte à la réalité physique du chantier : elle fixe les sections de béton, les diamètres et les quantités d'acier, et sert de base à l'établissement des plans de coffrage et d'armatures.</p>
+
+          <div class="article-callout">
+            <p><strong>Une note de calcul n'est pas un empilement de formules.</strong> C'est une démonstration structurée : hypothèses de départ, charges appliquées, vérifications réglementaires et conclusions. Un maître d'ouvrage n'a pas besoin de comprendre chaque équation pour en suivre le raisonnement général.</p>
+          </div>
+
+          <h2 id="s2">Ce que contient une note de calcul</h2>
+          <p>Une note de calcul béton armé suit toujours la même trame, quel que soit le projet :</p>
+          <ul>
+            <li>Les <strong>hypothèses générales</strong> : normes appliquées, caractéristiques des matériaux, classes d'exposition, catégorie du bâtiment.</li>
+            <li>La <strong>descente de charges</strong> : le cheminement des charges permanentes et d'exploitation depuis la toiture jusqu'aux fondations.</li>
+            <li>Le <strong>dimensionnement de chaque élément</strong> : semelles, poteaux, poutres, dalles, voiles, avec leurs sections de béton et leurs armatures.</li>
+            <li>Les <strong>vérifications complémentaires</strong> : flèches admissibles, fissuration, stabilité d'ensemble.</li>
+            <li>Les <strong>annexes de calcul</strong>, souvent issues d'un logiciel de calcul aux éléments finis, qui détaillent les notes de chaque barre ou panneau.</li>
+          </ul>
+          <p>Ce document se lit donc comme un dossier, du général vers le particulier : d'abord ce qui s'applique à tout le bâtiment, puis élément par élément.</p>
+
+          <figure class="article-img">
+            <img src="../images/conseils/note-de-calcul-beton-arme-comprendre/img-2.jpg"
+                 alt="Gros plan sur des feuilles de calcul de structure béton armé avec schémas de poutres et tableaux de résultats"
+                 width="1000" height="558" loading="lazy">
+            <figcaption>La note de calcul détaille, élément par élément, les charges appliquées et les vérifications réglementaires qui justifient les sections de béton et les armatures retenues.</figcaption>
+          </figure>
+
+          <h2 id="s3">Les hypothèses qui conditionnent tout le calcul</h2>
+          <p>Avant tout dimensionnement, l'ingénieur fixe un socle d'hypothèses. Ce socle détermine tout le reste du calcul, et une erreur à ce stade se répercute sur l'ensemble du document :</p>
+          <ul>
+            <li>La <strong>résistance caractéristique du béton</strong> (par exemple C25/30 ou C30/37), qui dépend de la formulation retenue.</li>
+            <li>La <strong>nuance des aciers</strong> (généralement B500A ou B500B) et leur limite d'élasticité.</li>
+            <li>Les <strong>classes d'exposition</strong> (XC1 à XC4, XS, XA selon l'environnement), qui conditionnent la durabilité et l'enrobage des armatures.</li>
+            <li>La <strong>catégorie d'usage</strong> du bâtiment (habitation, bureaux, commerce, stockage), qui fixe les charges d'exploitation selon l'Eurocode 1.</li>
+            <li>La <strong>nature du sol</strong>, issue de l'étude géotechnique, qui conditionne le type de fondation retenu.</li>
+          </ul>
+          <p>Les combinaisons d'actions qui pilotent ensuite chaque vérification proviennent de l'Eurocode 0 (NF EN 1990). Le tableau ci-dessous résume les principales combinaisons utilisées en béton armé.</p>
+
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>État limite</th>
+                <th>Combinaison type</th>
+                <th>Ce qu'elle vérifie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ELU fondamental</td>
+                <td>1,35 G + 1,5 Q</td>
+                <td>Résistance de la structure (rupture, flambement)</td>
+              </tr>
+              <tr>
+                <td>ELU accidentel</td>
+                <td>G + Q + A</td>
+                <td>Résistance sous action accidentelle (choc, incendie)</td>
+              </tr>
+              <tr>
+                <td>ELS caractéristique</td>
+                <td>G + Q</td>
+                <td>Ouverture des fissures, contraintes limites</td>
+              </tr>
+              <tr>
+                <td>ELS quasi permanent</td>
+                <td>G + ψ2 Q</td>
+                <td>Flèches à long terme</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="s4">Le dimensionnement, élément par élément</h2>
+          <p>Une fois les hypothèses et la descente de charges posées, chaque élément structurel fait l'objet de vérifications spécifiques selon l'Eurocode 2 (NF EN 1992-1-1). Ces vérifications ne sont pas identiques d'un élément à l'autre : une semelle et une poutre ne travaillent pas de la même façon.</p>
+
+          <div class="article-callout">
+            <p><strong>Un ratio de travail proche de 100 % n'est pas une anomalie.</strong> Un élément correctement dimensionné affiche souvent un taux de travail élevé : c'est le signe d'un dimensionnement économique, pas d'un manque de marge. La marge de sécurité est déjà intégrée dans les coefficients partiels appliqués aux charges et aux matériaux.</p>
+          </div>
+
+          <h2 id="s5">Comment lire les résultats sans être ingénieur</h2>
+          <p>Un maître d'ouvrage n'a pas à vérifier les calculs, mais il peut suivre la logique du document. Trois repères suffisent :</p>
+          <ul>
+            <li><strong>La conclusion de chaque vérification</strong> : chaque section se termine par un constat de type « vérifié » ou par la section finalement retenue. C'est le résultat qui compte, pas le détail intermédiaire.</li>
+            <li><strong>Les sections et ferraillages retenus</strong> : ce sont ces valeurs qui se retrouvent ensuite, telles quelles, sur les plans de coffrage et d'armatures. Toute incohérence entre la note et les plans doit être signalée.</li>
+            <li><strong>Les hypothèses de départ</strong> : elles doivent correspondre au projet réel (usage du bâtiment, nature du sol, zone géographique). Une hypothèse erronée invalide tout le reste, même si les calculs qui en découlent sont mathématiquement exacts.</li>
+          </ul>
+          <p>En pratique, un dialogue direct avec le bureau d'études reste le moyen le plus efficace de comprendre les points qui méritent attention, sans avoir à décortiquer chaque page.</p>
+
+          <figure class="article-img">
+            <img src="../images/conseils/note-de-calcul-beton-arme-comprendre/img-3.jpg"
+                 alt="Réunion de chantier entre un ingénieur structure et un client autour d'une note de calcul et de plans de béton armé"
+                 width="1000" height="558" loading="lazy">
+            <figcaption>Un point avec le bureau d'études permet de resituer les résultats de la note de calcul par rapport au projet réel, sans avoir à en décortiquer chaque formule.</figcaption>
+          </figure>
+
+          <h2 id="s6">Qui exige la note de calcul, et quand</h2>
+          <p>La note de calcul n'est pas un document que l'on produit par principe : elle est demandée à plusieurs étapes du projet, par des interlocuteurs différents.</p>
+          <ul>
+            <li><strong>Le bureau de contrôle</strong>, lorsqu'il est missionné, l'exige pour valider la conformité de la structure avant le début des travaux.</li>
+            <li><strong>L'assureur en garantie décennale</strong> s'appuie sur son existence et sa cohérence pour couvrir l'ouvrage.</li>
+            <li><strong>L'entreprise de gros œuvre</strong> en a besoin pour établir ses plans d'exécution et son métré d'acier.</li>
+            <li><strong>Certains services instructeurs</strong>, notamment dans les DOM-TOM en zone sismique, peuvent exiger des pièces techniques associées lors du dépôt du permis de construire.</li>
+          </ul>
+          <p>Dans tous les cas, elle doit être établie avant le démarrage des travaux de gros œuvre, jamais après coup pour justifier un ouvrage déjà coulé.</p>
+
+          <h2 id="s7">Comment MH Structure vous accompagne</h2>
+          <p>MH Structure établit des notes de calcul béton armé claires et complètes, conformes à l'Eurocode 2, pour tout type de projet, en France comme dans les DOM-TOM :</p>
+          <ul>
+            <li><strong>Descente de charges</strong> détaillée depuis la toiture jusqu'aux fondations.</li>
+            <li><strong>Dimensionnement</strong> de chaque élément porteur, avec justification complète.</li>
+            <li><strong>Rédaction lisible</strong>, structurée pour faciliter les échanges avec le bureau de contrôle, l'entreprise et le maître d'ouvrage.</li>
+            <li>Suite logique avec les <strong>plans de coffrage et d'armatures</strong> issus directement des résultats retenus.</li>
+          </ul>
+
+          <div class="article-callout">
+            <p><strong>Un projet à lancer ?</strong> Transmettez-nous vos plans d'architecte et votre étude de sol : nous établissons la note de calcul béton armé et les plans d'exécution associés, dans les délais de votre chantier. Devis gratuit sous 48h.</p>
+          </div>
+
+          <p style="font-size:0.72rem;color:var(--text-muted);margin-top:32px;margin-bottom:0">Illustrations : visuels générés par intelligence artificielle pour MH Structure.</p>
+
+          <!-- Auteur -->
+          <div class="article-author-block">
+            <div class="article-author-avatar" aria-hidden="true">MH</div>
+            <div>
+              <div class="article-author-name">MH Structure</div>
+              <div class="article-author-role">Bureau d'études en ingénierie structure — Tarn & Guadeloupe</div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar" aria-label="Informations complémentaires">
+
+          <!-- Widget likes -->
+          <div class="like-widget" role="region" aria-label="J'aime cet article">
+            <p class="like-widget-label">Cet article vous a été utile ?</p>
+            <button
+              class="like-btn"
+              id="like-btn"
+              data-article-id="note-de-calcul-beton-arme-comprendre"
+              aria-pressed="false"
+              aria-label="Marquer cet article comme utile"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Utile
+            </button>
+            <span class="like-count" id="like-count">0</span>
+            <p class="like-count-label" id="like-count-label">personne a trouvé cet article utile</p>
+          </div>
+
+          <!-- Sommaire -->
+          <nav class="sidebar-toc" aria-label="Sommaire de l'article">
+            <p class="sidebar-toc-title">Sommaire</p>
+            <ol>
+              <li><a href="#s1">À quoi ça sert</a></li>
+              <li><a href="#s2">Ce qu'elle contient</a></li>
+              <li><a href="#s3">Les hypothèses de calcul</a></li>
+              <li><a href="#s4">Le dimensionnement par élément</a></li>
+              <li><a href="#s5">Comment lire les résultats</a></li>
+              <li><a href="#s6">Qui l'exige, et quand</a></li>
+              <li><a href="#s7">Comment MH Structure aide</a></li>
+            </ol>
+          </nav>
+
+          <!-- CTA -->
+          <div class="sidebar-cta">
+            <h3 class="sidebar-cta-title">Une note de calcul pour votre projet ?</h3>
+            <p class="sidebar-cta-text">Note de calcul béton armé conforme à l'Eurocode 2, claire et prête pour le bureau de contrôle. Partout en France.</p>
+            <a href="/contact" class="sidebar-cta-btn">Demander un devis gratuit</a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="footer-logo" aria-label="MH Structure — retour accueil">
+          <span class="fl-mh">MH</span>
+          <span class="fl-struct">STRUCTURE</span>
+        </a>
+        <nav class="footer-nav" aria-label="Navigation footer">
+          <div class="footer-col">
+            <div class="footer-col-title">Navigation</div>
+            <a href="/">Accueil</a>
+            <a href="/#services">Services</a>
+            <a href="/realisations">Réalisations</a>
+            <a href="/conseils">Conseils</a>
+            <a href="/contact">Devis</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Prestations</div>
+            <a href="/note-de-calcul-beton-arme">Notes de Calcul</a>
+            <a href="/plans-coffrage-armatures">Plans de coffrage</a>
+            <a href="/diagnostic-sismique-guadeloupe">Diagnostic Sismique</a>
+            <a href="/attestation-parasismique-guadeloupe">Attestation PC (DOM-TOM)</a>
+            <a href="/attestation-at2-fin-de-chantier">Attestation AT2</a>
+          </div>
+          <div class="footer-col footer-col--addresses">
+            <div class="footer-col-title">Nos bureaux</div>
+            <address class="footer-address">
+              <strong>Tarn (81)</strong><br>
+              6 Bd du Rajol — 81400 Carmaux<br>
+              <a href="tel:+33782883421">+33 7 82 88 34 21</a>
+            </address>
+            <address class="footer-address">
+              <strong>Guadeloupe (971)</strong><br>
+              2049B Chemin de Caféire — 97170 Petit-Bourg<br>
+              <a href="tel:+590690374142">+590 690 37 41 42</a>
+            </address>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MH Structure. Tous droits réservés.</span>
+        <div class="footer-legal">
+          <a href="/mentions-legales">Mentions légales</a>
+          <span aria-hidden="true">·</span>
+          <a href="/politique-confidentialite">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/blog-likes.js" type="module"></script>
+  <script>
+    // Theme
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        localStorage.setItem('mh-theme', t);
+        btn.setAttribute('aria-label', t === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
+      }
+      applyTheme(root.getAttribute('data-theme') || 'light');
+      btn.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+    })();
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Hamburger
+    const hbg = document.getElementById('hamburger');
+    const nls = document.getElementById('navLinks');
+    hbg.addEventListener('click', () => {
+      const open = hbg.classList.toggle('open');
+      nls.classList.toggle('open', open);
+      hbg.setAttribute('aria-expanded', open);
+      hbg.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && hbg.classList.contains('open')) {
+        hbg.classList.remove('open'); nls.classList.remove('open');
+        hbg.setAttribute('aria-expanded', 'false');
+        hbg.setAttribute('aria-label', 'Ouvrir le menu');
+        hbg.focus();
+      }
+    });
+
+    // Smooth scroll sommaire
+    document.querySelectorAll('.sidebar-toc a').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+<script defer src="/js/back-to-top.js"></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
