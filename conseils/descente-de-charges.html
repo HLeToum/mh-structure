@@ -6,28 +6,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>La descente de charges : le calcul qui conditionne toute la structure — MH Structure</title>
-  <meta name="description" content="Descente de charges en béton armé : comment ce calcul détermine les sections de poteaux, poutres et fondations, quelles charges prendre en compte selon l'Eurocode 1, et pourquoi une erreur s'y répercute sur toute la structure.">
+  <title>Descente de charges : principe, calcul et exemple | MH Structure</title>
+  <meta name="description" content="Descente de charges : principe, charges permanentes et d'exploitation selon l'Eurocode 1, combinaisons ELU et ELS, et exemple de calcul pas à pas sur un poteau. Guide d'un bureau d'études structure.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/conseils/descente-de-charges">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="La descente de charges : le calcul qui conditionne toute la structure — MH Structure">
-  <meta property="og:description" content="Comment la descente de charges fait cheminer les efforts de la toiture aux fondations, quelles valeurs de charges retenir, et pourquoi ce calcul conditionne le dimensionnement de toute la structure.">
+  <meta property="og:title" content="Descente de charges : principe, calcul et exemple pas à pas">
+  <meta property="og:description" content="Comment se calcule une descente de charges : surface d'influence, charges G et Q, combinaisons ELU et ELS, avec un exemple chiffré sur un poteau de R+1.">
   <meta property="og:image" content="https://www.mhstructure.com/images/logo-mh-structure.png">
   <meta property="article:published_time" content="2026-07-13">
+  <meta property="article:modified_time" content="2026-08-10">
   <meta property="article:author" content="MH Structure">
   <meta property="article:section" content="Béton armé">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "La descente de charges : le calcul qui conditionne toute la structure",
+    "headline": "Descente de charges : principe, calcul et exemple pas à pas",
     "datePublished": "2026-07-13",
-    "dateModified": "2026-07-13",
+    "dateModified": "2026-08-10",
     "author": { "@type": "Organization", "name": "MH Structure", "url": "https://www.mhstructure.com" },
     "publisher": { "@type": "Organization", "name": "MH Structure", "logo": { "@type": "ImageObject", "url": "https://www.mhstructure.com/images/logo-mh-structure.png" } },
-    "description": "Principe de la descente de charges, charges permanentes et d'exploitation selon l'Eurocode 1, cheminement des efforts, combinaisons ELU et ELS, et conséquences d'une erreur sur le dimensionnement.",
+    "description": "Principe de la descente de charges, charges permanentes et d'exploitation selon l'Eurocode 1, cheminement des efforts, combinaisons ELU et ELS, exemple de calcul chiffré et conséquences d'une erreur sur le dimensionnement.",
     "url": "https://www.mhstructure.com/conseils/descente-de-charges"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce qu'une descente de charges ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La descente de charges est le calcul qui suit le cheminement des efforts depuis la toiture jusqu'aux fondations. Elle cumule, niveau après niveau, les charges permanentes (poids propre de la structure, cloisons, revêtements) et les charges d'exploitation (occupants, mobilier, neige) pour déterminer l'effort que chaque élément porteur doit reprendre. C'est le préalable indispensable au dimensionnement des poteaux, poutres, voiles et fondations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment calculer une descente de charges ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On détermine d'abord la surface d'influence de l'élément étudié, c'est-à-dire la portion de plancher qu'il reprend. On multiplie ensuite cette surface par les charges permanentes G et d'exploitation Q de chaque niveau, on ajoute le poids propre de l'élément, puis on cumule du haut vers le bas. Les efforts obtenus sont enfin combinés selon l'Eurocode 0 : 1,35 G + 1,5 Q à l'état limite ultime, G + Q à l'état limite de service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qui réalise la descente de charges d'un projet ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La descente de charges est établie par un bureau d'études structure ou un ingénieur structure, à partir des plans d'architecte et de l'étude de sol. Elle engage la responsabilité technique de son auteur, car elle conditionne le dimensionnement de tous les éléments porteurs et des fondations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle différence entre descente de charges et note de calcul ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La descente de charges est une étape de la note de calcul, pas un document distinct. La note de calcul complète intègre la descente de charges, puis le dimensionnement de chaque élément porteur et les vérifications réglementaires associées (résistance, flèches, fissuration)."
+        }
+      }
+    ]
   }
   </script>
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
@@ -109,8 +150,8 @@
             9 min de lecture
           </span>
         </div>
-        <h1 class="article-title">La descente de charges : le calcul qui conditionne toute la structure</h1>
-        <p class="article-intro">Avant de dimensionner le moindre poteau, un ingénieur structure doit répondre à une question simple en apparence : quel poids chaque élément doit-il reprendre ? C'est tout l'objet de la descente de charges, le calcul qui suit le cheminement des efforts depuis la toiture jusqu'aux fondations. Une erreur commise à cette étape se répercute sur l'ensemble du bâtiment. Voici comment elle se construit et pourquoi elle conditionne tout le reste de l'étude.</p>
+        <h1 class="article-title">Descente de charges : principe, calcul et exemple pas à pas</h1>
+        <p class="article-intro">Avant de dimensionner le moindre poteau, un ingénieur structure doit répondre à une question simple en apparence : quel poids chaque élément doit-il reprendre ? C'est tout l'objet de la descente de charges, le calcul qui suit le cheminement des efforts depuis la toiture jusqu'aux fondations. Une erreur commise à cette étape se répercute sur l'ensemble du bâtiment. Voici comment elle se construit, un exemple chiffré sur un poteau, et pourquoi elle conditionne tout le reste de l'étude.</p>
       </div>
       <img
         src="../images/conseils/descente-de-charges/hero.jpg"
@@ -226,6 +267,50 @@
             <p><strong>Pourquoi majorer les charges ?</strong> Les coefficients 1,35 et 1,5 ne sont pas arbitraires : ils traduisent statistiquement la marge de sécurité nécessaire face à la variabilité réelle des charges et aux imprécisions inévitables du calcul. C'est ce qui garantit qu'un ouvrage correctement dimensionné dispose d'une réserve de résistance.</p>
           </div>
 
+          <h2 id="s4b">Exemple de calcul : un poteau central de maison R+1</h2>
+          <p>Rien ne vaut un cas concret. Prenons un poteau central d'une maison à un étage, qui reprend une portion de plancher de 4 m par 5 m, soit une <strong>surface d'influence de 20 m²</strong> à chaque niveau. Le poteau mesure 20 cm par 20 cm et 2,70 m de hauteur libre par niveau.</p>
+
+          <p>On commence par les charges surfaciques de chaque plancher :</p>
+
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Niveau</th>
+                <th>Charges permanentes G</th>
+                <th>Charges d'exploitation Q</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Toiture terrasse inaccessible</td>
+                <td>6,5 kN/m² (dalle, forme de pente, isolation, étanchéité)</td>
+                <td>1,0 kN/m²</td>
+              </tr>
+              <tr>
+                <td>Plancher d'étage (habitation)</td>
+                <td>6,0 kN/m² (dalle, cloisons, revêtement)</td>
+                <td>1,5 kN/m²</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>On cumule ensuite du haut vers le bas, niveau après niveau :</p>
+          <ul>
+            <li><strong>Toiture</strong> : G = 20 × 6,5 = <strong>130 kN</strong> et Q = 20 × 1,0 = <strong>20 kN</strong></li>
+            <li><strong>Plancher d'étage</strong> : G = 20 × 6,0 = <strong>120 kN</strong> et Q = 20 × 1,5 = <strong>30 kN</strong></li>
+            <li><strong>Poids propre du poteau</strong> : 0,20 × 0,20 × 2,70 × 25 kN/m³ = 2,7 kN par niveau, soit 5,4 kN pour deux niveaux</li>
+          </ul>
+
+          <p>En pied de poteau, on obtient donc un cumul de <strong>G = 255 kN</strong> et <strong>Q = 50 kN</strong>. Il ne reste qu'à appliquer les combinaisons :</p>
+          <ul>
+            <li><strong>À l'ELU</strong> : 1,35 × 255 + 1,5 × 50 = <strong>419 kN</strong>. C'est cette valeur qui dimensionne la section de béton, les armatures du poteau et la semelle en dessous.</li>
+            <li><strong>À l'ELS</strong> : 255 + 50 = <strong>305 kN</strong>. C'est elle qui sert à vérifier les contraintes transmises au sol par la fondation.</li>
+          </ul>
+
+          <div class="article-callout">
+            <p><strong>Une nuance sur les bâtiments à plusieurs étages.</strong> À partir de trois niveaux superposés, l'Eurocode autorise une dégression des charges d'exploitation : il est statistiquement improbable que tous les planchers soient chargés au maximum en même temps. Sur un R+1 comme ici, cette dégression ne s'applique pas et on cumule les charges telles quelles.</p>
+          </div>
+
           <h2 id="s5">Points de vigilance et erreurs fréquentes</h2>
           <p>La descente de charges paraît simple sur le principe, mais plusieurs pièges peuvent fausser le résultat si l'on n'y prend pas garde :</p>
           <ul>
@@ -263,6 +348,20 @@
           <div class="article-callout">
             <p><strong>Un projet à dimensionner ?</strong> Transmettez-nous vos plans d'architecte et votre étude de sol : nous réalisons la descente de charges et la note de calcul complète de votre structure en béton armé, partout en France et dans les DOM-TOM. Devis gratuit sous 48h.</p>
           </div>
+
+          <h2 id="s8">Questions fréquentes sur la descente de charges</h2>
+
+          <h3>Qu'est-ce qu'une descente de charges ?</h3>
+          <p>La descente de charges est le calcul qui suit le cheminement des efforts depuis la toiture jusqu'aux fondations. Elle cumule, niveau après niveau, les charges permanentes (poids propre de la structure, cloisons, revêtements) et les charges d'exploitation (occupants, mobilier, neige) pour déterminer l'effort que chaque élément porteur doit reprendre. C'est le préalable indispensable au dimensionnement des poteaux, poutres, voiles et fondations.</p>
+
+          <h3>Comment calculer une descente de charges ?</h3>
+          <p>On détermine d'abord la surface d'influence de l'élément étudié, c'est-à-dire la portion de plancher qu'il reprend. On multiplie cette surface par les charges G et Q de chaque niveau, on ajoute le poids propre de l'élément, puis on cumule du haut vers le bas. Les efforts obtenus sont enfin combinés selon l'Eurocode 0 : 1,35 G + 1,5 Q à l'ELU, G + Q à l'ELS. L'exemple chiffré plus haut déroule ce calcul sur un poteau de maison R+1.</p>
+
+          <h3>Qui réalise la descente de charges d'un projet ?</h3>
+          <p>Elle est établie par un bureau d'études structure ou un ingénieur structure, à partir des plans d'architecte et de l'étude de sol. Elle engage la responsabilité technique de son auteur, puisqu'elle conditionne le dimensionnement de tous les éléments porteurs et des fondations.</p>
+
+          <h3>Quelle différence entre descente de charges et note de calcul ?</h3>
+          <p>La descente de charges est une étape de la <a href="/conseils/note-de-calcul-beton-arme-comprendre">note de calcul béton armé</a>, pas un document distinct. La note complète intègre la descente de charges, puis le dimensionnement de chaque élément porteur et les vérifications réglementaires associées : résistance, flèches, fissuration.</p>
 
           <p style="font-size:0.72rem;color:var(--text-muted);margin-top:32px;margin-bottom:0">Photos : <a href="https://unsplash.com/photos/BhctH6b8hdA" rel="nofollow noopener" target="_blank" style="color:inherit">Mathias Reding</a>, <a href="https://unsplash.com/photos/GX2msSo7Jzo" rel="nofollow noopener" target="_blank" style="color:inherit">Graphic Node</a>, <a href="https://unsplash.com/photos/DowtEyavqsY" rel="nofollow noopener" target="_blank" style="color:inherit">Nate Johnston</a> — via Unsplash</p>
 
@@ -305,9 +404,11 @@
               <li><a href="#s2">Les charges à prendre en compte</a></li>
               <li><a href="#s3">Le cheminement dans la structure</a></li>
               <li><a href="#s4">Combinaisons ELU et ELS</a></li>
+              <li><a href="#s4b">Exemple de calcul chiffré</a></li>
               <li><a href="#s5">Points de vigilance</a></li>
               <li><a href="#s6">Conséquences d'une erreur</a></li>
               <li><a href="#s7">Comment MH Structure aide</a></li>
+              <li><a href="#s8">Questions fréquentes</a></li>
             </ol>
           </nav>
 
