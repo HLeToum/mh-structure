@@ -179,8 +179,11 @@
 
       /* Cookie banner */
       'cookie.text':   'Ce site utilise uniquement un stockage local pour mémoriser votre préférence de thème (clair / sombre). Aucun cookie tiers ni outil de suivi.',
+      'cookie.consentText': 'Nous utilisons des cookies de mesure d\'audience et publicitaires (Google) pour comprendre la fréquentation du site et évaluer nos campagnes. Vous pouvez accepter ou refuser librement.',
       'cookie.learn':  'Politique de confidentialité',
-      'cookie.accept': 'J\'ai compris',
+      'cookie.accept': 'Accepter',
+      'cookie.refuse': 'Refuser',
+      'cookie.ok':     'J\'ai compris',
     },
 
     en: {
@@ -356,8 +359,11 @@
 
       /* Cookie banner */
       'cookie.text':   'This site only uses local storage to remember your theme preference (light / dark). No third-party cookies or tracking tools.',
+      'cookie.consentText': 'We use analytics and advertising cookies (Google) to understand site traffic and measure our campaigns. You are free to accept or decline.',
       'cookie.learn':  'Privacy policy',
-      'cookie.accept': 'Got it',
+      'cookie.accept': 'Accept',
+      'cookie.refuse': 'Decline',
+      'cookie.ok':     'Got it',
     },
   };
 

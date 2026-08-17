@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="dark">
 <head>
   <script>(function(){var t=localStorage.getItem('mh-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
@@ -223,6 +223,8 @@
       th, td { padding: 0.4rem 0.5rem; }
     }
   </style>
+  <!-- Consent Mode v2 : doit précéder toute balise Google -->
+  <script src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -325,10 +327,10 @@
     </tbody>
   </table>
 
-  <p><strong>Aucun cookie de suivi</strong> n'est déposé sur votre navigateur. Ce site n'utilise pas de solution d'analyse d'audience impliquant des cookies tiers.</p>
+  <p><strong>Aucun cookie de mesure d'audience ou publicitaire n'est déposé sans votre consentement préalable.</strong> Tant que vous n'avez pas accepté via la bannière, aucune donnée n'est transmise à un tiers à ces fins.</p>
 
   <h2>3. Cookies et stockage local</h2>
-  <p>Ce site n'utilise <strong>aucun cookie</strong> à des fins publicitaires, analytiques ou de profilage. Le seul stockage local utilisé est le suivant :</p>
+  <p>Le stockage local suivant est utilisé en permanence. Il reste sur votre appareil et relève des fonctionnalités strictement nécessaires, exemptées de consentement :</p>
 
   <table>
     <thead>
@@ -349,7 +351,7 @@
       <tr>
         <td><code>mh-cookie-consent</code></td>
         <td>localStorage</td>
-        <td>Enregistrer l'acquittement de la notice cookies</td>
+        <td>Mémoriser votre choix d'accepter ou de refuser les cookies de mesure et de publicité</td>
         <td>Indéfinie (stockage local, supprimable)</td>
       </tr>
     </tbody>
@@ -357,6 +359,36 @@
 
   <p>Ces données restent <strong>exclusivement sur votre appareil</strong> et ne sont jamais transmises à nos serveurs ni à des tiers. Elles peuvent être supprimées à tout moment depuis les paramètres de votre navigateur (Outils → Données de navigation → Stockage local).</p>
   <p>Conformément aux lignes directrices de la CNIL, les cookies strictement nécessaires au bon fonctionnement du site (ici : préférence d'affichage) sont exemptés de consentement préalable.</p>
+
+  <h3>Mesure d'audience et publicité (soumises à consentement)</h3>
+  <p>Si — et seulement si — vous cliquez sur <em>Accepter</em> dans la bannière, les services suivants sont activés :</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Éditeur</th>
+        <th>Finalité</th>
+        <th>Durée</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google Ads</td>
+        <td>Google Ireland Limited</td>
+        <td>Mesurer les conversions issues de nos campagnes publicitaires (demande de devis, appel, e-mail) et constituer des audiences de remarketing</td>
+        <td>Jusqu'à 13 mois</td>
+      </tr>
+      <tr>
+        <td>Google Analytics 4</td>
+        <td>Google Ireland Limited</td>
+        <td>Mesurer la fréquentation du site et comprendre les parcours de navigation, avec anonymisation de l'adresse IP</td>
+        <td>Jusqu'à 13 mois</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Ces services sont mis en œuvre au moyen du <strong>mode de consentement Google (Consent Mode v2)</strong> : tant que votre accord n'a pas été recueilli, les scripts Google ne sont pas chargés et aucun identifiant publicitaire n'est transmis. Un refus est traité exactement comme une absence de réponse : rien n'est déposé.</p>
+  <p>Ces traitements reposent sur votre <strong>consentement</strong> (article 6.1.a du RGPD). Vous pouvez le retirer à tout moment en supprimant le stockage local du site depuis les paramètres de votre navigateur ; la bannière vous sera alors présentée à nouveau.</p>
+  <p>Ces services peuvent impliquer un <strong>transfert de données hors de l'Union européenne</strong>, encadré par les clauses contractuelles types de la Commission européenne et les mesures complémentaires mises en place par Google. Pour en savoir plus : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>.</p>
 
   <h2>4. Durée de conservation</h2>
   <p>Les données transmises via le formulaire de contact sont conservées pour une durée maximale de <strong>24 mois</strong> à compter de la réception, sauf relation contractuelle établie.</p>
@@ -367,6 +399,7 @@
   <ul>
     <li><strong>Vercel Inc.</strong> — hébergement du site</li>
     <li><strong>Web3Forms</strong> — acheminement des messages du formulaire de contact</li>
+    <li><strong>Google Ireland Limited</strong> — mesure d'audience et mesure des campagnes publicitaires, <em>uniquement si vous y avez consenti</em> (voir section 3)</li>
   </ul>
 
   <h2>6. Vos droits</h2>
@@ -406,5 +439,7 @@
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/js/cookies.js"></script>
+  <script defer src="/js/tracking.js"></script>
 </body>
 </html>

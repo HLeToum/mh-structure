@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
   <!-- Anti-FOUC : thème clair par défaut, langue sauvegardée -->
@@ -50,6 +50,8 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
         href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuPa_p4r.woff2">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Consent Mode v2 : doit précéder toute balise Google -->
+  <script src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -1250,5 +1252,6 @@
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/js/tracking.js"></script>
 </body>
 </html>

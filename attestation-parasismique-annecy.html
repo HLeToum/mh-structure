@@ -115,6 +115,8 @@
     footer { text-align: center; padding: 2rem 1rem; color: var(--text3); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; border-top: 1px solid var(--border); margin-top: 3rem; }
     @media (max-width: 600px) { main { padding: 5.5rem 1rem 3rem; } .cta-block { flex-direction: column; align-items: flex-start; } }
   </style>
+  <!-- Consent Mode v2 : doit précéder toute balise Google -->
+  <script src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -219,5 +221,7 @@
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/js/cookies.js"></script>
+  <script defer src="/js/tracking.js"></script>
 </body>
 </html>

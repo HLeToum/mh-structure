@@ -2376,6 +2376,19 @@ a.ci-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; b
   outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
+/* Variante « Refuser » : même taille et même zone de clic que « Accepter ».
+   La CNIL exige que refuser soit aussi simple qu'accepter — le contraste est
+   volontairement moindre, mais jamais au point de rendre le bouton discret. */
+.cookie-banner-btn-ghost {
+  color: var(--text2);
+  background: transparent;
+  border: 1px solid var(--border);
+}
+.cookie-banner-btn-ghost:hover {
+  color: var(--text);
+  background: transparent;
+  border-color: var(--border-g);
+}
 @media (max-width: 480px) {
   .cookie-banner { padding: 14px 16px; bottom: 16px; }
   .cookie-banner-inner { gap: 12px; }

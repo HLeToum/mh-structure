@@ -28,6 +28,8 @@
     a.link { display: block; margin-top: 1rem; font-size: 0.85rem; color: var(--gold); text-decoration: none; }
     a.link:hover { color: var(--gold-l); }
   </style>
+  <!-- Consent Mode v2 : doit précéder toute balise Google -->
+  <script src="/js/consent.js"></script>
 </head>
 <body>
   <div class="card">
@@ -43,5 +45,7 @@
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/js/cookies.js"></script>
+  <script defer src="/js/tracking.js"></script>
 </body>
 </html>

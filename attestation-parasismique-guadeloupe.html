@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="dark">
 <head>
   <script>(function(){var t=localStorage.getItem('mh-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})()</script>
@@ -197,6 +197,8 @@
       .cta-block { flex-direction: column; align-items: flex-start; }
     }
   </style>
+  <!-- Consent Mode v2 : doit précéder toute balise Google -->
+  <script src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -349,5 +351,7 @@
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/js/cookies.js"></script>
+  <script defer src="/js/tracking.js"></script>
 </body>
 </html>
