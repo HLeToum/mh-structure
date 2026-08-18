@@ -36,9 +36,9 @@
     adsId: 'AW-18382343832',
     ga4Id: '',
     conversions: {
-      devis: '',   // formulaire de contact envoyé (page /merci)
-      appel: '',   // clic sur un numéro de téléphone
-      email: ''    // clic sur l'adresse e-mail
+      devis: 'AW-18382343832/PP08CP-Irt8cEJidsb1E',  // « Envoi de formulaire de lead » — page /merci
+      appel: '',   // clic sur un numéro de téléphone — action à créer dans Google Ads
+      email: ''    // clic sur l'adresse e-mail — action à créer dans Google Ads
     }
   };
 
