@@ -196,6 +196,25 @@
       main { padding: 5.5rem 1rem 3rem; }
       .cta-block { flex-direction: column; align-items: flex-start; }
     }
+  
+    /* Bloc contact direct (pages d'atterrissage campagnes) */
+    .contact-direct { background: var(--surface); border: 1px solid var(--border-g); border-radius: 12px; padding: 1.75rem 2rem; margin: 2.5rem 0; }
+    .contact-direct h2 { margin-top: 0; }
+    .cd-tel { display: inline-flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 600; color: var(--gold); text-decoration: none; margin-top: 0.35rem; }
+    .cd-tel:hover { color: var(--gold-l); }
+    .cd-sub { font-size: 0.76rem; color: var(--text3); margin-top: 0.15rem; }
+    .cd-sep { display: flex; align-items: center; gap: 12px; margin: 1.35rem 0 1.1rem; color: var(--text3); font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; }
+    .cd-sep::before, .cd-sep::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+    .cd-form { display: grid; gap: 10px; }
+    .cd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cd-form input, .cd-form textarea { width: 100%; padding: 11px 13px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: inherit; font-size: 0.88rem; }
+    .cd-form input::placeholder, .cd-form textarea::placeholder { color: var(--text3); }
+    .cd-form input:focus, .cd-form textarea:focus { outline: none; border-color: var(--gold); }
+    .cd-form textarea { resize: vertical; }
+    .cd-rgpd { display: flex; gap: 8px; align-items: flex-start; font-size: 0.72rem; color: var(--text3); line-height: 1.5; }
+    .cd-rgpd input { width: auto; margin-top: 3px; }
+    .cd-form button { justify-self: start; border: none; cursor: pointer; }
+    @media (max-width: 600px) { .cd-row { grid-template-columns: 1fr; } .contact-direct { padding: 1.25rem; } }
   </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
   <script src="/js/consent.js"></script>
@@ -328,9 +347,37 @@
   <h3>Peut-on obtenir une attestation pour un projet déjà construit ?</h3>
   <p>Pour un bâtiment existant, on parle de diagnostic parasismique ou structurel, non d'une attestation AT. MH Structure réalise également ces diagnostics. Consultez notre page <a href="/diagnostic-sismique-guadeloupe">diagnostic sismique Guadeloupe</a>.</p>
 
+  <div class="contact-direct" id="devis">
+    <h2>Demander votre attestation</h2>
+    <p>Devis gratuit sous 48h. Étude réalisée à distance sur transmission de vos plans.</p>
+    <a href="tel:+33782883421" class="cd-tel" aria-label="Appeler MH Structure">+33 7 82 88 34 21</a>
+    <p class="cd-sub">Du lundi au vendredi</p>
+
+    <div class="cd-sep">OU DÉCRIVEZ VOTRE PROJET</div>
+
+    <form class="cd-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="49a85a4d-a018-4124-b277-cd56c04d75fc">
+      <input type="hidden" name="subject" value="Demande attestation parasismique Guadeloupe - MH Structure">
+      <input type="hidden" name="from_name" value="MH Structure">
+      <input type="hidden" name="cc" value="etudes@mhstructure.com">
+      <input type="hidden" name="redirect" value="https://www.mhstructure.com/merci">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="cd-row">
+        <input type="text" name="nom" placeholder="Votre nom *" autocomplete="name" required>
+        <input type="tel" name="telephone" placeholder="Téléphone" autocomplete="tel" inputmode="tel">
+      </div>
+      <input type="email" name="email" placeholder="Votre email *" autocomplete="email" required>
+      <textarea name="message" rows="3" placeholder="Type de bâtiment, commune du projet, échéance…" required></textarea>
+      <label class="cd-rgpd"><input type="checkbox" name="rgpd" required><span>J'accepte que mes données soient utilisées pour être recontacté.</span></label>
+      <button type="submit" class="btn-gold">Demander un devis gratuit</button>
+    </form>
+  </div>
+
+
   <div class="related">
     <h3>Prestations associées</h3>
     <div class="related-links">
+      <a href="/attestation-at1-permis-de-construire" class="related-link">Attestation AT1 permis de construire</a>
       <a href="/diagnostic-sismique-guadeloupe" class="related-link">Diagnostic sismique Guadeloupe</a>
       <a href="/attestation-parasismique-martinique" class="related-link">Attestation parasismique Martinique</a>
       <a href="/attestation-at2-fin-de-chantier" class="related-link">Attestation AT2 fin de chantier</a>
