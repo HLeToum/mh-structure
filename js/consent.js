@@ -5,11 +5,24 @@
  * Le mode consentement doit être initialisé avant que gtag.js ne s'exécute,
  * sinon Google considère la page comme non conforme dans l'EEE.
  *
- * Principe :
+ * Principe — mode consentement AVANCÉ :
  *   1. Tous les consentements sont refusés par défaut (exigence RGPD / CNIL).
- *   2. Aucune balise Google n'est chargée tant que le visiteur n'a pas accepté.
+ *   2. La balise est chargée dès le départ, mais en état refusé : elle ne pose
+ *      aucun cookie et n'envoie aucun identifiant tant que le visiteur n'a pas
+ *      accepté. Elle envoie en revanche des relevés anonymes, sans cookie, qui
+ *      permettent à Google de modéliser les conversions.
  *   3. Le choix est mémorisé dans localStorage('mh-cookie-consent') :
  *        'granted' = accepté | 'denied' = refusé | absent = pas encore choisi
+ *
+ * Pourquoi le mode avancé — et pas le mode basique (balise chargée seulement
+ * après accord) : en mode basique, un visiteur qui refuse ou qui ignore la
+ * bannière n'envoie strictement rien. Google ne voit jamais la balise vivre,
+ * classe l'action de conversion en « mauvaise configuration » et ne remonte
+ * aucune conversion — ce qui a été constaté sur la campagne du 18 août 2026
+ * (61 clics, 0 conversion). Le mode avancé conserve le même niveau de
+ * protection (aucun cookie ni identifiant sans accord, identifiants
+ * publicitaires expurgés via ads_data_redaction) tout en rendant la mesure
+ * possible.
  *
  * Expose window.MHTracking pour cookies.js et tracking.js.
  */
@@ -79,7 +92,20 @@
     wait_for_update:       500
   });
 
-  /* ── 2. Chargement effectif des balises (seulement après accord) ── */
+  /* ── 1 bis. Garanties du mode avancé ───────────────────────────────
+        ads_data_redaction : tant que ad_storage est refusé, les
+          identifiants de clic publicitaire (gclid) sont expurgés des
+          relevés envoyés. Rien de nominatif ne part sans accord.
+        url_passthrough : permet de conserver l'attribution d'un clic
+          d'une page à l'autre par l'URL plutôt que par un cookie. ── */
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+
+  /* ── 2. Chargement de la balise ────────────────────────────────────
+        Appelé dès l'initialisation, quel que soit l'état du consentement :
+        c'est ce qui distingue le mode avancé du mode basique. L'état
+        « refusé » posé ci-dessus reste actif tant que le visiteur n'a pas
+        accepté. ── */
   function loadTags() {
     if (tagsLoaded || !hasTags) return;
     tagsLoaded = true;
@@ -122,7 +148,9 @@
       ad_personalization: v,
       analytics_storage:  v
     });
-    if (granted) loadTags();
+    /* L'expurgation des identifiants publicitaires n'est levée qu'avec
+       l'accord du visiteur. */
+    gtag('set', 'ads_data_redaction', !granted);
   }
 
   /* ── 4. Restauration d'un choix précédent ──────────────────────── */
@@ -131,6 +159,9 @@
   } else if (stored === 'denied') {
     update(false);
   }
+
+  /* ── 4 bis. Chargement de la balise, consentement ou non ────────── */
+  loadTags();
 
   /* ── 5. API publique ───────────────────────────────────────────── */
   window.MHTracking = {
@@ -163,13 +194,23 @@
 
     /**
      * Envoie une conversion Google Ads.
-     * Sans consentement, sans identifiant ou sans libellé : ne fait rien.
+     *
+     * L'envoi a lieu quel que soit l'état du consentement : c'est le mode
+     * consentement qui décide de ce que contient l'appel. Sans accord, le
+     * relevé part sans cookie et sans identifiant de clic (ads_data_redaction),
+     * et sert uniquement à la modélisation statistique. Avec accord, la
+     * conversion est attribuée nominativement au clic d'origine.
+     *
+     * Conditionner cet envoi au consentement — comme c'était le cas avant le
+     * passage en mode avancé — revient à ne mesurer aucune conversion.
+     *
+     * Sans identifiant de compte ou sans libellé : ne fait rien.
      * @param {string} nom  clé de CONFIG.conversions ('devis', 'appel', 'email')
      * @param {function} [apres]  rappel exécuté une fois l'envoi terminé
      */
     conversion: function (nom, apres) {
       var label = CONFIG.conversions[nom];
-      if (stored !== 'granted' || !CONFIG.adsId || !label) {
+      if (!CONFIG.adsId || !label) {
         if (typeof apres === 'function') apres();
         return;
       }
