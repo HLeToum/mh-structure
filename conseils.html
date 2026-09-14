@@ -659,8 +659,12 @@
         if (push && history.replaceState) history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f);
       }
       bar.addEventListener('click', function (e) { var b = e.target.closest('.blog-filter'); if (b) apply(b.getAttribute('data-filter'), true); });
-      var h = location.hash.replace('#', '');
-      apply(bar.querySelector('.blog-filter[data-filter="' + h + '"]') ? h : 'all', false);
+      function fromHash() {
+        var h = location.hash.replace('#', '');
+        apply(bar.querySelector('.blog-filter[data-filter="' + h + '"]') ? h : 'all', false);
+      }
+      window.addEventListener('hashchange', fromHash);
+      fromHash();
     })();
   </script>
 </body>
