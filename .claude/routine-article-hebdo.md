@@ -13,6 +13,10 @@ Historique des corrections :
   en production après merge de la PR #17) et ne touchait jamais `sitemap.xml` (commit de
   suivi manuel nécessaire après les PR #16 et #17). Ajout des étapes 4, 6 et 7, et de la
   règle bloquante sur les images.
+- **2026-09-14** — les PR #19 et #20 sont arrivées avec les mêmes oublis : ce prompt n'avait
+  pas été recopié dans claude.ai/code. Ajout de l'URL directe Pexels (étape 4a), de la
+  vérification du dernier numéro de vignette sur `master` (étape 3, cause d'un conflit
+  entre #19 et #20) et de la date de publication (étape 2).
 
 ---
 
@@ -38,13 +42,17 @@ pour ça — elles ne sont pas optionnelles.
    complète : head SEO (title, meta description, canonical, og:*,
    article:published_time à la date du jour), les deux blocs JSON-LD Article et
    FAQPage, le sommaire latéral relié aux sections h2, le widget likes, le bloc
-   d'articles liés. 1 500 à 2 500 mots. Ton pédagogique, sans jargon non expliqué.
+   d'articles liés. La date du jour apparaît à quatre endroits — published_time,
+   datePublished, dateModified et la date affichée dans l'en-tête : les quatre
+   doivent être identiques. 1 500 à 2 500 mots. Ton pédagogique, sans jargon non expliqué.
    Deux à quatre liens internes vers des articles et pages de services existants.
 
 3. AJOUTER LA VIGNETTE — conseils.html
    Nouveau bloc <a class="blog-card"> en tête de <div class="blog-grid">, avec le
-   commentaire <!-- Article N — Titre --> et le compteur card-like-count-NN
-   incrémenté par rapport à l'article précédent.
+   commentaire <!-- Article N — Titre --> et le compteur card-like-count-NN.
+   Lis le numéro le plus élevé réellement présent dans conseils.html sur master
+   au moment où tu travailles, et prends le suivant : ne le déduis pas du nombre
+   de fichiers dans conseils/, une PR précédente peut encore être en attente.
 
 4. LIVRER LES FICHIERS IMAGES — images/conseils/<slug>/
    RÈGLE BLOQUANTE : n'écris jamais une balise <img> dont le fichier n'est pas
@@ -58,9 +66,13 @@ pour ça — elles ne sont pas optionnelles.
      img-3.jpg  1000x667
 
    Procédure :
-     a. Cherche des photos de chantier / bâtiment correspondant au sujet, puis
-        télécharge le fichier source en pleine résolution :
-          curl -L -o /tmp/src-hero.jpg "<url directe de la photo>"
+     a. Cherche des photos de chantier / bâtiment correspondant au sujet sur
+        Pexels (page de recherche https://www.pexels.com/search/<mots>/, puis
+        page photo https://www.pexels.com/photo/...-<id>/). Le fichier source se
+        télécharge sans clé d'API à partir de l'identifiant numérique :
+          curl -L -o /tmp/src-hero.jpg             "https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        Vérifie que le fichier obtenu est bien une image (ouverture avec Pillow)
+        avant de continuer.
      b. Recadre au format du site avec le script fourni :
           python tools/prepare-image.py /tmp/src-hero.jpg \
             images/conseils/<slug>/hero.jpg
