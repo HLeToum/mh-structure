@@ -38,6 +38,9 @@ const FORMATS = {
   'img-3.jpg': { w: 1000, h: 667 },
 };
 
+// Themes de la page conseils.html — chaque vignette doit en porter un (data-theme)
+const THEMES = ['parasismique', 'sols-fondations', 'beton-arme', 'bati-existant', 'documents-acteurs'];
+
 const errors = [];
 const warnings = [];
 const err = (msg) => errors.push(msg);
@@ -195,9 +198,21 @@ for (const slug of slugs) {
     err(`index — aucune vignette pour "${slug}" dans conseils.html`);
   }
 
+  if (indexHtml) {
+    const carte = indexHtml.match(new RegExp(`<a href="/conseils/${slug}"[^>]*>`));
+    const theme = carte && carte[0].match(/data-theme="([^"]*)"/);
+    if (carte && !theme) err(`index — la vignette "${slug}" n'a pas d'attribut data-theme (themes : ${THEMES.join(', ')})`);
+    else if (theme && !THEMES.includes(theme[1])) err(`index — theme inconnu "${theme[1]}" sur la vignette "${slug}" (themes : ${THEMES.join(', ')})`);
+  }
+
   if (!bySlug.has(slug)) {
     err(`sitemap — entree manquante pour https://www.mhstructure.com/conseils/${slug}`);
   }
+}
+
+const compteur = indexHtml.match(/id="article-count">(\d+) article/);
+if (compteur && +compteur[1] !== slugs.length) {
+  err(`index — le compteur affiche ${compteur[1]} articles, il y en a ${slugs.length} dans conseils/`);
 }
 
 for (const slug of bySlug.keys()) {

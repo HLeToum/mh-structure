@@ -44,6 +44,20 @@ avec le commentaire `<!-- Article N — Titre -->` et un compteur `card-like-cou
 incrémenté par rapport à l'article précédent (`12` → `13`). La vignette pointe vers
 `images/conseils/<slug>/hero.jpg` (chemin relatif à la racine, sans `../`).
 
+La vignette porte obligatoirement un attribut `data-theme` et son libellé
+`blog-card-cat` ; le badge `article-cat` de la page de l'article reprend le même libellé.
+Cinq thèmes, pas d'autre valeur (le script de contrôle refuse le merge sinon) :
+
+| `data-theme` | Libellé | Sujets |
+|---|---|---|
+| `parasismique` | Parasismique | zones sismiques, attestations AT1/AT2, diagnostic sismique |
+| `sols-fondations` | Sols & fondations | étude de sol, fondations, argiles, descente de charges |
+| `beton-arme` | Béton armé & chantier | enrobage, ferraillage, bétonnage, exécution |
+| `bati-existant` | Bâti existant | fissures, ouvertures, renforcement, rénovation |
+| `documents-acteurs` | Documents & acteurs | notes de calcul, plans, rôles des intervenants |
+
+Mettre à jour le compteur `id="article-count"` (« N articles publiés »).
+
 ### 3. Les fichiers images — `images/conseils/<slug>/`
 
 **Écrire une balise `<img>` sans livrer le fichier correspondant produit une 404 en
