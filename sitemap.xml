@@ -127,7 +127,7 @@
   <!-- Réalisations & projets -->
   <url>
     <loc>https://www.mhstructure.com/realisations</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -143,13 +143,67 @@
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/fondations-loges-stade-sapiac-montauban</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/renforcement-voiles-maison-sainte-anne</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/analyse-sismique-villa-saint-martin</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/massifs-fondation-extension-modulaire-ecoles-albi</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/ouverture-voile-beton-eglise-agen</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/renforcement-plancher-monte-charge-beziers</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/justification-escalier-beton-prades</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/projets/diagnostic-poutres-bois-bar-montpellier</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
   <!-- Conseils & Actualités -->
   <url>
     <loc>https://www.mhstructure.com/conseils</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/conseils/sols-argileux-retrait-gonflement</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.mhstructure.com/conseils/ouverture-mur-porteur</loc>
