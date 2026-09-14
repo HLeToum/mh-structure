@@ -53,6 +53,12 @@ pour ça — elles ne sont pas optionnelles.
    Lis le numéro le plus élevé réellement présent dans conseils.html sur master
    au moment où tu travailles, et prends le suivant : ne le déduis pas du nombre
    de fichiers dans conseils/, une PR précédente peut encore être en attente.
+   Ajoute data-theme="<theme>" sur la balise <a class="blog-card"> et mets le
+   libellé du thème dans blog-card-cat ainsi que dans le badge article-cat de la
+   page. Cinq thèmes possibles, aucun autre : parasismique (Parasismique),
+   sols-fondations (Sols & fondations), beton-arme (Béton armé & chantier),
+   bati-existant (Bâti existant), documents-acteurs (Documents & acteurs).
+   Incrémente aussi le compteur id="article-count" (« N articles publiés »).
 
 4. LIVRER LES FICHIERS IMAGES — images/conseils/<slug>/
    RÈGLE BLOQUANTE : n'écris jamais une balise <img> dont le fichier n'est pas
