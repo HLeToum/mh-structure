@@ -195,9 +195,15 @@
   <!-- Conseils & Actualités -->
   <url>
     <loc>https://www.mhstructure.com/conseils</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/conseils/dallage-beton-pathologies</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.mhstructure.com/conseils/surelevation-maison-faisabilite</loc>
