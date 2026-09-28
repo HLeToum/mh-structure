@@ -195,9 +195,15 @@
   <!-- Conseils & Actualités -->
   <url>
     <loc>https://www.mhstructure.com/conseils</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mhstructure.com/conseils/surelevation-maison-faisabilite</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.mhstructure.com/conseils/bureau-etudes-bureau-controle-difference</loc>
