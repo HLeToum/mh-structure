@@ -1,0 +1,30 @@
+name: fetch-article-images
+
+# Usage unique : recupere les photos des 3 articles conseils puis se supprime.
+on:
+  push:
+    branches: [claude/mh-site-modification-pfioeg]
+    paths: ['.github/workflows/fetch-article-images.yml', '.github/fetch_article_images.py']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install Pillow
+      - run: python .github/fetch_article_images.py
+      - name: Commit des images et suppression du workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git rm -q .github/workflows/fetch-article-images.yml .github/fetch_article_images.py
+          git add images/conseils
+          git commit -m "images: photos des 3 articles conseils en retard (Pexels + Wikimedia Commons)"
+          git push origin HEAD:${{ github.ref_name }}
