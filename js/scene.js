@@ -1,11 +1,54 @@
 /**
  * MH Structure — Three.js Scene v7
  * Immeuble R+6 · Fondations visibles · Armatures révélées à la souris
+ *
+ * Performance : three.js (150 Ko) n'est plus chargé dans la page. Ce fichier
+ * le télécharge lui-même une fois la page chargée et le navigateur au repos,
+ * puis construit la scène. Le rendu de la scène est inchangé ; il apparaît
+ * simplement après le contenu au lieu de le retarder.
  */
 (function () {
-
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
+
+  const THREE_SRC = 'https://unpkg.com/three@0.128.0/build/three.min.js';
+  const THREE_SRI = 'sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu';
+
+  function loadThree() {
+    if (window.THREE) { initScene(); return; }
+    const s = document.createElement('script');
+    s.src = THREE_SRC;
+    s.integrity = THREE_SRI;
+    s.crossOrigin = 'anonymous';
+    s.onload = initScene;
+    document.head.appendChild(s);
+  }
+
+  /* Démarrage : à la première interaction du visiteur, ou au plus tard
+     START_DELAY ms après le chargement de la page. Le texte, les boutons et
+     les balises de mesure passent ainsi avant le calcul 3D, qui est la tâche
+     la plus lourde de la page (surtout sur mobile). */
+  const START_DELAY = 4000;
+  const START_EVENTS = ['pointerdown', 'pointermove', 'touchstart', 'scroll', 'keydown', 'wheel'];
+  let started = false;
+
+  function start() {
+    if (started) return;
+    started = true;
+    START_EVENTS.forEach(ev => window.removeEventListener(ev, start, true));
+    if ('requestIdleCallback' in window) requestIdleCallback(loadThree, { timeout: 1000 });
+    else setTimeout(loadThree, 50);
+  }
+
+  function arm() {
+    START_EVENTS.forEach(ev => window.addEventListener(ev, start, { capture: true, passive: true, once: true }));
+    setTimeout(start, START_DELAY);
+  }
+
+  if (document.readyState === 'complete') arm();
+  else window.addEventListener('load', arm, { once: true });
+
+  function initScene() {
   try {
     if (!canvas.getContext('webgl') && !canvas.getContext('experimental-webgl'))
       { canvas.style.display = 'none'; return; }
@@ -332,7 +375,30 @@
   const rM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.addEventListener('visibilitychange', () => document.hidden ? clock.stop() : clock.start());
 
-  (function animate() {
+  /* Le canvas n'est visible qu'à travers le hero : toutes les sections
+     suivantes ont un fond opaque. Le rendu est donc suspendu quand le hero
+     sort de l'écran, et repris dès qu'il y revient. */
+  let heroVisible = true, looping = false;
+  const hero = document.getElementById('accueil');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      heroVisible = entries[entries.length - 1].isIntersecting;
+      if (heroVisible && !looping) { looping = true; requestAnimationFrame(animate); }
+    }).observe(hero);
+  }
+
+  /* Apparition en fondu du premier rendu (aucun fondu si mouvement réduit) */
+  if (!rM) {
+    canvas.style.opacity = '0';
+    canvas.style.transition = 'opacity 0.8s ease';
+  }
+  let firstFrame = true;
+
+  looping = true;
+  requestAnimationFrame(animate);
+
+  function animate() {
+    if (!heroVisible) { looping = false; return; }
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
@@ -361,6 +427,12 @@
     glassMat.opacity    = 0.34 - revealAmt * 0.26;
 
     renderer.render(scene, camera);
-  })();
+    if (firstFrame) {
+      firstFrame = false;
+      requestAnimationFrame(() => { canvas.style.opacity = '1'; });
+    }
+  }
+
+  } // initScene
 
 })();

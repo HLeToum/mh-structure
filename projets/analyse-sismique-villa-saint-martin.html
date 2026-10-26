@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Analyse sismique modale spectrale d&#x27;une villa — Saint-Martin | MH Structure</title>
-  <meta name="description" content="Note de calcul sismique générale d&#x27;une villa T4 de plain-pied à Saint-Martin, zone sismique 5 : analyse modale spectrale tridimensionnelle selon l&#x27;Eurocode 8, voiles banchés de 18 cm, toiture-terrasse en dalle pleine, métré quantitatif béton.">
+  <title>Analyse sismique d&#x27;une villa en zone 5 — Saint-Martin | MH Structure</title>
+  <meta name="description" content="Analyse modale spectrale Eurocode 8 d&#x27;une villa de plain-pied à voiles en béton armé à Saint-Martin (978), zone sismique 5 : modèle 3D et note de calcul.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/projets/analyse-sismique-villa-saint-martin">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Analyse sismique modale — villa T4 — Saint-Martin | MH Structure">
-  <meta property="og:description" content="Analyse modale spectrale 3D d&#x27;une villa à voiles porteurs en zone sismique 5 — Saint-Martin. Note de calcul Eurocode 8 et métré béton.">
+  <meta property="og:title" content="Analyse sismique d&#x27;une villa en zone 5 — Saint-Martin | MH Structure">
+  <meta property="og:description" content="Analyse modale spectrale Eurocode 8 d&#x27;une villa à voiles porteurs en zone sismique 5 à Saint-Martin (978) : note de calcul sismique et métré béton.">
   <meta property="og:image" content="https://www.mhstructure.com/images/projets/analyse-sismique-villa-saint-martin/hero.jpg">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ── Page projet ─────────────────────────────────── */
     .proj-page { padding-top: 0; }
@@ -303,9 +305,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 12px 0;
-    }  </style>
+    }
+
+    /* Texte descriptif du projet */
+    .proj-desc { max-width: 780px; margin: 0 0 64px; }
+    .proj-desc h2 {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 36px 0 10px;
+    }
+    .proj-desc h2:first-child { margin-top: 0; }
+    .proj-desc p {
+      font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin: 0 0 14px;
+    }
+    .proj-desc a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+    .proj-desc a:hover { text-decoration: none; }
+  </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body class="proj-page">
 
@@ -403,6 +419,19 @@
     </div>
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
+      <!-- Description du projet -->
+      <section class="proj-desc" aria-label="Description du projet">
+        <h2>Le contexte</h2>
+        <p>Villa de plain-pied de 157 m² de plancher à Saint-Martin, en zone de sismicité 5, le niveau d'aléa le plus élevé du territoire français. La structure est en béton armé à voiles porteurs : des murs « banchés » (coulés en place dans des coffrages) de 18 cm qui portent les planchers et résistent en même temps aux efforts horizontaux du séisme. La couverture est une toiture-terrasse en dalle pleine de 16 cm.</p>
+        <h2>Les hypothèses</h2>
+        <p>D'après l'étude de sol, la villa repose sur un substratum volcanique rocheux (sol de classe A au sens de l'Eurocode 8), mais la pente du site impose un coefficient d'amplification topographique de 1,20 : l'accélération de référence de 3,00 m/s² est portée à 3,60 m/s² au niveau des fondations. Le béton est spécifié en C30/37, classe d'exposition XS1 avec 4 cm d'enrobage, pour tenir compte de l'air salin.</p>
+        <h2>Notre approche</h2>
+        <p>La villa a été modélisée en trois dimensions (Arche Ossature puis Advance Design) et soumise à une analyse modale spectrale : le logiciel calcule les modes de vibration propres du bâtiment, puis la réponse de chacun au spectre sismique réglementaire. 88 modes ont été retenus afin de mobiliser plus de 90 % de la masse dans les trois directions, comme l'exige l'Eurocode 8. Nous avons volontairement limité le coefficient de comportement à q = 1,5 (classe de ductilité limitée) : la structure est dimensionnée pour rester quasi élastique sous séisme.</p>
+        <h2>Les résultats et ce qui a été livré</h2>
+        <p>La période fondamentale de 0,20 s traduit un bâtiment très rigide. Le déplacement relatif sous séisme n'atteint que 6 % de la limite réglementaire, et les contraintes de compression et de cisaillement dans les voiles restent à environ un quart des valeurs admissibles ; les tractions localisées aux angles des baies sont reprises par des armatures dédiées. Livrables : la note de calcul sismique générale, puis un métré quantitatif du béton.</p>
+        <p>Pour aller plus loin : notre <a href="/etude-parasismique-zone-5">étude parasismique en zone 5</a> et notre guide des <a href="/conseils/zones-sismiques-france">zones sismiques en France</a>.</p>
+      </section>
+
       <!-- Galerie photos -->
       <p class="proj-gallery-title">Modèle de calcul et résultats</p>
       <div class="proj-gallery" role="list" aria-label="Galerie du modèle de calcul sismique">

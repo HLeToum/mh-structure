@@ -11,7 +11,9 @@
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --bg: #0F1929; --surface: #141E35; --gold: #C9A84C; --gold-l: #DFB95E; --text: #EEF2F8; --text2: #8899B4; --text3: #3D5068; --border: rgba(255,255,255,0.07); --border-g: rgba(201,168,76,0.22); }
@@ -29,7 +31,7 @@
     a.link:hover { color: var(--gold-l); }
   </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body>
   <div class="card">

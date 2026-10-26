@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Fondations des loges du Stade de Sapiac — Montauban | MH Structure</title>
-  <meta name="description" content="Dimensionnement et plans d&#x27;exécution des fondations de deux bâtiments modulaires R+2 à usage de loges, côté Ouest du Stade de Sapiac à Montauban : semelles filantes en béton armé en ceinture fermée sur gros béton, d&#x27;après le rapport géotechnique.">
+  <title>Fondations de loges modulaires — Stade de Sapiac, Montauban | MH Structure</title>
+  <meta name="description" content="Semelles filantes en béton armé sur gros béton pour deux loges modulaires R+2 au Stade de Sapiac, Montauban (82) : note de calcul et plans d&#x27;exécution.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/projets/fondations-loges-stade-sapiac-montauban">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Fondations des loges — Stade de Sapiac — Montauban | MH Structure">
-  <meta property="og:description" content="Semelles filantes en béton armé en ceinture fermée pour deux bâtiments modulaires R+2 — Stade de Sapiac, Montauban. Note de calcul et plans EXE.">
+  <meta property="og:title" content="Fondations de loges modulaires — Stade de Sapiac, Montauban | MH Structure">
+  <meta property="og:description" content="Fondations de deux bâtiments modulaires R+2 à usage de loges au Stade de Sapiac, Montauban (82) : semelles filantes en ceinture, note de calcul et plans EXE.">
   <meta property="og:image" content="https://www.mhstructure.com/images/projets/fondations-loges-stade-sapiac-montauban/hero.jpg">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ── Page projet ─────────────────────────────────── */
     .proj-page { padding-top: 0; }
@@ -303,9 +305,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 12px 0;
-    }  </style>
+    }
+
+    /* Texte descriptif du projet */
+    .proj-desc { max-width: 780px; margin: 0 0 64px; }
+    .proj-desc h2 {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 36px 0 10px;
+    }
+    .proj-desc h2:first-child { margin-top: 0; }
+    .proj-desc p {
+      font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin: 0 0 14px;
+    }
+    .proj-desc a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+    .proj-desc a:hover { text-decoration: none; }
+  </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body class="proj-page">
 
@@ -403,6 +419,19 @@
     </div>
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
+      <!-- Description du projet -->
+      <section class="proj-desc" aria-label="Description du projet">
+        <h2>Le contexte</h2>
+        <p>Deux bâtiments modulaires de trois niveaux (rez-de-chaussée, R+1 et R+2) devaient être implantés côté Ouest du Stade de Sapiac, à Montauban, pour accueillir des loges. Chaque bâtiment repose sur 20 appuis répartis en deux files, espacés d'environ 3 m, qui transmettent les charges au sol par des platines métalliques de 15 × 15 cm.</p>
+        <h2>La contrainte</h2>
+        <p>Le rapport géotechnique (mission G2 AVP, réalisé pour un écran géant sur le même site) décrit des remblais sur 0,80 à 1,40 m, puis des alluvions de bonne portance. Le sol étant sensible au retrait-gonflement des argiles, les fondations doivent descendre à au moins 1,20 m de profondeur. La nappe phréatique peut remonter entre avril et juin.</p>
+        <h2>Notre approche</h2>
+        <p>Nous avons retenu l'appui le plus chargé de la descente de charges du constructeur (exploitation de 250 daN/m², neige, vent) et l'avons appliqué à toutes les positions. La solution : des semelles filantes en béton armé de 0,45 × 0,30 m, disposées en ceinture fermée sous les deux files d'appuis et leurs retours, posées sur un gros béton (béton non armé de remplissage) continu descendu à −1,20 m. La pression transmise au sol (0,090 MPa) ne mobilise que 60 % de la contrainte admissible de 0,15 MPa ; le soulèvement et le glissement sous vent ont été vérifiés. Le ferraillage utilise des cages standardisées du commerce, réellement disponibles chez le fournisseur.</p>
+        <h2>Ce qui a été livré</h2>
+        <p>Une note de calcul des semelles (Eurocode 2 et NF P 94-261), les plans de coffrage des fondations des deux loges, et une note distincte pour les murs de soutènement voisins, sur lesquels s'appuie une partie de la fondation de l'escalier d'accès. Les fonds de fouille restent à réceptionner par le géotechnicien avant coulage.</p>
+        <p>À lire aussi : notre prestation de <a href="/note-de-calcul-beton-arme">note de calcul béton armé</a> et notre article sur le <a href="/conseils/sols-argileux-retrait-gonflement">retrait-gonflement des sols argileux</a>.</p>
+      </section>
+
       <!-- Galerie photos -->
       <p class="proj-gallery-title">Fondations — modèle et plans</p>
       <div class="proj-gallery" role="list" aria-label="Galerie des plans de fondations">

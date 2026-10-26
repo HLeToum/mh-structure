@@ -1,5 +1,5 @@
 /* ================================================================
-   MAP — Leaflet + CartoDB Voyager (dark/light thème sync)
+   MAP — Leaflet + tuiles OpenStreetMap (dark/light thème sync)
    Deux cartes dans la section "Zones d'intervention" :
      • map-carmaux    — Tarn (81)        lat 44.0508  / lon  2.1602
      • map-guadeloupe — Guadeloupe (971) lat 16.1938  / lon -61.6224
@@ -7,9 +7,10 @@
 (function () {
   'use strict';
 
-  var TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-  var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" aria-label="OpenStreetMap (nouvelle fenêtre)">OpenStreetMap</a>'
-           + ' &copy; <a href="https://carto.com/" target="_blank" rel="noopener noreferrer" aria-label="CARTO (nouvelle fenêtre)">CARTO</a>';
+  /* CARTO exige désormais une clé d'API (tuiles « API KEY REQUIRED ») :
+     on utilise les tuiles standard d'OpenStreetMap, attribution obligatoire. */
+  var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" aria-label="OpenStreetMap (nouvelle fenêtre)">OpenStreetMap</a>';
 
   /* Registre de toutes les instances pour le sync thème */
   var allInstances = [];
@@ -52,8 +53,7 @@
 
     var tl = L.tileLayer(TILE_URL, {
       attribution: ATTR,
-      maxZoom: 19,
-      subdomains: 'abcd'
+      maxZoom: 19
     }).addTo(m);
 
     allInstances.push({ map: m, tileLayer: tl });
@@ -136,10 +136,53 @@
     initZoneGuadeloupe();
   }
 
+  /* ── Chargement de Leaflet à la demande ──────────────────────────
+        leaflet.css et leaflet.js ne sont plus dans le <head> : ils sont
+        téléchargés quand la section des cartes approche de l'écran
+        (600 px d'avance), ce qui les sort du chemin critique. La feuille
+        est ajoutée en fin de <head>, donc après style.css, comme avant. ── */
+  var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+  var LEAFLET_JS  = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  var leafletRequested = false;
+
+  function loadLeaflet() {
+    if (leafletRequested) return;
+    leafletRequested = true;
+    if (typeof L !== 'undefined') { initAll(); return; }
+
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = LEAFLET_CSS;
+    css.crossOrigin = 'anonymous';
+    document.head.appendChild(css);
+
+    var js = document.createElement('script');
+    js.src = LEAFLET_JS;
+    js.crossOrigin = 'anonymous';
+    js.onload = initAll;
+    document.head.appendChild(js);
+  }
+
+  function start() {
+    var first = document.getElementById('map-carmaux') || document.getElementById('map-guadeloupe');
+    if (!first) return;
+    if (!('IntersectionObserver' in window)) { loadLeaflet(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) {
+        io.disconnect();
+        loadLeaflet();
+      }
+    }, { rootMargin: '600px 0px' });
+    ['map-carmaux', 'map-guadeloupe'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAll);
+    document.addEventListener('DOMContentLoaded', start);
   } else {
-    initAll();
+    start();
   }
 
 })();

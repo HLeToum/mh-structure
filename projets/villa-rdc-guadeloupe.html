@@ -6,21 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Villa individuelle RDC — Plans de Coffrage &amp; Armatures | MH Structure</title>
-  <meta name="description" content="Villa individuelle RDC à Petit-Canal, Guadeloupe. Plans de coffrage et d'armatures réalisés par MH Structure : semelles, voiles béton armé, planchers. Zone sismique 5, Eurocode 8.">
+  <title>Plans de coffrage et armatures d&#x27;une villa — Petit-Canal (971) | MH Structure</title>
+  <meta name="description" content="Plans de coffrage et d&#x27;armatures d&#x27;une villa de plain-pied à Petit-Canal, Guadeloupe (971), zone sismique 5 : semelles, voiles béton armé, chaînages.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/projets/villa-rdc-guadeloupe">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Villa individuelle RDC — Petit-Canal, Guadeloupe | MH Structure">
-  <meta property="og:description" content="Plans de coffrage et d'armatures pour villa RDC en zone sismique 5 (Guadeloupe). Semelles, voiles béton armé, planchers — Eurocode 8.">
-  <meta property="og:image" content="https://www.mhstructure.com/images/projets/villa-soukai/13.jpg">
+  <meta property="og:title" content="Plans de coffrage et armatures d&#x27;une villa — Petit-Canal (971) | MH Structure">
+  <meta property="og:description" content="Plans de coffrage et d&#x27;armatures d&#x27;une villa de plain-pied en zone sismique 5 à Petit-Canal, Guadeloupe (971) : semelles, voiles, chaînages.">
+  <meta property="og:image" content="https://www.mhstructure.com/images/projets/villa-petit-canal/13.jpg">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
   <link rel="apple-touch-icon" href="../images/favicon-192.png">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ── Page projet ─────────────────────────────────── */
     .proj-page { padding-top: 0; }
@@ -303,9 +305,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 12px 0;
-    }  </style>
+    }
+
+    /* Texte descriptif du projet */
+    .proj-desc { max-width: 780px; margin: 0 0 64px; }
+    .proj-desc h2 {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 36px 0 10px;
+    }
+    .proj-desc h2:first-child { margin-top: 0; }
+    .proj-desc p {
+      font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin: 0 0 14px;
+    }
+    .proj-desc a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+    .proj-desc a:hover { text-decoration: none; }
+  </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body class="proj-page">
 
@@ -350,7 +366,7 @@
     <!-- ── Hero ─────────────────────────────────── -->
     <div class="proj-hero">
       <img class="proj-hero-img"
-           src="../images/projets/villa-soukai/13.jpg"
+           src="../images/projets/villa-petit-canal/13.jpg"
            alt="Façade principale d'une villa individuelle RDC en cours de construction à Petit-Canal, Guadeloupe"
            width="1200" height="800">
       <div class="proj-hero-overlay">
@@ -403,55 +419,68 @@
     </div>
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
+      <!-- Description du projet -->
+      <section class="proj-desc" aria-label="Description du projet">
+        <h2>Le contexte</h2>
+        <p>Villa individuelle de plain-pied à Petit-Canal, en Guadeloupe, conçue avec l'architecte du projet. Le territoire est classé en zone de sismicité 5 : la structure doit être dimensionnée selon l'Eurocode 8 et ses armatures dessinées avec précision pour que le chantier respecte les dispositions parasismiques.</p>
+        <h2>La contrainte</h2>
+        <p>En zone 5, la maçonnerie seule ne suffit pas : les murs sont encadrés de chaînages et de voiles en béton armé qui doivent être liés entre eux et ancrés dans les fondations. Les plans doivent donc montrer, pour chaque élément, le nombre de barres, leur diamètre, leur façonnage et la façon dont elles se recouvrent d'un élément à l'autre.</p>
+        <h2>Notre approche</h2>
+        <p>Nous avons construit un modèle structurel en trois dimensions sous Advance Design, comprenant les voiles, les chaînages, le plancher et les semelles. Ce modèle a servi de base au dessin des plans de coffrage, qui fixent la forme et les dimensions des éléments en béton, et des plans d'armatures, qui détaillent les aciers selon l'Eurocode 2 et l'Eurocode 8. Les fondations combinent semelles isolées et semelles filantes reliées par des longrines, et chaque voile du rez-de-chaussée fait l'objet d'une élévation armée.</p>
+        <h2>Ce qui a été livré</h2>
+        <p>Le dossier BA02 de plans de coffrage et d'armatures, dont les principes d'armatures des semelles à l'échelle 1/20 et les élévations armées des voiles du rez-de-chaussée. Les photos de chantier montrent la villa en cours de construction, avec les voiles, la maçonnerie de blocs béton et la charpente bois.</p>
+        <p>À lire aussi : notre prestation de <a href="/plans-coffrage-armatures">plans de coffrage et d'armatures</a>, l'<a href="/attestation-parasismique-guadeloupe">attestation parasismique en Guadeloupe</a> et notre article <a href="/conseils/plans-coffrage-indispensables">pourquoi les plans de coffrage sont indispensables</a>.</p>
+      </section>
+
       <!-- Galerie photos -->
       <p class="proj-gallery-title">Photos de chantier</p>
       <div class="proj-gallery" role="list" aria-label="Galerie photos du chantier">
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="0"
              aria-label="Façade principale, voiles et menuiseries en attente">
-          <img src="../images/projets/villa-soukai/13.jpg"
+          <img src="../images/projets/villa-petit-canal/13.jpg"
                alt="Façade principale — voiles béton armé et ouvertures menuiseries" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="1"
              aria-label="Coin de façade avec armatures en attente">
-          <img src="../images/projets/villa-soukai/14.jpg"
+          <img src="../images/projets/villa-petit-canal/14.jpg"
                alt="Angle de façade avec armatures en attente et végétation Guadeloupe" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="2"
              aria-label="Façade latérale avec baie">
-          <img src="../images/projets/villa-soukai/15.jpg"
+          <img src="../images/projets/villa-petit-canal/15.jpg"
                alt="Façade latérale de la villa avec ouverture baie vitrée" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="3"
              aria-label="Vue extérieure de l'angle du bâtiment">
-          <img src="../images/projets/villa-soukai/10.jpg"
+          <img src="../images/projets/villa-petit-canal/10.jpg"
                alt="Angle extérieur du bâtiment avec maçonnerie bloc béton" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="4"
              aria-label="Façade avec charpente bois et platelage">
-          <img src="../images/projets/villa-soukai/11.jpg"
+          <img src="../images/projets/villa-petit-canal/11.jpg"
                alt="Façade frontale avec charpente bois du platelage en cours de pose" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="5"
              aria-label="Façade avec coffrage platelage">
-          <img src="../images/projets/villa-soukai/12.jpg"
+          <img src="../images/projets/villa-petit-canal/12.jpg"
                alt="Détail façade avec coffrage du platelage de la dalle de rive" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="6"
              aria-label="Vue intérieure avec charpente bois apparente">
-          <img src="../images/projets/villa-soukai/16.jpg"
+          <img src="../images/projets/villa-petit-canal/16.jpg"
                alt="Vue intérieure avec charpente bois apparente et murs bloc béton" loading="lazy">
         </div>
 
         <div class="proj-gallery-item" role="listitem" tabindex="0" data-index="7"
              aria-label="Vue intérieure RDC">
-          <img src="../images/projets/villa-soukai/01.jpg"
+          <img src="../images/projets/villa-petit-canal/01.jpg"
                alt="Vue intérieure RDC avec menuiserie et structure en bloc béton" loading="lazy">
         </div>
 
@@ -471,7 +500,7 @@
         <!-- Modèle 3D -->
         <div class="proj-plan-item proj-plan-item--wide" style="margin-bottom:16px;">
           <img class="proj-plan-img proj-plan-img--model"
-               src="../images/projets/villa-soukai/modele-design.png"
+               src="../images/projets/villa-petit-canal/modele-design.png"
                alt="Modèle structurel 3D Advanced Design — Vue RDC sans charpente, chaînages bleus, voiles et semelles"
                loading="lazy">
           <div class="proj-plan-caption">
@@ -484,7 +513,7 @@
         <div class="proj-plans-grid">
           <div class="proj-plan-item">
             <img class="proj-plan-img"
-                 src="../images/projets/villa-soukai/plan-01-semelles.jpg"
+                 src="../images/projets/villa-petit-canal/plan-01-semelles.jpg"
                  alt="Plan BA02 planche 4 — Principes d'armatures des semelles isolées et filantes"
                  loading="lazy">
             <div class="proj-plan-caption">
@@ -494,7 +523,7 @@
           </div>
           <div class="proj-plan-item">
             <img class="proj-plan-img"
-                 src="../images/projets/villa-soukai/plan-02-armatures-rdc.jpg"
+                 src="../images/projets/villa-petit-canal/plan-02-armatures-rdc.jpg"
                  alt="Plan BA02 planche 10 — Armatures des voiles du rez-de-chaussée, élévation 06"
                  loading="lazy">
             <div class="proj-plan-caption">

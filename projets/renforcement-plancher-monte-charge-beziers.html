@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Vérification d&#x27;un plancher existant pour monte-charge PMR — Béziers | MH Structure</title>
-  <meta name="description" content="Note de calcul de reprise de charges : vérification de la capacité portante d&#x27;un plancher existant (voûtains de brique, dalle de compression, IPN 100) sous la trémie d&#x27;un monte-charge PMR de 300 kg, dans une copropriété de Béziers.">
+  <title>Plancher ancien renforcé pour un monte-charge PMR — Béziers | MH Structure</title>
+  <meta name="description" content="Vérification d&#x27;un plancher ancien à voûtains de brique pour un monte-charge PMR de 300 kg à Béziers (34) : note de calcul et renfort en profilés acier.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/projets/renforcement-plancher-monte-charge-beziers">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Reprise de charges d&#x27;un plancher — monte-charge PMR — Béziers | MH Structure">
-  <meta property="og:description" content="Vérification d&#x27;un plancher existant à voûtains de brique pour un monte-charge PMR de 300 kg — Béziers. Note de calcul de reprise de charges.">
+  <meta property="og:title" content="Plancher ancien renforcé pour un monte-charge PMR — Béziers | MH Structure">
+  <meta property="og:description" content="Plancher à voûtains de brique d&#x27;un immeuble de Béziers (34) vérifié pour un monte-charge PMR de 300 kg : renfort par traverses HEB et montants acier.">
   <meta property="og:image" content="https://www.mhstructure.com/images/projets/renforcement-plancher-monte-charge-beziers/hero.jpg">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ── Page projet ─────────────────────────────────── */
     .proj-page { padding-top: 0; }
@@ -303,9 +305,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 12px 0;
-    }  </style>
+    }
+
+    /* Texte descriptif du projet */
+    .proj-desc { max-width: 780px; margin: 0 0 64px; }
+    .proj-desc h2 {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 36px 0 10px;
+    }
+    .proj-desc h2:first-child { margin-top: 0; }
+    .proj-desc p {
+      font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin: 0 0 14px;
+    }
+    .proj-desc a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+    .proj-desc a:hover { text-decoration: none; }
+  </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body class="proj-page">
 
@@ -403,6 +419,19 @@
     </div>
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
+      <!-- Description du projet -->
+      <section class="proj-desc" aria-label="Description du projet">
+        <h2>Le contexte</h2>
+        <p>Dans un immeuble en copropriété de Béziers, un monte-charge pour personne à mobilité réduite (PMR) de 300 kg, desservant 3 arrêts sur 4 niveaux, devait être installé au droit d'une trémie ancienne de 1,95 m de large. Le plancher existant est un plancher traditionnel : des voûtes de brique surmontées d'une dalle de béton de 9 cm, avec une poutre acier IPN 100 de 2,80 m le long de la trémie.</p>
+        <h2>La contrainte</h2>
+        <p>L'appareil repose sur un pylône autoporteur dont le cadre de base charge directement le plancher : jusqu'à environ 2 tonnes sous le vérin, auxquelles nous avons ajouté la charge utile de 300 kg. Aucun plan ni sondage ne renseignait la composition exacte de la dalle.</p>
+        <h2>Notre approche</h2>
+        <p>Nous avons d'abord vérifié le plancher en l'état, par calcul manuel selon l'Eurocode 2 et l'Eurocode 3. Résultat : l'IPN 100 est déjà insuffisant sous les seules charges du plancher, et dépasserait sa capacité de plus de cinq fois sous celles de l'appareil ; les voûtes de brique ne peuvent pas non plus reprendre les charges concentrées des pieds. Plutôt que de renforcer ces éléments anciens, nous avons conçu un renforcement qui les contourne : cinq montants en tube acier de 80 × 80 mm logés dans des carottages au droit des quatre pieds et du vérin, et deux traverses HEB 120 calées en sous-face et appuyées sur les murs porteurs. Le monte-charge descend ainsi ses charges sans solliciter la voûte ni l'IPN.</p>
+        <h2>Ce qui a été livré</h2>
+        <p>Une note de calcul de reprise de charges avec le principe de renforcement, les vérifications des profilés (taux de travail maximal de 59 %) et les réserves à lever sur chantier, notamment la nature des murs d'appui des traverses.</p>
+        <p>À lire aussi : notre prestation de <a href="/diagnostic-structurel">diagnostic structurel</a> et notre article sur la <a href="/conseils/descente-de-charges">descente de charges</a>.</p>
+      </section>
+
       <!-- Galerie photos -->
       <p class="proj-gallery-title">Reconnaissance du plancher existant</p>
       <div class="proj-gallery" role="list" aria-label="Galerie photos du plancher existant">

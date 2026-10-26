@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Massifs de fondation d&#x27;extensions modulaires — Écoles, Albi | MH Structure</title>
-  <meta name="description" content="Notes de calcul et plans d&#x27;exécution des massifs de fondation en béton armé supportant des modules préfabriqués d&#x27;extension de deux groupes scolaires à Albi (Tarn) : massifs isolés sous platines, ERP de catégorie III, charges de vent et de neige.">
+  <title>Massifs de fondation pour modules scolaires — Albi (81) | MH Structure</title>
+  <meta name="description" content="Massifs isolés en béton armé sous des modules préfabriqués d&#x27;extension de groupes scolaires à Albi (81) : note de calcul Eurocode 2 et plans d&#x27;exécution.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/projets/massifs-fondation-extension-modulaire-ecoles-albi">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Massifs de fondation — extensions modulaires de groupes scolaires — Albi | MH Structure">
-  <meta property="og:description" content="Massifs isolés en béton armé sous modules préfabriqués d&#x27;extension de deux écoles — Albi, Tarn. Notes de calcul et plans EXE.">
+  <meta property="og:title" content="Massifs de fondation pour modules scolaires — Albi (81) | MH Structure">
+  <meta property="og:description" content="Massifs isolés en béton armé sous modules préfabriqués d&#x27;extension de groupes scolaires à Albi (81) : notes de calcul et plans d&#x27;exécution.">
   <meta property="og:image" content="https://www.mhstructure.com/images/projets/massifs-fondation-extension-modulaire-ecoles-albi/hero.jpg">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ── Page projet ─────────────────────────────────── */
     .proj-page { padding-top: 0; }
@@ -303,9 +305,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 12px 0;
-    }  </style>
+    }
+
+    /* Texte descriptif du projet */
+    .proj-desc { max-width: 780px; margin: 0 0 64px; }
+    .proj-desc h2 {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 36px 0 10px;
+    }
+    .proj-desc h2:first-child { margin-top: 0; }
+    .proj-desc p {
+      font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin: 0 0 14px;
+    }
+    .proj-desc a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+    .proj-desc a:hover { text-decoration: none; }
+  </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body class="proj-page">
 
@@ -403,6 +419,19 @@
     </div>
     <!-- ── Corps ────────────────────────────────── -->
     <div class="proj-body">
+      <!-- Description du projet -->
+      <section class="proj-desc" aria-label="Description du projet">
+        <h2>Le contexte</h2>
+        <p>Des modules préfabriqués devaient agrandir des groupes scolaires à Albi, notamment pour un réfectoire. Chaque module repose ponctuellement sur un massif de fondation en béton armé, par l'intermédiaire d'une platine métallique. Une école étant un établissement recevant du public, l'ouvrage relève de la catégorie d'importance III.</p>
+        <h2>La contrainte</h2>
+        <p>Les charges venaient de la descente de charges du constructeur des modules : poids propre, exploitation (jusqu'à 24 kN sur l'appui le plus chargé), neige et vent. Ces modules légers offrent une grande prise au vent, qui peut soulever ou faire glisser leurs appuis. Albi étant en zone de sismicité 1 (très faible), le séisme n'est pas dimensionnant.</p>
+        <h2>Notre approche</h2>
+        <p>Un massif type unique de 64 × 64 × 52 cm, coulé en pleine fouille sur 8 cm de béton de propreté et arrêté à −0,85 m, a été justifié pour l'enveloppe des cas les plus défavorables. Comme ce bloc est presque aussi haut que large, il a été calculé par la méthode des bielles et tirants : la charge descend dans le béton par des « bielles » comprimées, et les aciers du bas (le « tirant ») retiennent l'écartement de la base. La pression sur le sol atteint 88 kPa pour 200 kPa admissibles ; le non-soulèvement, le glissement et le renversement sous vent sont vérifiés. Le ferraillage est une cage préfabriquée de 12 HA8, béton C25/30.</p>
+        <h2>Ce qui a été livré</h2>
+        <p>Les notes de calcul des massifs et les plans de coffrage des fondations, avec vue en plan, coupe type et vue 3D. La portance du sol retenue reste à confirmer par une étude géotechnique de conception G2 PRO (norme NF P 94-500).</p>
+        <p>À lire aussi : notre prestation de <a href="/note-de-calcul-beton-arme">note de calcul béton armé</a> et notre article sur les <a href="/conseils/fondations-superficielles-beton">fondations superficielles en béton</a>.</p>
+      </section>
+
       <!-- Galerie photos -->
       <p class="proj-gallery-title">Chantier et modèle</p>
       <div class="proj-gallery" role="list" aria-label="Galerie photos et vues 3D des fondations">

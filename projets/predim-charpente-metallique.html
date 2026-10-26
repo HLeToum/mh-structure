@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
-  <title>Prédimensionnement Charpente Métallique — Plans de Fondations &amp; Dallage | MH Structure</title>
-  <meta name="description" content="Prédimensionnement d'un bâtiment industriel à charpente métallique. Portiques acier, contreventements, dallage sur sol élastique, semelles isolées et longrines. Modélisation 3D Advanced Design — Eurocode 3.">
+  <title>Bâtiment industriel acier : prédimensionnement et fondations | MH Structure</title>
+  <meta name="description" content="Prédimensionnement d&#x27;un bâtiment industriel de 28 × 28 m en charpente métallique : portiques acier, dallage sur sol élastique, semelles et longrines.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/projets/predim-charpente-metallique">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Prédimensionnement Charpente Métallique | MH Structure">
-  <meta property="og:description" content="Bâtiment industriel acier — portiques, contreventements, dallage sol élastique, fondations. Modélisation éléments finis Advanced Design.">
+  <meta property="og:title" content="Bâtiment industriel acier : prédimensionnement et fondations | MH Structure">
+  <meta property="og:description" content="Bâtiment industriel acier d&#x27;environ 28 × 28 m : portiques, contreventements, dallage sur sol élastique et fondations, modélisés sous Advance Design.">
   <meta property="og:image" content="https://www.mhstructure.com/images/projets/charpente-metallique/vue-3d-iso.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ── Page projet ─────────────────────────────────── */
     .proj-page { padding-top: 0; }
@@ -328,9 +330,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 12px 0;
-    }  </style>
+    }
+
+    /* Texte descriptif du projet */
+    .proj-desc { max-width: 780px; margin: 0 0 64px; }
+    .proj-desc h2 {
+      font-family: var(--ff); font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin: 36px 0 10px;
+    }
+    .proj-desc h2:first-child { margin-top: 0; }
+    .proj-desc p {
+      font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin: 0 0 14px;
+    }
+    .proj-desc a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+    .proj-desc a:hover { text-decoration: none; }
+  </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body class="proj-page">
 
@@ -449,6 +465,19 @@
           <div class="proj-highlight-lbl">Charpente acier · Dallage · Fondations BA</div>
         </div>
       </div>
+
+      <!-- Description du projet -->
+      <section class="proj-desc" aria-label="Description du projet">
+        <h2>Le contexte</h2>
+        <p>Le projet porte sur un bâtiment industriel d'environ 28 × 28 m d'emprise au sol, à charpente métallique. Au stade de l'esquisse, l'enjeu était de disposer d'un prédimensionnement fiable de la structure pour chiffrer l'opération avant les études d'exécution.</p>
+        <h2>La contrainte</h2>
+        <p>Trois lots devaient être dimensionnés ensemble, parce qu'ils dépendent les uns des autres : la charpente en acier, le dallage et les fondations en béton armé. Les efforts repris par les portiques arrivent sur les fondations, et le dallage doit être cohérent avec le sol qui le porte.</p>
+        <h2>Notre approche</h2>
+        <p>Le bâtiment a été modélisé en trois dimensions par éléments finis sous Advance Design. La charpente se compose de portiques à deux pentes (des cadres acier poteaux-traverses répétés le long du bâtiment), stabilisés par des contreventements en croix de Saint-André en façade, qui empêchent le bâtiment de se déformer sous le vent. Les déformations ont été vérifiées selon l'Eurocode 3 : la flèche maximale de la toiture sous charges permanentes est de 0,723 cm. Le dallage a été calculé sur sol élastique, c'est-à-dire en tenant compte de l'enfoncement du terrain sous les charges, avec ses armatures et ses joints de retrait et de dilatation. Les fondations, justifiées selon l'Eurocode 7, sont des semelles isolées de 1,35 à 1,95 m de côté et de 0,90 à 1,00 m de hauteur, reliées par des longrines en béton armé.</p>
+        <h2>Ce qui a été livré</h2>
+        <p>Une note de calcul de prédimensionnement couvrant les trois lots, un plan de fondations et une estimation chiffrée permettant d'arrêter le budget dès la phase esquisse.</p>
+        <p>À lire aussi : notre prestation de <a href="/note-de-calcul-beton-arme">note de calcul béton armé</a> et notre article sur les <a href="/conseils/fondations-superficielles-beton">fondations superficielles en béton</a>.</p>
+      </section>
 
       <!-- Galerie vues 3D -->
       <p class="proj-gallery-title">Modèle 3D — Advanced Design</p>
