@@ -39,19 +39,20 @@
   <link rel="alternate" hreflang="fr" href="https://www.mhstructure.com/">
   <link rel="alternate" hreflang="x-default" href="https://www.mhstructure.com/">
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous"/>
+  <!-- leaflet.css est chargé à la demande par js/map.js, à l'approche de la section Zones -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://unpkg.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-  <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous"
-        href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gozuPa_p4r.woff2">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <!-- Polices Google chargées sans bloquer le rendu (display=swap) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  <!-- Consent Mode v2 : doit précéder toute balise Google.
+       defer : exécuté avant tous les autres scripts différés de la page
+       (cookies.js, tracking.js), dans l'ordre du document. -->
+  <script defer src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -239,7 +240,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-01.webp" type="image/webp">
+              <source srcset="images/prevention/cas-01-600.webp 600w, images/prevention/cas-01.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-01.jpg"
                    alt="Fissure diagonale sur un poteau béton armé de façade"
                    width="900" height="600"
@@ -276,7 +277,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-02.webp" type="image/webp">
+              <source srcset="images/prevention/cas-02-600.webp 600w, images/prevention/cas-02.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-02.jpg"
                    alt="Fissure oblique à la base d'un mur intérieur près d'un encadrement de porte"
                    width="900" height="600"
@@ -313,7 +314,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-03.webp" type="image/webp">
+              <source srcset="images/prevention/cas-03-600.webp 600w, images/prevention/cas-03.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-03.jpg"
                    alt="Réseau de fissures verticales et obliques sur un voile en contexte de rénovation"
                    width="900" height="600"
@@ -350,7 +351,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-04.webp" type="image/webp">
+              <source srcset="images/prevention/cas-04-600.webp 600w, images/prevention/cas-04.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-04.jpg"
                    alt="Traces d'exfiltration d'eau sur une façade béton armé — ruissellement et auréoles"
                    width="900" height="600"
@@ -387,7 +388,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-05.webp" type="image/webp">
+              <source srcset="images/prevention/cas-05-600.webp 600w, images/prevention/cas-05.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-05.jpg"
                    alt="Infiltrations d'eau répétées sur plusieurs niveaux d'une façade béton armé"
                    width="900" height="600"
@@ -424,7 +425,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-06.webp" type="image/webp">
+              <source srcset="images/prevention/cas-06-600.webp 600w, images/prevention/cas-06.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-06.jpg"
                    alt="Mur de soutènement béton armé fissuré"
                    width="900" height="600"
@@ -461,7 +462,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-07.webp" type="image/webp">
+              <source srcset="images/prevention/cas-07-600.webp 600w, images/prevention/cas-07.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-07.jpg"
                    alt="Drainage défaillant en pied de mur de soutènement"
                    width="900" height="600"
@@ -498,7 +499,7 @@
         <article class="patho-card">
           <div class="patho-visual">
             <picture>
-              <source srcset="images/prevention/cas-08.webp" type="image/webp">
+              <source srcset="images/prevention/cas-08-600.webp 600w, images/prevention/cas-08.webp 900w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
               <img src="images/prevention/cas-08.jpg"
                    alt="Fissures en étoile sur dallage industriel béton — tassement différentiel de plateforme"
                    width="900" height="600"
@@ -554,10 +555,13 @@
 
         <div class="about-visual">
           <div class="about-frame">
-            <img class="about-logo-img"
-                 src="images/logo-mh-structure.png"
-                 alt="Logo MH Structure — bureau d'études structure"
-                 width="420" height="420">
+            <picture>
+              <source srcset="images/logo-mh-structure-840.webp" type="image/webp">
+              <img class="about-logo-img"
+                   src="images/logo-mh-structure.png"
+                   alt="Logo MH Structure — bureau d'études structure"
+                   width="420" height="420" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="tools-grid">
             <span class="tool-tag" translate="no" lang="en">REVIT</span>
@@ -626,7 +630,10 @@
         <!-- Row 1 : 3 cards (span 2 each in 6-col grid) -->
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/services/calcul-structure.jpg" alt="Modèle éléments finis 3D d'un bâtiment avec carte de déplacements sismiques" width="400" height="240" loading="lazy"/>
+            <picture>
+              <source srcset="images/services/calcul-structure-480.webp 480w, images/services/calcul-structure.webp 800w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
+              <img src="images/services/calcul-structure.jpg" alt="Modèle éléments finis 3D d'un bâtiment avec carte de déplacements sismiques" width="400" height="240" loading="lazy" decoding="async"/>
+            </picture>
           </div>
           <div class="svc-num" aria-hidden="true">01</div>
           <div class="svc-icon" aria-hidden="true">
@@ -650,7 +657,10 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/services/diagnostic-visuel.jpg" alt="Ingénieur en gilet réfléchissant inspectant une structure de bâtiment" width="400" height="240" loading="lazy"/>
+            <picture>
+              <source srcset="images/services/diagnostic-visuel-480.webp 480w, images/services/diagnostic-visuel.webp 800w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
+              <img src="images/services/diagnostic-visuel.jpg" alt="Ingénieur en gilet réfléchissant inspectant une structure de bâtiment" width="400" height="240" loading="lazy" decoding="async"/>
+            </picture>
           </div>
           <div class="svc-num" aria-hidden="true">02</div>
           <div class="svc-icon" aria-hidden="true">
@@ -676,7 +686,10 @@
 
         <article class="svc-card">
           <div class="svc-img">
-            <img src="images/services/diagnostic-sismique.jpg" alt="Spectre réglementaire EC8 avec courbes d'accélération et tableaux de paramètres sismiques" width="400" height="240" loading="lazy"/>
+            <picture>
+              <source srcset="images/services/diagnostic-sismique-480.webp 480w, images/services/diagnostic-sismique.webp 800w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
+              <img src="images/services/diagnostic-sismique.jpg" alt="Spectre réglementaire EC8 avec courbes d'accélération et tableaux de paramètres sismiques" width="400" height="240" loading="lazy" decoding="async"/>
+            </picture>
           </div>
           <div class="svc-num" aria-hidden="true">03</div>
           <div class="svc-icon" aria-hidden="true">
@@ -693,6 +706,7 @@
           <div class="svc-region-links">
             <a href="/diagnostic-vulnerabilite-sismique" class="svc-region-link" aria-label="Diagnostic de vulnérabilité sismique du bâti existant">Vulnérabilité sismique →</a>
             <a href="/diagnostic-sismique-guadeloupe" class="svc-region-link" aria-label="Diagnostic sismique en Guadeloupe">Guadeloupe →</a>
+            <a href="/diagnostic-sismique-martinique" class="svc-region-link" aria-label="Diagnostic sismique en Martinique">Martinique →</a>
             <a href="/etude-parasismique-zone-5" class="svc-region-link" aria-label="Étude parasismique zone 5">Zone 5 →</a>
           </div>
         </article>
@@ -700,7 +714,10 @@
         <!-- Row 2 : 2 cards (span 3 each in 6-col grid) -->
         <article class="svc-card svc-wide">
           <div class="svc-img">
-            <img src="images/services/attestation-parasismique.jpg" alt="Formulaire officiel d'attestation parasismique pour dépôt de permis de construire" width="400" height="240" loading="lazy"/>
+            <picture>
+              <source srcset="images/services/attestation-parasismique-480.webp 480w, images/services/attestation-parasismique.webp 800w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
+              <img src="images/services/attestation-parasismique.jpg" alt="Formulaire officiel d'attestation parasismique pour dépôt de permis de construire" width="400" height="240" loading="lazy" decoding="async"/>
+            </picture>
           </div>
           <div class="svc-num" aria-hidden="true">04</div>
           <div class="svc-icon" aria-hidden="true">
@@ -719,13 +736,18 @@
           <div class="svc-region-links">
             <a href="/attestation-parasismique" class="svc-region-link" aria-label="Attestation parasismique maison individuelle">Maison individuelle →</a>
             <a href="/attestation-parasismique-tarn" class="svc-region-link" aria-label="Attestation parasismique Métropole">Métropole →</a>
-            <a href="/attestation-parasismique-guadeloupe" class="svc-region-link" aria-label="Attestation parasismique Antilles et DOM">Antilles &amp; DOM →</a>
+            <a href="/attestation-parasismique-guadeloupe" class="svc-region-link" aria-label="Attestation parasismique en Guadeloupe">Guadeloupe →</a>
+            <a href="/attestation-parasismique-martinique" class="svc-region-link" aria-label="Attestation parasismique en Martinique">Martinique →</a>
+            <a href="/attestation-parasismique-saint-martin" class="svc-region-link" aria-label="Attestation parasismique à Saint-Martin">Saint-Martin →</a>
           </div>
         </article>
 
         <article class="svc-card svc-wide">
           <div class="svc-img">
-            <img src="images/services/attestation-at2.jpg" alt="Mains d'ingénieur consultant des plans structurels sur chantier" width="400" height="240" loading="lazy"/>
+            <picture>
+              <source srcset="images/services/attestation-at2-480.webp 480w, images/services/attestation-at2.webp 800w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 427px" type="image/webp">
+              <img src="images/services/attestation-at2.jpg" alt="Mains d'ingénieur consultant des plans structurels sur chantier" width="400" height="240" loading="lazy" decoding="async"/>
+            </picture>
           </div>
           <div class="svc-num" aria-hidden="true">05</div>
           <div class="svc-icon" aria-hidden="true">
@@ -993,7 +1015,10 @@
             <a href="/diagnostic-structurel-tarn" data-i18n="footer.svc.2">Diagnostic Structurel</a>
             <a href="/diagnostic-sismique-guadeloupe" data-i18n="footer.svc.3">Diagnostic Sismique</a>
             <a href="/attestation-parasismique-tarn" data-i18n="footer.svc.4">Attestation PC Métropole</a>
-            <a href="/attestation-parasismique-guadeloupe">Attestation PC DOM-TOM</a>
+            <a href="/attestation-parasismique-guadeloupe">Attestation PC Guadeloupe</a>
+            <a href="/attestation-parasismique-martinique">Attestation PC Martinique</a>
+            <a href="/attestation-parasismique-saint-martin">Attestation PC Saint-Martin</a>
+            <a href="/bureau-etudes-structure-guyane">Bureau d'études Guyane</a>
             <a href="/attestation-at2-fin-de-chantier" data-i18n="footer.svc.5">Attestation AT2</a>
             <a href="/etude-parasismique-zone-5">Étude parasismique zone 5</a>
           </div>
@@ -1062,6 +1087,7 @@
       { "@type": "AdministrativeArea", "name": "France métropolitaine" },
       { "@type": "AdministrativeArea", "name": "Guadeloupe" },
       { "@type": "AdministrativeArea", "name": "Martinique" },
+      { "@type": "AdministrativeArea", "name": "Saint-Martin" },
       { "@type": "AdministrativeArea", "name": "La Réunion" },
       { "@type": "AdministrativeArea", "name": "Guyane" },
       { "@type": "AdministrativeArea", "name": "Mayotte" },
@@ -1138,9 +1164,10 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 16.1789,
-      "longitude": -61.5884
+      "latitude": 16.193797,
+      "longitude": -61.622398
     },
+    "hasMap": "https://maps.google.com/?q=16.193797,-61.622398",
     "areaServed": [
       { "@type": "City", "name": "Petit-Bourg" },
       { "@type": "City", "name": "Basse-Terre" },
@@ -1150,6 +1177,7 @@
       { "@type": "City", "name": "Capesterre-Belle-Eau" },
       { "@type": "AdministrativeArea", "name": "Guadeloupe" },
       { "@type": "AdministrativeArea", "name": "Martinique" },
+      { "@type": "AdministrativeArea", "name": "Saint-Martin" },
       { "@type": "AdministrativeArea", "name": "La Réunion" },
       { "@type": "AdministrativeArea", "name": "Guyane" },
       { "@type": "AdministrativeArea", "name": "Mayotte" },
@@ -1215,20 +1243,18 @@
   }
   </script>
 
-  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"
-          integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu"
-          crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+  <!-- three.js (fond 3D) et Leaflet (cartes) sont chargés à la demande
+       par js/scene.js et js/map.js, hors du chemin critique. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
           integrity="sha384-xjP10QrW7PA6WOlPOkWwDcyKJeREvuwWVAc5aS9/ObhcWcdopa9q3l7NXObVJQ8r"
           crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"
           integrity="sha384-V0oE5KjuA5fwJoB7Ve6EjvvRB2skf+fPQ1IncPdJ4HurEaHbSKYUoW3Y13UzFcpD"
           crossorigin="anonymous"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/scene.js"></script>
-  <script src="js/main.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
-  <script src="js/map.js"></script>
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/scene.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/map.js"></script>
 
   <!-- ── Cookie consent banner ── -->
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="true" aria-label="Consentement cookies" hidden>
@@ -1246,8 +1272,8 @@
     </div>
   </div>
 
-  <script src="js/accordion.js"></script>
-  <script src="js/cookies.js"></script>
+  <script defer src="js/accordion.js"></script>
+  <script defer src="js/cookies.js"></script>
 <script defer src="/js/back-to-top.js"></script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>

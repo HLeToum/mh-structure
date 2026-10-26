@@ -19,7 +19,9 @@
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -102,7 +104,7 @@
     @media (max-width: 600px) { main { padding: 5.5rem 1rem 3rem; } .cta-block { flex-direction: column; align-items: flex-start; } }
   </style>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -226,6 +228,7 @@
     <div class="related-links">
       <a href="/attestation-parasismique-guadeloupe" class="related-link">Attestation parasismique Guadeloupe</a>
       <a href="/diagnostic-sismique-martinique" class="related-link">Diagnostic sismique Martinique</a>
+      <a href="/attestation-parasismique-saint-martin" class="related-link">Attestation parasismique Saint-Martin</a>
       <a href="/etude-parasismique-zone-5" class="related-link">Étude parasismique zone 5</a>
       <a href="/diagnostic-structurel-tarn" class="related-link">Diagnostic structurel</a>
       <a href="/note-de-calcul-beton-arme" class="related-link">Note de calcul béton armé</a>

@@ -7,12 +7,12 @@
   <meta name="theme-color" content="#0F1929" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#EFF3FA" media="(prefers-color-scheme: light)">
   <title>Descente de charges : principe, calcul et exemple | MH Structure</title>
-  <meta name="description" content="Descente de charges : principe, charges permanentes et d'exploitation selon l'Eurocode 1, combinaisons ELU et ELS, et exemple de calcul pas à pas sur un poteau. Guide d'un bureau d'études structure.">
+  <meta name="description" content="Descente de charges expliquée pas à pas : charges permanentes et d'exploitation (Eurocode 1), combinaisons ELU et ELS, exemple de calcul sur un poteau.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.mhstructure.com/conseils/descente-de-charges">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Descente de charges : principe, calcul et exemple pas à pas">
-  <meta property="og:description" content="Comment se calcule une descente de charges : surface d'influence, charges G et Q, combinaisons ELU et ELS, avec un exemple chiffré sur un poteau de R+1.">
+  <meta property="og:description" content="Descente de charges expliquée pas à pas : charges permanentes et d'exploitation (Eurocode 1), combinaisons ELU et ELS, exemple de calcul sur un poteau.">
   <meta property="og:image" content="https://www.mhstructure.com/images/logo-mh-structure.png">
   <meta property="article:published_time" content="2026-07-13">
   <meta property="article:modified_time" content="2026-08-10">
@@ -77,9 +77,11 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
   <!-- Consent Mode v2 : doit précéder toute balise Google -->
-  <script src="/js/consent.js"></script>
+  <script defer src="/js/consent.js"></script>
 </head>
 <body>
 
@@ -342,9 +344,9 @@
           <p>La descente de charges est la première étape technique de toute étude de structure. MH Structure la réalise systématiquement avant le dimensionnement, en s'appuyant sur :</p>
           <ul>
             <li>Les <strong>plans d'architecte</strong> pour identifier la trame porteuse réelle et les surfaces d'influence.</li>
-            <li>L'<strong>étude géotechnique</strong> pour confronter les charges transmises à la portance du sol.</li>
+            <li>L'<a href="/conseils/rapport-geotechnique-etude-de-sol"><strong>étude géotechnique</strong></a> pour confronter les charges transmises à la portance du sol.</li>
             <li>Les valeurs de l'<strong>Eurocode 1</strong> selon l'usage exact de chaque local.</li>
-            <li>Le dimensionnement en béton armé selon l'<strong>Eurocode 2</strong>, cohérent avec les charges ainsi déterminées.</li>
+            <li>Le dimensionnement en béton armé selon l'<strong>Eurocode 2</strong>, cohérent avec les charges ainsi déterminées, puis la <a href="/note-de-calcul-beton-arme">note de calcul béton armé</a> et les <a href="/plans-coffrage-armatures">plans de coffrage et d'armatures</a>.</li>
           </ul>
 
           <div class="article-callout">
