@@ -47,12 +47,20 @@
      ═══════════════════════════════════════════════════════════════════ */
   var CONFIG = {
     adsId: 'AW-18382343832',
-    ga4Id: '',
+    ga4Id: 'G-ZLKS884MNC',
     conversions: {
       devis: 'AW-18382343832/PP08CP-Irt8cEJidsb1E',  // « Envoi de formulaire de lead » — page /merci
       appel: '',   // clic sur un numéro de téléphone — action à créer dans Google Ads
       email: ''    // clic sur l'adresse e-mail — action à créer dans Google Ads
     }
+  };
+
+  /* Nom de l'événement Analytics correspondant à chaque conversion
+     (generate_lead est l'événement recommandé par Google pour un formulaire). */
+  var GA4_EVENTS = {
+    devis: 'generate_lead',
+    appel: 'clic_telephone',
+    email: 'clic_email'
   };
 
   var STORAGE_KEY = 'mh-cookie-consent';
@@ -209,6 +217,11 @@
      * @param {function} [apres]  rappel exécuté une fois l'envoi terminé
      */
     conversion: function (nom, apres) {
+      /* Analytics reçoit le même signal sous forme d'événement, ce qui
+         permet de savoir quelle page a déclenché le contact. */
+      if (CONFIG.ga4Id && GA4_EVENTS[nom]) {
+        gtag('event', GA4_EVENTS[nom], { send_to: CONFIG.ga4Id });
+      }
       var label = CONFIG.conversions[nom];
       if (!CONFIG.adsId || !label) {
         if (typeof apres === 'function') apres();
