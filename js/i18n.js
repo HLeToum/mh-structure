@@ -89,7 +89,7 @@
       'about.badge.sub':    'Ingénierie Structure',
       'about.h2':           'Bureau d\'études structure — Partout en France',
       'about.p1':           'Nous travaillons directement avec architectes, maîtres d\'ouvrage et particuliers — de la conception jusqu\'à la réception de chantier. Pas d\'intermédiaire : votre dossier est suivi par notre ingénieur structure, du début à la fin.',
-      'about.p2':           'Notes de calcul béton armé, plans d\'exécution, diagnostics structuraux, attestations parasismiques AT1/AT2 : nous couvrons l\'ensemble du cycle structure de votre projet, sur tout le territoire français.',
+      'about.p2':           'Notes de calcul béton armé, plans d\'exécution, diagnostics structuraux, attestations parasismiques de maisons individuelles au permis et à l\'achèvement (dites AT1/AT2) : nous couvrons l\'ensemble du cycle structure de votre projet, sur tout le territoire français.',
       'about.clients.label':'Nous intervenons pour',
       'about.client.1':     'Architectes',
       'about.client.2':     'Maîtres d\'ouvrage',
@@ -114,15 +114,15 @@
       'svc.02.t1': 'Pathologies', 'svc.02.t2': 'Fissures', 'svc.02.t3': 'Rapport technique',
 
       'svc.03.title': 'Diagnostic Sismique',
-      'svc.03.desc':  'Évaluation de la vulnérabilité des ouvrages existants vis-à-vis du risque sismique : analyse de la structure, vérification réglementaire et recommandations techniques adaptées.',
-      'svc.03.t1': 'Eurocode 8', 'svc.03.t2': 'Vulnérabilité', 'svc.03.t3': 'Réglementation',
+      'svc.03.desc':  'Évaluation de la vulnérabilité des ouvrages existants vis-à-vis du risque sismique (Eurocode 8, partie 3) : démarche volontaire ou préalable à des travaux, analyse de la structure et recommandations de renforcement.',
+      'svc.03.t1': 'Eurocode 8', 'svc.03.t2': 'Vulnérabilité', 'svc.03.t3': 'Renforcement',
 
       'svc.04.title': 'Attestation Parasismique — Dépôt de PC',
-      'svc.04.desc':  'Établissement de l\'attestation réglementaire à joindre au dépôt de permis de construire, certifiant la prise en compte des règles parasismiques (PS-MI / Eurocode 8) dans la conception du projet.',
-      'svc.04.t1': 'PS-MI', 'svc.04.t2': 'Permis de construire', 'svc.04.t3': 'Réglementation',
+      'svc.04.desc':  'Attestation à joindre au permis de construire d\'une maison individuelle en zone sismique 3, 4 ou 5 (pièce PCMI13, dite « AT1 »), certifiant la prise en compte des règles parasismiques (Eurocode 8 ou guide CPMI-EC8) dès la conception. Pour les autres bâtiments, elle relève du contrôleur technique : nous réalisons les études qu\'il demande.',
+      'svc.04.t1': 'CPMI-EC8', 'svc.04.t2': 'Permis de construire', 'svc.04.t3': 'Réglementation',
 
       'svc.05.title': 'Attestation de Fin de Chantier — AT2',
-      'svc.05.desc':  'Établissement de l\'attestation AT2 à l\'achèvement des travaux, après visite de fin de chantier et vérification de la conformité des dispositions constructives aux exigences réglementaires.',
+      'svc.05.desc':  'Attestation parasismique jointe à la déclaration d\'achèvement (pièce AT.2 de la DAACT) d\'une maison individuelle en zone 3, 4 ou 5, établie après visite de fin de chantier et vérification des dispositions constructives.',
       'svc.05.t1': 'AT2', 'svc.05.t2': 'Fin de chantier', 'svc.05.t3': 'Conformité',
 
       /* Contact */
@@ -269,7 +269,7 @@
       'about.badge.sub':    'Structural Engineering',
       'about.h2':           'Structural engineering firm — Across France',
       'about.p1':           'We work directly with architects, project owners and private clients — from design through to site completion. No middlemen: your file is handled by our structural engineer, start to finish.',
-      'about.p2':           'Reinforced concrete calculations, execution drawings, structural diagnostics, seismic compliance certificates AT1/AT2 — we cover the full structural engineering cycle for your project, anywhere in France.',
+      'about.p2':           'Reinforced concrete calculations, execution drawings, structural diagnostics, seismic compliance certificates for single-family homes at permit and completion stages (known as AT1/AT2) — we cover the full structural engineering cycle for your project, anywhere in France.',
       'about.clients.label':'We work with',
       'about.client.1':     'Architects',
       'about.client.2':     'Project owners',
@@ -294,15 +294,15 @@
       'svc.02.t1': 'Pathologies', 'svc.02.t2': 'Cracks', 'svc.02.t3': 'Technical report',
 
       'svc.03.title': 'Seismic Assessment',
-      'svc.03.desc':  'Assessment of existing structures\' vulnerability to seismic risk: structural analysis, regulatory compliance check and tailored technical recommendations.',
-      'svc.03.t1': 'Eurocode 8', 'svc.03.t2': 'Vulnerability', 'svc.03.t3': 'Regulation',
+      'svc.03.desc':  'Assessment of existing structures\' vulnerability to seismic risk (Eurocode 8, Part 3): a voluntary step or a prerequisite to works, with structural analysis and strengthening recommendations.',
+      'svc.03.t1': 'Eurocode 8', 'svc.03.t2': 'Vulnerability', 'svc.03.t3': 'Strengthening',
 
       'svc.04.title': 'Seismic Compliance Certificate — Planning',
-      'svc.04.desc':  'Preparation of the regulatory certificate to be submitted with the planning application, certifying that seismic design rules (PS-MI / Eurocode 8) have been considered in the project.',
-      'svc.04.t1': 'PS-MI', 'svc.04.t2': 'Planning permit', 'svc.04.t3': 'Regulation',
+      'svc.04.desc':  'Certificate submitted with the building permit application for a single-family home in seismic zone 3, 4 or 5 (form item PCMI13, known as "AT1"), certifying that seismic design rules (Eurocode 8 or CPMI-EC8 guide) are applied from the design stage. For other buildings it is issued by the technical inspector: we produce the studies they require.',
+      'svc.04.t1': 'CPMI-EC8', 'svc.04.t2': 'Planning permit', 'svc.04.t3': 'Regulation',
 
       'svc.05.title': 'End-of-Works Certificate — AT2',
-      'svc.05.desc':  'Preparation of the AT2 certificate at works completion, following a site visit and verification of compliance of construction details with regulatory requirements.',
+      'svc.05.desc':  'Seismic certificate attached to the declaration of works completion (form item AT.2 of the DAACT) for a single-family home in zone 3, 4 or 5, issued after a final site visit and a check of construction details.',
       'svc.05.t1': 'AT2', 'svc.05.t2': 'Works completion', 'svc.05.t3': 'Compliance',
 
       /* Contact */
