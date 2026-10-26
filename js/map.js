@@ -177,6 +177,12 @@
       var el = document.getElementById(id);
       if (el) io.observe(el);
     });
+    /* Filet de sécurité : si l'observateur ne se déclenche pas (onglet en
+       arrière-plan, navigateur particulier), Leaflet est chargé 6 s après
+       le chargement complet de la page, hors du chemin critique. */
+    function fallback() { setTimeout(function () { io.disconnect(); loadLeaflet(); }, 6000); }
+    if (document.readyState === 'complete') fallback();
+    else window.addEventListener('load', fallback);
   }
 
   if (document.readyState === 'loading') {
