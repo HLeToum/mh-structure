@@ -127,16 +127,15 @@
     @media (max-width: 600px) { .cd-row { grid-template-columns: 1fr; } .contact-direct { padding: 1.25rem; } }
 
     /* Page Services : cartes de prestation */
-    .presta-grid { display: grid; gap: 16px; margin: 2rem 0; }
-    .presta { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 230px 1fr; align-items: stretch; transition: border-color .2s, background .2s; }
+    .presta-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 2rem 0; }
+    .presta { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, background .2s; }
     .presta:hover { border-color: var(--border-g); }
-    .presta-img { position: relative; background: var(--bg); border-right: 1px solid var(--border); min-height: 100%; }
-    .presta-img img { width: 100%; height: 100%; min-height: 190px; object-fit: cover; display: block; }
-    .presta-corps { padding: 1.5rem 1.75rem; min-width: 0; }
-    @media (max-width: 760px) {
-      .presta { grid-template-columns: 1fr; }
-      .presta-img { border-right: 0; border-bottom: 1px solid var(--border); }
-      .presta-img img { height: 170px; min-height: 0; }
+    /* le bandeau reprend le ratio natif des photos (800x480) : aucun recadrage */
+    .presta-img { background: var(--bg); border-bottom: 1px solid var(--border); aspect-ratio: 5 / 3; }
+    .presta-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .presta-corps { padding: 1.4rem 1.6rem; flex: 1; min-width: 0; }
+    @media (max-width: 860px) {
+      .presta-grid { grid-template-columns: minmax(0, 1fr); }
       .presta-corps { padding: 1.25rem 1.3rem; }
     }
     .presta-haut { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
@@ -235,8 +234,8 @@
     <div class="presta">
       <div class="presta-img">
         <picture>
-          <source srcset="/images/services/attestation-parasismique-480.webp 480w, /images/services/attestation-parasismique.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
-          <img src="/images/services/attestation-parasismique.jpg" alt="Formulaire officiel d'attestation parasismique pour d&eacute;p&ocirc;t de permis de construire" width="400" height="240" loading="lazy" decoding="async"/>
+          <source srcset="/images/services/attestation-at2-480.webp 480w, /images/services/attestation-at2.webp 800w" sizes="(max-width: 860px) 100vw, 380px" type="image/webp">
+          <img src="/images/services/attestation-at2.jpg" alt="Mains d'un ing&eacute;nieur parcourant des plans de structure cot&eacute;s, pos&eacute;s sur une table de chantier" width="400" height="240" loading="lazy" decoding="async"/>
         </picture>
       </div>
       <div class="presta-corps">
@@ -261,8 +260,8 @@
     <div class="presta">
       <div class="presta-img">
         <picture>
-          <source srcset="/images/services/diagnostic-sismique-480.webp 480w, /images/services/diagnostic-sismique.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
-          <img src="/images/services/diagnostic-sismique.jpg" alt="Spectre r&eacute;glementaire Eurocode 8 avec courbes d'acc&eacute;l&eacute;ration et tableaux de param&egrave;tres sismiques" width="400" height="240" loading="lazy" decoding="async"/>
+          <source srcset="/images/services/diagnostic-sismique-inspection-480.webp 480w, /images/services/diagnostic-sismique-inspection.webp 800w" sizes="(max-width: 860px) 100vw, 380px" type="image/webp">
+          <img src="/images/services/diagnostic-sismique-inspection.jpg" alt="Trois intervenants casqu&eacute;s et en gilet de s&eacute;curit&eacute; mesurant un mur en blocs b&eacute;ton dans un b&acirc;timent existant" width="400" height="240" loading="lazy" decoding="async"/>
         </picture>
       </div>
       <div class="presta-corps">
@@ -283,7 +282,7 @@
     <div class="presta">
       <div class="presta-img">
         <picture>
-          <source srcset="/images/services/diagnostic-visuel-480.webp 480w, /images/services/diagnostic-visuel.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
+          <source srcset="/images/services/diagnostic-visuel-480.webp 480w, /images/services/diagnostic-visuel.webp 800w" sizes="(max-width: 860px) 100vw, 380px" type="image/webp">
           <img src="/images/services/diagnostic-visuel.jpg" alt="Fissure verticale traversant l'enduit d'un mur, avec &eacute;clatement du rev&ecirc;tement en partie basse" width="400" height="240" loading="lazy" decoding="async"/>
         </picture>
       </div>
@@ -304,7 +303,7 @@
     <div class="presta">
       <div class="presta-img">
         <picture>
-          <source srcset="/images/services/calcul-structure-480.webp 480w, /images/services/calcul-structure.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
+          <source srcset="/images/services/calcul-structure-480.webp 480w, /images/services/calcul-structure.webp 800w" sizes="(max-width: 860px) 100vw, 380px" type="image/webp">
           <img src="/images/services/calcul-structure.jpg" alt="Mod&egrave;le &eacute;l&eacute;ments finis 3D d'un b&acirc;timent avec carte de d&eacute;placements sismiques" width="400" height="240" loading="lazy" decoding="async"/>
         </picture>
       </div>
