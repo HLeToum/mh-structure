@@ -18,6 +18,12 @@
 
   <!-- Pages piliers — Haute priorité -->
   <url>
+    <loc>https://www.mhstructure.com/services</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://www.mhstructure.com/attestation-parasismique</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
