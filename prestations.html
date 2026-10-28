@@ -128,8 +128,17 @@
 
     /* Page Services : cartes de prestation */
     .presta-grid { display: grid; gap: 16px; margin: 2rem 0; }
-    .presta { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 1.75rem; transition: border-color .2s, background .2s; }
+    .presta { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 230px 1fr; align-items: stretch; transition: border-color .2s, background .2s; }
     .presta:hover { border-color: var(--border-g); }
+    .presta-img { position: relative; background: var(--bg); border-right: 1px solid var(--border); min-height: 100%; }
+    .presta-img img { width: 100%; height: 100%; min-height: 190px; object-fit: cover; display: block; }
+    .presta-corps { padding: 1.5rem 1.75rem; min-width: 0; }
+    @media (max-width: 760px) {
+      .presta { grid-template-columns: 1fr; }
+      .presta-img { border-right: 0; border-bottom: 1px solid var(--border); }
+      .presta-img img { height: 170px; min-height: 0; }
+      .presta-corps { padding: 1.25rem 1.3rem; }
+    }
     .presta-haut { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .presta h2 { margin: 0; font-size: 1.15rem; }
     .presta h2 a { color: var(--text); }
@@ -224,6 +233,13 @@
   <div class="presta-grid">
 
     <div class="presta">
+      <div class="presta-img">
+        <picture>
+          <source srcset="/images/services/attestation-parasismique-480.webp 480w, /images/services/attestation-parasismique.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
+          <img src="/images/services/attestation-parasismique.jpg" alt="Formulaire officiel d'attestation parasismique pour d&eacute;p&ocirc;t de permis de construire" width="400" height="240" loading="lazy" decoding="async"/>
+        </picture>
+      </div>
+      <div class="presta-corps">
       <div class="presta-haut">
         <h2><a href="/attestation-parasismique">Attestation parasismique</a></h2>
         <span class="presta-quand">Permis et ach&egrave;vement</span>
@@ -239,9 +255,17 @@
         <a href="/attestation-parasismique-grenoble">Grenoble</a>
         <a href="/attestation-parasismique-annecy">Annecy</a>
       </div>
+      </div>
     </div>
 
     <div class="presta">
+      <div class="presta-img">
+        <picture>
+          <source srcset="/images/services/diagnostic-sismique-480.webp 480w, /images/services/diagnostic-sismique.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
+          <img src="/images/services/diagnostic-sismique.jpg" alt="Spectre r&eacute;glementaire Eurocode 8 avec courbes d'acc&eacute;l&eacute;ration et tableaux de param&egrave;tres sismiques" width="400" height="240" loading="lazy" decoding="async"/>
+        </picture>
+      </div>
+      <div class="presta-corps">
       <div class="presta-haut">
         <h2><a href="/diagnostic-vulnerabilite-sismique">Diagnostic sismique</a></h2>
         <span class="presta-quand">B&acirc;timent existant</span>
@@ -253,9 +277,17 @@
         <a href="/diagnostic-sismique-martinique">Martinique</a>
         <a href="/etude-parasismique-zone-5">&Eacute;tude parasismique zone 5</a>
       </div>
+      </div>
     </div>
 
     <div class="presta">
+      <div class="presta-img">
+        <picture>
+          <source srcset="/images/services/diagnostic-visuel-480.webp 480w, /images/services/diagnostic-visuel.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
+          <img src="/images/services/diagnostic-visuel.jpg" alt="Fissure verticale traversant l'enduit d'un mur, avec &eacute;clatement du rev&ecirc;tement en partie basse" width="400" height="240" loading="lazy" decoding="async"/>
+        </picture>
+      </div>
+      <div class="presta-corps">
       <div class="presta-haut">
         <h2><a href="/diagnostic-structurel">Diagnostic structurel</a></h2>
         <span class="presta-quand">Fissures et d&eacute;sordres</span>
@@ -266,9 +298,17 @@
         <a href="/diagnostic-structurel-tarn">Tarn et Occitanie</a>
         <a href="/conseils/fissures-batiment">Comprendre les fissures</a>
       </div>
+      </div>
     </div>
 
     <div class="presta">
+      <div class="presta-img">
+        <picture>
+          <source srcset="/images/services/calcul-structure-480.webp 480w, /images/services/calcul-structure.webp 800w" sizes="(max-width: 760px) 100vw, 230px" type="image/webp">
+          <img src="/images/services/calcul-structure.jpg" alt="Mod&egrave;le &eacute;l&eacute;ments finis 3D d'un b&acirc;timent avec carte de d&eacute;placements sismiques" width="400" height="240" loading="lazy" decoding="async"/>
+        </picture>
+      </div>
+      <div class="presta-corps">
       <div class="presta-haut">
         <h2><a href="/note-de-calcul-beton-arme">Note de calcul b&eacute;ton arm&eacute;</a></h2>
         <span class="presta-quand">Conception</span>
@@ -279,6 +319,7 @@
         <a href="/plans-coffrage-armatures">Plans de coffrage et d'armatures</a>
         <a href="/conseils/descente-de-charges">Comprendre la descente de charges</a>
         <a href="/conseils/note-de-calcul-beton-arme-comprendre">Comment lire une note de calcul</a>
+      </div>
       </div>
     </div>
 
