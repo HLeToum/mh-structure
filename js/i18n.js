@@ -11,7 +11,7 @@
       'nav.home':       'Accueil',
       'nav.prevention': 'Prévention',
       'nav.about':      'À propos',
-      'nav.services':   'Services',
+      'nav.services':   'Prestations',
       'nav.contact':    'Devis',
       'nav.cta':        'Devis gratuit',
 
