@@ -1,0 +1,5 @@
+{
+  "hero.jpg":  {"url": "https://images.pexels.com/photos/34573691/pexels-photo-34573691.jpeg", "licence": "Pexels"},
+  "img-2.jpg": {"url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bond%20beam%20work%20at%20Gabriela%20Mistral%20School%20construction%20site%20150622-F-LP903-012.jpg", "licence": "Domaine public", "focus": "top"},
+  "img-3.jpg": {"url": "https://commons.wikimedia.org/wiki/Special:FilePath/Parpaings%20sur%20chantier%20%C3%A0%20Tr%C3%A9gastel.jpg", "licence": "CC0"}
+}
