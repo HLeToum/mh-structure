@@ -70,8 +70,17 @@ production.** Une balise hero oubliée en produit deux : l'article et la vignett
 | `img-3.jpg` | 1000 × 667 | illustration de section |
 
 - JPEG qualité ~82, poids entre 60 et 600 Ko.
-- **Photos réelles libres de droits** (Pexels, Unsplash), recadrées aux formats ci-dessus.
-  Pas d'images générées, pas de schémas : c'est la convention de tous les articles existants.
+- **Photos réelles libres de droits**, recadrées aux formats ci-dessus. Pas d'images
+  générées, pas de schémas : c'est la convention de tous les articles existants.
+  Sources acceptées : Pexels et Unsplash (sans crédit), Wikimedia Commons en domaine
+  public ou CC0 (sans crédit), Commons en CC BY / CC BY-SA **avec crédit** dans la
+  `<figcaption>` (« Photo : Auteur / Wikimedia Commons, licence CC BY-SA 4.0 », lien
+  vers la licence) - à éviter pour le hero, qui n'a pas de légende.
+- **Sans accès web (sessions cloud, routine)** : déclarer les photos dans
+  `images/conseils/<slug>/sources.json` et pousser la branche `draft-article-*`. Le
+  workflow GitHub `article-images` les télécharge, les recadre avec
+  `tools/prepare-image.py` et les commite sur la branche (format du fichier en tête de
+  `tools/fetch-article-images.py`). Le fichier reste ensuite comme trace des licences.
 - Le recadrage se fait avec le script fourni, qui applique le format, la qualité et le
   plafond de poids sans déformer la photo :
 

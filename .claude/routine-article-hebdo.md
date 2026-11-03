@@ -17,6 +17,12 @@ Historique des corrections :
   pas été recopié dans claude.ai/code. Ajout de l'URL directe Pexels (étape 4a), de la
   vérification du dernier numéro de vignette sur `master` (étape 3, cause d'un conflit
   entre #19 et #20) et de la date de publication (étape 2).
+- **2026-11-03** — les PR #25 à #27 et #33 sont encore arrivées sans images ni sitemap :
+  la session cloud de la routine n'a pas accès au web, le téléchargement Pexels de
+  l'étape 4a échouait systématiquement. Les photos sont désormais déclarées dans
+  `sources.json` et téléchargées par le workflow GitHub `article-images` (étape 4) ;
+  `check-assets` tourne aussi en CI sur chaque PR. Ajout de la mise à jour des compteurs
+  de la barre de filtres (étape 3), oubliée sur toutes les PR récentes.
 
 ---
 
@@ -58,44 +64,60 @@ pour ça — elles ne sont pas optionnelles.
    page. Cinq thèmes possibles, aucun autre : parasismique (Parasismique),
    sols-fondations (Sols & fondations), beton-arme (Béton armé & chantier),
    bati-existant (Bâti existant), documents-acteurs (Documents & acteurs).
-   Incrémente aussi le compteur id="article-count" (« N articles publiés »).
+   Incrémente aussi le compteur id="article-count" (« N articles publiés ») et,
+   dans la barre de filtres, les compteurs blog-filter-count de « Tous » et du
+   thème de l'article.
 
-4. LIVRER LES FICHIERS IMAGES — images/conseils/<slug>/
-   RÈGLE BLOQUANTE : n'écris jamais une balise <img> dont le fichier n'est pas
-   commité dans la même PR. Un hero manquant produit deux 404 en production
+4. LIVRER LES IMAGES — images/conseils/<slug>/sources.json
+   RÈGLE BLOQUANTE : aucune balise <img> ne doit pointer vers un fichier absent
+   au moment du merge. Un hero manquant produit deux 404 en production
    (l'article et la vignette de l'index), qui partent en ligne dès le merge.
 
-   Il faut trois photos réelles libres de droits (Pexels ou Unsplash — licences
-   commerciales sans attribution), jamais d'images générées ni de schémas :
+   Ta session n'a PAS accès au web : Pexels, Wikimedia, etc. sont bloqués, ne
+   tente pas de télécharger les photos toi-même. Tu les DÉCLARES dans
+   sources.json ; le workflow GitHub « article-images » les télécharge, les
+   recadre aux formats du site et les commite sur ta branche dès que tu pousses.
+
+   Il faut trois photos réelles, jamais d'images générées ni de schémas :
      hero.jpg   1200x670
      img-2.jpg  1000x667
      img-3.jpg  1000x667
 
    Procédure :
-     a. Cherche des photos de chantier / bâtiment correspondant au sujet sur
-        Pexels (page de recherche https://www.pexels.com/search/<mots>/, puis
-        page photo https://www.pexels.com/photo/...-<id>/). Le fichier source se
-        télécharge sans clé d'API à partir de l'identifiant numérique :
-          curl -L -o /tmp/src-hero.jpg             "https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        Vérifie que le fichier obtenu est bien une image (ouverture avec Pillow)
-        avant de continuer.
-     b. Recadre au format du site avec le script fourni :
-          python tools/prepare-image.py /tmp/src-hero.jpg \
-            images/conseils/<slug>/hero.jpg
-        (option --focus top|bottom|left|right si le recadrage centré coupe le
-        sujet ; --size LARGEURxHAUTEUR pour un format hors convention)
-        Le script recadre sans déformer, encode en JPEG qualité 82 et redescend
-        la qualité si le fichier dépasse 600 Ko.
-     c. Vérifie que la photo n'est pas déjà utilisée par un autre article.
-     d. REGARDE chaque photo retenue, puis écris les alt et les <figcaption> en
-        décrivant ce qu'elle montre réellement. Si la photo trouvée ne correspond
-        pas au visuel que tu avais en tête en rédigeant, c'est le texte qui
-        s'adapte à la photo, jamais l'inverse.
+     a. Trouve les photos avec la recherche web, sur :
+        - Pexels : page https://www.pexels.com/photo/...-<id>/
+          → URL source https://images.pexels.com/photos/<id>/pexels-photo-<id>.jpeg
+        - Wikimedia Commons, domaine public ou CC0 de préférence : page
+          https://commons.wikimedia.org/wiki/File:<Nom>
+          → URL source https://commons.wikimedia.org/wiki/Special:FilePath/<Nom encodé>
+        Une photo Commons en CC BY ou CC BY-SA n'est acceptée qu'avec un crédit
+        dans la <figcaption> (« Photo : Auteur / Wikimedia Commons, licence
+        CC BY-SA 4.0 », lien vers la licence) ; jamais pour le hero.
+     b. Écris images/conseils/<slug>/sources.json :
+          {
+            "hero.jpg":  {"url": "...", "page": "...", "licence": "...", "auteur": "...", "focus": "top"},
+            "img-2.jpg": {"url": "...", "page": "...", "licence": "...", "auteur": "..."},
+            "img-3.jpg": {"url": "...", "page": "...", "licence": "...", "auteur": "..."}
+          }
+        "focus" est facultatif (top, bottom, left ou right si le recadrage centré
+        coupe le sujet). Vérifie qu'aucune photo n'est déjà utilisée par un autre
+        article (compare avec les autres images/conseils/*/sources.json).
+     c. Commite et pousse la branche, puis attends le commit du workflow
+        (« images: photos de l article ») en surveillant
+          git ls-remote origin refs/heads/<ta-branche>
+        jusqu'à ce que la tête change (1 à 2 minutes en général, 10 au maximum),
+        puis git pull.
+     d. REGARDE chaque photo reçue, puis écris les alt et les <figcaption> en
+        décrivant ce qu'elle montre réellement. Si la photo ne correspond pas au
+        visuel que tu avais en tête en rédigeant, c'est le texte qui s'adapte à
+        la photo, jamais l'inverse. Si une photo ne convient pas : supprime le
+        fichier, change son entrée dans sources.json et repousse.
 
-   Si — et seulement si — tu ne parviens pas à produire les trois images
-   conformes, publie l'article SANS les balises <img> concernées et signale-le
-   explicitement en tête du corps de la PR. Une PR sans image est acceptable ;
-   une PR avec des images fantômes ne l'est pas.
+   Si le workflow échoue (téléchargement impossible), corrige sources.json et
+   repousse. Si tu n'obtiens toujours pas trois images conformes, retire les
+   balises <img> concernées et signale-le explicitement en tête du corps de la
+   PR. Une PR sans image est acceptable ; une PR avec des images fantômes ne
+   l'est pas.
 
 5. METTRE À JOUR LE SITEMAP — sitemap.xml
    Ajoute l'entrée en tête de la section « Conseils & Actualités » (classée par
@@ -110,7 +132,7 @@ pour ça — elles ne sont pas optionnelles.
    https://www.mhstructure.com/conseils à la même date. Cette seconde
    modification est celle qui est systématiquement oubliée.
 
-6. VÉRIFIER
+6. VÉRIFIER (après le git pull du commit d'images de l'étape 4c)
      node tools/check-assets.mjs
    Le script doit sortir en code 0. S'il signale des erreurs, corrige-les et
    relance jusqu'à ce qu'il passe. N'ouvre pas la PR tant qu'il échoue.
@@ -118,12 +140,14 @@ pour ça — elles ne sont pas optionnelles.
 7. OUVRIR LA PR
    Commits en français sans accents. PR en draft vers master, avec dans le corps :
      - un résumé du sujet et de l'angle,
-     - la liste des photos utilisées et leur source (URL Pexels/Unsplash),
+     - la liste des photos utilisées, leur source et leur licence (reprise de sources.json),
      - la sortie de `node tools/check-assets.mjs`,
      - cette check-list, cochée :
          [ ] article conseils/<slug>.html
          [ ] vignette dans conseils.html
-         [ ] 3 fichiers images commités aux bons formats
+         [ ] sources.json + 3 images commitées par le workflow article-images
+         [ ] alt et légendes écrits d'après les photos reçues
+         [ ] compteurs article-count et barre de filtres à jour
          [ ] entrée sitemap + lastmod de /conseils mis à jour
          [ ] node tools/check-assets.mjs passe
 
