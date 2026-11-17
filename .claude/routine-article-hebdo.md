@@ -17,6 +17,12 @@ Historique des corrections :
   pas été recopié dans claude.ai/code. Ajout de l'URL directe Pexels (étape 4a), de la
   vérification du dernier numéro de vignette sur `master` (étape 3, cause d'un conflit
   entre #19 et #20) et de la date de publication (étape 2).
+- **2026-11-17** — calendrier éditorial fondé sur Google Trends (12 derniers mois, France
+  et DOM) : les sujets techniques pointus (descente de charges, attestation parasismique)
+  pèsent moins de 5 % des recherches de chantier courantes (dalle, linteau, extension,
+  fondations). L'étape 1 suit désormais le calendrier daté ci-dessous, et une étape
+  « intention de recherche » cale titre, introduction et FAQ sur ce que les gens tapent.
+  Ajout d'une règle sur les valeurs techniques (jamais de chiffre non sourcé).
 
 ---
 
@@ -30,12 +36,78 @@ Deux oublis ont provoqué des correctifs manuels par le passé : les fichiers im
 non livrés, et le sitemap non mis à jour. Les étapes 4, 6 et 7 ci-dessous existent
 pour ça — elles ne sont pas optionnelles.
 
-1. CHOISIR LE SUJET
-   Liste d'abord conseils/*.html pour voir les articles déjà publiés et ne pas
-   traiter un sujet déjà couvert. Choisis un sujet utile à un maître d'ouvrage ou
-   à un particulier qui fait construire ou rénover : pathologie, pièce du dossier
-   technique, obligation réglementaire, point de vigilance de chantier.
+1. CHOISIR LE SUJET — CALENDRIER ÉDITORIAL
+   Objectif : maximiser le trafic. Les sujets ci-dessous sont classés d'après
+   Google Trends (France, 12 derniers mois, indice relatif « mur porteur » = 100).
+   Prends le sujet daté du lundi où tu t'exécutes. Liste d'abord conseils/*.html :
+   si ce sujet est déjà publié (même slug ou même sujet), prends le premier sujet
+   NON publié de la liste, dans l'ordre. Ne traite jamais un sujet déjà couvert.
+
+     23/11/2026 — Dalle béton : épaisseur, ferraillage et quand faire appel à un
+                  ingénieur. Thème beton-arme. Mots-clés : dalle béton (325),
+                  calculateur dalle béton, couler une dalle béton.
+     30/11/2026 — Linteau : comment le choisir et le dimensionner. Thème
+                  beton-arme. Mots-clés : linteau (169), pré-linteau béton, portée.
+     07/12/2026 — Agrandir sa maison : ce que l'extension impose à la structure
+                  (métropole ; l'article Antilles existe déjà). Thème
+                  bati-existant. Mots-clés : extension maison (185), fondations
+                  d'une extension, raccordement à l'existant.
+     14/12/2026 — Après un séisme aux Antilles : faut-il faire vérifier sa maison ?
+                  Thème parasismique. Mots-clés : séisme Martinique, séisme
+                  Guadeloupe, consignes de sécurité en cas de séisme.
+     21/12/2026 — Fondations de maison : semelles, profondeur hors gel, choix selon
+                  le sol. Thème sols-fondations. Mots-clés : fondation maison (95),
+                  cote hors gel, semelle filante.
+     28/12/2026 — Remplacer un mur porteur par une poutre IPN : ce qu'il faut
+                  vérifier. Thème bati-existant. Mots-clés : poutre IPN, prix
+                  ouverture mur porteur.
+     04/01/2027 — Comment reconnaître un mur porteur avant des travaux. Thème
+                  bati-existant. Mots-clés : mur porteur (100), comment reconnaître
+                  un mur porteur, mur porteur ou pas.
+     11/01/2027 — Ferraillage d'une dalle, d'une semelle, d'un poteau : les règles
+                  de base. Thème beton-arme. Mots-clés : ferraillage (88),
+                  ferraillage dalle, ferraillage fondation, ferraillage poteau.
+     18/01/2027 — Mur de soutènement : quand une étude de structure est-elle
+                  nécessaire ? Thème sols-fondations. Mots-clés : mur de
+                  soutènement (55), fondation mur de soutènement.
+     25/01/2027 — Terrasse en béton sur terre-plein : dalle, joints et fondations.
+                  Thème beton-arme. Mots-clés : terrasse béton (96).
+     01/02/2027 — Plancher poutrelles-hourdis : comment il fonctionne et ce qu'il
+                  supporte. Thème beton-arme. Mots-clés : hourdis béton, poutrelle
+                  hourdis, plancher béton (31).
+     08/02/2027 — Fissures de sécheresse : agir avant l'été. Thème bati-existant.
+                  Mots-clés : fissure maison sécheresse (+130 %), fissure mur
+                  extérieur.
+     mai 2027   — Cyclones aux Antilles : ce que la réglementation vent change pour
+                  votre maison. Thème parasismique. Vérifier d'abord la date
+                  d'effet de l'arrêté Guadeloupe/Martinique de 2024 ; sinon,
+                  passer au sujet suivant.
+     juin 2027  — Fissure sur un mur extérieur : bénigne ou grave ? Thème
+                  bati-existant. Mots-clés : fissure mur extérieur (68).
+
+   Au-delà de la liste, choisis parmi les recherches de chantier courantes
+   encore non couvertes (dalle, linteau, fondation, ferraillage, mur de
+   soutènement, plancher, poutre, extension, terrasse), plutôt que des sujets
+   pointus que peu de gens recherchent.
    Crée une branche dédiée depuis master.
+
+1 bis. CALER L'ARTICLE SUR L'INTENTION DE RECHERCHE
+   - Le <title> et le h1 contiennent le mot-clé principal de la ligne du
+     calendrier, au début. Title : 60 caractères au plus avant « | MH Structure ».
+   - Meta description de 150 caractères au plus, qui promet une réponse concrète.
+   - Le premier paragraphe répond directement à la question de l'internaute,
+     avant toute mise en contexte.
+   - La FAQ reprend les questions associées listées dans les mots-clés.
+   - Un encadré d'appel au devis à mi-article, relié à la page de service la plus
+     proche (/note-de-calcul-beton-arme, /plans-coffrage-armatures,
+     /diagnostic-structurel, /attestation-parasismique), avec la formule
+     « devis gratuit sous 48 h ».
+   - VALEURS TECHNIQUES : n'écris jamais une valeur chiffrée (épaisseur, portée,
+     section d'acier, enrobage, profondeur, charge) que tu ne peux pas rattacher
+     à une norme précise (référence et article ou tableau). Si une valeur utile
+     n'est pas certaine, donne le principe sans chiffre et liste-la en tête du
+     corps de la PR sous « Valeurs à sourcer avant merge ». Rappelle dans
+     l'article qu'un ordre de grandeur ne remplace pas une note de calcul.
 
 2. RÉDIGER L'ARTICLE — conseils/<slug>.html
    Prends comme gabarit l'article existant le plus récent et respecte sa structure
