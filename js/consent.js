@@ -50,7 +50,7 @@
     ga4Id: 'G-ZLKS884MNC',
     conversions: {
       devis: 'AW-18382343832/PP08CP-Irt8cEJidsb1E',  // « Envoi de formulaire de lead » — page /merci
-      appel: '',   // clic sur un numéro de téléphone — action à créer dans Google Ads
+      appel: 'AW-18382343832/hkLZCMn1pbYdEJidsb1E',   // « Annonce Appel Direct » — clic sur un numéro de téléphone
       email: ''    // clic sur l'adresse e-mail — action à créer dans Google Ads
     }
   };
