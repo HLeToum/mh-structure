@@ -1,0 +1,41 @@
+name: article-images
+
+# Telecharge les photos declarees dans images/conseils/<slug>/sources.json, les recadre
+# avec tools/prepare-image.py et les commite sur la branche de l'article. Les sessions
+# cloud de la routine n'ont pas acces au web ; les runners GitHub, si.
+on:
+  push:
+    branches: ['draft-article-**']
+    paths: ['images/conseils/*/sources.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: article-images-${{ github.ref }}
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install Pillow
+      - run: python tools/fetch-article-images.py
+      - name: Commit des images
+        run: |
+          if [ -z "$(git status --porcelain images/conseils)" ]; then echo "Aucune nouvelle image."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add images/conseils
+          git commit -m "images: photos de l article (workflow article-images)"
+          git push origin HEAD:${{ github.ref_name }}
+      - name: Controle check-assets
+        run: |
+          git fetch -q origin master:refs/remotes/origin/master || true
+          node tools/check-assets.mjs
